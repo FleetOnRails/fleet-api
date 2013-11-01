@@ -13,11 +13,12 @@ group :assets do
 end
 
 # Installed Gems
-gem 'capistrano'
-gem 'unicorn'
-gem 'rabl'
-gem 'carrierwave'
-gem 'apipie-rails'
+gem 'capistrano', '~> 3.0.0'
+gem 'unicorn', '~> 4.6.3'
+gem 'rabl', '~> 0.9.0'
+gem 'carrierwave', '~> 0.9.0'
+gem 'apipie-rails', '~> 0.0.24'
+gem 'doorkeeper', '~> 0.7.0'
 
 group :development, :test do
   gem 'rspec-rails', '~> 2.0'
