@@ -1,12 +1,5 @@
 require 'spec_helper'
 
 describe Api::V1::UserController do
-
-  describe "GET 'index'" do
-    it "returns http success" do
-      get 'index'
-      response.should be_success
-    end
-  end
-
+  pending "add some examples to (or delete) #{__FILE__}"
 end
