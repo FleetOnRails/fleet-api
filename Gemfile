@@ -13,14 +13,6 @@ group :assets do
   gem 'uglifier', '>= 1.0.3'
 end
 
-# Installed Gems
-gem 'capistrano', '~> 3.0.0'
-gem 'unicorn', '~> 4.6.3'
-gem 'rabl', '~> 0.9.0'
-gem 'carrierwave', '~> 0.9.0'
-gem 'apipie-rails', '~> 0.0.24'
-gem 'doorkeeper', '~> 0.7.0'
-
 group :development, :test do
   gem 'rspec-rails', '~> 2.0'
   gem 'better_errors'
@@ -28,3 +20,11 @@ group :development, :test do
   gem 'meta_request'
   gem 'debugger'
 end
+
+# Installed Gems
+gem 'capistrano', '~> 3.0.0'
+gem 'unicorn', '~> 4.6.3'
+gem 'rabl', '~> 0.9.0'
+gem 'carrierwave', '~> 0.9.0'
+gem 'apipie-rails', '~> 0.0.24'
+gem 'doorkeeper', '~> 0.7.0'
