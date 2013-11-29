@@ -4,12 +4,12 @@ module Api
 
       def index
         @users = User.all
-        respond_with [:json, :xml]
+        respond_with [:json]
       end
 
       def show
         @user = User.find(params[:id])
-        respond_with [:json, :xml]
+        respond_with [:json]
       end
 
       # POST /api/v1/user.json
@@ -29,7 +29,7 @@ module Api
       def destroy
         @user = User.find(params[:id])
         if @user.destroy
-          head :no_content
+          render status: :ok
         else
           render status: :unprocessable_entity
         end
