@@ -19,6 +19,9 @@ group :development, :test do
   gem 'binding_of_caller'
   gem 'meta_request'
   gem 'debugger'
+  gem 'faker'
+  gem 'factory_girl_rails'
+  gem 'capybara'
 end
 
 # Installed Gems
