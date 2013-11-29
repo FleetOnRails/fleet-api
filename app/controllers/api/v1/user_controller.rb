@@ -17,12 +17,12 @@ module Api
       def create
         @user = User.new(:address => params[:address], :email => params[:email],
                          :first_name => params[:first_name], :last_name => params[:last_name],
-                         :password => params[:password], :phone_number => params[:phone_number],
+                         :password => User.hashPassword(params[:password]), :phone_number => params[:phone_number],
                          :username => params[:username])
         if @user.save
-          respond_with [:json, :xml]
+          render status: :created
         else
-          render json: @user.errors, status: :unprocessable_entity
+          render status: :unprocessable_entity
         end
       end
 

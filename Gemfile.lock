@@ -193,6 +193,7 @@ DEPENDENCIES
   coffee-rails (~> 3.2.1)
   debugger
   doorkeeper (~> 0.7.0)
+  factory_girl
   factory_girl_rails
   faker
   meta_request
