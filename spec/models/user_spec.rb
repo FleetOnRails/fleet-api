@@ -12,8 +12,4 @@ describe User do
   it 'is invalid without a last name' do
     expect(FactoryGirl.build(:user, last_name: nil)).to have(1).errors_on(:last_name)
   end
-
-  it 'should hash the password with SHA256' do
-    @user = FactoryGirl.create(:user, password: 'password')
-  end
 end
