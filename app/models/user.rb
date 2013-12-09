@@ -1,15 +1,16 @@
-require 'digest'
+# Schema
+#
+# t.string   "first_name"
+# t.string   "last_name"
+# t.string   "email"
+# t.string   "hashed_password"
+# t.string   "phone_no"
+# t.integer  "group_id"
+# t.integer  "permission_level"
+# t.string   "username"
+# t.datetime "created_at"
+# t.datetime "updated_at"
 
 class User < ActiveRecord::Base
-  attr_accessible :address, :email, :first_name, :last_name, :password, :phone_number, :username
-
-  validates :address, :email, :first_name, :last_name, :phone_number, :username, presence: true
-
-  def name
-    [first_name, last_name].join ' '
-  end
-
-  def self.hashPassword(password)
-    Digest::SHA256.hexdigest password
-  end
+  validates :email, :first_name, :last_name, :phone_no, :username, presence: true
 end

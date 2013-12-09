@@ -1,34 +1,32 @@
 source 'https://rubygems.org'
 
-gem 'rails', '3.2.13'
-gem 'rake'
+# Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
+gem 'rails', '4.0.2'
 
+# Use sqlite3 as the database for Active Record
 gem 'sqlite3'
 
-# Gems used only for assets and not required
-# in production environments by default.
-group :assets do
-  gem 'sass-rails',   '~> 3.2.3'
-  gem 'coffee-rails', '~> 3.2.1'
-  gem 'uglifier', '>= 1.0.3'
+group :doc do
+  # bundle exec rake doc:rails generates the API under doc/api.
+  gem 'sdoc', require: false
 end
 
 group :development, :test do
-  gem 'rspec-rails', '~> 2.0'
-  gem 'better_errors'
-  gem 'binding_of_caller'
-  gem 'meta_request'
   gem 'debugger'
-  gem 'faker'
-  gem 'factory_girl_rails'
-  gem 'factory_girl'
+  gem 'rspec-rails'
   gem 'capybara'
+  gem 'factory_girl_rails'
+  gem 'faker'
 end
 
-# Installed Gems
-gem 'capistrano', '~> 3.0.0'
-gem 'unicorn', '~> 4.6.3'
-gem 'rabl', '~> 0.9.0'
-gem 'carrierwave', '~> 0.9.0'
-gem 'apipie-rails', '~> 0.0.24'
-gem 'doorkeeper', '~> 0.7.0'
+# Use ActiveModel has_secure_password
+gem 'bcrypt-ruby', '~> 3.1.2'
+
+# Use unicorn as the app server
+gem 'unicorn'
+
+# Use Capistrano for deployment
+gem 'capistrano'
+
+# Installed gems
+gem 'rabl'

@@ -4,10 +4,11 @@ class CreateUsers < ActiveRecord::Migration
       t.string :first_name
       t.string :last_name
       t.string :email
-      t.text :address
-      t.string :phone_number
+      t.string :hashed_password
+      t.string :phone_no
+      t.integer :group_id
+      t.integer :permission_level
       t.string :username
-      t.string :password
 
       t.timestamps
     end
