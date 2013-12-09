@@ -1,42 +1,36 @@
 module Api
   module V1
-    class UserController < BaseController
-
+    class UserController < ApplicationController
       def index
         @users = User.all
-        respond_with [:json, :xml]
       end
 
       def show
-        @user = User.find(params[:id])
-        respond_with [:json, :xml]
+        @user = User.find_by(params[:id])
       end
 
-      # POST /api/v1/user.json
-      # POST /api/v1/user.xml
+      def update
+        @user = User.find_by(params[:id])
+        User.update
+      end
+
       def create
-        @user = User.new(:address => params[:address], :email => params[:email],
-                         :first_name => params[:first_name], :last_name => params[:last_name],
-                         :password => params[:password], :phone_number => params[:phone_number],
-                         :username => params[:username])
-        if @user.save
-          respond_with [:json, :xml]
-        else
-          render json: @user.errors, status: :unprocessable_entity
-        end
+        @user = User.new(user_params)
+        @user.save
       end
 
       def destroy
-        @user = User.find(params[:id])
-        if @user.destroy
-          head :no_content
-        else
-          render status: :unprocessable_entity
-        end
+        @user = User.find_by(params[:id])
+        @user.destroy
       end
 
+      private
+
+      def user_params
+        params.require(:user).permit(:first_name, :last_name, :email,
+                                     :password, :phone_no, :group_id,
+                                     :username, :permission_level)
+      end
     end
   end
 end
-
-
