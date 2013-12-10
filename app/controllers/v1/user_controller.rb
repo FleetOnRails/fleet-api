@@ -26,7 +26,7 @@ class V1::UserController < ApplicationController
 
   def user_params
     params.require(:user).permit(:first_name, :last_name, :email,
-                                 :password, :phone_no, :group_id,
+                                 :hashed_password, :phone_no, :group_id,
                                  :username, :permission_level)
   end
 end
