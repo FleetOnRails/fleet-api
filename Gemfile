@@ -7,7 +7,7 @@ gem 'rails', '4.0.2'
 gem 'sqlite3'
 
 group :doc do
-  # bundle exec rake doc:rails generates the API under doc/api.
+  # bundle exec rake doc:rails generates the API under doc/api_docs.
   gem 'sdoc', require: false
 end
 
