@@ -8,6 +8,13 @@ module Api
       end
 
       api :GET, '/users/:id'
+      formats ['json']
+      description 'method description'
+      error :code => 401, :desc => 'Unauthorized'
+      error :code => 404, :desc => 'Not Found'
+      param :session, String, :desc => 'user is logged in', :required => true
+      param :boolean_param, [true, false], :desc => 'array validator with boolean'
+      example " 'user': {...} "
       def show
         @user = User.find_by(params[:id])
       end
