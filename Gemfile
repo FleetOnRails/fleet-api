@@ -31,3 +31,4 @@ gem 'capistrano'
 
 # Installed gems
 gem 'rabl'
+gem 'apipie-rails'

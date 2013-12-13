@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe V1::UserController do
+describe Api::V1::UserController do
 
   describe "GET index" do
     it "populates an array of users" do
