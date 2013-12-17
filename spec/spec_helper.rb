@@ -6,8 +6,8 @@ require 'rspec/autorun'
 require 'capybara/rspec'
 
 # Requires supporting ruby files with custom matchers and macros, etc,
-# in spec/support/ and its subdirectories.
-Dir[Rails.root.join("spec/support/**/*.rb")].each { |f| require f }
+# in spec/docs/ and its subdirectories.
+Dir[Rails.root.join("spec/docs/**/*.rb")].each { |f| require f }
 
 # Checks for pending migrations before tests are run.
 # If you are not using ActiveRecord, you can remove this line.

@@ -7,7 +7,7 @@ gem 'rails', '4.0.2'
 gem 'sqlite3'
 
 group :doc do
-  # bundle exec rake doc:rails generates the API under doc/api.
+  # bundle exec rake doc:rails generates the API under doc/api_docs.
   gem 'sdoc', require: false
 end
 
@@ -23,10 +23,11 @@ end
 gem 'bcrypt-ruby', '~> 3.1.2'
 
 # Use unicorn as the app server
-gem 'unicorn'
+gem 'passenger'
 
 # Use Capistrano for deployment
 gem 'capistrano'
 
 # Installed gems
 gem 'rabl'
+gem 'apipie-rails'
