@@ -1,6 +1,6 @@
 set :application, 'fleet-api'
-set :stages, %w(production staging)
-set :default_stage, 'staging'
+set :stages, %w(production development)
+set :default_stage, 'development'
 
 # ask :branch, proc { `git rev-parse --abbrev-ref HEAD`.chomp }
 
