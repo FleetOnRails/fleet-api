@@ -7,6 +7,7 @@ set :stage, :staging
 # unless any hosts have the primary property set.
 role :app, %w{fleetdeploy@iefapi001.fleetonrails.eu}
 role :web, %w{fleetdeploy@iefapi001.fleetonrails.eu}
+role :db, %w{fleetdeploy@iefapi001.fleetonrails.eu}
 
 # Extended Server Syntax
 # ======================
