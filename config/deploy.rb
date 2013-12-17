@@ -1,25 +1,25 @@
 set :application, 'fleet-api'
-set :repo_url, 'git@git.mahala.co:fleetonrails/fleet-api.git'
-set :branch, 'devise'
-set :tmp_dir, '/home/fleetdeploy/tmp'
-set :deploy_to, '/home/fleetdeploy/'
 set :stages, %w(production staging)
 set :default_stage, 'staging'
 
 # ask :branch, proc { `git rev-parse --abbrev-ref HEAD`.chomp }
 
-# set :deploy_to, '/var/www/my_app'
-# set :scm, :git
+set :deploy_to, '/home/fleetdeploy/'
+set :tmp_dir, '/home/fleetdeploy/tmp'
+
+set :scm, :git
+set :branch, 'devise'
+set :repo_url, 'git@git.mahala.co:fleetonrails/fleet-api.git'
 
 # set :format, :pretty
 # set :log_level, :debug
 # set :pty, true
 
-# set :linked_files, %w{config/database.yml}
+set :linked_files, %w{config/database.yml}
 # set :linked_dirs, %w{bin log tmp/pids tmp/cache tmp/sockets vendor/bundle public/system}
 
 # set :default_env, { path: "/opt/ruby/bin:$PATH" }
-# set :keep_releases, 5
+set :keep_releases, 5
 
 namespace :deploy do
 
