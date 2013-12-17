@@ -1,7 +1,10 @@
 set :application, 'fleet-api'
 set :repo_url, 'git@git.mahala.co:fleetonrails/fleet-api.git'
 set :branch, 'master'
-set :tmp_dir, '/capistrano'
+set :tmp_dir, '/home/fleetdeploy/tmp'
+set :deploy_to, '/home/fleetdeploy/'
+set :stages, %w(production staging)
+set :default_stage, 'staging'
 
 # ask :branch, proc { `git rev-parse --abbrev-ref HEAD`.chomp }
 

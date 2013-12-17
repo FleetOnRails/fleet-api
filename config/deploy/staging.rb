@@ -5,10 +5,7 @@ set :stage, :staging
 # Supports bulk-adding hosts to roles, the primary
 # server in each group is considered to be the first
 # unless any hosts have the primary property set.
-role :all, %w{iefapi001@iefapi001.fleetonrails.eu}
-#role :all, %w{iefapi002@iefapi002.fleetonrails.eu}
-#role :web, %w{deploy@example.com}
-#role :db,  %w{deploy@example.com}
+role :all, %w{fleetdeploy@iefapi001.fleetonrails.eu}
 
 # Extended Server Syntax
 # ======================
@@ -30,10 +27,10 @@ role :all, %w{iefapi001@iefapi001.fleetonrails.eu}
 # and/or per server
 
 server 'iefapi001.fleetonrails.eu',
-       user: 'iefapi001',
+       user: 'fleetdeploy',
        roles: %w{web app},
        ssh_options: {
-           user: 'iefapi001', # overrides user setting above
+           user: 'fleetdeploy', # overrides user setting above
            #     keys: %w(/home/user_name/.ssh/id_rsa),
            forward_agent: true,
            auth_methods: %w(publickey password),
