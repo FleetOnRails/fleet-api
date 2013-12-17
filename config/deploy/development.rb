@@ -51,4 +51,4 @@ server 'iefapi001.fleetonrails.eu',
 
 # setting per server overrides global ssh_options
 
-fetch(:default_env).merge!(rails_env: :development)
+# fetch(:default_env).merge!(rails_env: :development)
