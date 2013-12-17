@@ -27,6 +27,8 @@ gem 'passenger'
 
 # Use Capistrano for deployment
 gem 'capistrano'
+gem 'capistrano-bundler'
+gem 'capistrano-rails'
 
 # Installed gems
 gem 'rabl'
