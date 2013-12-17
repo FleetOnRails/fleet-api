@@ -5,7 +5,8 @@ set :stage, :staging
 # Supports bulk-adding hosts to roles, the primary
 # server in each group is considered to be the first
 # unless any hosts have the primary property set.
-role :all, %w{fleetdeploy@iefapi001.fleetonrails.eu}
+role :app, %w{fleetdeploy@iefapi001.fleetonrails.eu}
+role :web, %w{fleetdeploy@iefapi001.fleetonrails.eu}
 
 # Extended Server Syntax
 # ======================
