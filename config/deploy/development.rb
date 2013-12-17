@@ -1,11 +1,13 @@
-set :stage, :staging
+set :stage, :development
 
 # Simple Role Syntax
 # ==================
 # Supports bulk-adding hosts to roles, the primary
 # server in each group is considered to be the first
 # unless any hosts have the primary property set.
-role :all, %w{fleetdeploy@iefapi001.fleetonrails.eu}
+role :app, %w{fleetdeploy@iefapi001.fleetonrails.eu}
+role :web, %w{fleetdeploy@iefapi001.fleetonrails.eu}
+role :db, %w{fleetdeploy@iefapi001.fleetonrails.eu}
 
 # Extended Server Syntax
 # ======================
@@ -49,4 +51,4 @@ server 'iefapi001.fleetonrails.eu',
 
 # setting per server overrides global ssh_options
 
-# fetch(:default_env).merge!(rails_env: :staging)
+# fetch(:default_env).merge!(rails_env: :development)
