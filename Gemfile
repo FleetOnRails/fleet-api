@@ -6,6 +6,9 @@ gem 'rails', '4.0.2'
 # Use sqlite3 as the database for Active Record
 gem 'sqlite3'
 
+# Use mysql2 as the database for Active Record
+gem 'mysql2'
+
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api_docs.
   gem 'sdoc', require: false
