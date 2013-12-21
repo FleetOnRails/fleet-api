@@ -168,6 +168,7 @@ DEPENDENCIES
   doorkeeper
   factory_girl_rails
   faker
+  jquery-rails
   mysql2
   passenger
   rabl

@@ -1,12 +1,15 @@
 module Api
   module V1
-    class UserController < ApplicationController
+    class UserController < BaseController
+      doorkeeper_for :all
+
       api :GET, '/users'
       description 'Returns all the users in the database that the currently logged in user can see, based on Auth token.'
       #param :auth_token, String, :desc => 'Users Auth token', :required => true
       example File.read("#{Rails.root}/public/api_docs/v1/user/index.json")
       def index
-        @users = User.all
+        #@users = User.all
+        @users = current_user
       end
 
       api :GET, '/users/:id'
