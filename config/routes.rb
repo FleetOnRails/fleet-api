@@ -1,4 +1,5 @@
 FleetApi::Application.routes.draw do
+  use_doorkeeper
   apipie
 
   namespace :api do
