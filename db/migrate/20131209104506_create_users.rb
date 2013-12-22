@@ -10,6 +10,7 @@ class CreateUsers < ActiveRecord::Migration
       t.integer :group_id
       t.integer :permission_level
       t.string :username
+      t.boolean :admin
 
       t.timestamps
     end

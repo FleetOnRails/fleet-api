@@ -62,6 +62,7 @@ ActiveRecord::Schema.define(version: 20131221163218) do
     t.integer  "group_id"
     t.integer  "permission_level"
     t.string   "username"
+    t.boolean  "admin"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
