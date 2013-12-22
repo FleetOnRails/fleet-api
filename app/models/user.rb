@@ -7,7 +7,7 @@ class User < ActiveRecord::Base
   validates :email, :presence => true, :uniqueness => true, :format => EMAIL_REGEX
   validates_presence_of :first_name, :last_name, :password
 
-  validates_length_of :password, :in => 6..20, :on => :create
+  validates_length_of :password, :in => 6..30, :on => :create
   validates :password, :confirmation => true
 
   before_save :encrypt_password

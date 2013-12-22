@@ -3,6 +3,12 @@ module Api
     class UserController < BaseController
       doorkeeper_for :all
 
+      resource_description do
+        short_description 'Everything about the currently logged-in user'
+        path '/users'
+        description 'All around the currently logged-in user. Use this resource to interact with the currently logged-in users profile.'
+      end
+
       api :GET, '/users'
       description 'Returns all the users in the database that the currently logged in user can see, based on Auth token.'
       param :access_token, String, :desc => 'Users OAuth token', :required => true
