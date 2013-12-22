@@ -5,22 +5,16 @@ class User < ActiveRecord::Base
 
   validates :username, :presence => true, :uniqueness => true, :length => { :in => 3..20 }
   validates :email, :presence => true, :uniqueness => true, :format => EMAIL_REGEX
-  validates_presence_of :first_name, :last_name, :hashed_password
+  validates_presence_of :first_name, :last_name, :password
 
-  validates_length_of :hashed_password, :in => 6..20, :on => :create
-  validates :hashed_password, :confirmation => true
+  validates_length_of :password, :in => 6..20, :on => :create
+  validates :password, :confirmation => true
 
   before_save :encrypt_password
   after_save :clear_password
 
-  #def self.authenticate(email)
-  #  user = find_by_email(email)
-  #  return nil if user.nil?
-  #  return user #if user.has_password?
-  #end
-
   def has_password?
-    hashed_password == encrypt_password
+    password == encrypt_password
   end
 
   def self.authenticate(username_or_email, login_password)
@@ -38,19 +32,19 @@ class User < ActiveRecord::Base
   end
 
   def match_password(login_password)
-    hashed_password == BCrypt::Engine.hash_secret(login_password, salt)
+    password == BCrypt::Engine.hash_secret(login_password, salt)
   end
 
   private
 
   def encrypt_password
-    if hashed_password.present?
+    if password.present?
       self.salt = BCrypt::Engine.generate_salt
-      self.hashed_password= BCrypt::Engine.hash_secret(hashed_password, salt)
+      self.password= BCrypt::Engine.hash_secret(password, salt)
     end
   end
 
   def clear_password
-    self.hashed_password = nil
+    self.password = nil
   end
 end
