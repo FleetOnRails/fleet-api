@@ -4,7 +4,7 @@ module Api
       doorkeeper_for :all
 
       resource_description do
-        short_description 'Everything about the currently logged-in user'
+        short_description 'Users on the system'
         path '/users'
         description 'For accessing all the users in the database.'
       end
