@@ -1,6 +1,8 @@
 module Api
   module V1
     class BaseController < ApplicationController
+      #before_filter :save_user_location, :if => lambda { request.env['user.location'] }
+
       resource_description do
         api_version 'v1'
         app_info 'FleetOnRails API version 1'
@@ -20,6 +22,12 @@ module Api
       #rescue_from ActiveRecord::NotPrivilegedError do
       #  @object = Object.new
       #  render status: 403, template: 'api/v1/errors/not_privileged_error'
+      #end
+
+      #def save_user_location
+      #  @current_user.location.latitude = request.env['user.location'][:latitude]
+      #  @current_user.location.longitude = request.env['user.location'][:longitude]
+      #  @current_user.save! #TODO: We should think of a global place to save the current user. We dont want to invoke .save! too much!
       #end
     end
   end

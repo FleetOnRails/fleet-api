@@ -6,7 +6,7 @@ module Api
       resource_description do
         short_description 'Everything about the currently logged-in user'
         path '/users'
-        description 'All around the currently logged-in user. Use this resource to interact with the currently logged-in users profile.'
+        description 'For accessing all the users in the database.'
       end
 
       api :GET, '/users'
@@ -21,6 +21,7 @@ module Api
       description 'Returns the users with an id of :id in the database'
       param :access_token, String, :desc => 'Users OAuth token', :required => true
       example File.read("#{Rails.root}/public/api_docs/v1/user/show.json")
+
       def show
         @user = User.find_by(params[:id])
       end
