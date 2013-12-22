@@ -36,3 +36,5 @@ gem 'capistrano-rails'
 # Installed gems
 gem 'rabl'
 gem 'apipie-rails'
+gem 'doorkeeper'
+gem 'jquery-rails'

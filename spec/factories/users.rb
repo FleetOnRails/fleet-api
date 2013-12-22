@@ -5,7 +5,8 @@ FactoryGirl.define do
     f.first_name Faker::Name.first_name
     f.last_name Faker::Name.last_name
     f.email Faker::Internet.email('alan')
-    f.hashed_password Faker::Internet.password
+    f.password 'password'
+    f.password_confirmation 'password'
     f.phone_no Faker::PhoneNumber.cell_phone
     f.group_id Faker::Number.digit
     f.permission_level Faker::Number.digit
