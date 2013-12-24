@@ -29,6 +29,13 @@ module Api
       #  @current_user.location.longitude = request.env['user.location'][:longitude]
       #  @current_user.save! #TODO: We should think of a global place to save the current user. We dont want to invoke .save! too much!
       #end
+
+      private
+      def current_user
+        if doorkeeper_token
+          @current_user ||= User.find(doorkeeper_token.resource_owner_id)
+        end
+      end
     end
   end
 end

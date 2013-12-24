@@ -37,4 +37,14 @@ gem 'capistrano-rails'
 gem 'rabl'
 gem 'apipie-rails'
 gem 'doorkeeper'
+
+# Docs and doorkeeper
 gem 'jquery-rails'
+gem 'sass-rails', :require => 'sass'
+gem 'less-rails'
+
+gem 'therubyracer'
+gem 'twitter-bootstrap-rails'
+
+gem 'markdown-rails'
+gem 'redcarpet'
