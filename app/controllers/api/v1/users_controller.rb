@@ -1,6 +1,6 @@
 module Api
   module V1
-    class UserController < BaseController
+    class UsersController < BaseController
       doorkeeper_for :all
 
       def index
@@ -28,7 +28,7 @@ module Api
 
       private
       def user_params
-        params.require(:user).permit(:first_name, :last_name, :email,
+        params.require(:users).permit(:first_name, :last_name, :email,
                                      :hashed_password, :phone_no, :group_id,
                                      :username, :permission_level)
       end

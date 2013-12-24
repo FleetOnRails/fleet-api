@@ -13,11 +13,8 @@ FleetApi::Application.routes.draw do
   #
   namespace :api do
     namespace :v1 do
-      resources :me
-
-      get '/users', to: 'user#index'
-      get '/users/:id', to: 'user#show'
-      post '/users', to: 'user#create'
+      resources :me, only: [:index]
+      resources :users
     end
   end
 end
