@@ -1,4 +1,4 @@
-# GitLab API
+# FleetOnRails API
 
 All API requests require authentication. You need to pass a `private_token` parameter by url or header. If passed as header, the header name must be "PRIVATE-TOKEN" (capital and with dash instead of underscore). You can find or reset your private token in your profile.
 
@@ -24,6 +24,28 @@ Example for a valid API request using curl and authentication via header:
 curl --header "PRIVATE-TOKEN: QVy1PB7sTxfy4pqfZM1U" "http://example.com/api/v3/projects"
 ```
 
+Get access_token with client credentials:
+
+```
+curl -i http://localhost:3000/oauth/token -d grant_type=password -d client_id=<CLIENT_ID> -d client_secret=<CLIENT_SECRET> -d email=<YOUR_EMAIL> -d password=<YOUR_PASSWORD>
+```
+
+Get access_token with refresh token:
+
+```
+curl -i http://localhost:3000/oauth/token -d grant_type=refresh_token -d client_id=<CLIENT_ID> -d client_secret=<CLIENT_SECRET> -d refresh_token=<REFRESH_TOKEN>'
+```
+
+Example response:
+
+```json
+{
+    "access_token": "a335955b5cafcdf2d0e5c354abea0efe3b9591dbf0261220c88035777f445890",
+    "token_type": "bearer",
+    "expires_in": 1800,
+    "refresh_token": "3cd7f13a1760ae097cf76431f43cb742116c17f1e226f96394113b967f1bca8c"
+}
+```
 
 The API uses JSON to serialize data. You don't need to specify `.json` at the end of API URL.
 

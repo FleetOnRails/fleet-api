@@ -1,7 +1,5 @@
 FleetApi::Application.routes.draw do
-  apipie
   use_doorkeeper
-
 
   #
   # Help

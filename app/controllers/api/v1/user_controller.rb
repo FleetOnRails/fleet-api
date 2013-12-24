@@ -3,24 +3,9 @@ module Api
     class UserController < BaseController
       doorkeeper_for :all
 
-      resource_description do
-        short_description 'Users on the system'
-        path '/users'
-        description 'For accessing all the users in the database.'
-      end
-
-      api :GET, '/users'
-      description 'Returns all the users in the database that the currently logged in user can see, based on Auth token.'
-      param :access_token, String, :desc => 'Users OAuth token', :required => true
-      example File.read("#{Rails.root}/public/api_docs/v1/user/index.json")
       def index
         @users = current_user
       end
-
-      api :GET, '/users/:id'
-      description 'Returns the users with an id of :id in the database'
-      param :access_token, String, :desc => 'Users OAuth token', :required => true
-      example File.read("#{Rails.root}/public/api_docs/v1/user/show.json")
 
       def show
         @user = User.find_by(params[:id])
@@ -42,7 +27,6 @@ module Api
       end
 
       private
-
       def user_params
         params.require(:user).permit(:first_name, :last_name, :email,
                                      :hashed_password, :phone_no, :group_id,

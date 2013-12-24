@@ -1,13 +1,7 @@
 module Api
   module V1
-    class BaseController < ApplicationController
+    class BaseController < ActionController::Base
       #before_filter :save_user_location, :if => lambda { request.env['user.location'] }
-
-      resource_description do
-        api_version 'v1'
-        app_info 'FleetOnRails API version 1'
-        api_base_url '/api/v1'
-      end
 
       rescue_from ActiveRecord::RecordInvalid do |exception|
         @object = exception.record
