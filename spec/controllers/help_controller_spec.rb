@@ -9,11 +9,4 @@ describe HelpController do
     end
   end
 
-  describe "GET 'api'" do
-    it "returns http success" do
-      get 'api'
-      response.should be_success
-    end
-  end
-
 end

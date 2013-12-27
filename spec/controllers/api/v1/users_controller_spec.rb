@@ -19,13 +19,13 @@ describe Api::V1::UsersController do
     end
   end
 
-  describe "GET show" do
+  describe "GET index" do
     it "assigns the requested user to @user" do
       pending("something else getting finished")
       this_should_not_get_executed
     end
 
-    it "renders the :show view" do
+    it "renders the :index view" do
       pending("something else getting finished")
       this_should_not_get_executed
     end
