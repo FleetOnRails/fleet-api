@@ -4,9 +4,9 @@ FleetApi::Application.routes.draw do
   #
   # Help
   #
-  get ''                    => 'help#index'
-  get 'help/api'            => 'api_docs#index'
-  get 'help/api/:category'  => 'api_docs#show', as: 'help_api_file'
+  get 'help' => 'help#index'
+  get 'help/api' => 'api_docs#show'
+  get 'help/api/:category' => 'api_docs#show', as: 'help_api_file'
 
   #
   # API

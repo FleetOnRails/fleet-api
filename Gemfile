@@ -22,10 +22,7 @@ group :development, :test do
   gem 'faker'
 end
 
-# Use ActiveModel has_secure_password
-gem 'bcrypt-ruby', '~> 3.1.2'
-
-# Use unicorn as the app server
+# Use phusion passenger as the app server
 gem 'passenger'
 
 # Use Capistrano for deployment
@@ -33,16 +30,21 @@ gem 'capistrano'
 gem 'capistrano-bundler'
 gem 'capistrano-rails'
 
-# Installed gems
-gem 'rabl'
+# Security
 gem 'doorkeeper'
+gem 'bcrypt-ruby', '~> 3.1.2'
 
-# Docs and doorkeeper
+# JSON API
+gem 'rabl'
+
+# Style sheets and JavaScripts
+gem 'sass-rails', '>= 3.2' # sass-rails needs to be higher than 3.2
+gem 'bootstrap-sass', '~> 3.0.3.0'
+gem 'font-awesome-sass'
+gem 'sprockets-rails', :require => 'sprockets/railtie'
 gem 'jquery-rails'
-gem 'sass-rails', :require => 'sass'
-gem 'less-rails'
-gem 'font-awesome-rails'
 gem 'therubyracer'
-gem 'twitter-bootstrap-rails'
+
+# Markdown parser
 gem 'markdown-rails'
 gem 'redcarpet'
