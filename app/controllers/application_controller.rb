@@ -1,13 +1,5 @@
 class ApplicationController < ActionController::Base
-  resource_description do
-    api_versions 'v1'
-  end
-
-  private
-
-  def current_user
-    if doorkeeper_token
-      @current_user ||= User.find(doorkeeper_token.resource_owner_id)
-    end
+  def not_found!
+    render 'errors/404', status: 404 #layout: 'errors', status: 404
   end
 end

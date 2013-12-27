@@ -3,4 +3,4 @@
 
 require File.expand_path('../config/application', __FILE__)
 
-FleetApi::Application.load_tasks
+FleetOnRails::Application.load_tasks
