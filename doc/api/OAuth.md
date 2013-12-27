@@ -6,7 +6,6 @@ This means for every API request a user has to submit an `access_token` in the p
 be used to authenticate the user on the system. For security OAuth access-tokens have an expiration time.
 The lenght of this expiration time is currently set at 30 minutes.
 
----
 ### HTTPS
 OAuth relies on a secure connection to protect parameters from attacks. However for our development
 environment we wont be using HTTPS as the certs cost quite a bit of money :)
@@ -14,6 +13,7 @@ So be wary of sending passwords that may be the same as the password you use for
 
 Below are the ways to fetch your `access-token`
 
+---
 ### 1. With client credentials.
 The first time you request the `access_token` you will use this method. the request contains the client
 applications `client-id` and `client-secret` along with the clients `username` or `email` and the users
