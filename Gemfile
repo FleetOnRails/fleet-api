@@ -20,6 +20,7 @@ group :development, :test do
   gem 'capybara'
   gem 'factory_girl_rails'
   gem 'faker'
+  gem 'simplecov'
 end
 
 # Use phusion passenger as the app server
