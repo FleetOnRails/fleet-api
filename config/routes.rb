@@ -1,4 +1,4 @@
-FleetApi::Application.routes.draw do
+FleetOnRails::Application.routes.draw do
   use_doorkeeper
 
   #
