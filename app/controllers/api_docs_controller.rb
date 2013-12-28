@@ -1,5 +1,5 @@
 class ApiDocsController < ApplicationController
-  def show
+  def index
     @category = params[:category]
     @category = 'README' if @category.blank?
 

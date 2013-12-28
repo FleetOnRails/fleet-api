@@ -1,7 +1,9 @@
 module Api
   module V1
     class BaseController < ActionController::Base
-      #before_filter :save_user_location, :if => lambda { request.env['users.location'] }
+      def doorkeeper_unauthorized_render_options
+        {json: '{"message":"401 Unauthorized"}'}
+      end
 
       rescue_from ActiveRecord::RecordInvalid do |exception|
         @object = exception.record
@@ -16,12 +18,6 @@ module Api
       #rescue_from ActiveRecord::NotPrivilegedError do
       #  @object = Object.new
       #  render status: 403, template: 'api/v1/errors/not_privileged_error'
-      #end
-
-      #def save_user_location
-      #  @current_user.location.latitude = request.env['users.location'][:latitude]
-      #  @current_user.location.longitude = request.env['users.location'][:longitude]
-      #  @current_user.save! #TODO: We should think of a global place to save the current users. We dont want to invoke .save! too much!
       #end
 
       private

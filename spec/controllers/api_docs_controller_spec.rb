@@ -9,7 +9,7 @@ describe ApiDocsController do
     end
   end
 
-  describe "GET 'show'" do
+  describe "GET 'index'" do
     it "returns http success" do
       pending("something else getting finished")
       this_should_not_get_executed

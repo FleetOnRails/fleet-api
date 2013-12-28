@@ -5,9 +5,10 @@
         <h3 class="panel-title">Resources</h3>
       </div>
       <ul class="nav nav-stacked" id="sidebar">
-        <li><%= link_to 'README', :controller => 'api_docs', :action => 'show', :category => nil %></li>
-        <li><%= link_to 'Me', :controller => 'api_docs', :action => 'show', :category => 'me' %></li>
-        <li><%= link_to 'Users', :controller => 'api_docs', :action => 'show', :category => 'users' %></li>
+        <li><%= link_to 'OAuth', :controller => 'api_docs', :action => 'index', :category => 'oauth' %></li>
+        <li><%= link_to 'Me', :controller => 'api_docs', :action => 'index', :category => 'me' %></li>
+        <li><%= link_to 'Users', :controller => 'api_docs', :action => 'index', :category => 'users' %></li>
+        <li><%= link_to 'Syntax', :controller => 'api_docs', :action => 'index', :category => 'syntax' %></li>
       </ul>
     </div>
   </div>
@@ -20,7 +21,7 @@
           <%= @category.upcase %>.md</h3>
       </div>
       <div class="panel-body">
-        <%= markdown File.read(Rails.root.join('doc', 'api', "#{@category}.md")) %>
+        <%= markdown(File.read(Rails.root.join('doc', 'api', "#{@category}.md"))) %>
       </div>
     </div>
   </div>
