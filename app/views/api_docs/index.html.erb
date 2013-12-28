@@ -21,7 +21,7 @@
           <%= @category.upcase %>.md</h3>
       </div>
       <div class="panel-body">
-        <%= markdown(File.read(Rails.root.join('doc', 'api', "#{@category}.md"))) %>
+        <%= markdown(File.read(Rails.root.join('public', 'doc', 'api', "#{@category}.md"))) %>
       </div>
     </div>
   </div>
