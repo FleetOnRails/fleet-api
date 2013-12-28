@@ -8,7 +8,7 @@ set :deploy_to, '/home/fleetdeploy/'
 set :tmp_dir, '/home/fleetdeploy/tmp'
 
 set :scm, :git
-set :branch, 'master'
+# set :branch, 'master'
 set :repo_url, 'git@git.mahala.co:fleetonrails/fleet-api.git'
 
 # set :format, :pretty
