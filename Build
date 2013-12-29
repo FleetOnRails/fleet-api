@@ -1,24 +1,20 @@
 #! /bin/bash
 # Build script for FleetOnRails API
+echo -e "\n\n"
 echo -e "####################################"
 echo -e "#        FleetOnRails API          #"
 echo -e "#          Build Script            #"
 echo -e "####################################"
 
 # Install dependencies
-echo -e "Installing dependencies"
+echo -e "\n\nInstalling dependencies"
 bundle install
 
 # Create test db
-echo -e "Creating test database"
+echo -e "\n\nCreating test database"
 bundle exec rake db:create RAILS_ENV=test
 bundle exec rake db:migrate RAILS_ENV=test
 
 # Run tests
-echo -e "Running RSpec tests"
+echo -e "\n\nRunning RSpec tests"
 bundle exec rspec
-
-# Deploy coverage report
-# Build runners public key must be in .ssh/authorized_keys on simplecov
-echo -e "Deploying simplecov results to http://coverage.secure.fleetonrails.eu"
-scp -r coverage/ simplecov@fleetonrails.eu:~/public_html/coverage
