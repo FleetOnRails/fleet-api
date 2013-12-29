@@ -21,6 +21,7 @@ group :development, :test do
   gem 'factory_girl_rails'
   gem 'faker'
   gem 'simplecov'
+  gem 'shoulda-matchers'
 end
 
 # Use phusion passenger as the app server
