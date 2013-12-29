@@ -3,17 +3,10 @@ require 'spec_helper'
 describe ApiDocsController do
 
   describe "GET 'index'" do
-    it "returns http success" do
-      pending("something else getting finished")
-      this_should_not_get_executed
+    before { get :index }
+
+    it 'Renders the help_docs#index view' do
+      should render_template('api_docs/index')
     end
   end
-
-  describe "GET 'index'" do
-    it "returns http success" do
-      pending("something else getting finished")
-      this_should_not_get_executed
-    end
-  end
-
 end
