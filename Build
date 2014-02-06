@@ -19,3 +19,6 @@ bundle exec rake db:migrate RAILS_ENV=test
 # Run tests
 echo -e "\n\nRunning RSpec tests"
 bundle exec rspec
+
+# Upload coverage report to Apache
+cd coverage/ && rsync -rvz --delete ./* root@web.raven.com:/var/www/coverage.raven.com/ && cd ..
