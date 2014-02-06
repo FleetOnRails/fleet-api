@@ -8,7 +8,8 @@ echo -e "####################################"
 
 # Install dependencies
 echo -e "\n\nInstalling dependencies"
-bundle install
+mkdir ./vendor/bundle
+bundle install --path vendor/bundle
 
 # Create test db
 echo -e "\n\nCreating test database"
