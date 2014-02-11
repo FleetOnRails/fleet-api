@@ -1,9 +1,6 @@
 module Api
   module V1
     class BaseController < ActionController::Base
-      def doorkeeper_unauthorized_render_options
-        {json: '{"message":"401 Unauthorized"}'}
-      end
 
       rescue_from ActiveRecord::RecordInvalid do |exception|
         @object = exception.record
@@ -25,6 +22,10 @@ module Api
         if doorkeeper_token
           @current_user ||= User.find(doorkeeper_token.resource_owner_id)
         end
+      end
+
+      def doorkeeper_unauthorized_render_options
+        {json: '{"message":"401 Unauthorized"}'}
       end
     end
   end
