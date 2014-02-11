@@ -4,12 +4,12 @@ set :default_stage, 'development'
 
 # ask :branch, proc { `git rev-parse --abbrev-ref HEAD`.chomp }
 
-set :deploy_to, '/home/fleetdeploy/'
-set :tmp_dir, '/home/fleetdeploy/tmp'
+set :deploy_to, '/home/fleet/api/'
+set :tmp_dir, '/home/fleet/api/tmp'
 
 set :scm, :git
 # set :branch, 'master'
-set :repo_url, 'git@git.mahala.co:fleetonrails/fleet-api.git'
+set :repo_url, 'git@git.raven.com:fleetonrails/fleet-api.git'
 
 # set :format, :pretty
 # set :log_level, :debug
