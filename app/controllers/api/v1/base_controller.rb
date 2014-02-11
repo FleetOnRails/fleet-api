@@ -25,7 +25,7 @@ module Api
       end
 
       def doorkeeper_unauthorized_render_options
-        {json: '{"message":"401 Unauthorized"}'}
+        { json: '{"message":"401 Unauthorized"}' }
       end
     end
   end
