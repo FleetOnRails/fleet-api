@@ -20,7 +20,7 @@ module V1
     end
 
     def doorkeeper_unauthorized_render_options
-      {json: '{"message":"401 Unauthorized"}'}
+      { json: '{"message":"401 Unauthorized"}' }
     end
   end
 end

@@ -2,7 +2,7 @@ require 'simplecov'
 
 SimpleCov.start do
   add_group "Models", "app/models"
-  add_group "API V1 Controllers", "app/controllers/api/v1"
+  add_group "V1 Controllers", "app/controllers/v1"
 end
 
 # This file is copied to spec/ when you run 'rails generate rspec:install'
