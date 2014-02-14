@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe Api::V1::MeController do
+describe V1::MeController do
 
   before :each do
     controller.stub(:doorkeeper_token) { token }

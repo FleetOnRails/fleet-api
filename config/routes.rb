@@ -11,10 +11,8 @@ FleetOnRails::Application.routes.draw do
   #
   # API
   #
-  namespace :api do
-    namespace :v1 do
-      resources :me, only: [:index]
-      resources :users
-    end
+  namespace :v1 do
+    resources :me, only: [:index]
+    resources :users
   end
 end
