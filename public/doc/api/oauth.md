@@ -4,7 +4,7 @@
 All authentication for this API is handled through OAuth 2.0 with the doorkeeper gem.
 This means for every API request a user has to submit an `access_token` in the params, this will
 be used to authenticate the user on the system. For security OAuth access-tokens have an expiration time.
-The lenght of this expiration time is currently set at 30 minutes.
+The length of this expiration time is currently set at 30 minutes.
 
 ### HTTPS
 OAuth relies on a secure connection to protect parameters from attacks. However for our development
@@ -22,7 +22,7 @@ applications `client_id` and `client_secret` along with the clients `username` o
 here is an example request.
 
 ```
-curl -POST http://secure.fleetonrails.eu/oauth/token
+curl -POST http://fleet-api.raven.com/oauth/token
     -d grant_type=password
     -d client_id=<CLIENT_ID>
     -d client_secret=<CLIENT_SECRET>
@@ -51,7 +51,7 @@ there is a `refresh_token` param, this parameter can be used like this.
 here is an example request.
 
 ```
-curl -i http://secure.fleetonrails.eu/oauth/token
+curl -i http://fleet-api.raven.com/oauth/token
     -d grant_type=refresh_token
     -d client_id=<CLIENT_ID>
     -d client_secret=<CLIENT_SECRET>

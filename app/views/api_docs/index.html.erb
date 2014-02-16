@@ -5,10 +5,10 @@
         <h3 class="panel-title">Resources</h3>
       </div>
       <ul class="nav nav-stacked" id="sidebar">
+        <li><%= link_to 'Readme', :controller => 'api_docs', :action => 'index', :category => 'readme' %></li>
         <li><%= link_to 'OAuth', :controller => 'api_docs', :action => 'index', :category => 'oauth' %></li>
         <li><%= link_to 'Me', :controller => 'api_docs', :action => 'index', :category => 'me' %></li>
         <li><%= link_to 'Users', :controller => 'api_docs', :action => 'index', :category => 'users' %></li>
-        <li><%= link_to 'Syntax', :controller => 'api_docs', :action => 'index', :category => 'syntax' %></li>
       </ul>
     </div>
   </div>
