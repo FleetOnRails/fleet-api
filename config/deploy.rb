@@ -23,6 +23,11 @@ namespace :deploy do
     end
   end
 
+  desc 'reload the database with seed data'
+  task :seed do
+    run "cd #{current_path}; bundle exec rake db:seed RAILS_ENV=#{development}"
+  end
+
   after :restart, :clear_cache do
     on roles(:web), in: :groups, limit: 3, wait: 10 do
 
