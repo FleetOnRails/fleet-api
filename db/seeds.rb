@@ -8,3 +8,7 @@
 
 User.create(username: 'alan', first_name: 'alan', last_name: 'kehoe', email: 'alankehoe111@gmail.com',
             password: 'fleetonrails', password_confirmation: 'fleetonrails', admin: true)
+
+User.create(username: 'krystian', first_name: 'krystian', last_name: 'jankowski', email: 'krystian.jankowski2@mail.dcu.ie',
+            password: 'fleetonrails', password_confirmation: 'fleetonrails', admin: true)
+

@@ -26,6 +26,7 @@ module V1
     end
 
     private
+
     def user_params
       params.require(:users).permit(:first_name, :last_name, :email,
                                     :hashed_password, :phone_no, :group_id,
