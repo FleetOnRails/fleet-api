@@ -27,5 +27,5 @@ FleetOnRails::Application.configure do
   # number of complex assets.
   config.assets.debug = true
 
-  config.action_dispatch.default_headers = {'Access-Control-Allow-Origin' => '*'}
+  #config.action_dispatch.default_headers = {'Access-Control-Allow-Origin' => '*'}
 end
