@@ -26,7 +26,7 @@ module V1
     end
 
     def set_cross_domain_header
-      response.headers['Access-Control-Allow-Origin'] = '*' if Rails.development?
+      response.headers['Access-Control-Allow-Origin'] # = '*' if Rails.development?
     end
   end
 end
