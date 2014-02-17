@@ -35,6 +35,7 @@ gem 'capistrano-rails'
 # Security
 gem 'doorkeeper'
 gem 'bcrypt-ruby', '~> 3.1.2'
+gem 'rack-cors', :require => 'rack/cors'
 
 # JSON API
 gem 'rabl'

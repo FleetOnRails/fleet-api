@@ -27,5 +27,21 @@ FleetOnRails::Application.configure do
   # number of complex assets.
   config.assets.debug = true
 
-  #config.action_dispatch.default_headers = {'Access-Control-Allow-Origin' => '*'}
+  # Allow CORS for development environment
+  config.middleware.use Rack::Cors do
+    allow do
+      origins "*"
+
+      resource "*",
+               :headers => :any,
+               :methods => [:get, :post, :put, :delete, :options, :patch]
+    end
+
+    allow do
+      origins "*"
+      resource "/public/*",
+               :headers => :any,
+               :methods => :get
+    end
+  end
 end
