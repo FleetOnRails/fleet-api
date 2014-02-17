@@ -36,12 +36,5 @@ FleetOnRails::Application.configure do
                :headers => :any,
                :methods => [:get, :post, :put, :delete, :options, :patch]
     end
-
-    allow do
-      origins "*"
-      resource "/public/*",
-               :headers => :any,
-               :methods => :get
-    end
   end
 end
