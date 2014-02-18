@@ -32,15 +32,13 @@ describe User do
   it 'validates length of password' do
     should ensure_length_of(:password).
                is_at_least(6).
-               is_at_most(30).
-               with_message('length must be between 6 - 30')
+               is_at_most(30)
   end
 
   it 'validates length of username' do
     should ensure_length_of(:username).
-               is_at_least(2).
-               is_at_most(20).
-               with_message('length must be between 3 - 20')
+               is_at_least(3).
+               is_at_most(20)
   end
 
   it 'validates email format' do

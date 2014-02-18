@@ -8,8 +8,8 @@ class User < ActiveRecord::Base
 
   validates_confirmation_of :password, :on => :create, message: 'Please provide password confirmation'
 
-  validates_length_of :password, in: 6..30, message: 'length must be between 6 - 30'
-  validates_length_of :username, in: 3..20, message: 'length must be between 3 - 20'
+  validates_length_of :password, in: 6..30
+  validates_length_of :username, in: 3..20
 
   validates_format_of :email, with: EMAIL_REGEX
 
