@@ -18,9 +18,5 @@ module V1
         @current_user ||= User.find(doorkeeper_token.resource_owner_id)
       end
     end
-
-    def doorkeeper_unauthorized_render_options
-      { json: '{"message":"401 Unauthorized"}' }
-    end
   end
 end
