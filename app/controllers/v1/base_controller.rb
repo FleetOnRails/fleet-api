@@ -1,5 +1,6 @@
 module V1
   class BaseController < ActionController::Base
+    doorkeeper_for :all unless Rails.env.test?
 
     rescue_from ActiveRecord::RecordInvalid do |exception|
       @object = exception.record
@@ -14,7 +15,9 @@ module V1
     private
 
     def current_user
-      if doorkeeper_token
+      if Rails.env.test?
+        @current_user ||= User.find_by_first_name('alan')
+      elsif doorkeeper_token
         @current_user ||= User.find(doorkeeper_token.resource_owner_id)
       end
     end

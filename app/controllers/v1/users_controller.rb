@@ -1,7 +1,5 @@
 module V1
   class UsersController < BaseController
-    doorkeeper_for :all
-
     def index
       @users = current_user
     end
