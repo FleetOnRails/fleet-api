@@ -1,4 +1,4 @@
-#! /bin/bash
+#!/bin/bash
 # Build script for FleetOnRails API
 echo -e "\n\n"
 echo -e "####################################"
@@ -8,13 +8,13 @@ echo -e "####################################"
 
 # Install dependencies
 echo -e "\n\nInstalling dependencies"
-bundle install
+bundle install || { echo 'my_command failed' ; exit 1; }
 
 # Create test db
 echo -e "\n\nCreating test database"
-bundle exec rake db:create RAILS_ENV=test
-bundle exec rake db:migrate RAILS_ENV=test
+bundle exec rake db:create RAILS_ENV=test || { echo 'my_command failed' ; exit 1; }
+bundle exec rake db:migrate RAILS_ENV=test || { echo 'my_command failed' ; exit 1; }
 
 # Run tests
 echo -e "\n\nRunning RSpec tests"
-bundle exec rspec
+bundle exec rspec || { exit 1; }

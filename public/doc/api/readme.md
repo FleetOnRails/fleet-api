@@ -15,7 +15,7 @@ API V1 requests should be prefixed with `api/v1`.
 Example of a valid API request:
 
 ```
-curl -GET http://secure.fleetonrails.eu/api/v1/me
+curl -GET http://fleet-api.raven.com/v1/me
     -d access_token=d5972e906db13298cf809fb15ab1950a79f61c97ddc9874f411c6ce04db3898b
 ```
 

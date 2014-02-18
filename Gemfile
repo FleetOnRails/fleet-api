@@ -21,6 +21,7 @@ group :development, :test do
   gem 'factory_girl_rails'
   gem 'faker'
   gem 'simplecov'
+  gem 'shoulda-matchers'
 end
 
 # Use phusion passenger as the app server
@@ -34,6 +35,7 @@ gem 'capistrano-rails'
 # Security
 gem 'doorkeeper'
 gem 'bcrypt-ruby', '~> 3.1.2'
+gem 'rack-cors', :require => 'rack/cors'
 
 # JSON API
 gem 'rabl'

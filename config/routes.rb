@@ -4,17 +4,19 @@ FleetOnRails::Application.routes.draw do
   #
   # Help
   #
-  get 'help' => 'help#index'
-  get 'help/api' => 'api_docs#index'
-  get 'help/api/:category' => 'api_docs#index', as: 'help_api_file'
+  get '/' => 'help#index'
+  get '/api' => 'api_docs#index'
+  get '/api/:category' => 'api_docs#index', as: 'help_api_file'
 
   #
   # API
   #
-  namespace :api do
-    namespace :v1 do
-      resources :me, only: [:index]
-      resources :users
-    end
+  namespace :v1 do
+    # Me
+    get '/me' => 'me#index'
+    patch '/me' => 'me#update'
+
+    # Users
+    resources :users
   end
 end
