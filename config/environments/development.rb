@@ -30,9 +30,9 @@ FleetOnRails::Application.configure do
   # Allow CORS for development environment
   config.middleware.use Rack::Cors do
     allow do
-      origins "*"
+      origins '*', 'localhost'
 
-      resource "*",
+      resource '*',
                :headers => :any,
                :methods => [:get, :post, :put, :delete, :options, :patch]
     end
