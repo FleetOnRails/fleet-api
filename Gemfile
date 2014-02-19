@@ -46,6 +46,7 @@ gem 'bootstrap-sass', '~> 3.0.3.0'
 gem 'font-awesome-sass'
 gem 'jquery-rails'
 gem 'therubyracer'
+gem 'execjs'
 gem 'sprockets-rails', :require => 'sprockets/railtie'
 
 # Markdown parser
