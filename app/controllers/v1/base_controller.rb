@@ -2,6 +2,8 @@ module V1
   class BaseController < ActionController::Base
     doorkeeper_for :all unless Rails.env.test?
 
+    respond_to :json
+
     rescue_from ActiveRecord::RecordInvalid do |exception|
       @object = exception.record
       render status: 400, template: 'v1/errors/record_invalid'
@@ -20,6 +22,10 @@ module V1
       elsif doorkeeper_token
         @current_user ||= User.find(doorkeeper_token.resource_owner_id)
       end
+    end
+
+    def access_denied
+      render status: 403, template: 'errors/not_privileged'
     end
   end
 end

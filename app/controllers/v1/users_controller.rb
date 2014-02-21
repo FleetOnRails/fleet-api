@@ -2,6 +2,8 @@ module V1
   class UsersController < BaseController
     def index
       @users = User.all
+
+      respond_with @users
     end
 
     def show
@@ -14,8 +16,16 @@ module V1
     end
 
     def create
-      @user = User.new(user_params)
-      @user.save
+      @user = User.new
+      @user.first_name = params[:first_name]
+      @user.last_name = params[:last_name]
+      @user.email = params[:email]
+      @user.password = params[:password]
+      @user.password_confirmation = params[:password_confirmation]
+      @user.username = params[:username]
+      @user.save!
+
+      respond with @user
     end
 
     def destroy
