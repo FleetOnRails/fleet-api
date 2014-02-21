@@ -14,6 +14,7 @@ bundle install || { echo 'my_command failed' ; exit 1; }
 echo -e "\n\nCreating test database"
 bundle exec rake db:create RAILS_ENV=test || { echo 'my_command failed' ; exit 1; }
 bundle exec rake db:migrate RAILS_ENV=test || { echo 'my_command failed' ; exit 1; }
+bundle exec rake db:seed RAILS_ENV=test || { echo 'my_command failed' ; exit 1; }
 
 # Run tests
 echo -e "\n\nRunning RSpec tests"

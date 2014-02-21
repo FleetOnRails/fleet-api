@@ -9,7 +9,7 @@ class User < ActiveRecord::Base
   validates_presence_of :email, :username, :first_name, :last_name, :password
   validates_uniqueness_of :username, :email
 
-  validates_confirmation_of :password, :on => :create, message: 'Please provide password confirmation'
+  validates_confirmation_of :password, on: :create, message: 'Please provide password confirmation'
 
   validates_length_of :password, in: 6..30
   validates_length_of :username, in: 3..20
