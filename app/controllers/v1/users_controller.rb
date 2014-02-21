@@ -1,7 +1,7 @@
 module V1
   class UsersController < BaseController
     def index
-      @users = current_user
+      @users = User.all
     end
 
     def show

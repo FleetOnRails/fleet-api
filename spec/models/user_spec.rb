@@ -1,6 +1,10 @@
 require 'spec_helper'
 
 describe User do
+  it 'should have many groups through memberships' do
+    should have_many(:groups).through(:memberships)
+  end
+
   it 'validates presence of email' do
     should validate_presence_of(:email)
   end

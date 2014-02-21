@@ -12,11 +12,10 @@ FleetOnRails::Application.routes.draw do
   # API
   #
   namespace :v1 do
-    # Me
-    get '/me' => 'me#index'
-    patch '/me' => 'me#update'
+    get '/me', to: 'me#index'
+    put '/me', to: 'me#update'
 
-    # Users
-    resources :users
+    resources :users, only: [:index, :show, :create]
+    resources :groups, only: [:index, :show, :create, :update, :destroy]
   end
 end
