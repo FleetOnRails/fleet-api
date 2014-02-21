@@ -1,5 +1,7 @@
 module V1
   class UsersController < BaseController
+    doorkeeper_for [:index, :show, :update, :destroy] unless Rails.env.test?
+
     def index
       @users = User.all
 
@@ -25,20 +27,12 @@ module V1
       @user.username = params[:username]
       @user.save!
 
-      respond with @user
+      respond_with @user
     end
 
     def destroy
       @user = User.find_by(params[:id])
       @user.destroy
-    end
-
-    private
-
-    def user_params
-      params.require(:users).permit(:first_name, :last_name, :email,
-                                    :hashed_password, :phone_no, :group_id,
-                                    :username, :permission_level)
     end
   end
 end
