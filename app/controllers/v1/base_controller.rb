@@ -1,5 +1,7 @@
 module V1
   class BaseController < ActionController::Base
+    class NotPrivileged < StandardError; end
+
     respond_to :json
 
     rescue_from ActiveRecord::RecordInvalid do |exception|
@@ -12,7 +14,9 @@ module V1
       render status: 404, template: 'v1/errors/record_not_found'
     end
 
-    private
+    rescue_from NotPrivileged do
+      render status: 403, template: 'v1/errors/not_privileged'
+    end
 
     def current_user
       if Rails.env.test?
@@ -20,10 +24,6 @@ module V1
       elsif doorkeeper_token
         @current_user ||= User.find(doorkeeper_token.resource_owner_id)
       end
-    end
-
-    def access_denied
-      render status: 403, template: 'v1/errors/not_privileged'
     end
   end
 end

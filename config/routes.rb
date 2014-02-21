@@ -15,7 +15,7 @@ FleetOnRails::Application.routes.draw do
     get '/me', to: 'me#index'
     put '/me', to: 'me#update'
 
-    resources :users, only: [:index, :show, :create]
+    resources :users, only: [:index, :show, :create, :update, :destroy]
     resources :groups, only: [:index, :show, :create, :update, :destroy]
   end
 end

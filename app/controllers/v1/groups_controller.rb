@@ -9,16 +9,18 @@ module V1
 
     def show
       @group = User.find_by(params[:id])
-      access_denied unless @group.is_member?(@current_user)
+      NotPrivileged unless @group.is_member?(@current_user)
       respond_with @group
     end
 
     def create
+      # FIXME - get this to work
       @group = Group.new
       @group.group_name = params[:group_name]
       @current_user.groups <<(@group)
       @group.save!
       @current_user.save!
+
       respond_with @group
     end
 
@@ -27,7 +29,7 @@ module V1
 
     def destroy
       @group = Group.find_by(params[:id])
-      access_denied unless @group.is_member?(@current_user)
+      NotPrivileged unless @group.is_member?(@current_user)
       @group.destroy
       respond_with @group
     end
