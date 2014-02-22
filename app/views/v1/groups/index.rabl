@@ -1,3 +1,3 @@
 collection @groups
 
-attributes :id, :group_name
+attributes :id, :name

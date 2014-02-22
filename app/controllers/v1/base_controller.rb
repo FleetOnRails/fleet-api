@@ -3,6 +3,7 @@ module V1
     class NotPrivileged < StandardError; end
 
     respond_to :json
+    before_action :find_current_user
 
     rescue_from ActiveRecord::RecordInvalid do |exception|
       @object = exception.record
@@ -18,7 +19,7 @@ module V1
       render status: 403, template: 'v1/errors/not_privileged'
     end
 
-    def current_user
+    def find_current_user
       if Rails.env.test?
         @current_user ||= User.find_by(id: 1)
       elsif doorkeeper_token

@@ -4,24 +4,20 @@ module V1
 
     def index
       @groups = @current_user.groups
-      respond_with @groups
     end
 
     def show
-      @group = User.find_by(params[:id])
-      NotPrivileged unless @group.is_member?(@current_user)
+      @group = Group.find_by(params[:id])
+      raise NotPrivileged unless @group.is_member?(@current_user)
+
       respond_with @group
     end
 
     def create
-      # FIXME - get this to work
       @group = Group.new
-      @group.group_name = params[:group_name]
-      @current_user.groups <<(@group)
+      @group.name = params[:name]
       @group.save!
-      @current_user.save!
-
-      respond_with @group
+      @current_user.groups <<(@group)
     end
 
     def update
@@ -31,7 +27,6 @@ module V1
       @group = Group.find_by(params[:id])
       NotPrivileged unless @group.is_member?(@current_user)
       @group.destroy
-      respond_with @group
     end
   end
 end

@@ -1,4 +1,3 @@
-object @me
+object @current_user
 
-attributes :id, :first_name, :last_name, :email, :hashed_password, :phone_no,
-           :group_id, :permission_level, :username, :created_at, :updated_at
+attributes :id, :first_name, :last_name, :email, :username, :phone_no, :created_at, :updated_at

@@ -1,6 +1,5 @@
 class Group < ActiveRecord::Base
-  has_many :memberships
-  has_many :users, through: :memberships
+  has_and_belongs_to_many :users
 
   def is_member?(user)
     self.users.each do |group_member|

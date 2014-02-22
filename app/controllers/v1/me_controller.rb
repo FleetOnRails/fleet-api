@@ -3,7 +3,7 @@ module V1
     doorkeeper_for [:index, :update] unless Rails.env.test?
 
     def index
-      respond_with @current_user
+      @current_user
     end
 
     def update
@@ -12,14 +12,6 @@ module V1
       @current_user.email = params[:email]
       @current_user.phone_no = params[:phone_no]
       @current_user.save!
-
-      respond_with @current_user
-    end
-
-    private
-
-    def me_params
-      params.permit(:first_name, :last_name, :email, :phone_no)
     end
   end
 end
