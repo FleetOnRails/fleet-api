@@ -23,8 +23,28 @@ The response from the server will be in a JSON format
         "last_name": "kehoe",
         "email": "alankehoe111@gmail.com",
         "username": "alan",
-        "phone_no": "0870608580",
-        "admin": true
+        "phone_no": null,
+        "admin": true,
+        "cars": [
+            {
+                "id": 10,
+                "make": "toyota",
+                "model": "corolla",
+                "registration": "05wx11013"
+            },
+            {
+                "id": 11,
+                "make": "bmw",
+                "model": "520i",
+                "registration": "09wx3289"
+            }
+        ],
+        "groups": [
+            {
+                "id": 1,
+                "name": "fleetonrails"
+            }
+        ]
     }
 }
 ```
@@ -51,8 +71,28 @@ The server will respond with the updated me object
         "last_name": "changeme_to",
         "email": "alankehoe111@gmail.com",
         "username": "alan",
-        "phone_no": "0870608580",
-        "admin": true
+        "phone_no": null,
+        "admin": true,
+        "cars": [
+            {
+                "id": 10,
+                "make": "toyota",
+                "model": "corolla",
+                "registration": "05wx11013"
+            },
+            {
+                "id": 11,
+                "make": "bmw",
+                "model": "520i",
+                "registration": "09wx3289"
+            }
+        ],
+        "groups": [
+            {
+                "id": 1,
+                "name": "fleetonrails"
+            }
+        ]
     }
 }
 ```
