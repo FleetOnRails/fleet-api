@@ -7,12 +7,11 @@ module V1
     end
 
     def show
-      @user = User.find_by(params[:id])
+      @user = User.find(params[:id])
     end
 
     def update
-      @user = User.find_by(params[:id])
-      User.update
+      @user = User.find(params[:id])
     end
 
     def create
@@ -26,7 +25,7 @@ module V1
     end
 
     def destroy
-      @user = User.find_by(params[:id])
+      @user = User.find(params[:id])
       @user.destroy
     end
   end

@@ -14,8 +14,9 @@ module V1
     def create
       @group = Group.new
       @group.name = params[:name]
-      @group.save!
       @current_user.groups <<(@group)
+      @group.save!
+      @current_user.save!
     end
 
     def update
@@ -23,7 +24,7 @@ module V1
 
     def destroy
       @group = Group.find_by(params[:id])
-      NotPrivileged unless @group.is_member?(@current_user)
+      raise NotPrivileged unless @group.is_member?(@current_user)
       @group.destroy
     end
   end
