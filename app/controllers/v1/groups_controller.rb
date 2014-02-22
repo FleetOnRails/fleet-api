@@ -7,7 +7,7 @@ module V1
     end
 
     def show
-      @group = Group.find_by(params[:id])
+      @group = Group.find(params[:id])
       raise NotPrivileged unless @group.is_member?(@current_user)
     end
 
@@ -23,7 +23,7 @@ module V1
     end
 
     def destroy
-      @group = Group.find_by(params[:id])
+      @group = Group.find(params[:id])
       raise NotPrivileged unless @group.is_member?(@current_user)
       @group.destroy
     end

@@ -1,3 +1,3 @@
-collection @groups
+collection @groups, :root => 'groups'
 
-attributes :id, :name
+extends 'v1/groups/show'
