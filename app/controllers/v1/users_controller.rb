@@ -15,7 +15,13 @@ module V1
     end
 
     def update
-      @user = User.find(params[:id])
+      if @current_user.admin
+        @user = User.find(params[:id])
+        @user.admin = params[:set_admin]
+        @user.save!
+      else
+        raise NotPrivileged
+      end
     end
 
     def create
@@ -43,9 +49,11 @@ module V1
         @group.users.delete(@user)
         @group.save!
         @user.save!
-      else
+      elsif @current_user.admin
         @user = User.find(params[:id])
         @user.destroy
+      else
+        raise NotPrivileged
       end
     end
   end
