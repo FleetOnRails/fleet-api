@@ -104,12 +104,27 @@ Updates the group with the id that matches :id current user must be a member of 
 ```
 curl -PUT http://fleet-api.raven.com/v1/users/1
     -d access_token=d5972e906db13298cf809fb15ab1950a79f61c97ddc9874f411c6ce04db3898b
-    -d name=changeme
+    -d name=fleet_group
 ```
 
 The server will respond with the updated group object
 
 ``` json
+{
+    "group": {
+        "id": 5,
+        "name": "fleet_group",
+        "users": [
+            {
+                "id": 1,
+                "first_name": "alan",
+                "last_name": "kehoe",
+                "username": "alan",
+                "email": "alankehoe111@gmail.com"
+            }
+        ]
+    }
+}
 ```
 
 ### POST v1/groups

@@ -20,6 +20,13 @@ module V1
     end
 
     def update
+      @group = Group.find(params[:id])
+      if @group.is_member?(@current_user)
+        @group.name = params[:name]
+        @group.save!
+      else
+        raise NotPrivileged
+      end
     end
 
     def destroy
