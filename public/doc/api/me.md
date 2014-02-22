@@ -23,7 +23,8 @@ The response from the server will be in a JSON format
         "last_name": "kehoe",
         "email": "alankehoe111@gmail.com",
         "username": "alan",
-        "phone_no": "0870608580"
+        "phone_no": "0870608580",
+        "admin": true
     }
 }
 ```
@@ -50,7 +51,8 @@ The server will respond with the updated me object
         "last_name": "changeme_to",
         "email": "alankehoe111@gmail.com",
         "username": "alan",
-        "phone_no": "0870608580"
+        "phone_no": "0870608580",
+        "admin": true
     }
 }
 ```

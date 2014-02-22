@@ -28,9 +28,14 @@ module V1
       if params[:group_id]
         @group = Group.find(params[:group_id])
         @user = User.find(params[:user_id])
-        @group.users <<(@user)
-        @group.save!
-        @user.save!
+        raise NotPrivileged if @group.is_member?(@user)
+        if @group.is_member?(@current_user)
+          @group.users <<(@user)
+          @group.save!
+          @user.save!
+        else
+          raise NotPrivileged
+        end
       else
         @user = User.new
         @user.first_name = params[:first_name]

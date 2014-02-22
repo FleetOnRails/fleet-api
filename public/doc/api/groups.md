@@ -141,7 +141,7 @@ The server will respond with the new group object
 }
 ```
 
-### DELETE v1/users/:id
+### DELETE v1/groups/:id
 Deletes the group with an id matching :id, requires the current user to be a member of that group
 
 ```
@@ -157,6 +157,114 @@ The server will respond with the deleted group object
         "id": 3,
         "name": "cool_group",
         "users": []
+    }
+}
+```
+
+### GET v1/groups/:group_id/users
+Get all users associated with this group id, current user must be a member of the group to index its users
+
+Request
+
+```
+curl -GET http://fleet-api.raven.com/v1/groups/1/users
+    -d access_token=d5972e906db13298cf809fb15ab1950a79f61c97ddc9874f411c6ce04db3898b
+```
+
+Response if current user is a member of the requested group
+
+``` json
+{
+    "users": [
+        {
+            "user": {
+                "id": 1,
+                "first_name": "alan",
+                "last_name": "kehoe",
+                "email": "alankehoe111@gmail.com",
+                "username": "alan",
+                "phone_no": "0870608580",
+                "admin": true
+            }
+        },
+        {
+            "user": {
+                "id": 2,
+                "first_name": "krystian",
+                "last_name": "jankowski",
+                "email": "krystian.jankowski2@mail.dcu.ie",
+                "username": "krystian",
+                "phone_no": null,
+                "admin": false
+            }
+        }
+    ]
+}
+```
+
+### POST v1/groups/:group_id/users
+Add a user to the group
+
+Request
+
+```
+curl -POST http://fleet-api.raven.com/v1/groups/1/users
+    -d access_token=d5972e906db13298cf809fb15ab1950a79f61c97ddc9874f411c6ce04db3898b
+```
+
+Response if current user is a member of the requested group and did not try to add himself
+
+``` json
+{
+    "users": [
+        {
+            "user": {
+                "id": 1,
+                "first_name": "alan",
+                "last_name": "kehoe",
+                "email": "alankehoe111@gmail.com",
+                "username": "alan",
+                "phone_no": "0870608580",
+                "admin": true
+            }
+        },
+        {
+            "user": {
+                "id": 2,
+                "first_name": "krystian",
+                "last_name": "jankowski",
+                "email": "krystian.jankowski2@mail.dcu.ie",
+                "username": "krystian",
+                "phone_no": null,
+                "admin": false
+            }
+        }
+    ]
+}
+```
+
+### DELETE v1/groups/:group_id/users/1
+Add a user to the group
+
+Request
+
+```
+curl -DELETE http://fleet-api.raven.com/v1/groups/1/users/1
+    -d access_token=d5972e906db13298cf809fb15ab1950a79f61c97ddc9874f411c6ce04db3898b
+```
+
+Response renders deleted user object
+
+``` json
+{
+    "user": {
+        "id": 1,
+        "first_name": "alan",
+        "last_name": "kehoe",
+        "email": "alankehoe111@gmail.com",
+        "username": "alan",
+        "phone_no": "0870608580",
+        "admin": true
     }
 }
 ```
