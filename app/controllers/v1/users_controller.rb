@@ -22,7 +22,6 @@ module V1
       @user.username = params[:username]
       @user.email = params[:email]
       @user.password = params[:password]
-      @user.password_confirmation = params[:password_confirmation]
       @user.save!
     end
 
