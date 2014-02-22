@@ -9,8 +9,6 @@ module V1
     def show
       @group = Group.find_by(params[:id])
       raise NotPrivileged unless @group.is_member?(@current_user)
-
-      respond_with @group
     end
 
     def create

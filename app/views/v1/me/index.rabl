@@ -1,3 +1,3 @@
-object @current_user
+object @current_user => :me
 
-attributes :id, :first_name, :last_name, :email, :username, :phone_no, :created_at, :updated_at
+attributes :id, :first_name, :last_name, :email, :username, :phone_no

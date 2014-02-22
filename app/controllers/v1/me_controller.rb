@@ -11,6 +11,7 @@ module V1
       @current_user.last_name = params[:last_name]
       @current_user.email = params[:email]
       @current_user.phone_no = params[:phone_no]
+      @current_user.password = params[:password] || @current_user.password
       @current_user.save!
     end
   end
