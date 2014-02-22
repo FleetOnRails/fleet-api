@@ -1,5 +1,9 @@
 class Group < ActiveRecord::Base
-  has_and_belongs_to_many :users
+  has_many :group_user_joins
+  has_many :group_car_joins
+
+  has_many :users, through: :group_user_joins
+  has_many :cars, through: :group_car_joins
 
   def is_member?(user)
     self.users.each do |group_member|

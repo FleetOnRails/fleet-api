@@ -70,15 +70,11 @@ Response
 
 
 ### PUT v1/users/:id
-Updates the user with the id that matches :id requires admin privileges
+Updates the user with the id that matches :id requires admin privileges, can enable a user to be an admin
 
 ```
 curl -PUT http://fleet-api.raven.com/v1/users/1
     -d access_token=d5972e906db13298cf809fb15ab1950a79f61c97ddc9874f411c6ce04db3898b
-    -d first_name=changeme
-    -d last_name=changeme_to
-    -d email=alankehoe111@gmail.com
-    -d phone_no=0870608580
     -d admin=true
 ```
 

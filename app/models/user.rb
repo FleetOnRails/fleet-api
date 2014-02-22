@@ -1,7 +1,11 @@
 require 'bcrypt'
 
 class User < ActiveRecord::Base
-  has_and_belongs_to_many :groups
+  has_many :group_user_joins
+  has_many :user_car_joins
+
+  has_many :cars, through: :user_car_joins
+  has_many :groups, through: :group_user_joins
 
   EMAIL_REGEX = /\A[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}\z/i
 
@@ -26,9 +30,9 @@ class User < ActiveRecord::Base
       end
 
       if user && user.match_password(login_password)
-        return user
+        user
       else
-        return false
+        false
       end
     end
   end
