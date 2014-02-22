@@ -2,13 +2,7 @@
 
 All API requests require authentication. You need to pass an `access_token` parameter by url.
 How to get the `access_token` is defined in the [OAuth](/help/api/oauth) resource page.
-If an invalid or no `access_token` is provided then an error message will be returned with status code 401:
-
-```json
-{
-    "message": "401 Unauthorized"
-}
-```
+If an invalid or no `access_token` is provided then a status code 401 will be returned:
 
 API V1 requests should be prefixed with `api/v1`.
 
@@ -19,9 +13,7 @@ curl -GET http://fleet-api.raven.com/v1/me
     -d access_token=d5972e906db13298cf809fb15ab1950a79f61c97ddc9874f411c6ce04db3898b
 ```
 
-
 The API uses JSON to serialize data. You don't need to specify `.json` at the end of API URL.
-
 
 ## Status codes
 
@@ -46,6 +38,4 @@ The reasoning behind it is the user is not really interested if the resource exi
 * `401 Unauthorized` - The user is not authenticated, a valid user `access_token` is necessary, see above
 * `403 Forbidden` - The request is not allowed, e.g. the user does not have the required permission level
 * `404 Not Found` - A resource could not be accessed, e.g. an ID for a resource could not be found
-* `405 Method Not Allowed` - The request is not supported
-* `409 Conflict` - A conflicting resource already exists, e.g. creating a user that already exists
 * `500 Server Error` - While handling the request something went wrong on the server side

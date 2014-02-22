@@ -2,7 +2,6 @@ module V1
   class BaseController < ActionController::Base
     class NotPrivileged < StandardError; end
 
-    respond_to :json
     before_action :find_current_user
 
     rescue_from ActiveRecord::RecordInvalid do |exception|
@@ -21,7 +20,7 @@ module V1
 
     def find_current_user
       if Rails.env.test?
-        @current_user ||= User.find_by(id: 1)
+        @current_user ||= User.find_by_first_name(:alan)
       elsif doorkeeper_token
         @current_user ||= User.find(doorkeeper_token.resource_owner_id)
       end
