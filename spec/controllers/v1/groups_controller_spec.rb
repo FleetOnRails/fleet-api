@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe V1::UsersController do
+describe V1::GroupsController do
 
   describe 'GET #index' do
     it 'responds with 200' do
@@ -38,5 +38,3 @@ describe V1::UsersController do
   end
 
 end
-
-

@@ -1,4 +1,3 @@
-collection @users
+collection @users, :root => 'users'
 
-attributes :id, :first_name, :last_name, :email, :hashed_password, :phone_no,
-           :group_id, :permission_level, :username, :created_at, :updated_at
+extends 'v1/users/show'

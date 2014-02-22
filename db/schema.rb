@@ -13,6 +13,17 @@
 
 ActiveRecord::Schema.define(version: 20131221163218) do
 
+  create_table "groups", force: true do |t|
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "groups_users", force: true do |t|
+    t.integer "group_id"
+    t.integer "user_id"
+  end
+
   create_table "oauth_access_grants", force: true do |t|
     t.integer  "resource_owner_id",              null: false
     t.integer  "application_id",                 null: false
@@ -55,13 +66,11 @@ ActiveRecord::Schema.define(version: 20131221163218) do
   create_table "users", force: true do |t|
     t.string   "first_name"
     t.string   "last_name"
+    t.string   "username"
     t.string   "email"
+    t.string   "phone_no"
     t.string   "password"
     t.string   "salt"
-    t.string   "phone_no"
-    t.integer  "group_id"
-    t.integer  "permission_level"
-    t.string   "username"
     t.boolean  "admin"
     t.datetime "created_at"
     t.datetime "updated_at"
