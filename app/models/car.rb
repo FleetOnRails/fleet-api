@@ -3,7 +3,7 @@ class Car < ActiveRecord::Base
   has_many :user_car_joins
 
   has_many :users, through: :user_car_joins
-  has_many :groups, through: :group_user_joins
+  has_many :groups, through: :group_car_joins
 
   def is_driver?(user)
     self.users.each do |car_driver|
