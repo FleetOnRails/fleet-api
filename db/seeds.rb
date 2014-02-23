@@ -6,7 +6,14 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
-User.create([{ username: 'alan', first_name: 'alan', last_name: 'kehoe', email: 'alankehoe111@gmail.com',
+@users = User.create([{ username: 'alan', first_name: 'alan', last_name: 'kehoe', email: 'alankehoe111@gmail.com',
               password: 'fleetonrails', admin: true },
              { username: 'krystian', first_name: 'krystian', last_name: 'jankowski', email: 'krystian.jankowski2@mail.dcu.ie',
               password: 'fleetonrails', admin: false }])
+
+@group = Group.create(name: 'fleet')
+
+@car = Car.create(make: 'Toyota', model: 'Corolla', registration: '05wx11013')
+
+@group.users <<(@users)
+@car.users <<(@group.users)
