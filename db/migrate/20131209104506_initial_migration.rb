@@ -47,6 +47,8 @@ class InitialMigration < ActiveRecord::Migration
 
     create_table :documents do |t|
       t.string :name
+      t.documentable_id
+      t.documentable_type
 
       t.timestamps
     end
