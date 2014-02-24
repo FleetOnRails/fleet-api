@@ -1,7 +1,7 @@
 require 'bcrypt'
 
 class User < ActiveRecord::Base
-  has_many :cars, as: :drivable
+  has_many :cars, as: :owner
 
   has_many :user_groups
   has_many :groups, through: :user_groups

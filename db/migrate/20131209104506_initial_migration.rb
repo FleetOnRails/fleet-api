@@ -23,8 +23,8 @@ class InitialMigration < ActiveRecord::Migration
       t.string :make
       t.string :model
       t.string :registration
-      t.integer :drivable_id
-      t.string  :drivable_type
+      t.integer :owner_id
+      t.string  :owner_type
 
       t.timestamps
     end
