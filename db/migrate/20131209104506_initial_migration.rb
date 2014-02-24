@@ -31,7 +31,7 @@ class InitialMigration < ActiveRecord::Migration
 
     create_table :user_groups do |t|
       t.belongs_to :group
-      t.belongs_to :users
+      t.belongs_to :user
 
       t.timestamps
     end

@@ -4,8 +4,9 @@ module V1
 
     def index
       if params[:group_id]
-        @cars = Group.find(params[:group_id]).cars
+        @group = Group.find(params[:group_id])
         raise NotPrivileged unless @group.is_member?(@current_user)
+        @cars = @group.cars
       else
         @cars = @current_user.cars
       end
@@ -23,9 +24,9 @@ module V1
 
     def create
       if params[:group_id]
-        @car = Car.new
         @group = Group.find(params[:group_id])
         raise NotPrivileged unless @group.is_member?(@current_user)
+        @car = Car.new
         @car.make = params[:make]
         @car.model = params[:model]
         @car.registration = params[:registration]
@@ -66,7 +67,7 @@ module V1
       if params[:group_id]
         @group = Group.find(params[:group_id])
         raise NotPrivileged unless @group.is_member?(@current_user)
-        @car = @group.cars.find(:id)
+        @group.cars.find(:id)
         @car.destroy
         @car.save!
         @group.save!

@@ -70,7 +70,7 @@ ActiveRecord::Schema.define(version: 20131221163218) do
 
   create_table "user_groups", force: true do |t|
     t.integer  "group_id"
-    t.integer  "users_id"
+    t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
