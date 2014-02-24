@@ -5,25 +5,31 @@ module V1
     def index
       if params[:group_id]
         @cars = Group.find(params[:group_id]).cars
+        raise NotPrivileged unless @group.is_member?(@current_user)
       else
         @cars = @current_user.cars
       end
     end
 
     def show
-      @car = Car.find(params[:id])
+      if params[:group_id]
+        @group = Group.find(params[:group_id])
+        raise NotPrivileged unless @group.is_member?(@current_user)
+        @car = @group.cars.find(params[:id])
+      else
+        @car = @current_user.cars.find(params[:id])
+      end
     end
 
     def create
       if params[:group_id]
         @car = Car.new
         @group = Group.find(params[:group_id])
-        @drivers = @group.users
+        raise NotPrivileged unless @group.is_member?(@current_user)
         @car.make = params[:make]
         @car.model = params[:model]
         @car.registration = params[:registration]
         @group.cars <<(@car)
-        @car.users <<(@drivers)
         @car.save!
         @group.save!
       else
@@ -38,14 +44,37 @@ module V1
     end
 
     def update
-      @car = Car.find(params[:id])
-      raise NotPrivileged unless @car.is_driver?(@current_user)
+      if params[:group_id]
+        @group = Group.find(params[:group_id])
+        raise NotPrivileged unless @group.is_member?(@current_user)
+        @car = @group.cars.find(params[:id])
+        @car.make = params[:make] || @car.make
+        @car.model = params[:model] || @car.model
+        @car.registration = params[:registration] || @car.registration
+        @car.save!
+        @group.save!
+      else
+        @car = @current_user.cars.find(params[:id])
+        @car.make = params[:make] || @car.make
+        @car.model = params[:model] || @car.model
+        @car.registration = params[:registration] || @car.registration
+        @car.save!
+      end
     end
 
     def destroy
-      @car = Car.find(params[:id])
-      raise NotPrivileged unless @car.is_driver?(@current_user)
-      @car.destroy
+      if params[:group_id]
+        @group = Group.find(params[:group_id])
+        raise NotPrivileged unless @group.is_member?(@current_user)
+        @car = @group.cars.find(:id)
+        @car.destroy
+        @car.save!
+        @group.save!
+      else
+        @car = @current_user.cars.find(:id)
+        @car.destroy
+        @car.save!
+      end
     end
   end
 end

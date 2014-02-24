@@ -13,6 +13,8 @@
 
 @group = Group.create(name: 'fleet')
 
-@car = Car.create(make: 'Toyota', model: 'Corolla', registration: '05wx11013')
+@personal_car = Car.create(make: 'Toyota', model: 'Corolla', registration: '05wx11013')
+@group_car = Car.create(make: 'Seat', model: 'Toledo', registration: '01cn1358')
 
-@group.cars <<(@car)
+@group.cars <<(@group_car)
+User.first <<(@personal_car)

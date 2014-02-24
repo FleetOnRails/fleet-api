@@ -1,7 +1,3 @@
 object @car => :cars
 
-attributes :id, :make, :model, :registration
-
-node :drivers do |car|
-  partial('v1/cars/user', :object => car.users)
-end
+attributes :id, :make, :model, :registration, :drivable_id, :drivable_type
