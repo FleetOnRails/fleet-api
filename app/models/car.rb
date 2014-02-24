@@ -1,3 +1,6 @@
 class Car < ActiveRecord::Base
   belongs_to :owner, polymorphic: true
+
+  has_many :diagnostic_statistics
+  has_many :diagnostic_faults
 end

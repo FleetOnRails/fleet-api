@@ -29,6 +29,28 @@ class InitialMigration < ActiveRecord::Migration
       t.timestamps
     end
 
+    create_table :diagnostic_statistics do |t|
+      t.float :mph
+      t.float :rpm
+      t.float :mpg
+      t.belongs_to :car
+
+      t.timestamps
+    end
+
+    create_table :diagnostic_problems do |t|
+      t.string :fault_code
+      t.belongs_to :car
+
+      t.timestamps
+    end
+
+    create_table :documents do |t|
+      t.string :name
+
+      t.timestamps
+    end
+
     create_table :user_groups do |t|
       t.belongs_to :group
       t.belongs_to :user
