@@ -72,7 +72,7 @@ module V1
         @car.save!
         @group.save!
       else
-        @car = @current_user.cars.find(:id)
+        @car = @current_user.cars.find(params[:id])
         @car.destroy
         @car.save!
       end

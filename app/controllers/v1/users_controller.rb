@@ -4,7 +4,9 @@ module V1
 
     def index
       if params[:group_id]
-        @users = Group.find(params[:group_id]).users
+        @group = Group.find(params[:group_id])
+        @users = @group.users
+        raise NotPrivileged unless @group.is_member?(@current_user)
       else
         @users = User.all
       end
