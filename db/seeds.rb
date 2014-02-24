@@ -15,6 +15,4 @@
 
 @car = Car.create(make: 'Toyota', model: 'Corolla', registration: '05wx11013')
 
-@group.users <<(@users)
-@car.groups <<(@group)
-@car.users <<(@group.users)
+@group.cars <<(@car)

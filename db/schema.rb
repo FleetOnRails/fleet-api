@@ -17,20 +17,8 @@ ActiveRecord::Schema.define(version: 20131221163218) do
     t.string   "make"
     t.string   "model"
     t.string   "registration"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  create_table "group_car_joins", force: true do |t|
-    t.integer  "group_id"
-    t.integer  "car_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  create_table "group_user_joins", force: true do |t|
-    t.integer  "group_id"
-    t.integer  "user_id"
+    t.integer  "drivable_id"
+    t.string   "drivable_type"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -80,9 +68,9 @@ ActiveRecord::Schema.define(version: 20131221163218) do
 
   add_index "oauth_applications", ["uid"], name: "index_oauth_applications_on_uid", unique: true
 
-  create_table "user_car_joins", force: true do |t|
-    t.integer  "user_id"
-    t.integer  "car_id"
+  create_table "user_groups", force: true do |t|
+    t.integer  "group_id"
+    t.integer  "users_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

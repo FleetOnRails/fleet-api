@@ -1,11 +1,10 @@
 require 'bcrypt'
 
 class User < ActiveRecord::Base
-  has_many :group_user_joins
-  has_many :user_car_joins
+  has_many :cars, as: :drivable
 
-  has_many :cars, through: :user_car_joins
-  has_many :groups, through: :group_user_joins
+  has_many :user_groups
+  has_many :groups, through: :user_groups
 
   EMAIL_REGEX = /\A[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}\z/i
 

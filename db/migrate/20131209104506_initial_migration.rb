@@ -23,29 +23,18 @@ class InitialMigration < ActiveRecord::Migration
       t.string :make
       t.string :model
       t.string :registration
+      t.integer :drivable_id
+      t.string  :drivable_type
 
       t.timestamps
     end
 
-    create_table :group_user_joins do |t|
-      t.integer :group_id
-      t.integer :user_id
+    create_table :user_groups do |t|
+      t.belongs_to :group
+      t.belongs_to :users
 
       t.timestamps
     end
 
-    create_table :group_car_joins do |t|
-      t.integer :group_id
-      t.integer :car_id
-
-      t.timestamps
-    end
-
-    create_table :user_car_joins do |t|
-      t.integer :user_id
-      t.integer :car_id
-
-      t.timestamps
-    end
   end
 end

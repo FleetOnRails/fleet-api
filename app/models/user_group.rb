@@ -1,4 +1,4 @@
-class GroupUserJoin < ActiveRecord::Base
+class UserGroup < ActiveRecord::Base
   belongs_to :user
   belongs_to :group
 end
