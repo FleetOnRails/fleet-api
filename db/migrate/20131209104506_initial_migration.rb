@@ -57,6 +57,10 @@ class InitialMigration < ActiveRecord::Migration
     create_table :gps_statistics do |t|
       t.float :latitude
       t.float :longitude
+      t.string :address
+      t.string :city
+      t.string :county
+      t.string :country
       t.float :mph
       t.belongs_to :car
 
