@@ -22,6 +22,7 @@ group :development, :test do
   gem 'faker'
   gem 'simplecov'
   gem 'shoulda-matchers'
+  gem 'railroady'
 end
 
 # Use phusion passenger as the app server

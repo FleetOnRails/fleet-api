@@ -39,15 +39,24 @@ class InitialMigration < ActiveRecord::Migration
       t.timestamps
     end
 
-    create_table :diagnostic_problems do |t|
+    create_table :diagnostic_faults do |t|
       t.string :fault_code
       t.belongs_to :car
 
       t.timestamps
     end
 
+    create_table :service_records do |t|
+      t.string :odometer_reading
+      t.string :technician
+      t.text :description
+
+      t.timestamps
+    end
+
     create_table :documents do |t|
       t.string :name
+      t.string :document
       t.string :documentable_id
       t.string :documentable_type
 
