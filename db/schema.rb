@@ -23,6 +23,30 @@ ActiveRecord::Schema.define(version: 20131221163218) do
     t.datetime "updated_at"
   end
 
+  create_table "diagnostic_problems", force: true do |t|
+    t.string   "fault_code"
+    t.integer  "car_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "diagnostic_statistics", force: true do |t|
+    t.float    "mph"
+    t.float    "rpm"
+    t.float    "mpg"
+    t.integer  "car_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "documents", force: true do |t|
+    t.string   "name"
+    t.string   "documentable_id"
+    t.string   "documentable_type"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "groups", force: true do |t|
     t.string   "name"
     t.datetime "created_at"
@@ -84,6 +108,7 @@ ActiveRecord::Schema.define(version: 20131221163218) do
     t.string   "password"
     t.string   "salt"
     t.boolean  "admin"
+    t.string   "avatar"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

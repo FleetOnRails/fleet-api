@@ -9,6 +9,7 @@ class InitialMigration < ActiveRecord::Migration
       t.string :password
       t.string :salt
       t.boolean :admin
+      t.string :avatar
 
       t.timestamps
     end
@@ -47,8 +48,8 @@ class InitialMigration < ActiveRecord::Migration
 
     create_table :documents do |t|
       t.string :name
-      t.documentable_id
-      t.documentable_type
+      t.string :documentable_id
+      t.string :documentable_type
 
       t.timestamps
     end

@@ -1,6 +1,6 @@
 object @current_user => :me
 
-attributes :id, :first_name, :last_name, :email, :username, :phone_no, :admin
+attributes :id, :first_name, :last_name, :email, :username, :phone_no, :admin, :avatar
 
 node :personal_cars do |user|
   partial('v1/me/car', :object => user.cars)

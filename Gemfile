@@ -54,3 +54,6 @@ gem 'markdown-rails'
 gem 'coderay'
 gem 'nokogiri'
 gem 'redcarpet'
+
+# File upload
+gem 'carrierwave'
