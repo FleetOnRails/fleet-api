@@ -17,3 +17,6 @@
 /log/*.log
 /tmp
 /.idea
+
+# Ignore Carrierwave uploads
+/public/uploads

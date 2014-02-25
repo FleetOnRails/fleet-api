@@ -2,6 +2,8 @@ module V1
   class BaseController < ActionController::Base
     class NotPrivileged < StandardError; end
 
+    respond_to :json
+
     before_action :find_current_user
 
     rescue_from ActiveRecord::RecordInvalid do |exception|
