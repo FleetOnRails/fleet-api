@@ -53,5 +53,6 @@ class AvatarUploader < CarrierWave::Uploader::Base
     ivar = "@#{mounted_as}_secure_token"
     token = model.instance_variable_get(ivar)
     token ||= model.instance_variable_set(ivar, SecureRandom.hex(10))
+    token
   end
 end

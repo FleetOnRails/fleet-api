@@ -1,6 +1,6 @@
 module V1
   class GroupsController < BaseController
-    doorkeeper_for [:index, :show, :update, :create, :destroy] unless Rails.env.test?
+    doorkeeper_for [:all]
 
     def index
       @groups = @current_user.groups
@@ -21,12 +21,9 @@ module V1
 
     def update
       @group = Group.find(params[:id])
-      if @group.is_member?(@current_user)
-        @group.name = params[:name]
-        @group.save!
-      else
-        raise NotPrivileged
-      end
+      raise NotPrivileged unless @group.is_member?(@current_user)
+      @group.name = params[:name]
+      @group.save!
     end
 
     def destroy

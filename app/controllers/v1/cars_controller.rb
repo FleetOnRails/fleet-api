@@ -1,6 +1,6 @@
 module V1
   class CarsController < BaseController
-    doorkeeper_for [:index, :show, :update, :create, :destroy] unless Rails.env.test?
+    doorkeeper_for [:all]
 
     def index
       if params[:group_id]

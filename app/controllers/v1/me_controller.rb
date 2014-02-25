@@ -1,9 +1,11 @@
 module V1
   class MeController < BaseController
-    doorkeeper_for [:index, :update] unless Rails.env.test?
+    doorkeeper_for [:all]
 
     def index
       @current_user
+
+      respond_with @current_user
     end
 
     def update
@@ -23,6 +25,8 @@ module V1
         @current_user.password = params[:password] || @current_user.password
         @current_user.save!
       end
+
+      respond_with @current_user
     end
 
     private

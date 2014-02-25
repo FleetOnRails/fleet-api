@@ -1,6 +1,6 @@
 module V1
   class UsersController < BaseController
-    doorkeeper_for [:index, :show, :update, :destroy] unless Rails.env.test?
+    doorkeeper_for [:index, :show, :update, :destroy]
 
     def index
       if params[:group_id]
@@ -10,34 +10,28 @@ module V1
       else
         @users = User.all
       end
+
+      respond_with @users
     end
 
     def show
       @user = User.find(params[:id])
+
+      respond_with @user
     end
 
     def update
-      if @current_user.admin
-        @user = User.find(params[:id])
-        @user.admin = params[:set_admin]
-        @user.save!
-      else
-        raise NotPrivileged
-      end
     end
 
     def create
       if params[:group_id]
         @group = Group.find(params[:group_id])
         @user = User.find(params[:user_id])
-        raise NotPrivileged if @group.is_member?(@user)
-        if @group.is_member?(@current_user)
-          @group.users <<(@user)
-          @group.save!
-          @user.save!
-        else
-          raise NotPrivileged
-        end
+        raise DuplicateEntry if @group.is_member?(@user)
+        raise NotPrivileged unless @group.is_member?(@current_user)
+        @group.users <<(@user)
+        @group.save!
+        @user.save!
       else
         @user = User.new
         @user.first_name = params[:first_name]
@@ -47,21 +41,23 @@ module V1
         @user.password = params[:password]
         @user.save!
       end
+
+      respond_with @user
     end
 
     def destroy
       if params[:group_id]
         @group = Group.find(params[:group_id])
+        raise NotPrivileged unless @group.is_member?(@current_user)
         @user = User.find(params[:id])
         @group.users.delete(@user)
         @group.save!
         @user.save!
-      elsif @current_user.admin
-        @user = User.find(params[:id])
-        @user.destroy
       else
         raise NotPrivileged
       end
+
+      respond_with @user
     end
   end
 end
