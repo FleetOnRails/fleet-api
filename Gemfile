@@ -22,7 +22,6 @@ group :development, :test do
   gem 'faker'
   gem 'simplecov'
   gem 'shoulda-matchers'
-  gem 'railroady'
 end
 
 # Use phusion passenger as the app server
@@ -59,4 +58,5 @@ gem 'redcarpet'
 # File upload
 gem 'carrierwave'
 gem 'mini_magick'
-gem 'uuid'
+
+gem 'geocoder'
