@@ -6,6 +6,10 @@ node :avatar_url do |user|
   user.avatar.url
 end
 
+node :avatar_thumb_url do |user|
+  user.avatar.thumb.url
+end
+
 node :personal_cars do |user|
   partial('v1/me/car', :object => user.cars)
 end

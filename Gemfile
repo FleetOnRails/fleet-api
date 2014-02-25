@@ -57,3 +57,5 @@ gem 'redcarpet'
 
 # File upload
 gem 'carrierwave'
+gem 'mini_magick'
+gem 'uuid'
