@@ -23,16 +23,6 @@ class InitialMigration < ActiveRecord::Migration
       t.timestamps
     end
 
-    create_table :cars do |t|
-      t.string :make
-      t.string :model
-      t.string :registration
-      t.integer :owner_id
-      t.string  :owner_type
-
-      t.timestamps
-    end
-
     create_table :diagnostic_statistics do |t|
       t.float :mph
       t.float :rpm
@@ -68,10 +58,18 @@ class InitialMigration < ActiveRecord::Migration
     ###
     # Polymorphic Models
     ###
+    create_table :cars do |t|
+      t.string :make
+      t.string :model
+      t.string :registration
+      t.references :owner, polymorphic: true
+
+      t.timestamps
+    end
+
     create_table :destinations do |t|
       t.string :name
-      t.string :destinationable_id
-      t.string :destinationable_type
+      t.references :destinationable, polymorphic: true
 
       t.timestamps
     end
@@ -79,8 +77,7 @@ class InitialMigration < ActiveRecord::Migration
     create_table :documents do |t|
       t.string :name
       t.string :document
-      t.string :documentable_id
-      t.string :documentable_type
+      t.references :documentable, polymorphic: true
 
       t.timestamps
     end
@@ -92,8 +89,7 @@ class InitialMigration < ActiveRecord::Migration
       t.string :city
       t.string :county
       t.string :country
-      t.string :locationable_id
-      t.string :locationable_type
+      t.references :locationable, polymorphic: true
 
       t.timestamps
     end
@@ -101,8 +97,7 @@ class InitialMigration < ActiveRecord::Migration
     create_table :vendors do |t|
       t.string :name
       t.string :type
-      t.string :venderable_id
-      t.string :venderable_type
+      t.references :venderable, polymorphic: true
 
       t.timestamps
     end
@@ -111,8 +106,7 @@ class InitialMigration < ActiveRecord::Migration
       t.string :name
       t.float :price
       t.string :part_no
-      t.string :productable_id
-      t.string :productable_type
+      t.references :productable, polymorphic: true
 
       t.timestamps
     end
@@ -127,5 +121,21 @@ class InitialMigration < ActiveRecord::Migration
       t.timestamps
     end
 
+    ###
+    # Indexes
+    ###
+    add_index :diagnostic_statistics, :car_id, :name => 'diagnostic_statistics_ix'
+    add_index :diagnostic_faults, :car_id, :name => 'diagnostic_fault_ix'
+    add_index :service_records, :car_id, :name => 'service_record_ix'
+    add_index :gps_statistics, :car_id, :name => 'gps_statistics_ix'
+
+    add_index :cars, [:owner_id, :owner_type], :name => 'cars_ix'
+    add_index :destinations, [:destinationable_id, :destinationable_type], :name => 'destinations_ix'
+    add_index :documents, [:documentable_id, :documentable_type], :name => 'documents_ix'
+    add_index :locations, [:locationable_id, :locationable_type], :name => 'locations_ix'
+    add_index :vendors, [:venderable_id, :venderable_type], :name => 'vendors_ix'
+    add_index :products, [:productable_id, :productable_type], :name => 'products_ix'
+
+    add_index :user_groups, [:group_id, :user_id], :name => 'user_groups_ix'
   end
 end

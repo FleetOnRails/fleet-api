@@ -23,13 +23,17 @@ ActiveRecord::Schema.define(version: 20131221163218) do
     t.datetime "updated_at"
   end
 
+  add_index "cars", ["owner_id", "owner_type"], name: "cars_ix"
+
   create_table "destinations", force: true do |t|
     t.string   "name"
-    t.string   "destinationable_id"
+    t.integer  "destinationable_id"
     t.string   "destinationable_type"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  add_index "destinations", ["destinationable_id", "destinationable_type"], name: "destinations_ix"
 
   create_table "diagnostic_faults", force: true do |t|
     t.string   "fault_code"
@@ -37,6 +41,8 @@ ActiveRecord::Schema.define(version: 20131221163218) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  add_index "diagnostic_faults", ["car_id"], name: "diagnostic_fault_ix"
 
   create_table "diagnostic_statistics", force: true do |t|
     t.float    "mph"
@@ -47,14 +53,18 @@ ActiveRecord::Schema.define(version: 20131221163218) do
     t.datetime "updated_at"
   end
 
+  add_index "diagnostic_statistics", ["car_id"], name: "diagnostic_statistics_ix"
+
   create_table "documents", force: true do |t|
     t.string   "name"
     t.string   "document"
-    t.string   "documentable_id"
+    t.integer  "documentable_id"
     t.string   "documentable_type"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  add_index "documents", ["documentable_id", "documentable_type"], name: "documents_ix"
 
   create_table "gps_statistics", force: true do |t|
     t.float    "mph"
@@ -62,6 +72,8 @@ ActiveRecord::Schema.define(version: 20131221163218) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  add_index "gps_statistics", ["car_id"], name: "gps_statistics_ix"
 
   create_table "groups", force: true do |t|
     t.string   "name"
@@ -76,11 +88,13 @@ ActiveRecord::Schema.define(version: 20131221163218) do
     t.string   "city"
     t.string   "county"
     t.string   "country"
-    t.string   "locationable_id"
+    t.integer  "locationable_id"
     t.string   "locationable_type"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  add_index "locations", ["locationable_id", "locationable_type"], name: "locations_ix"
 
   create_table "oauth_access_grants", force: true do |t|
     t.integer  "resource_owner_id",              null: false
@@ -125,11 +139,13 @@ ActiveRecord::Schema.define(version: 20131221163218) do
     t.string   "name"
     t.float    "price"
     t.string   "part_no"
-    t.string   "productable_id"
+    t.integer  "productable_id"
     t.string   "productable_type"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  add_index "products", ["productable_id", "productable_type"], name: "products_ix"
 
   create_table "service_records", force: true do |t|
     t.string   "odometer_reading"
@@ -140,12 +156,16 @@ ActiveRecord::Schema.define(version: 20131221163218) do
     t.datetime "updated_at"
   end
 
+  add_index "service_records", ["car_id"], name: "service_record_ix"
+
   create_table "user_groups", force: true do |t|
     t.integer  "group_id"
     t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  add_index "user_groups", ["group_id", "user_id"], name: "user_groups_ix"
 
   create_table "users", force: true do |t|
     t.string   "first_name"
@@ -164,10 +184,12 @@ ActiveRecord::Schema.define(version: 20131221163218) do
   create_table "vendors", force: true do |t|
     t.string   "name"
     t.string   "type"
-    t.string   "venderable_id"
+    t.integer  "venderable_id"
     t.string   "venderable_type"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  add_index "vendors", ["venderable_id", "venderable_type"], name: "vendors_ix"
 
 end
