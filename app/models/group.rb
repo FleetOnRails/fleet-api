@@ -1,5 +1,5 @@
 class Group < ActiveRecord::Base
-  #include GroupConcern
+  include GroupConcern
 
   has_many :cars, as: :owner, dependent: :destroy
   has_many :destinations, as: :destinationable, dependent: :destroy
