@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe User do
   it 'should have and belong to many groups' do
-    should have_and_belong_to_many(:groups)
+    should have_many(:groups)
   end
 
   it 'validates presence of email' do
