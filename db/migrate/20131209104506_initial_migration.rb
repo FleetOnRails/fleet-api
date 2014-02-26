@@ -124,18 +124,18 @@ class InitialMigration < ActiveRecord::Migration
     ###
     # Indexes
     ###
-    add_index :diagnostic_statistics, :car_id, :name => 'diagnostic_statistics_ix'
-    add_index :diagnostic_faults, :car_id, :name => 'diagnostic_fault_ix'
-    add_index :service_records, :car_id, :name => 'service_record_ix'
-    add_index :gps_statistics, :car_id, :name => 'gps_statistics_ix'
+    add_index :diagnostic_statistics, :car_id, name: :diagnostic_statistics_ix
+    add_index :diagnostic_faults, :car_id, name: :diagnostic_fault_ix
+    add_index :service_records, :car_id, name: :service_record_ix
+    add_index :gps_statistics, :car_id, name: :gps_statistics_ix
 
-    add_index :cars, [:owner_id, :owner_type], :name => 'cars_ix'
-    add_index :destinations, [:destinationable_id, :destinationable_type], :name => 'destinations_ix'
-    add_index :documents, [:documentable_id, :documentable_type], :name => 'documents_ix'
-    add_index :locations, [:locationable_id, :locationable_type], :name => 'locations_ix'
-    add_index :vendors, [:venderable_id, :venderable_type], :name => 'vendors_ix'
-    add_index :products, [:productable_id, :productable_type], :name => 'products_ix'
+    add_index :cars, [:owner_id, :owner_type], name: :cars_ix
+    add_index :destinations, [:destinationable_id, :destinationable_type], name: :destinations_ix
+    add_index :documents, [:documentable_id, :documentable_type], name: :documents_ix
+    add_index :locations, [:locationable_id, :locationable_type], name: :locations_ix
+    add_index :vendors, [:venderable_id, :venderable_type], name: :vendors_ix
+    add_index :products, [:productable_id, :productable_type], name: :products_ix
 
-    add_index :user_groups, [:group_id, :user_id], :name => 'user_groups_ix'
+    add_index :user_groups, [:group_id, :user_id], name: :user_groups_ix
   end
 end
