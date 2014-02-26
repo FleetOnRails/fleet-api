@@ -49,12 +49,6 @@ ActiveRecord::Schema.define(version: 20131221163218) do
   end
 
   create_table "gps_statistics", force: true do |t|
-    t.float    "latitude"
-    t.float    "longitude"
-    t.string   "address"
-    t.string   "city"
-    t.string   "county"
-    t.string   "country"
     t.float    "mph"
     t.integer  "car_id"
     t.datetime "created_at"
@@ -63,6 +57,19 @@ ActiveRecord::Schema.define(version: 20131221163218) do
 
   create_table "groups", force: true do |t|
     t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "locations", force: true do |t|
+    t.float    "latitude"
+    t.float    "longitude"
+    t.string   "address"
+    t.string   "city"
+    t.string   "county"
+    t.string   "country"
+    t.string   "locationable_id"
+    t.string   "locationable_type"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
