@@ -1,6 +1,6 @@
 module V1
   class DestinationsController < BaseController
-    doorkeeper_for [:index, :create, :show, :update, :destroy]
+    doorkeeper_for [:all]
 
     def index
       if params[:group_id]
