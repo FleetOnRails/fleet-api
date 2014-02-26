@@ -12,24 +12,27 @@ module V1
     end
 
     def create
-      @group = Group.new
-      @group.name = params[:name]
+      @group = Group.create!(group_params)
       @current_user.groups <<(@group)
-      @group.save!
       @current_user.save!
     end
 
     def update
       @group = Group.find(params[:id])
       raise NotPrivileged unless @group.is_member?(@current_user)
-      @group.name = params[:name]
-      @group.save!
+      @group.update!(group_params)
     end
 
     def destroy
       @group = Group.find(params[:id])
       raise NotPrivileged unless @group.is_member?(@current_user)
-      @group.destroy
+      @group.destroy!
+    end
+
+    private
+
+    def group_params
+      params.required(:group).permit(:name)
     end
   end
 end
