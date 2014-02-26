@@ -33,16 +33,10 @@ module V1
         @group.save!
         @user.save!
       else
-        @user = User.new
-        @user.first_name = params[:first_name]
-        @user.last_name = params[:last_name]
-        @user.username = params[:username]
-        @user.email = params[:email]
-        @user.password = params[:password]
-        @user.save!
-      end
+        @user = User.create!(user_params)
 
-      respond_with @user
+        respond_with @user
+      end
     end
 
     def destroy
@@ -58,6 +52,12 @@ module V1
       end
 
       respond_with @user
+    end
+
+    private
+
+    def user_params
+      params.required(:user).permit(:first_name, :last_name, :username, :email, :password, :phone_no)
     end
   end
 end
