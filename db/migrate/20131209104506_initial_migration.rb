@@ -53,6 +53,7 @@ class InitialMigration < ActiveRecord::Migration
       t.string :odometer_reading
       t.string :technician
       t.text :description
+      t.belongs_to :car
 
       t.timestamps
     end

@@ -1,5 +1,11 @@
 require 'spec_helper'
 
 describe GpsStatistic do
-  pending "add some examples to (or delete) #{__FILE__}"
+  it 'should belong to car' do
+    should belong_to(:car)
+  end
+
+  it 'should have one location' do
+    should have_one(:location)
+  end
 end

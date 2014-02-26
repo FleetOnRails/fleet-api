@@ -135,6 +135,7 @@ ActiveRecord::Schema.define(version: 20131221163218) do
     t.string   "odometer_reading"
     t.string   "technician"
     t.text     "description"
+    t.integer  "car_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

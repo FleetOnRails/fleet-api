@@ -1,5 +1,7 @@
 require 'spec_helper'
 
 describe DiagnosticFault do
-  pending "add some examples to (or delete) #{__FILE__}"
+  it 'should belong to car' do
+    should belong_to(:car)
+  end
 end

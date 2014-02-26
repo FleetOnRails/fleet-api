@@ -1,5 +1,7 @@
 require 'spec_helper'
 
 describe Document do
-  pending "add some examples to (or delete) #{__FILE__}"
+  it 'should belong to documentable' do
+    should belong_to(:documentable)
+  end
 end

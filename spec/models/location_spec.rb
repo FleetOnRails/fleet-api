@@ -1,5 +1,7 @@
 require 'spec_helper'
 
 describe Location do
-  pending "add some examples to (or delete) #{__FILE__}"
+  it 'should belong to locationable' do
+    should belong_to(:locationable)
+  end
 end
