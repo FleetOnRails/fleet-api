@@ -23,6 +23,14 @@ ActiveRecord::Schema.define(version: 20131221163218) do
     t.datetime "updated_at"
   end
 
+  create_table "destinations", force: true do |t|
+    t.string   "name"
+    t.string   "destinationable_id"
+    t.string   "destinationable_type"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "diagnostic_faults", force: true do |t|
     t.string   "fault_code"
     t.integer  "car_id"
@@ -113,6 +121,16 @@ ActiveRecord::Schema.define(version: 20131221163218) do
 
   add_index "oauth_applications", ["uid"], name: "index_oauth_applications_on_uid", unique: true
 
+  create_table "products", force: true do |t|
+    t.string   "name"
+    t.float    "price"
+    t.string   "part_no"
+    t.string   "productable_id"
+    t.string   "productable_type"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "service_records", force: true do |t|
     t.string   "odometer_reading"
     t.string   "technician"
@@ -138,6 +156,15 @@ ActiveRecord::Schema.define(version: 20131221163218) do
     t.string   "salt"
     t.boolean  "admin"
     t.string   "avatar"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "vendors", force: true do |t|
+    t.string   "name"
+    t.string   "type"
+    t.string   "venderable_id"
+    t.string   "venderable_type"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
