@@ -11,9 +11,9 @@ module V1
     end
 
     def update
-      if params[:avatar_data] && params[:avatar_extension]
+      if params[:me][:avatar_data] && params[:me][:avatar_extension]
         @current_user.update!(me_params)
-        @current_user.avatar = MeHelper.build_avatar(params[:avatar_data], params[:avatar_extension])
+        @current_user.avatar = build_avatar(params[:me][:avatar_data], params[:me][:avatar_extension])
         @current_user.save!
 
         respond_with @current_user
