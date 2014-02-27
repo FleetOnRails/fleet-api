@@ -2,6 +2,8 @@ module V1
   class UsersController < BaseController
     doorkeeper_for [:index, :show, :update, :destroy]
 
+    include UsersHelper
+
     def index
       if params[:group_id]
         @group = Group.find(params[:group_id])
@@ -34,6 +36,8 @@ module V1
         @user.save!
       else
         @user = User.create!(user_params)
+        @user.avatar = get_default_avatar
+        @user.save!
 
         respond_with @user
       end
