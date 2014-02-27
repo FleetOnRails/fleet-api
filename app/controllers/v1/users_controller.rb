@@ -9,11 +9,13 @@ module V1
         @group = Group.find(params[:group_id])
         @users = @group.users
         raise NotPrivileged unless @group.is_member?(@current_user)
+
+        respond_with @users
       else
         @users = User.all
-      end
 
-      respond_with @users
+        respond_with @users
+      end
     end
 
     def show
@@ -34,6 +36,8 @@ module V1
         @group.users <<(@user)
         @group.save!
         @user.save!
+
+        respond_with @user
       else
         @user = User.create!(user_params)
         @user.avatar = get_default_avatar
@@ -51,11 +55,11 @@ module V1
         @group.users.delete(@user)
         @group.save!
         @user.save!
+
+        respond_with @user
       else
         raise NotPrivileged
       end
-
-      respond_with @user
     end
 
     private
