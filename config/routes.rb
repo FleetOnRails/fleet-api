@@ -1,4 +1,9 @@
 FleetOnRails::Application.routes.draw do
+  get "diagnostic_faults/index"
+  get "diagnostic_faults/show"
+  get "diagnostic_faults/create"
+  get "diagnostic_faults/update"
+  get "diagnostic_faults/destroy"
   use_doorkeeper
 
   #

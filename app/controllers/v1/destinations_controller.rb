@@ -66,7 +66,7 @@ module V1
     private
 
     def destination_params
-      params.required(:destination).permit(:name, {:location => [:latitude, :longitude, :address]})
+      params.required(:destination).permit(:name)
     end
 
     def location_params
