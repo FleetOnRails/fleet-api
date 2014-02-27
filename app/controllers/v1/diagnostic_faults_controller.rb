@@ -31,6 +31,14 @@ module V1
     end
 
     def update
+      if params[:car_id]
+        @car = @current_user.cars.find(params[:car_id])
+        raise NotPrivileged unless @car
+        @diagnostic_fault = @car.diagnostic_faults.find(params[:id])
+        @diagnostic_fault.update!(diagnostic_fault_params)
+
+        respond_with @diagnostic_fault
+      end
     end
 
     def destroy
@@ -39,7 +47,7 @@ module V1
     private
 
     def diagnostic_fault_params
-      params.required(:diagnostic_fault).permit(:mph, :rpm, :mpg)
+      params.required(:diagnostic_fault).permit(:fault_code, :fixed)
     end
   end
 end

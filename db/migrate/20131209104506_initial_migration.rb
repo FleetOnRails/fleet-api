@@ -35,6 +35,7 @@ class InitialMigration < ActiveRecord::Migration
     create_table :diagnostic_faults do |t|
       t.string :fault_code
       t.belongs_to :car
+      t.boolean :fixed
 
       t.timestamps
     end
