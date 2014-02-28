@@ -1,14 +1,4 @@
 FleetOnRails::Application.routes.draw do
-  get "gps_statistics/index"
-  get "gps_statistics/show"
-  get "gps_statistics/create"
-  get "gps_statistics/update"
-  get "gps_statistics/destroy"
-  get "documents/index"
-  get "documents/show"
-  get "documents/create"
-  get "documents/update"
-  get "documents/delete"
   use_doorkeeper
 
   #
