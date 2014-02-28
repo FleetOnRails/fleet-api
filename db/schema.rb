@@ -37,6 +37,7 @@ ActiveRecord::Schema.define(version: 20131221163218) do
 
   create_table "diagnostic_faults", force: true do |t|
     t.string   "fault_code"
+    t.boolean  "status"
     t.integer  "car_id"
     t.datetime "created_at"
     t.datetime "updated_at"

@@ -1,9 +1,4 @@
 FleetOnRails::Application.routes.draw do
-  get "diagnostic_faults/index"
-  get "diagnostic_faults/show"
-  get "diagnostic_faults/create"
-  get "diagnostic_faults/update"
-  get "diagnostic_faults/destroy"
   use_doorkeeper
 
   #
@@ -21,12 +16,17 @@ FleetOnRails::Application.routes.draw do
     put '/me', to: 'me#update'
 
     resources :users, only: [:index, :show, :create, :update, :destroy]
-    resources :cars, only: [:index, :show, :create, :update, :destroy]
+    resources :cars, only: [:index, :show, :create, :update, :destroy] do
+      resources :diagnostic_faults, only: [:index, :show, :create, :update, :destroy]
+    end
 
     resources :groups, only: [:index, :show, :create, :update, :destroy] do
       resources :users, only: [:index, :create, :destroy]
-      resources :cars, only: [:index, :show, :update, :create, :destroy]
       resources :destinations, only: [:index, :show, :update, :create, :destroy]
+
+      resources :cars, only: [:index, :show, :update, :create, :destroy] do
+        resources :diagnostic_faults, only: [:index, :show, :create, :update, :destroy]
+      end
     end
   end
 end
