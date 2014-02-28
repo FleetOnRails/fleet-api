@@ -16,6 +16,7 @@ FleetOnRails::Application.routes.draw do
     put '/me', to: 'me#update'
 
     resources :users, only: [:index, :show, :create, :update, :destroy]
+
     resources :cars, only: [:index, :show, :create, :update, :destroy] do
       resources :documents, only: [:index, :show, :create, :update, :destroy]
       resources :diagnostic_faults, only: [:index, :show, :create, :update]
@@ -23,9 +24,14 @@ FleetOnRails::Application.routes.draw do
       resources :gps_statistics, only: [:index, :show, :create]
     end
 
+    resources :vendors, only: [:index, :show, :update, :create, :destroy] do
+      resources :products, only: [:index, :show, :update, :create, :destroy]
+    end
+
     resources :groups, only: [:index, :show, :create, :update, :destroy] do
       resources :users, only: [:index, :create, :destroy]
       resources :cars, only: [:index, :show, :update, :create, :destroy]
+      resources :vendors, only: [:index, :show, :update, :create, :destroy]
       resources :destinations, only: [:index, :show, :update, :create, :destroy]
     end
   end
