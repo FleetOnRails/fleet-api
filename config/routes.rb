@@ -22,11 +22,8 @@ FleetOnRails::Application.routes.draw do
 
     resources :groups, only: [:index, :show, :create, :update, :destroy] do
       resources :users, only: [:index, :create, :destroy]
+      resources :cars, only: [:index, :show, :update, :create, :destroy]
       resources :destinations, only: [:index, :show, :update, :create, :destroy]
-
-      resources :cars, only: [:index, :show, :update, :create, :destroy] do
-        resources :diagnostic_faults, only: [:index, :show, :create, :update, :destroy]
-      end
     end
   end
 end
