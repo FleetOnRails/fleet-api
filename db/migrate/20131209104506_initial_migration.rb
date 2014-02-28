@@ -97,7 +97,7 @@ class InitialMigration < ActiveRecord::Migration
 
     create_table :vendors do |t|
       t.string :name
-      t.string :type
+      t.string :supplies
       t.references :venderable, polymorphic: true
 
       t.timestamps

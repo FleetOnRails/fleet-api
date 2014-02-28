@@ -184,7 +184,7 @@ ActiveRecord::Schema.define(version: 20131221163218) do
 
   create_table "vendors", force: true do |t|
     t.string   "name"
-    t.string   "type"
+    t.string   "supplies"
     t.integer  "venderable_id"
     t.string   "venderable_type"
     t.datetime "created_at"
