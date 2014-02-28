@@ -1,4 +1,9 @@
 FleetOnRails::Application.routes.draw do
+  get "gps_statistics/index"
+  get "gps_statistics/show"
+  get "gps_statistics/create"
+  get "gps_statistics/update"
+  get "gps_statistics/destroy"
   get "documents/index"
   get "documents/show"
   get "documents/create"
@@ -22,9 +27,10 @@ FleetOnRails::Application.routes.draw do
 
     resources :users, only: [:index, :show, :create, :update, :destroy]
     resources :cars, only: [:index, :show, :create, :update, :destroy] do
-      resources :diagnostic_faults, only: [:index, :show, :create, :update]
-      resources :diagnostic_statistics, only: [:index, :show, :create, :update]
       resources :documents, only: [:index, :show, :create, :update, :destroy]
+      resources :diagnostic_faults, only: [:index, :show, :create, :update]
+      resources :diagnostic_statistics, only: [:index, :show, :create]
+      resources :gps_statistics, only: [:index, :show, :create]
     end
 
     resources :groups, only: [:index, :show, :create, :update, :destroy] do

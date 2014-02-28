@@ -61,23 +61,7 @@ module V1
     end
 
     def update
-      if params[:car_id]
-        @car = Car.find(params[:car_id])
-        if @car.owner_type == 'User'
-          raise NotPrivileged unless @car.owner_id == @current_user.id
-          @diagnostic_statistic = @car.diagnostic_statistics.find(params[:id])
-          @diagnostic_statistic.update!(diagnostic_statistic_params)
-
-          respond_with @diagnostic_statistic
-        elsif @car.owner_type == 'Group'
-          @group = Group.find(@car.owner_id)
-          raise NotPrivileged unless @group.is_member?(@current_user)
-          @diagnostic_statistic = @car.diagnostic_statistics.find(params[:id])
-          @diagnostic_statistic.update!(diagnostic_statistic_params)
-
-          respond_with @diagnostic_statistic
-        end
-      end
+      # TODO - Should there be a update method for a diagnostic statistic ?
     end
 
     def destroy
