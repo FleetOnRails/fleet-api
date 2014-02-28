@@ -46,8 +46,8 @@ module V1
           @car = Car.find(params[:car_id])
           if @car.owner_type == 'User'
             raise NotPrivileged unless @car.owner_id == @current_user.id
-            @document = Document.new!(document_params)
-            @document.document = build_document(params[:document][:document_data], params[:document][:document_extension])
+            @document = Document.new(document_params)
+            @document.media = build_media(params[:document][:document_data], params[:document][:document_extension])
             @document.save!
             @car.documents <<(@document)
             @car.save!
@@ -56,8 +56,8 @@ module V1
           elsif @car.owner_type == 'Group'
             @group = Group.find(@car.owner_id)
             raise NotPrivileged unless @group.is_member?(@current_user)
-            @document = Document.new!(document_params)
-            @document.document = build_document(params[:document][:document_data], params[:document][:document_extension])
+            @document = Document.new(document_params)
+            @document.media = build_media(params[:document][:document_data], params[:document][:document_extension])
             @document.save!
             @car.documents <<(@document)
             @car.save!
@@ -76,7 +76,7 @@ module V1
             raise NotPrivileged unless @car.owner_id == @current_user.id
             @document = @car.documents.find(params[:id])
             @document.update!(document_params)
-            @document.document = build_document(params[:document][:document_data], params[:document][:document_extension])
+            @document.media = build_media(params[:document][:document_data], params[:document][:document_extension])
             @document.save!
 
             respond_with @document
@@ -85,7 +85,7 @@ module V1
             raise NotPrivileged unless @group.is_member?(@current_user)
             @document = @car.documents.find(params[:id])
             @document.update!(document_params)
-            @document.document = build_document(params[:document][:document_data], params[:document][:document_extension])
+            @document.media = build_media(params[:document][:document_data], params[:document][:document_extension])
             @document.save!
 
             respond_with @document

@@ -58,7 +58,7 @@ ActiveRecord::Schema.define(version: 20131221163218) do
 
   create_table "documents", force: true do |t|
     t.string   "name"
-    t.string   "document"
+    t.string   "media"
     t.integer  "documentable_id"
     t.string   "documentable_type"
     t.datetime "created_at"

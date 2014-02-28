@@ -77,7 +77,7 @@ class InitialMigration < ActiveRecord::Migration
 
     create_table :documents do |t|
       t.string :name
-      t.string :document
+      t.string :media
       t.references :documentable, polymorphic: true
 
       t.timestamps

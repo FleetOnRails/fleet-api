@@ -1,3 +1,3 @@
-collection @diagnostic_statistics, :root => 'diagnostic_statistics'
+collection @documents, :root => 'documents'
 
 extends 'v1/documents/show'
