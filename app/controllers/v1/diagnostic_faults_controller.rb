@@ -4,17 +4,19 @@ module V1
 
     def index
       if params[:car_id]
-        @car = @current_user.cars.find(params[:car_id])
-        @diagnostic_faults = @car.diagnostic_faults
+        @car = Car.find(params[:car_id])
+        if @car.owner_type == 'User'
+          raise NotPrivileged unless @car.owner_id == @current_user.id
+          @diagnostic_faults = @car.diagnostic_faults
 
-        respond_with @diagnostic_faults
-      elsif params[:group_id] && params[:car_id]
-        @group = Group.find(params[:group_id])
-        raise NotPrivileged unless @group.is_member?(@current_user)
-        @car = @group.cars.find(params[:car_id])
-        @diagnostic_faults = @car.diagnostic_faults
+          respond_with @diagnostic_faults
+        elsif @car.owner_type == 'Group'
+          @group = Group.find(@car.owner_id)
+          raise NotPrivileged unless @group.is_member?(@current_user)
+          @diagnostic_faults = @car.diagnostic_faults
 
-        respond_with @diagnostic_faults
+          respond_with @diagnostic_faults
+        end
       end
     end
 
