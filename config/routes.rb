@@ -1,4 +1,9 @@
 FleetOnRails::Application.routes.draw do
+  get "documents/index"
+  get "documents/show"
+  get "documents/create"
+  get "documents/update"
+  get "documents/delete"
   use_doorkeeper
 
   #
@@ -19,6 +24,7 @@ FleetOnRails::Application.routes.draw do
     resources :cars, only: [:index, :show, :create, :update, :destroy] do
       resources :diagnostic_faults, only: [:index, :show, :create, :update]
       resources :diagnostic_statistics, only: [:index, :show, :create, :update]
+      resources :documents, only: [:index, :show, :create, :update, :destroy]
     end
 
     resources :groups, only: [:index, :show, :create, :update, :destroy] do
