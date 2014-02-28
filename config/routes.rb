@@ -18,6 +18,7 @@ FleetOnRails::Application.routes.draw do
     resources :users, only: [:index, :show, :create, :update, :destroy]
     resources :cars, only: [:index, :show, :create, :update, :destroy] do
       resources :diagnostic_faults, only: [:index, :show, :create, :update, :destroy]
+      resources :diagnostic_statistics, only: [:index, :show, :create, :update, :destroy]
     end
 
     resources :groups, only: [:index, :show, :create, :update, :destroy] do

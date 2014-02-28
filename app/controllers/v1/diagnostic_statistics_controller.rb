@@ -1,5 +1,5 @@
 module V1
-  class DiagnosticFaultsController < BaseController
+  class DiagnosticStatisticsController < BaseController
     doorkeeper_for [:all]
 
     def index
@@ -7,15 +7,15 @@ module V1
         @car = Car.find(params[:car_id])
         if @car.owner_type == 'User'
           raise NotPrivileged unless @car.owner_id == @current_user.id
-          @diagnostic_faults = @car.diagnostic_faults
+          @diagnostic_statistics = @car.diagnostic_statistics
 
-          respond_with @diagnostic_faults
+          respond_with @diagnostic_statistics
         elsif @car.owner_type == 'Group'
           @group = Group.find(@car.owner_id)
           raise NotPrivileged unless @group.is_member?(@current_user)
-          @diagnostic_faults = @car.diagnostic_faults
+          @diagnostic_statistics = @car.diagnostic_statistics
 
-          respond_with @diagnostic_faults
+          respond_with @diagnostic_statistics
         end
       end
     end
@@ -25,13 +25,13 @@ module V1
         @car = Car.find(params[:car_id])
         if @car.owner_type == 'User'
           raise NotPrivileged unless @car.owner_id == @current_user.id
-          @diagnostic_statistic = @car.diagnostic_faults.find(params[:id])
+          @diagnostic_statistic = @car.diagnostic_statistics.find(params[:id])
 
           respond_with @diagnostic_statistic
         elsif @car.owner_type == 'Group'
           @group = Group.find(@car.owner_id)
           raise NotPrivileged unless @group.is_member?(@current_user)
-          @diagnostic_statistic = @car.diagnostic_faults.find(params[:id])
+          @diagnostic_statistic = @car.diagnostic_statistics.find(params[:id])
 
           respond_with @diagnostic_statistic
         end
@@ -43,16 +43,16 @@ module V1
         @car = Car.find(params[:car_id])
         if @car.owner_type == 'User'
           raise NotPrivileged unless @car.owner_id == @current_user.id
-          @diagnostic_statistic = DiagnosticFault.create!(diagnostic_fault_params)
-          @car.diagnostic_faults <<(@diagnostic_statistic)
+          @diagnostic_statistic = DiagnosticStatistic.create!(diagnostic_statistic_params)
+          @car.diagnostic_statistics <<(@diagnostic_statistic)
           @car.save!
 
           respond_with @diagnostic_statistic
         elsif @car.owner_type == 'Group'
           @group = Group.find(@car.owner_id)
           raise NotPrivileged unless @group.is_member?(@current_user)
-          @diagnostic_statistic = DiagnosticFault.create!(diagnostic_fault_params)
-          @car.diagnostic_faults <<(@diagnostic_statistic)
+          @diagnostic_statistic = DiagnosticStatistic.create!(diagnostic_statistic_params)
+          @car.diagnostic_statistics <<(@diagnostic_statistic)
           @car.save!
 
           respond_with @diagnostic_statistic
@@ -65,15 +65,15 @@ module V1
         @car = Car.find(params[:car_id])
         if @car.owner_type == 'User'
           raise NotPrivileged unless @car.owner_id == @current_user.id
-          @diagnostic_statistic = @car.diagnostic_faults.find(params[:id])
-          @diagnostic_statistic.update!(diagnostic_fault_params)
+          @diagnostic_statistic = @car.diagnostic_statistics.find(params[:id])
+          @diagnostic_statistic.update!(diagnostic_statistic_params)
 
           respond_with @diagnostic_statistic
         elsif @car.owner_type == 'Group'
           @group = Group.find(@car.owner_id)
           raise NotPrivileged unless @group.is_member?(@current_user)
-          @diagnostic_statistic = @car.diagnostic_faults.find(params[:id])
-          @diagnostic_statistic.update!(diagnostic_fault_params)
+          @diagnostic_statistic = @car.diagnostic_statistics.find(params[:id])
+          @diagnostic_statistic.update!(diagnostic_statistic_params)
 
           respond_with @diagnostic_statistic
         end
@@ -81,13 +81,13 @@ module V1
     end
 
     def destroy
-      # TODO - Should there be a destroy method for a fault code ?
+      # TODO - Should there be a destroy method for a diagnostic statistic ?
     end
 
     private
 
-    def diagnostic_fault_params
-      params.required(:diagnostic_statistic).permit(:fault_code, :status)
+    def diagnostic_statistic_params
+      params.required(:diagnostic_statistic).permit(:mph, :rpm, :mpg)
     end
   end
 end
