@@ -2,25 +2,18 @@ module V1
   class UsersController < BaseController
     doorkeeper_for [:index, :show, :update, :destroy]
 
-    include UsersHelper
-
     def index
       if params[:group_id]
-        @group = Group.find(params[:group_id])
-        @users = @group.users
-        raise NotPrivileged unless @group.is_member?(@current_user)
-
+        @users = ::Users::IndexGroupService.new(params[:group_id], @current_user).execute
         respond_with @users
       else
-        @users = User.all
-
+        @users = ::Users::IndexService.new.execute
         respond_with @users
       end
     end
 
     def show
-      @user = User.find(params[:id])
-
+      @user = ::Users::ShowService.new(params[:id]).execute
       respond_with @user
     end
 
@@ -29,25 +22,17 @@ module V1
 
     def create
       if params[:group_id]
-        @user = ::Users::GroupService.new(user_params, @current_user, params[:group_id]).add_user
-
+        @user = ::Users::AddToGroupService.new(user_params, params[:group_id], @current_user).execute
         respond_with @user
       else
-        @user = ::Users::CreateService.new(user_params).create
-
+        @user = ::Users::CreateService.new(user_params).execute
         respond_with @user
       end
     end
 
     def destroy
       if params[:group_id]
-        @group = Group.find(params[:group_id])
-        raise NotPrivileged unless @group.is_member?(@current_user)
-        @user = User.find(params[:id])
-        @group.users.delete(@user)
-        @group.save!
-        @user.save!
-
+        @user = ::Users::RemoveFromGroupService.new(params[:id], params[:group_id], @current_user).execute
         respond_with @user
       else
         raise NotPrivileged
