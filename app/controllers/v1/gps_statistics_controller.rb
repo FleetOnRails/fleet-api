@@ -7,15 +7,15 @@ module V1
         @car = Car.find(params[:car_id])
         if @car.owner_type == 'User'
           raise NotPrivileged unless @car.owner_id == @current_user.id
-          @gps_statistics = @car.gps_statistics
+          @service_records = @car.service_records
 
-          respond_with @gps_statistics
+          respond_with @service_records
         elsif @car.owner_type == 'Group'
           @group = Group.find(@car.owner_id)
           raise NotPrivileged unless @group.is_member?(@current_user)
-          @gps_statistics = @car.gps_statistics
+          @service_records = @car.service_records
 
-          respond_with @gps_statistics
+          respond_with @service_records
         end
       end
     end
@@ -25,13 +25,13 @@ module V1
         @car = Car.find(params[:car_id])
         if @car.owner_type == 'User'
           raise NotPrivileged unless @car.owner_id == @current_user.id
-          @gps_statistic = @car.gps_statistics.find(params[:id])
+          @gps_statistic = @car.service_records.find(params[:id])
 
           respond_with @gps_statistic
         elsif @car.owner_type == 'Group'
           @group = Group.find(@car.owner_id)
           raise NotPrivileged unless @group.is_member?(@current_user)
-          @gps_statistic = @car.gps_statistics.find(params[:id])
+          @gps_statistic = @car.service_records.find(params[:id])
 
           respond_with @gps_statistic
         end
@@ -47,7 +47,7 @@ module V1
           @location = Location.new(location_params)
           @gps_statistic.location = @location
           @gps_statistic.save!
-          @car.gps_statistics <<(@gps_statistic)
+          @car.service_records <<(@gps_statistic)
 
           respond_with @gps_statistic
         elsif @car.owner_type == 'Group'
@@ -57,7 +57,7 @@ module V1
           @location = Location.new(location_params)
           @gps_statistic.location = @location
           @gps_statistic.save!
-          @car.gps_statistics <<(@gps_statistic)
+          @car.service_records <<(@gps_statistic)
 
           respond_with @gps_statistic
         end

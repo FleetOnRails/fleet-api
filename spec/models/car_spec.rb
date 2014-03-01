@@ -14,7 +14,7 @@ describe Car do
   end
 
   it 'should have many gps statistics' do
-    should have_many(:gps_statistics)
+    should have_many(:service_records)
   end
 
   it 'should have many service records' do

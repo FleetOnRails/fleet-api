@@ -18,10 +18,15 @@ FleetOnRails::Application.routes.draw do
     resources :users, only: [:index, :show, :create, :update, :destroy]
 
     resources :cars, only: [:index, :show, :create, :update, :destroy] do
+      resources :service_records, only: [:index, :show, :create, :update, :destroy]
       resources :documents, only: [:index, :show, :create, :update, :destroy]
       resources :diagnostic_faults, only: [:index, :show, :create, :update]
       resources :diagnostic_statistics, only: [:index, :show, :create]
       resources :gps_statistics, only: [:index, :show, :create]
+    end
+
+    resources :service_records, only: [] do
+      resources :documents, only: [:index, :show, :create, :update, :destroy]
     end
 
     resources :vendors, only: [:index, :show, :update, :create, :destroy] do

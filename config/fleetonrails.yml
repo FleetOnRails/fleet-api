@@ -1,0 +1,6 @@
+development:
+  capistrano_root: "/some file path"
+
+production:
+
+test:
