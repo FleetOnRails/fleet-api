@@ -7,8 +7,8 @@ module Users
     def execute
       group = Group.find(@group_id)
       user = User.find(@user_id[:user_id])
-      raise DuplicateEntry if group.is_member?(user)
-      raise NotPrivileged unless group.is_member?(@current_user)
+      raise ::V1::BaseController::NotPrivileged unless group.is_member?(@current_user)
+      raise ::V1::BaseController::DuplicateEntry if group.is_member?(user)
       group.users <<(user)
       group.save!
       user.save!
