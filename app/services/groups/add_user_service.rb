@@ -1,5 +1,5 @@
-module Users
-  class AddToGroupService < BaseService
+module Groups
+  class AddUserService < BaseService
     def initialize(params, group_id, current_user)
       @user_id, @group_id, @current_user = params.dup, group_id, current_user
     end

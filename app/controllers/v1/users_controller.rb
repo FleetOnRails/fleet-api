@@ -4,16 +4,18 @@ module V1
 
     def index
       if params[:group_id]
-        @users = ::Users::IndexGroupService.new(params[:group_id], @current_user).execute
+        @group = Group.find(params[:group_id])
+        raise NotPrivileged unless @group.is_member?(@current_user)
+        @users = @group.users
         respond_with @users
       else
-        @users = ::Users::IndexService.new.execute
+        @users = User.all
         respond_with @users
       end
     end
 
     def show
-      @user = ::Users::ShowService.new(params[:id]).execute
+      @user = User.find(params[:id])
       respond_with @user
     end
 
@@ -22,7 +24,7 @@ module V1
 
     def create
       if params[:group_id]
-        @user = ::Users::AddToGroupService.new(user_params, params[:group_id], @current_user).execute
+        @user = ::Groups::AddUserService.new(user_params, params[:group_id], @current_user).execute
         respond_with @user
       else
         @user = ::Users::CreateService.new(user_params).execute
@@ -32,7 +34,7 @@ module V1
 
     def destroy
       if params[:group_id]
-        @user = ::Users::RemoveFromGroupService.new(params[:id], params[:group_id], @current_user).execute
+        @user = ::Groups::RemoveUserService.new(params[:id], params[:group_id], @current_user).execute
         respond_with @user
       else
         raise NotPrivileged
