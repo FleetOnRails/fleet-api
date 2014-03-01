@@ -29,19 +29,11 @@ module V1
 
     def create
       if params[:group_id]
-        @group = Group.find(params[:group_id])
-        @user = User.find(params[:user_id])
-        raise DuplicateEntry if @group.is_member?(@user)
-        raise NotPrivileged unless @group.is_member?(@current_user)
-        @group.users <<(@user)
-        @group.save!
-        @user.save!
+        @user = ::Users::GroupService.new(user_params, @current_user, params[:group_id]).add_user
 
         respond_with @user
       else
-        @user = User.create!(user_params)
-        @user.avatar = get_default_avatar
-        @user.save!
+        @user = ::Users::CreateService.new(user_params).create
 
         respond_with @user
       end
@@ -65,7 +57,7 @@ module V1
     private
 
     def user_params
-      params.required(:user).permit(:first_name, :last_name, :username, :email, :password, :phone_no)
+      params.required(:user).permit(:first_name, :last_name, :username, :email, :password, :phone_no, :user_id)
     end
   end
 end
