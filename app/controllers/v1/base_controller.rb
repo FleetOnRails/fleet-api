@@ -1,5 +1,6 @@
 module V1
   class BaseController < ActionController::Base
+    # TODO - Refactor all controllers to use service classes for object creation, very big todo !!
     respond_to :json
 
     before_action :find_current_user
