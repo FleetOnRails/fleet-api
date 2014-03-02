@@ -101,7 +101,10 @@ module V1
     private
 
     def service_record_params
-      params.required(:service_record).permit(:odometer_reading, :technician, :description)
+      params.required(:service_record).permit(:odometer_reading,
+                                              :technician,
+                                              :description,
+                                              :location_attributes => [:latitude, :longitude, :address])
     end
   end
 end
