@@ -131,6 +131,7 @@ class InitialMigration < ActiveRecord::Migration
     # Join Models
     ###
     create_table :user_groups do |t|
+      t.integer :group_access
       t.belongs_to :group
       t.belongs_to :user
 

@@ -1,5 +1,6 @@
 class Group < ActiveRecord::Base
   include GroupConcern
+  #include FleetOnRails::Access
 
   has_many :cars, as: :owner, dependent: :destroy
   has_many :destinations, as: :destinationable, dependent: :destroy
@@ -13,5 +14,20 @@ class Group < ActiveRecord::Base
       return true if group_member.id == user.id
     end
     false
+  end
+
+  def is_owner?(user)
+    self.user_groups.owners.each do |user_groups|
+      return true if user_groups.user_id == user.id
+    end
+    false
+  end
+
+  def add_user(user, group_access)
+    self.user_groups.create(user_id: user.id, group_access: group_access)
+  end
+
+  def add_owner(user)
+    self.add_user(user, 30)
   end
 end

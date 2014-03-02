@@ -15,8 +15,7 @@ module V1
 
     def create
       @group = Group.create!(group_params)
-      @current_user.groups <<(@group)
-      @current_user.save!
+      @group.add_owner(@current_user)
     end
 
     def update

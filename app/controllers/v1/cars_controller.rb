@@ -27,7 +27,7 @@ module V1
     def create
       if params[:group_id]
         @group = Group.find(params[:group_id])
-        raise NotPrivileged unless @group.is_member?(@current_user)
+        raise NotPrivileged unless @group.is_owner?(@current_user)
         @car = Car.create!(car_params)
         @group.cars <<(@car)
         @group.save!

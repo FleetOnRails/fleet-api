@@ -13,18 +13,11 @@
 
 ActiveRecord::Schema.define(version: 20131221163218) do
 
-  create_table "avatars", force: true do |t|
-    t.string   "media"
-    t.integer  "avatarable_id"
-    t.string   "avatarable_type"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
   create_table "cars", force: true do |t|
     t.string   "make"
     t.string   "model"
     t.string   "registration"
+    t.string   "avatar"
     t.integer  "owner_id"
     t.string   "owner_type"
     t.datetime "created_at"
@@ -101,6 +94,7 @@ ActiveRecord::Schema.define(version: 20131221163218) do
 
   create_table "groups", force: true do |t|
     t.string   "name"
+    t.string   "avatar"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -183,6 +177,7 @@ ActiveRecord::Schema.define(version: 20131221163218) do
   add_index "service_records", ["car_id"], name: "service_record_ix"
 
   create_table "user_groups", force: true do |t|
+    t.integer  "group_access"
     t.integer  "group_id"
     t.integer  "user_id"
     t.datetime "created_at"
@@ -199,6 +194,7 @@ ActiveRecord::Schema.define(version: 20131221163218) do
     t.string   "phone_no"
     t.string   "password"
     t.string   "salt"
+    t.string   "avatar"
     t.boolean  "admin"
     t.datetime "created_at"
     t.datetime "updated_at"

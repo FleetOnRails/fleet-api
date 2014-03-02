@@ -9,7 +9,7 @@ module Groups
       user = User.find(@user_id[:user_id])
       raise ::V1::BaseController::NotPrivileged unless group.is_member?(@current_user)
       raise ::V1::BaseController::DuplicateEntry if group.is_member?(user)
-      group.users <<(user)
+      group.add_user(user, 20)
       group.save!
       user.save!
       user
