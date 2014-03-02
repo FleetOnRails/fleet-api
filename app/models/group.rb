@@ -1,6 +1,5 @@
 class Group < ActiveRecord::Base
   include GroupConcern
-  #include FleetOnRails::Access
 
   has_many :cars, as: :owner, dependent: :destroy
   has_many :destinations, as: :destinationable, dependent: :destroy
@@ -28,6 +27,6 @@ class Group < ActiveRecord::Base
   end
 
   def add_owner(user)
-    self.add_user(user, 30)
+    self.add_user(user, OWNER)
   end
 end

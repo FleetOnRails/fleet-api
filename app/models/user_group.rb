@@ -1,12 +1,10 @@
 class UserGroup < ActiveRecord::Base
-  #include FleetOnRails::Access
-
   belongs_to :user
   belongs_to :group
 
-  scope :owners, -> { where(group_access: 30) }
-  scope :drivers, -> { where(group_access: 20) }
-  scope :reporters, -> { where(group_access: 10) }
+  scope :owners, -> { where(group_access: OWNER) }
+  scope :drivers, -> { where(group_access: DRIVER) }
+  scope :reporters, -> { where(group_access: REPORTER) }
 
   validates :user_id, presence: true
   validates :group_id, presence: true
