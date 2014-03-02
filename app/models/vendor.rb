@@ -3,4 +3,6 @@ class Vendor < ActiveRecord::Base
 
   has_many :products, as: :productable, dependent: :destroy
   has_one :location, as: :locationable, dependent: :destroy
+
+  accepts_nested_attributes_for :location
 end

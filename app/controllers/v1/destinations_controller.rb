@@ -27,8 +27,6 @@ module V1
         @group = Group.find(params[:group_id])
         raise NotPrivileged unless @group.is_member?(@current_user)
         @destination = Destination.create!(destination_params)
-        @location = Location.create!(location_params)
-        @destination.location = @location
         @group.destinations <<(@destination)
         @group.save!
 
@@ -42,7 +40,6 @@ module V1
         raise NotPrivileged unless @group.is_member?(@current_user)
         @destination = @group.destinations.find(params[:id])
         @destination.update!(destination_params)
-        @destination.location.update!(location_params)
         @group.save!
         @destination.save!
 
@@ -66,11 +63,7 @@ module V1
     private
 
     def destination_params
-      params.required(:destination).permit(:name)
-    end
-
-    def location_params
-      params.required(:location).permit(:latitude, :longitude, :address)
+      params.required(:destination).permit(:name, :location_attributes => [:latitude, :longitude, :address])
     end
   end
 end

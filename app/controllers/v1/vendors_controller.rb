@@ -35,16 +35,12 @@ module V1
         @group = Group.find(params[:group_id])
         raise NotPrivileged unless @group.is_member?(@current_user)
         @vendor = Vendor.create!(vendor_params)
-        @location = Location.create!(location_params)
-        @vendor.location = @location
         @group.vendors <<(@vendor)
         @group.save!
 
         respond_with @vendor
       else
         @vendor = Vendor.create!(vendor_params)
-        @location = Location.create!(location_params)
-        @vendor.location = @location
         @current_user.vendors <<(@vendor)
         @current_user.save!
 
@@ -57,13 +53,11 @@ module V1
         @group = Group.find(params[:group_id])
         raise NotPrivileged unless @group.is_member?(@current_user)
         @vendor = @group.vendors.find(params[:id])
-        @vendor.location.update!(location_params)
         @vendor.update!(vendor_params)
 
         respond_with @vendor
       else
         @vendor = @current_user.vendors.find(params[:id])
-        @vendor.location.update!(location_params)
         @vendor.update!(vendor_params)
 
         respond_with @vendor
@@ -89,11 +83,7 @@ module V1
     private
 
     def vendor_params
-      params.required(:vendor).permit(:name, :supplies)
-    end
-
-    def location_params
-      params.required(:location).permit(:latitude, :longitude, :address)
+      params.required(:vendor).permit(:name, :supplies, :location_attributes => [:latitude, :longitude, :address])
     end
   end
 end

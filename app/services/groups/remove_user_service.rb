@@ -1,7 +1,7 @@
 module Groups
   class RemoveUserService < BaseService
     def initialize(user_id, group_id, current_user)
-      @user_id, @group_id, @current_user = user_id.dup, group_id, current_user
+      @user_id, @group_id, @current_user = user_id, group_id, current_user
     end
 
     def execute
