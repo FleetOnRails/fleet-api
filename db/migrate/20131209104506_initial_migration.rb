@@ -24,9 +24,9 @@ class InitialMigration < ActiveRecord::Migration
     end
 
     create_table :diagnostic_statistics do |t|
-      t.float :mph
+      t.float :kmh
       t.float :rpm
-      t.float :mpg
+      t.float 'l/100km'
       t.belongs_to :car
 
       t.timestamps
@@ -50,7 +50,20 @@ class InitialMigration < ActiveRecord::Migration
     end
 
     create_table :gps_statistics do |t|
-      t.float :mph
+      t.float :kmh
+      t.belongs_to :car
+
+      t.timestamps
+    end
+
+    create_table :fuel_entries do |t|
+      t.float :odometer
+      t.float :liters
+      t.float :price
+      t.string :fuel_type
+      t.string :filling_station
+      t.boolean :filled_tank
+      t.text :comment
       t.belongs_to :car
 
       t.timestamps
@@ -59,6 +72,13 @@ class InitialMigration < ActiveRecord::Migration
     ###
     # Polymorphic Models
     ###
+    create_table :avatars do |t|
+      t.string :media
+      t.references :avatarable, polymorphic: true
+
+      t.timestamps
+    end
+
     create_table :cars do |t|
       t.string :make
       t.string :model
@@ -129,6 +149,7 @@ class InitialMigration < ActiveRecord::Migration
     add_index :diagnostic_faults, :car_id, name: :diagnostic_fault_ix
     add_index :service_records, :car_id, name: :service_record_ix
     add_index :gps_statistics, :car_id, name: :gps_statistics_ix
+    add_index :fuel_entries, :car_id, name: :fuel_entries_ix
 
     add_index :cars, [:owner_id, :owner_type], name: :cars_ix
     add_index :destinations, [:destinationable_id, :destinationable_type], name: :destinations_ix

@@ -67,6 +67,21 @@ ActiveRecord::Schema.define(version: 20131221163218) do
 
   add_index "documents", ["documentable_id", "documentable_type"], name: "documents_ix"
 
+  create_table "fuel_entries", force: true do |t|
+    t.float    "odometer"
+    t.float    "liters"
+    t.float    "price"
+    t.string   "fuel_type"
+    t.string   "filling_station"
+    t.boolean  "filled_tank"
+    t.text     "comment"
+    t.integer  "car_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "fuel_entries", ["car_id"], name: "fuel_entries_ix"
+
   create_table "gps_statistics", force: true do |t|
     t.float    "mph"
     t.integer  "car_id"
