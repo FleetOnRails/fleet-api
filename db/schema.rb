@@ -13,6 +13,14 @@
 
 ActiveRecord::Schema.define(version: 20131221163218) do
 
+  create_table "avatars", force: true do |t|
+    t.string   "media"
+    t.integer  "avatarable_id"
+    t.string   "avatarable_type"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "cars", force: true do |t|
     t.string   "make"
     t.string   "model"
@@ -46,9 +54,9 @@ ActiveRecord::Schema.define(version: 20131221163218) do
   add_index "diagnostic_faults", ["car_id"], name: "diagnostic_fault_ix"
 
   create_table "diagnostic_statistics", force: true do |t|
-    t.float    "mph"
+    t.float    "kmh"
     t.float    "rpm"
-    t.float    "mpg"
+    t.float    "l/100km"
     t.integer  "car_id"
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -83,7 +91,7 @@ ActiveRecord::Schema.define(version: 20131221163218) do
   add_index "fuel_entries", ["car_id"], name: "fuel_entries_ix"
 
   create_table "gps_statistics", force: true do |t|
-    t.float    "mph"
+    t.float    "kmh"
     t.integer  "car_id"
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -192,7 +200,6 @@ ActiveRecord::Schema.define(version: 20131221163218) do
     t.string   "password"
     t.string   "salt"
     t.boolean  "admin"
-    t.string   "avatar"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

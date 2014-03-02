@@ -12,7 +12,6 @@ class InitialMigration < ActiveRecord::Migration
       t.string :password
       t.string :salt
       t.boolean :admin
-      t.string :avatar
 
       t.timestamps
     end

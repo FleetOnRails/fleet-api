@@ -1,3 +1,3 @@
 class Avatar < ActiveRecord::Base
-  mount_uploader :avatar, AvatarUploader
+  mount_uploader :media, AvatarUploader
 end
