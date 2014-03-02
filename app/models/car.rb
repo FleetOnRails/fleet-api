@@ -7,4 +7,6 @@ class Car < ActiveRecord::Base
   has_many :service_records, dependent: :destroy
   has_many :documents, as: :documentable, dependent: :destroy
   has_many :fuel_entries, dependent: :destroy
+
+  mount_uploader :avatar, AvatarUploader
 end

@@ -11,6 +11,7 @@ class InitialMigration < ActiveRecord::Migration
       t.string :phone_no
       t.string :password
       t.string :salt
+      t.string :avatar
       t.boolean :admin
 
       t.timestamps
@@ -18,6 +19,7 @@ class InitialMigration < ActiveRecord::Migration
 
     create_table :groups do |t|
       t.string :name
+      t.string :avatar
 
       t.timestamps
     end
@@ -71,17 +73,11 @@ class InitialMigration < ActiveRecord::Migration
     ###
     # Polymorphic Models
     ###
-    create_table :avatars do |t|
-      t.string :media
-      t.references :avatarable, polymorphic: true
-
-      t.timestamps
-    end
-
     create_table :cars do |t|
       t.string :make
       t.string :model
       t.string :registration
+      t.string :avatar
       t.references :owner, polymorphic: true
 
       t.timestamps

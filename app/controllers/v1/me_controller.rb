@@ -2,7 +2,7 @@ module V1
   class MeController < BaseController
     doorkeeper_for [:all]
 
-    include MeHelper
+    include AvatarHelper
 
     def index
       @current_user
