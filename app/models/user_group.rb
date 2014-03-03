@@ -9,5 +9,6 @@ class UserGroup < ActiveRecord::Base
 
   validates :user_id, presence: true
   validates :group_id, presence: true
+  validates :group_access, presence: true
   validates :user_id, uniqueness: {scope: [:group_id], message: 'already exists in group'}
 end

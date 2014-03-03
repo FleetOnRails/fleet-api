@@ -20,13 +20,13 @@ module V1
 
     def update
       @group = Group.find(params[:id])
-      raise NotPrivileged unless @group.is_member?(@current_user)
+      raise NotPrivileged unless @group.is_owner?(@current_user)
       @group.update!(group_params)
     end
 
     def destroy
       @group = Group.find(params[:id])
-      raise NotPrivileged unless @group.is_member?(@current_user)
+      raise NotPrivileged unless @group.is_owner?(@current_user)
       @group.destroy!
     end
 

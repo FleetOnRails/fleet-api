@@ -24,7 +24,7 @@ module V1
 
     def create
       if params[:group_id]
-        @user = ::Groups::AddUserService.new(user_params, params[:group_id], @current_user).execute
+        @user = ::Groups::AddUserService.new(add_user_to_group_params, params[:group_id], @current_user).execute
         respond_with @user
       else
         @user = ::Users::CreateService.new(user_params).execute
@@ -44,7 +44,11 @@ module V1
     private
 
     def user_params
-      params.required(:user).permit(:first_name, :last_name, :username, :email, :password, :phone_no, :user_id)
+      params.required(:user).permit(:first_name, :last_name, :username, :email, :password, :phone_no)
+    end
+
+    def add_user_to_group_params
+      params.required(:user).permit(:user_id, :permission_level)
     end
   end
 end
