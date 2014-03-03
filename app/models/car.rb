@@ -9,4 +9,5 @@ class Car < ActiveRecord::Base
   has_many :fuel_entries, dependent: :destroy
 
   mount_uploader :avatar, AvatarUploader
+
 end
