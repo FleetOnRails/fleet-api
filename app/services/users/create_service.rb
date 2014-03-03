@@ -5,7 +5,7 @@ module Users
     end
 
     def execute
-      user = User.create!(@user_id)
+      user = User.create!(@params)
       user.avatar = get_default_avatar
       user.save!
       user
