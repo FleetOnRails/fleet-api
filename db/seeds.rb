@@ -12,10 +12,4 @@
               password: 'fleetonrails', admin: false }])
 
 @group = Group.create(name: 'fleet')
-@group.users <<(User.first)
-
-@personal_car = Car.create(make: 'Toyota', model: 'Corolla', registration: '05wx11013')
-@group_car = Car.create(make: 'Seat', model: 'Toledo', registration: '01cn1358')
-
-@group.cars <<(@group_car)
-User.first.cars <<(@personal_car)
+@group.add_owner(User.first)

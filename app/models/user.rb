@@ -1,3 +1,5 @@
+require 'bcrypt'
+
 class User < ActiveRecord::Base
   has_many :cars, as: :owner, dependent: :destroy
   has_many :vendors, as: :venderable, dependent: :destroy
