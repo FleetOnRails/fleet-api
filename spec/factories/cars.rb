@@ -2,8 +2,8 @@
 
 FactoryGirl.define do
   factory :cars do
-    make Faker::Commerce.product_name
-    model Faker::Commerce.product_name
-    registration Faker::Commerce.product_name
+    make 'toyota'
+    model 'corolla'
+    registration '05wx11013'
   end
 end

@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe V1::DestinationController do
+describe V1::DestinationsController do
 
   describe "GET 'index'" do
     it "returns http success" do
