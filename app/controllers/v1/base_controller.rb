@@ -1,8 +1,21 @@
 module V1
   class BaseController < ActionController::Base
-    class NotPrivileged < StandardError; end
+    # TODO - Refactor all controllers to use service classes for object creation, very big todo !!
+    respond_to :json
 
     before_action :find_current_user
+
+    def find_current_user
+      if doorkeeper_token
+        @current_user ||= User.find(doorkeeper_token.resource_owner_id)
+      end
+    end
+
+    ###
+    # Custom Errors
+    ###
+    class NotPrivileged < StandardError; end
+    class DuplicateEntry < StandardError; end
 
     rescue_from ActiveRecord::RecordInvalid do |exception|
       @object = exception.record
@@ -18,12 +31,8 @@ module V1
       render status: 403, template: 'v1/errors/not_privileged'
     end
 
-    def find_current_user
-      if Rails.env.test?
-        @current_user ||= User.find_by_first_name(:alan)
-      elsif doorkeeper_token
-        @current_user ||= User.find(doorkeeper_token.resource_owner_id)
-      end
+    rescue_from DuplicateEntry do
+      render status: 403, template: 'v1/errors/duplicate_entry'
     end
   end
 end

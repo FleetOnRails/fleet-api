@@ -1,21 +1,24 @@
 require 'bcrypt'
 
 class User < ActiveRecord::Base
-  has_and_belongs_to_many :groups
+  has_many :cars, as: :owner, dependent: :destroy
+  has_many :vendors, as: :venderable, dependent: :destroy
+
+  has_many :user_groups
+  has_many :groups, through: :user_groups
+
+  mount_uploader :avatar, AvatarUploader
 
   EMAIL_REGEX = /\A[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}\z/i
 
-  validates_presence_of :email, :username, :first_name, :last_name, :password
+  validates_presence_of :email, :username, :first_name, :last_name
+  validates_presence_of :password, on: :create
   validates_uniqueness_of :username, :email
 
   validates_format_of :email, with: EMAIL_REGEX
 
-  before_save :encrypt_password
-  after_save :clear_password
-
-  def has_password?
-    password == encrypt_password
-  end
+  before_create :encrypt_password
+  after_create :clear_password
 
   class << self
     def authenticate(username_or_email, login_password)
@@ -26,18 +29,20 @@ class User < ActiveRecord::Base
       end
 
       if user && user.match_password(login_password)
-        return user
+        user
       else
-        return false
+        false
       end
     end
+  end
+
+  def has_password?
+    password == encrypt_password
   end
 
   def match_password(login_password)
     password == BCrypt::Engine.hash_secret(login_password, salt)
   end
-
-  private
 
   def encrypt_password
     unless salt

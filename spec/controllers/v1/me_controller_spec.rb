@@ -1,40 +1,23 @@
 require 'spec_helper'
 
 describe V1::MeController do
+  render_views
+
+  let(:token) { double :accessible? => true, :resource_owner_id => 1 }
 
   before :each do
     controller.stub(:doorkeeper_token) { token }
-    request.accept = 'application/json'
   end
 
-  describe 'GET #index' do
+  describe 'Get #index' do
     it 'responds with 200' do
-      get :index
+      get :index, :format => :json
       response.status.should eq(200)
     end
+
+    it 'returns a me object' do
+      get :index, :format => :json
+      json.should have_key('me')
+    end
   end
-
-  #describe "GET 'index'" do
-  #  before { get :index }
-  #
-  #  it 'Renders the api/v1/me/index view' do
-  #    should render_template('api/v1/me/index')
-  #  end
-  #end
-  #
-  #describe "GET 'update'" do
-  #  it "returns http success" do
-  #    pending("something else getting finished")
-  #    this_should_not_get_executed
-  #  end
-  #end
-  #
-  #describe "POST 'update'" do
-  #  before { post :update }
-  #
-  #  it 'Renders the api/v1/me/update view' do
-  #    should render_template('api/v1/me/update')
-  #  end
-  #end
-
 end

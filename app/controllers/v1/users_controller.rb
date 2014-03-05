@@ -1,65 +1,54 @@
 module V1
   class UsersController < BaseController
-    doorkeeper_for [:index, :show, :update, :destroy] unless Rails.env.test?
+    doorkeeper_for [:index, :show, :update, :destroy]
 
     def index
       if params[:group_id]
-        @users = Group.find(params[:group_id]).users
+        @group = Group.find(params[:group_id])
+        raise NotPrivileged unless @group.is_member?(@current_user)
+        @users = @group.users
+        respond_with @users
       else
         @users = User.all
+        respond_with @users
       end
     end
 
     def show
       @user = User.find(params[:id])
+      respond_with @user
     end
 
     def update
-      if @current_user.admin
-        @user = User.find(params[:id])
-        @user.admin = params[:set_admin]
-        @user.save!
-      else
-        raise NotPrivileged
-      end
     end
 
     def create
       if params[:group_id]
-        @group = Group.find(params[:group_id])
-        @user = User.find(params[:user_id])
-        raise NotPrivileged if @group.is_member?(@user)
-        if @group.is_member?(@current_user)
-          @group.users <<(@user)
-          @group.save!
-          @user.save!
-        else
-          raise NotPrivileged
-        end
+        @user = ::Groups::AddUserService.new(add_user_to_group_params, params[:group_id], @current_user).execute
+        respond_with @user
       else
-        @user = User.new
-        @user.first_name = params[:first_name]
-        @user.last_name = params[:last_name]
-        @user.username = params[:username]
-        @user.email = params[:email]
-        @user.password = params[:password]
-        @user.save!
+        @user = ::Users::CreateService.new(user_params).execute
+        respond_with @user
       end
     end
 
     def destroy
       if params[:group_id]
-        @group = Group.find(params[:group_id])
-        @user = User.find(params[:id])
-        @group.users.delete(@user)
-        @group.save!
-        @user.save!
-      elsif @current_user.admin
-        @user = User.find(params[:id])
-        @user.destroy
+        @user = ::Groups::RemoveUserService.new(params[:id], params[:group_id], @current_user).execute
+        respond_with @user
       else
         raise NotPrivileged
       end
+    end
+
+    private
+
+    def user_params
+      params.required(:user).permit(:first_name, :last_name, :username, :email, :password, :phone_no)
+    end
+
+    def add_user_to_group_params
+      params.required(:user).permit(:user_id, :permission_level)
     end
   end
 end

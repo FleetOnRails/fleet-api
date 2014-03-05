@@ -1,8 +1,20 @@
 require 'spec_helper'
 
 describe User do
-  it 'should have and belong to many groups' do
-    should have_and_belong_to_many(:groups)
+  it 'should have many user groups' do
+    should have_many(:user_groups)
+  end
+
+  it 'should have many groups' do
+    should have_many(:groups).through(:user_groups)
+  end
+
+  it 'should have many cars' do
+    should have_many(:cars)
+  end
+
+  it 'should have many vendors' do
+    should have_many(:vendors)
   end
 
   it 'validates presence of email' do

@@ -13,16 +13,106 @@
 
 ActiveRecord::Schema.define(version: 20131221163218) do
 
-  create_table "groups", force: true do |t|
-    t.string   "name"
+  create_table "cars", force: true do |t|
+    t.string   "make"
+    t.string   "model"
+    t.string   "registration"
+    t.string   "avatar"
+    t.integer  "owner_id"
+    t.string   "owner_type"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  create_table "groups_users", force: true do |t|
-    t.integer "group_id"
-    t.integer "user_id"
+  add_index "cars", ["owner_id", "owner_type"], name: "cars_ix"
+
+  create_table "destinations", force: true do |t|
+    t.string   "name"
+    t.integer  "destinationable_id"
+    t.string   "destinationable_type"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
+
+  add_index "destinations", ["destinationable_id", "destinationable_type"], name: "destinations_ix"
+
+  create_table "diagnostic_faults", force: true do |t|
+    t.string   "fault_code"
+    t.boolean  "status"
+    t.integer  "car_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "diagnostic_faults", ["car_id"], name: "diagnostic_fault_ix"
+
+  create_table "diagnostic_statistics", force: true do |t|
+    t.float    "kmh"
+    t.float    "rpm"
+    t.float    "l/100km"
+    t.integer  "car_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "diagnostic_statistics", ["car_id"], name: "diagnostic_statistics_ix"
+
+  create_table "documents", force: true do |t|
+    t.string   "name"
+    t.string   "media"
+    t.integer  "documentable_id"
+    t.string   "documentable_type"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "documents", ["documentable_id", "documentable_type"], name: "documents_ix"
+
+  create_table "fuel_entries", force: true do |t|
+    t.float    "odometer"
+    t.float    "liters"
+    t.float    "price"
+    t.string   "fuel_type"
+    t.string   "filling_station"
+    t.boolean  "filled_tank"
+    t.text     "comment"
+    t.integer  "car_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "fuel_entries", ["car_id"], name: "fuel_entries_ix"
+
+  create_table "gps_statistics", force: true do |t|
+    t.float    "kmh"
+    t.integer  "car_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "gps_statistics", ["car_id"], name: "gps_statistics_ix"
+
+  create_table "groups", force: true do |t|
+    t.string   "name"
+    t.string   "avatar"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "locations", force: true do |t|
+    t.float    "latitude"
+    t.float    "longitude"
+    t.string   "address"
+    t.string   "city"
+    t.string   "county"
+    t.string   "country"
+    t.integer  "locationable_id"
+    t.string   "locationable_type"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "locations", ["locationable_id", "locationable_type"], name: "locations_ix"
 
   create_table "oauth_access_grants", force: true do |t|
     t.integer  "resource_owner_id",              null: false
@@ -63,6 +153,39 @@ ActiveRecord::Schema.define(version: 20131221163218) do
 
   add_index "oauth_applications", ["uid"], name: "index_oauth_applications_on_uid", unique: true
 
+  create_table "products", force: true do |t|
+    t.string   "name"
+    t.float    "price"
+    t.string   "part_no"
+    t.integer  "productable_id"
+    t.string   "productable_type"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "products", ["productable_id", "productable_type"], name: "products_ix"
+
+  create_table "service_records", force: true do |t|
+    t.string   "odometer_reading"
+    t.string   "technician"
+    t.text     "description"
+    t.integer  "car_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "service_records", ["car_id"], name: "service_record_ix"
+
+  create_table "user_groups", force: true do |t|
+    t.integer  "group_access"
+    t.integer  "group_id"
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "user_groups", ["group_id", "user_id"], name: "user_groups_ix"
+
   create_table "users", force: true do |t|
     t.string   "first_name"
     t.string   "last_name"
@@ -71,9 +194,21 @@ ActiveRecord::Schema.define(version: 20131221163218) do
     t.string   "phone_no"
     t.string   "password"
     t.string   "salt"
+    t.string   "avatar"
     t.boolean  "admin"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  create_table "vendors", force: true do |t|
+    t.string   "name"
+    t.string   "supplies"
+    t.integer  "venderable_id"
+    t.string   "venderable_type"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "vendors", ["venderable_id", "venderable_type"], name: "vendors_ix"
 
 end

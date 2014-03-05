@@ -17,9 +17,7 @@ end
 group :development, :test do
   gem 'debugger'
   gem 'rspec-rails'
-  gem 'capybara'
   gem 'factory_girl_rails'
-  gem 'faker'
   gem 'simplecov'
   gem 'shoulda-matchers'
 end
@@ -32,25 +30,38 @@ gem 'capistrano'
 gem 'capistrano-bundler'
 gem 'capistrano-rails'
 
-# Security
+# OAuth
 gem 'doorkeeper'
-gem 'bcrypt-ruby', '~> 3.1.2'
+
+# CORS
 gem 'rack-cors', :require => 'rack/cors'
+
+# Use ActiveModel has_secure_password
+gem 'bcrypt-ruby', '~> 3.1.2'
 
 # JSON API
 gem 'rabl'
 
-# Style sheets and JavaScripts
-gem 'sass-rails', '>= 3.2' # sass-rails needs to be higher than 3.2
+# Use SCSS for stylesheets
+gem 'sass-rails', '~> 4.0.0'
 gem 'bootstrap-sass', '~> 3.0.3.0'
 gem 'font-awesome-sass'
+
+# Use jquery as the JavaScript library
 gem 'jquery-rails'
-gem 'therubyracer'
-gem 'execjs'
-gem 'sprockets-rails', :require => 'sprockets/railtie'
+
+# See https://github.com/sstephenson/execjs#readme for more supported runtimes
+gem 'therubyracer', platforms: :ruby
 
 # Markdown parser
 gem 'markdown-rails'
 gem 'coderay'
 gem 'nokogiri'
 gem 'redcarpet'
+
+# File upload
+gem 'carrierwave'
+gem 'mini_magick'
+
+# Geocoder for location based services
+gem 'geocoder'
