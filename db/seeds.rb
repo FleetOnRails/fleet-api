@@ -11,5 +11,3 @@
              { username: 'krystian', first_name: 'krystian', last_name: 'jankowski', email: 'krystian.jankowski2@mail.dcu.ie',
               password: 'fleetonrails', admin: false }])
 
-@group = Group.create(name: 'fleet')
-@group.add_owner(User.first)
