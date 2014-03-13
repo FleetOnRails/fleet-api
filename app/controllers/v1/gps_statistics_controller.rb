@@ -72,7 +72,7 @@ module V1
 
 # TODO - update to kmh
     def gps_statistic_params
-      params.required(:gps_statistic).permit(:mph, :location_attributes => [:latitude, :longitude, :address])
+      params.required(:gps_statistic).permit(:kmh, :location_attributes => [:latitude, :longitude, :address])
     end
   end
 end

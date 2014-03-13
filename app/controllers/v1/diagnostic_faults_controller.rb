@@ -25,15 +25,15 @@ module V1
         @car = Car.find(params[:car_id])
         if @car.owner_type == 'User'
           raise NotPrivileged unless @car.owner_id == @current_user.id
-          @diagnostic_statistic = @car.diagnostic_faults.find(params[:id])
+          @diagnostic_fault = @car.diagnostic_faults.find(params[:id])
 
-          respond_with @diagnostic_statistic
+          respond_with @diagnostic_fault
         elsif @car.owner_type == 'Group'
           @group = Group.find(@car.owner_id)
           raise NotPrivileged unless @group.is_member?(@current_user)
-          @diagnostic_statistic = @car.diagnostic_faults.find(params[:id])
+          @diagnostic_fault = @car.diagnostic_faults.find(params[:id])
 
-          respond_with @diagnostic_statistic
+          respond_with @diagnostic_fault
         end
       end
     end
@@ -43,19 +43,19 @@ module V1
         @car = Car.find(params[:car_id])
         if @car.owner_type == 'User'
           raise NotPrivileged unless @car.owner_id == @current_user.id
-          @diagnostic_statistic = DiagnosticFault.create!(diagnostic_fault_params)
-          @car.diagnostic_faults <<(@diagnostic_statistic)
+          @diagnostic_fault = DiagnosticFault.create!(diagnostic_fault_params)
+          @car.diagnostic_faults <<(@diagnostic_fault)
           @car.save!
 
-          respond_with @diagnostic_statistic
+          respond_with @diagnostic_fault
         elsif @car.owner_type == 'Group'
           @group = Group.find(@car.owner_id)
           raise NotPrivileged unless @group.is_member?(@current_user)
-          @diagnostic_statistic = DiagnosticFault.create!(diagnostic_fault_params)
-          @car.diagnostic_faults <<(@diagnostic_statistic)
+          @diagnostic_fault = DiagnosticFault.create!(diagnostic_fault_params)
+          @car.diagnostic_faults <<(@diagnostic_fault)
           @car.save!
 
-          respond_with @diagnostic_statistic
+          respond_with @diagnostic_fault
         end
       end
     end
@@ -65,17 +65,17 @@ module V1
         @car = Car.find(params[:car_id])
         if @car.owner_type == 'User'
           raise NotPrivileged unless @car.owner_id == @current_user.id
-          @diagnostic_statistic = @car.diagnostic_faults.find(params[:id])
-          @diagnostic_statistic.update!(diagnostic_fault_params)
+          @diagnostic_fault = @car.diagnostic_faults.find(params[:id])
+          @diagnostic_fault.update!(diagnostic_fault_params)
 
-          respond_with @diagnostic_statistic
+          respond_with @diagnostic_fault
         elsif @car.owner_type == 'Group'
           @group = Group.find(@car.owner_id)
           raise NotPrivileged unless @group.is_member?(@current_user)
-          @diagnostic_statistic = @car.diagnostic_faults.find(params[:id])
-          @diagnostic_statistic.update!(diagnostic_fault_params)
+          @diagnostic_fault = @car.diagnostic_faults.find(params[:id])
+          @diagnostic_fault.update!(diagnostic_fault_params)
 
-          respond_with @diagnostic_statistic
+          respond_with @diagnostic_fault
         end
       end
     end
@@ -87,7 +87,7 @@ module V1
     private
 
     def diagnostic_fault_params
-      params.required(:diagnostic_statistic).permit(:fault_code, :status)
+      params.required(:diagnostic_fault).permit(:fault_code, :status)
     end
   end
 end

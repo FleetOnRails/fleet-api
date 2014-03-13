@@ -20,4 +20,12 @@ describe Group do
   it 'should have many users through user groups' do
     should have_many(:users).through(:user_groups)
   end
+
+  it 'should validate presence of name' do
+    should validate_presence_of(:name)
+  end
+
+  it 'should validate presence of location' do
+    should validate_presence_of(:location)
+  end
 end

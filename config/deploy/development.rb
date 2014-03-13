@@ -6,6 +6,6 @@ server 'fleet@app.raven.com',
        ssh_options: {
            user: 'fleet',
            forward_agent: true,
-           auth_methods: %w(password),
-           password: '?K?3wKP-asz^BrZ'
+           keys: %w(~/.ssh/id_rsa),
+           auth_methods: %w(publickey)
        }

@@ -1,3 +1,3 @@
-object @diagnostic_statistic => :diagnostic_statistic
+object @diagnostic_fault => :diagnostic_fault
 
 extends 'v1/diagnostic_faults/show'

@@ -8,4 +8,12 @@ describe Destination do
   it 'should have one locations' do
     should have_one(:location)
   end
+
+  it 'should validate presence of name' do
+    should validate_presence_of(:name)
+  end
+
+  it 'should validate presence of location' do
+    should validate_presence_of(:location)
+  end
 end

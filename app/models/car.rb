@@ -10,4 +10,9 @@ class Car < ActiveRecord::Base
 
   mount_uploader :avatar, AvatarUploader
 
+  validates_presence_of :make
+  validates_presence_of :model
+  validates_presence_of :registration
+
+  validates_uniqueness_of :registration
 end
