@@ -7,8 +7,8 @@ class UserGroup < ActiveRecord::Base
   scope :drivers, -> { where(group_access: DRIVER) }
   scope :reporters, -> { where(group_access: REPORTER) }
 
-  validates :user_id, presence: true
-  validates :group_id, presence: true
-  validates :group_access, presence: true
+  validates_presence_of :user_id
+  validates_presence_of :group_id
+  validates_presence_of :group_access
   validates :user_id, uniqueness: {scope: [:group_id], message: 'already exists in group'}
 end
