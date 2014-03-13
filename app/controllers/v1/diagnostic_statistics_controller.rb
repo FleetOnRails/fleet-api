@@ -71,7 +71,7 @@ module V1
     private
 
     def diagnostic_statistic_params
-      params.required(:diagnostic_statistic).permit(:mph, :rpm, :mpg)
+      params.required(:diagnostic_statistic).permit(:kmh, :rpm, 'l/100km')
     end
   end
 end
