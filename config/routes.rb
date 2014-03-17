@@ -28,7 +28,7 @@ FleetOnRails::Application.routes.draw do
       resources :diagnostic_faults, only: [:index, :show, :create, :update]
       resources :diagnostic_statistics, only: [:index, :show, :create]
       resources :gps_statistics, only: [:index, :show, :create]
-      resources :fuel_entries, only: [:index, :show, :create]
+      resources :fuel_entries, only: [:index, :show, :create, :update]
     end
 
     resources :service_records, only: [] do
