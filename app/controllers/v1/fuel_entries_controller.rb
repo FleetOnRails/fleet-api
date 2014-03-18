@@ -81,7 +81,21 @@ module V1
     end
 
     def destroy
-      # TODO - Should there be an destroy method ?
+      if params[:car_id]
+        @car = Car.find(params[:car_id])
+        if @car.owner_type == 'User'
+          raise NotPrivileged unless @car.owner_id == @current_user.id
+          @fuel_entry.destroy!
+
+          respond_with @fuel_entry
+        elsif @car.owner_type == 'Group'
+          @group = Group.find(@car.owner_id)
+          raise NotPrivileged unless @group.is_manager?(@current_user)
+          @fuel_entry.destroy!
+
+          respond_with @fuel_entry
+        end
+      end
     end
 
     private
