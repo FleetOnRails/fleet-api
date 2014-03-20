@@ -1,0 +1,62 @@
+<div ng-controller="ToggleCtrl">
+    <div class="endpoint" ng-click="isCollapsed = !isCollapsed">
+        <div class="method get">GET</div>
+        <div class="path">/v1/vendors/:vendor_id/products</div>
+    </div>
+    <div collapse="isCollapsed">
+        This will return the products matching :vendor_id
+        <div hljs include="'partials/docs/api/products/index.json'"></div>
+    </div>
+</div>
+
+<div ng-controller="ToggleCtrl">
+    <div class="endpoint" ng-click="isCollapsed = !isCollapsed">
+        <div class="method get">GET</div>
+        <div class="path">/v1/vendors/:vendor_id/products/:id</div>
+    </div>
+    <div collapse="isCollapsed">
+        This will return the products matching :vendor_id and :id
+        <div hljs include="'partials/docs/api/products/show.json'"></div>
+    </div>
+</div>
+
+<div ng-controller="ToggleCtrl">
+    <div class="endpoint" ng-click="isCollapsed = !isCollapsed">
+        <div class="method post">POST</div>
+        <div class="path">/v1/vendors/:vendor_id/products</div>
+    </div>
+    <div collapse="isCollapsed">
+        This create a new product for the vendor matching :vendor_id
+        Here is the POST data
+        <div hljs include="'partials/docs/api/products/create_request.json'"></div>
+
+        And a reply with the new product object
+        <div hljs include="'partials/docs/api/products/create_callback.json'"></div>
+    </div>
+</div>
+
+<div ng-controller="ToggleCtrl">
+    <div class="endpoint" ng-click="isCollapsed = !isCollapsed">
+        <div class="method put">PUT</div>
+        <div class="path">/v1/vendors/:vendor_id/products/:id</div>
+    </div>
+    <div collapse="isCollapsed">
+        This will update the product with the matching :id
+        <div hljs include="'partials/docs/api/products/create_request.json'"></div>
+
+        And a reply with the updated product
+        <div hljs include="'partials/docs/api/products/show.json'"></div>
+    </div>
+</div>
+
+<div ng-controller="ToggleCtrl">
+    <div class="endpoint" ng-click="isCollapsed = !isCollapsed">
+        <div class="method delete">DELETE</div>
+        <div class="path">/v1/vendors/:vendor_id/products/:id</div>
+    </div>
+    <div collapse="isCollapsed">
+        This will delete the vendor matching :vendor_id product with the matching :id
+        and respond with the deleted product object
+        <div hljs include="'partials/docs/api/products/show.json'"></div>
+    </div>
+</div>
