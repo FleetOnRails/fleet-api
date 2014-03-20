@@ -1,5 +1,16 @@
 set :stage, :production
 
+set :deploy_to, '~/'
+set :tmp_dir, '~/tmp'
+
+set :scm, :git
+set :branch, 'development'
+set :repo_url, 'git@git.raven.com:fleetonrails/fleet-api.git'
+
+set :linked_files, %w{config/database.yml}
+
+set :keep_releases, 5
+
 server 'fapi001@app.raven.com',
        user: 'fapi001',
        roles: %w{web app db},
