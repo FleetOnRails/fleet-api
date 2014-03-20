@@ -1,9 +1,4 @@
 FleetOnRails::Application.routes.draw do
-  get "fuel_entries/index"
-  get "fuel_entries/show"
-  get "fuel_entries/create"
-  get "fuel_entries/update"
-  get "fuel_entries/destroy"
   use_doorkeeper
 
   #

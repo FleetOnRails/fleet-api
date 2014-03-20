@@ -1,0 +1,13 @@
+{
+    "me": {
+        "id": 1,
+        "first_name": "alan",
+        "last_name": "kehoe",
+        "email": "alankehoe111@gmail.com",
+        "username": "alan",
+        "phone_no": "0870608580",
+        "admin": true,
+        "avatar": "/uploads/user/avatar/1/4ec9bac8ef10cc2e208c.jpg",
+        "avatar_thumb": "/uploads/user/avatar/1/thumb_4ec9bac8ef10cc2e208c.jpg"
+    }
+}
