@@ -1,7 +1,7 @@
 set :stage, :production
 
-set :deploy_to, '~/'
-set :tmp_dir, '~/tmp'
+set :deploy_to, "/home/#{user}/"
+set :tmp_dir, "/home/#{user}/tmp/"
 
 set :scm, :git
 set :branch, 'development'
