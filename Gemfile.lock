@@ -60,6 +60,7 @@ GEM
       jquery-rails (>= 2.0.2)
       railties (>= 3.1)
     erubis (2.7.0)
+    execjs (2.0.2)
     factory_girl (4.3.0)
       activesupport (>= 3.0.0)
     factory_girl_rails (4.3.0)
@@ -178,6 +179,9 @@ GEM
       polyglot
       polyglot (>= 0.3.1)
     tzinfo (0.3.38)
+    uglifier (2.5.0)
+      execjs (>= 0.3.0)
+      json (>= 1.8.0)
 
 PLATFORMS
   ruby
@@ -212,3 +216,4 @@ DEPENDENCIES
   simplecov
   sqlite3
   therubyracer
+  uglifier
