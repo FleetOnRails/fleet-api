@@ -1,9 +1,6 @@
 FleetOnRails::Application.routes.draw do
   use_doorkeeper
 
-  #
-  # API
-  #
   namespace :v1 do
     get '/me', to: 'me#index'
     put '/me', to: 'me#update'
