@@ -1,0 +1,12 @@
+{
+    "diagnostic_statistics": [
+        {
+            "diagnostic_statistic": {
+                "id": 1,
+                "kmh": 100.0,
+                "rpm": 2000.0,
+                "l/100km": 5.0
+            }
+        }
+    ]
+}
