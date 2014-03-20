@@ -1,0 +1,62 @@
+<div ng-controller="ToggleCtrl">
+    <div class="endpoint" ng-click="isCollapsed = !isCollapsed">
+        <div class="method get">GET</div>
+        <div class="path">/v1/cars/:car_id/fuel_entries</div>
+    </div>
+    <div collapse="isCollapsed">
+        This will return fuel_entries if any associated with the car matching :car_id
+        <div hljs include="'partials/docs/api/fuel_entries/index.json'"></div>
+    </div>
+</div>
+
+<div ng-controller="ToggleCtrl">
+    <div class="endpoint" ng-click="isCollapsed = !isCollapsed">
+        <div class="method get">GET</div>
+        <div class="path">/v1/cars/:car_id/fuel_entries/:id</div>
+    </div>
+    <div collapse="isCollapsed">
+        This will the fuel_entrie matching with the id given
+        <div hljs include="'partials/docs/api/fuel_entries/show.json'"></div>
+    </div>
+</div>
+
+<div ng-controller="ToggleCtrl">
+    <div class="endpoint" ng-click="isCollapsed = !isCollapsed">
+        <div class="method post">POST</div>
+        <div class="path">/v1/cars/:car_id/fuel_entries</div>
+    </div>
+    <div collapse="isCollapsed">
+        This create a new fuel_entry for the car matching :car_id
+        <div hljs include="'partials/docs/api/fuel_entries/create_request.json'"></div>
+
+        And a reply with the new fuel_entry object
+        <div hljs include="'partials/docs/api/fuel_entries/show.json'"></div>
+    </div>
+</div>
+
+<div ng-controller="ToggleCtrl">
+    <div class="endpoint" ng-click="isCollapsed = !isCollapsed">
+        <div class="method put">PUT</div>
+        <div class="path">/v1/cars/:car_id/fuel_entries/:id</div>
+    </div>
+    <div collapse="isCollapsed">
+        This update the fuel_entries for the car matching :car_id and :id
+        <div hljs include="'partials/docs/api/fuel_entries/create_request.json'"></div>
+
+        And a reply with the updated fuel_entry object
+        <div hljs include="'partials/docs/api/fuel_entries/show.json'"></div>
+    </div>
+</div>
+
+<div ng-controller="ToggleCtrl">
+    <div class="endpoint" ng-click="isCollapsed = !isCollapsed">
+        <div class="method delete">DELETE</div>
+        <div class="path">/v1/cars/:car_id/fuel_entries/:id</div>
+    </div>
+    <div collapse="isCollapsed">
+
+        This will delete the fuel_entry with matching :car_id and :id
+        and reply with the deleted fuel_entry object
+        <div hljs include="'partials/docs/api/fuel_entries/show.json'"></div>
+    </div>
+</div>
