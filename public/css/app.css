@@ -1,0 +1,85 @@
+/* app css stylesheet */
+
+.menu {
+  list-style: none;
+  border-bottom: 0.1em solid black;
+  margin-bottom: 2em;
+  padding: 0 0 0.5em;
+}
+
+.menu:before {
+  content: "[";
+}
+
+.menu:after {
+  content: "]";
+}
+
+.menu > li {
+  display: inline;
+}
+
+.menu > li:before {
+  content: "|";
+  padding-right: 0.3em;
+}
+
+.menu > li:nth-child(1):before {
+  content: "";
+  padding: 0;
+}
+
+/* Api Documentation */
+.endpoints h4 {
+    font-weight: 100;
+    font-size: 2.0em;
+}
+
+.endpoints hr {
+    margin: 15px 0;
+}
+
+.endpoint {
+    width: 100%;
+    min-height: 53px;
+    font-size: 1.4em;
+    margin: 10px 0;
+}
+
+.method {
+    width: 25%;
+    float: left;
+    background: #eeeeee;
+    padding: 10px;
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+}
+
+.path {
+    width: 75%;
+    float: right;
+    padding: 10px;
+    background: #f1f1f1;
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+}
+
+.endpoint .get {
+    background: #27ae60 !important;
+    color: #ffffff;
+}
+
+.endpoint .put {
+    background: #3498db !important;
+    color: #ffffff;
+}
+
+.endpoint .post {
+    background: #f1c40f !important;
+    color: #ffffff;
+}
+
+.endpoint .delete {
+    background: #e74c3c !important;
+    color: #ffffff;
+}

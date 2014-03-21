@@ -1,0 +1,61 @@
+<div ng-controller="ToggleCtrl">
+    <div class="endpoint" ng-click="isCollapsed = !isCollapsed">
+        <div class="method get">GET</div>
+        <div class="path">/v1/groups/:group_id/destinations</div>
+    </div>
+    <div collapse="isCollapsed">
+        This will return destinations owned by the group matching :group_id
+        <div hljs include="'partials/docs/api/destinations/index.json'"></div>
+    </div>
+</div>
+
+<div ng-controller="ToggleCtrl">
+    <div class="endpoint" ng-click="isCollapsed = !isCollapsed">
+        <div class="method get">GET</div>
+        <div class="path">/v1/groups/:group_id/destinations/:id</div>
+    </div>
+    <div collapse="isCollapsed">
+        This will return destination owned by the group matching :group_id and :id
+        <div hljs include="'partials/docs/api/destinations/show.json'"></div>
+    </div>
+</div>
+
+<div ng-controller="ToggleCtrl">
+    <div class="endpoint" ng-click="isCollapsed = !isCollapsed">
+        <div class="method post">POST</div>
+        <div class="path">/v1/groups/:group_id/destinations</div>
+    </div>
+    <div collapse="isCollapsed">
+        This creates a new destination for the group matching :group_id, the api will geocode the address also
+        <div hljs include="'partials/docs/api/destinations/create_request.json'"></div>
+
+        And a reply with the new destination object
+        <div hljs include="'partials/docs/api/destinations/show.json'"></div>
+    </div>
+</div>
+
+<div ng-controller="ToggleCtrl">
+    <div class="endpoint" ng-click="isCollapsed = !isCollapsed">
+        <div class="method put">PUT</div>
+        <div class="path">/v1/groups/:group_id/destinations/:id</div>
+    </div>
+    <div collapse="isCollapsed">
+        This will update the destination matching :group_id and :id
+        <div hljs include="'partials/docs/api/destinations/create_request.json'"></div>
+
+        And a reply with the destination object
+        <div hljs include="'partials/docs/api/destinations/show.json'"></div>
+    </div>
+</div>
+
+<div ng-controller="ToggleCtrl">
+    <div class="endpoint" ng-click="isCollapsed = !isCollapsed">
+        <div class="method delete">DELETE</div>
+        <div class="path">/v1/groups/:group_id/destinations/:id</div>
+    </div>
+    <div collapse="isCollapsed">
+        This will delete the destination matching :group_id and :id
+        And a reply with the deleted destination object
+        <div hljs include="'partials/docs/api/destinations/show.json'"></div>
+    </div>
+</div>

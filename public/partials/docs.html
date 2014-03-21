@@ -1,0 +1,94 @@
+<nav class="navbar navbar-default navbar-static-top" role="navigation">
+    <div class="container-fluid">
+        <div class="navbar-header ">
+            <button type="button" class="navbar-toggle" ng-click="isCollapsed = !isCollapsed">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#/">FleetOnRails API</a>
+        </div>
+
+        <div class="collapse navbar-collapse" collapse="isCollapsed">
+        </div>
+    </div>
+</nav>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-2"></div>
+        <div class="col-md-8">
+            <div class="endpoints">
+                <h4>Me</h4>
+                <div ng-include src="'partials/docs/api/me/me.html'"></div>
+                <hr/>
+
+                <h4>Users</h4>
+                <div ng-include src="'partials/docs/api/users/users.html'"></div>
+                <hr/>
+
+                <h4>Cars</h4>
+                <div ng-include src="'partials/docs/api/cars/cars.html'"></div>
+                <hr/>
+
+                <h4>Cars < Service Records</h4>
+                <div ng-include src="'partials/docs/api/service_records/car_service_records.html'"></div>
+                <hr/>
+
+                <h4>Cars < Documents</h4>
+                <div ng-include src="'partials/docs/api/documents/car_documents.html'"></div>
+                <hr/>
+
+                <h4>Cars < Diagnostic Faults</h4>
+                <div ng-include src="'partials/docs/api/diagnostic_faults/car_diagnostic_faults.html'"></div>
+                <hr/>
+
+                <h4>Cars < Diagnostic Statistics</h4>
+                <div ng-include src="'partials/docs/api/diagnostic_statistics/car_diagnostic_statistics.html'"></div>
+                <hr/>
+
+                <h4>Cars < Gps Statistics</h4>
+                <div ng-include src="'partials/docs/api/gps_statistics/car_gps_statistics.html'"></div>
+                <hr/>
+
+                <h4>Cars < Fuel Entries</h4>
+                <div ng-include src="'partials/docs/api/fuel_entries/car_fuel_entries.html'"></div>
+                <hr/>
+
+                <h4>Service Record < Documents</h4>
+                <div ng-include src="'partials/docs/api/documents/service_records_documents.html'"></div>
+                <hr/>
+
+                <h4>Vendors</h4>
+                <div ng-include src="'partials/docs/api/vendors/vendors.html'"></div>
+                <hr/>
+
+                <h4>Vendors < Products</h4>
+                <div ng-include src="'partials/docs/api/products/vendors_products.html'"></div>
+                <hr/>
+
+                <h4>Groups</h4>
+                <div ng-include src="'partials/docs/api/groups/groups.html'"></div>
+                <hr/>
+
+                <h4>Groups < Users</h4>
+                <div ng-include src="'partials/docs/api/users/users_groups.html'"></div>
+                <hr/>
+
+                <h4>Groups < Cars</h4>
+                <div ng-include src="'partials/docs/api/groups/groups_cars.html'"></div>
+                <hr/>
+
+                <h4>Groups < Vendors</h4>
+                <div ng-include src="'partials/docs/api/vendors/groups_vendors.html'"></div>
+                <hr/>
+
+                <h4>Groups < Destinations</h4>
+                <div ng-include src="'partials/docs/api/destinations/group_destinations.html'"></div>
+                <hr/>
+            </div>
+        </div>
+        <div class="col-md-2"></div>
+    </div>
+</div>

@@ -1,0 +1,62 @@
+<div ng-controller="ToggleCtrl">
+    <div class="endpoint" ng-click="isCollapsed = !isCollapsed">
+        <div class="method get">GET</div>
+        <div class="path">/v1/cars</div>
+    </div>
+    <div collapse="isCollapsed">
+        This will return the current users personal cars
+        <div hljs include="'partials/docs/api/cars/index.json'"></div>
+    </div>
+</div>
+
+<div ng-controller="ToggleCtrl">
+    <div class="endpoint" ng-click="isCollapsed = !isCollapsed">
+        <div class="method get">GET</div>
+        <div class="path">/v1/cars/:id</div>
+    </div>
+    <div collapse="isCollapsed">
+        This will the users car with the matching id
+        <div hljs include="'partials/docs/api/cars/show.json'"></div>
+    </div>
+</div>
+
+<div ng-controller="ToggleCtrl">
+    <div class="endpoint" ng-click="isCollapsed = !isCollapsed">
+        <div class="method post">POST</div>
+        <div class="path">/v1/cars</div>
+    </div>
+    <div collapse="isCollapsed">
+        This create a new car for the current user
+        Here is the POST data
+        <div hljs include="'partials/docs/api/cars/create_request.json'"></div>
+
+        And a reply with the new car object
+        <div hljs include="'partials/docs/api/cars/create_callback.json'"></div>
+    </div>
+</div>
+
+<div ng-controller="ToggleCtrl">
+    <div class="endpoint" ng-click="isCollapsed = !isCollapsed">
+        <div class="method put">PUT</div>
+        <div class="path">/v1/cars/:id</div>
+    </div>
+    <div collapse="isCollapsed">
+        This will update the car with the matching id
+        <div hljs include="'partials/docs/api/cars/create_request.json'"></div>
+
+        And a reply with the updated car
+        <div hljs include="'partials/docs/api/cars/create_callback.json'"></div>
+    </div>
+</div>
+
+<div ng-controller="ToggleCtrl">
+    <div class="endpoint" ng-click="isCollapsed = !isCollapsed">
+        <div class="method delete">DELETE</div>
+        <div class="path">/v1/cars/:id</div>
+    </div>
+    <div collapse="isCollapsed">
+        This will delete the current users car with the matching id
+        and respond with the deleted car object
+        <div hljs include="'partials/docs/api/cars/create_callback.json'"></div>
+    </div>
+</div>

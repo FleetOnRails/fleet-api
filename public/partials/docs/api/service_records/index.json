@@ -1,0 +1,21 @@
+{
+    "service_records": [
+        {
+            "service_record": {
+                "id": 2,
+                "odometer_reading": "162000",
+                "technician": "alan",
+                "description": "full service",
+                "location": {
+                    "id": 22,
+                    "latitude": 52.676181,
+                    "longitude": -6.289091,
+                    "address": "7 Esmonde Street, Gorey, Co. Wexford, Ireland",
+                    "city": "Gorey",
+                    "county": "Wexford",
+                    "country": "IE"
+                }
+            }
+        }
+    ]
+}

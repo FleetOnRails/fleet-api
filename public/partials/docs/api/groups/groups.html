@@ -1,0 +1,62 @@
+<div ng-controller="ToggleCtrl">
+    <div class="endpoint" ng-click="isCollapsed = !isCollapsed">
+        <div class="method get">GET</div>
+        <div class="path">/v1/groups</div>
+    </div>
+    <div collapse="isCollapsed">
+        This will return the current users groups
+        <div hljs include="'partials/docs/api/groups/index.json'"></div>
+    </div>
+</div>
+
+<div ng-controller="ToggleCtrl">
+    <div class="endpoint" ng-click="isCollapsed = !isCollapsed">
+        <div class="method get">GET</div>
+        <div class="path">/v1/groups/:id</div>
+    </div>
+    <div collapse="isCollapsed">
+        This will the users group with the matching id
+        <div hljs include="'partials/docs/api/groups/show.json'"></div>
+    </div>
+</div>
+
+<div ng-controller="ToggleCtrl">
+    <div class="endpoint" ng-click="isCollapsed = !isCollapsed">
+        <div class="method post">POST</div>
+        <div class="path">/v1/groups</div>
+    </div>
+    <div collapse="isCollapsed">
+        This create a new group for the current user
+        Here is the POST data
+        <div hljs include="'partials/docs/api/groups/create_request.json'"></div>
+
+        And a reply with the new group object
+        <div hljs include="'partials/docs/api/groups/create_callback.json'"></div>
+    </div>
+</div>
+
+<div ng-controller="ToggleCtrl">
+    <div class="endpoint" ng-click="isCollapsed = !isCollapsed">
+        <div class="method put">PUT</div>
+        <div class="path">/v1/groups/:id</div>
+    </div>
+    <div collapse="isCollapsed">
+        This will update the group with the matching id
+        <div hljs include="'partials/docs/api/groups/create_request.json'"></div>
+
+        And a reply with the updated group
+        <div hljs include="'partials/docs/api/groups/show.json'"></div>
+    </div>
+</div>
+
+<div ng-controller="ToggleCtrl">
+    <div class="endpoint" ng-click="isCollapsed = !isCollapsed">
+        <div class="method delete">DELETE</div>
+        <div class="path">/v1/groups/:id</div>
+    </div>
+    <div collapse="isCollapsed">
+        This will delete the current users group with the matching id
+        and respond with the deleted group object
+        <div hljs include="'partials/docs/api/groups/show.json'"></div>
+    </div>
+</div>

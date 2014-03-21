@@ -2,6 +2,10 @@ object @group => :group
 
 attributes :id, :name
 
-node :media_url do |group|
+node :avatar_url do |group|
   group.avatar.url
+end
+
+node :location do |group|
+  partial('v1/groups/location', :object => group.location)
 end

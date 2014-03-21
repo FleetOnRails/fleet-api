@@ -33,7 +33,7 @@ module V1
     private
 
     def group_params
-      params.required(:group).permit(:name)
+      params.required(:group).permit(:name, :location_attributes => [:latitude, :longitude, :address])
     end
   end
 end

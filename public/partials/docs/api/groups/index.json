@@ -1,0 +1,20 @@
+{
+    "groups": [
+        {
+            "group": {
+                "id": 2,
+                "name": "newgroup",
+                "avatar_url": null,
+                "location": {
+                    "id": 19,
+                    "latitude": 52.676181,
+                    "longitude": -6.289091,
+                    "address": "7 Esmonde Street, Gorey, Co. Wexford, Ireland",
+                    "city": "Gorey",
+                    "county": "Wexford",
+                    "country": "IE"
+                }
+            }
+        }
+    ]
+}

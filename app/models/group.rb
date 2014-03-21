@@ -9,10 +9,11 @@ class Group < ActiveRecord::Base
 
   mount_uploader :avatar, AvatarUploader
 
+  accepts_nested_attributes_for :location
+
   validates_presence_of :name
 
   validates_associated :location
-  validates_presence_of :location
 
   def add_user(user, group_access)
     self.user_groups.create(user_id: user.id, group_access: group_access)

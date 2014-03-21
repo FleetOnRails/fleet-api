@@ -1,0 +1,19 @@
+{
+    "destinations": [
+        {
+            "destination": {
+                "id": 1,
+                "name": "tesco gorey",
+                "location": {
+                    "id": 1,
+                    "latitude": 52.6759496,
+                    "longitude": -6.293958399999999,
+                    "address": "27 Main Street, Gorey, Co. Wexford, Ireland",
+                    "city": "Gorey",
+                    "county": "Wexford",
+                    "country": "IE"
+                }
+            }
+        }
+    ]
+}

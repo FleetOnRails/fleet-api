@@ -1,21 +1,6 @@
 FleetOnRails::Application.routes.draw do
-  get "fuel_entries/index"
-  get "fuel_entries/show"
-  get "fuel_entries/create"
-  get "fuel_entries/update"
-  get "fuel_entries/destroy"
   use_doorkeeper
 
-  #
-  # Help
-  #
-  get '/' => 'help#index'
-  get '/api' => 'api_docs#index'
-  get '/api/:category' => 'api_docs#index', as: 'help_api_file'
-
-  #
-  # API
-  #
   namespace :v1 do
     get '/me', to: 'me#index'
     put '/me', to: 'me#update'
