@@ -8,7 +8,8 @@ angular.module('fleetonrails-api', [
 
     .config(['$routeProvider', function ($routeProvider) {
         $routeProvider.
-            when('/docs', {templateUrl: 'partials/docs.html'}).
+            when('/', {templateUrl: 'partials/main.html'}).
+            when('/docs', {templateUrl: 'partials/docs/api/docs.html'}).
             when('/docs/oauth', {templateUrl: 'partials/docs/api/oauth.html'}).
             when('/docs/me', {templateUrl: 'partials/docs/api/me.html'}).
             when('/docs/users', {templateUrl: 'partials/docs/api/users.html'}).
