@@ -44,7 +44,6 @@ module V1
         if @car.owner_type == 'User'
           raise NotPrivileged unless @car.owner_id == @current_user.id
           @gps_statistic = GpsStatistic.create!(gps_statistic_params)
-          @gps_statistic.save!
           @car.gps_statistics <<(@gps_statistic)
 
           respond_with @gps_statistic
@@ -52,7 +51,6 @@ module V1
           @group = Group.find(@car.owner_id)
           raise NotPrivileged unless @group.is_member?(@current_user)
           @gps_statistic = GpsStatistic.create!(gps_statistic_params)
-          @gps_statistic.save!
           @car.gps_statistics <<(@gps_statistic)
 
           respond_with @gps_statistic
@@ -71,7 +69,7 @@ module V1
     private
 
     def gps_statistic_params
-      params.required(:gps_statistic).permit(:kmh, :location_attributes => [:latitude, :longitude, :address])
+      params.required(:gps_statistic).permit(:kmh, :latitude, :longitude)
     end
   end
 end
