@@ -13,6 +13,8 @@ class Group < ActiveRecord::Base
 
   validates_presence_of :name
 
+  validates_uniqueness_of :name
+
   validates_associated :location
 
   def add_user(user, group_access)
