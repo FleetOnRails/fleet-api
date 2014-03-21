@@ -24,17 +24,29 @@ module V1
 
     def create
       if params[:group_id]
-        @user = ::Groups::AddUserService.new(add_user_to_group_params, params[:group_id], @current_user).execute
+        @group = Group.find(params[:group_id])
+        @user = User.find(params[:user][:user_id])
+        raise NotPrivileged unless @group.is_owner?(@current_user) || @group.is_manager?(@current_user)
+        @group.add_user(@user, params[:user][:group_access])
+        @group.save!
+
         respond_with @user
       else
-        @user = ::Users::CreateService.new(user_params).execute
+        @user = User.create!(user_params)
+
         respond_with @user
       end
     end
 
     def destroy
       if params[:group_id]
-        @user = ::Groups::RemoveUserService.new(params[:id], params[:group_id], @current_user).execute
+        @group = Group.find(params[:group_id])
+        raise NotPrivileged unless @group.is_owner?(@current_user) || @group.is_manager?(@current_user)
+        @user = User.find(params[:id])
+        @group.users.delete(@user)
+        @group.save!
+        @user.save!
+
         respond_with @user
       else
         raise NotPrivileged
@@ -45,10 +57,6 @@ module V1
 
     def user_params
       params.required(:user).permit(:first_name, :last_name, :username, :email, :password, :phone_no)
-    end
-
-    def add_user_to_group_params
-      params.required(:user).permit(:user_id, :permission_level)
     end
   end
 end

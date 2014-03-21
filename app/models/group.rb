@@ -16,7 +16,7 @@ class Group < ActiveRecord::Base
   validates_associated :location
 
   def add_user(user, group_access)
-    self.user_groups.create(user_id: user.id, group_access: group_access)
+    self.user_groups.create!(user_id: user.id, group_access: group_access)
   end
 
   def add_owner(user)
