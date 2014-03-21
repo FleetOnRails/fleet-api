@@ -1,0 +1,30 @@
+<navbar></navbar>
+
+<div class="container">
+    <div class="col-md-3">
+        <ul class="nav nav-pills nav-stacked">
+            <li><a href="#/docs/oauth">Oauth</a></li>
+            <li><a href="#/docs/me">Me</a></li>
+            <li><a href="#/docs/users">Users</a></li>
+            <li><a href="#/docs/cars">Cars</a></li>
+            <li><a href="#/docs/service_records">Service Records</a></li>
+            <li><a href="#/docs/vendors">Vendors</a></li>
+            <li><a href="#/docs/groups">Groups</a></li>
+        </ul>
+    </div>
+
+    <div class="col-md-9">
+        <div class="endpoints">
+            <h4>Vendors</h4>
+
+            <div ng-include src="'partials/docs/api/vendors/vendors.html'"></div>
+            <hr/>
+
+            <h4>Vendors < Products</h4>
+
+            <div ng-include src="'partials/docs/api/products/vendors_products.html'"></div>
+            <hr/>
+        </div>
+    </div>
+</div>
+

@@ -3,9 +3,11 @@
 /* Directives */
 
 
-angular.module('myApp.directives', []).
-  directive('appVersion', ['version', function(version) {
-    return function(scope, elm, attrs) {
-      elm.text(version);
-    };
-  }]);
+angular.module('fleetonrails-api.directives', [])
+
+    .directive('navbar', function () {
+        return {
+            restrict: 'E',
+            templateUrl: 'partials/navbar.html'
+        }
+    });
