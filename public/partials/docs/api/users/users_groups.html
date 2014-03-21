@@ -1,0 +1,67 @@
+<div ng-controller="ToggleCtrl">
+    <div class="endpoint" ng-click="isCollapsed = !isCollapsed">
+        <div class="method get">GET</div>
+        <div class="path">/v1/groups/:group_id/users</div>
+    </div>
+    <div collapse="isCollapsed">
+        This will return all the users in the group that matches :group_id
+        <div hljs include="'partials/docs/api/users/index.json'"></div>
+    </div>
+</div>
+<div class="clear"></div>
+
+<div ng-controller="ToggleCtrl">
+    <div class="endpoint" ng-click="isCollapsed = !isCollapsed">
+        <div class="method get">GET</div>
+        <div class="path">/v1/groups/:group_id/users/:id</div>
+    </div>
+    <div collapse="isCollapsed">
+        This will the user in the group matching :group_id matching :id
+        <div hljs include="'partials/docs/api/users/show.json'"></div>
+    </div>
+</div>
+<div class="clear"></div>
+
+<div ng-controller="ToggleCtrl">
+    <div class="endpoint" ng-click="isCollapsed = !isCollapsed">
+        <div class="method post">POST</div>
+        <div class="path">/v1/groups/:group_id/users</div>
+    </div>
+    <div collapse="isCollapsed">
+        This adds a new user to the group
+        <div hljs include="'partials/docs/api/users/add_user.json'"></div>
+
+        And a reply with the user object hat you just added to the group
+        <div hljs include="'partials/docs/api/users/show.json'"></div>
+    </div>
+</div>
+<div class="clear"></div>
+
+<div ng-controller="ToggleCtrl">
+    <div class="endpoint" ng-click="isCollapsed = !isCollapsed">
+        <div class="method put">PUT</div>
+        <div class="path">/v1/groups/:group_id/users/:id</div>
+    </div>
+    <div collapse="isCollapsed">
+        This update the user matching :id
+        <div hljs include="'partials/docs/api/users/add_user.json'"></div>
+
+        And a reply with the updated user object
+        <div hljs include="'partials/docs/api/users/show.json'"></div>
+    </div>
+</div>
+<div class="clear"></div>
+
+<div ng-controller="ToggleCtrl">
+    <div class="endpoint" ng-click="isCollapsed = !isCollapsed">
+        <div class="method delete">DELETE</div>
+        <div class="path">/v1/groups/:group_id/:id</div>
+    </div>
+    <div collapse="isCollapsed">
+
+        This will delete the user with matching :id
+        and reply with the deleted user object
+        <div hljs include="'partials/docs/api/users/show.json'"></div>
+    </div>
+</div>
+<div class="clear"></div>

@@ -1,0 +1,56 @@
+<div ng-controller="ToggleCtrl">
+    <div class="endpoint" ng-click="isCollapsed = !isCollapsed">
+        <div class="method get">GET</div>
+        <div class="path">/v1/cars/:car_id/diagnostic_faults</div>
+    </div>
+    <div collapse="isCollapsed">
+        This will return diagnostic faults if any associated with the car matching the id :car_id
+        <div hljs include="'partials/docs/api/diagnostic_faults/index.json'"></div>
+    </div>
+</div>
+<div class="clear"></div>
+
+
+<div ng-controller="ToggleCtrl">
+    <div class="endpoint" ng-click="isCollapsed = !isCollapsed">
+        <div class="method get">GET</div>
+        <div class="path">/v1/cars/:car_id/diagnostic_faults/:id</div>
+    </div>
+    <div collapse="isCollapsed">
+        This will the diagnostic fault matching with the id given
+        <div hljs include="'partials/docs/api/diagnostic_faults/show.json'"></div>
+    </div>
+</div>
+<div class="clear"></div>
+
+
+<div ng-controller="ToggleCtrl">
+    <div class="endpoint" ng-click="isCollapsed = !isCollapsed">
+        <div class="method post">POST</div>
+        <div class="path">/v1/cars/:car_id/diagnostic_faults</div>
+    </div>
+    <div collapse="isCollapsed">
+        This create a new diagnostic fault for the car matching :car_id
+        <div hljs include="'partials/docs/api/diagnostic_faults/create_request.json'"></div>
+
+        And a reply with the new diagnostic fault object
+        <div hljs include="'partials/docs/api/diagnostic_faults/show.json'"></div>
+    </div>
+</div>
+<div class="clear"></div>
+
+
+<div ng-controller="ToggleCtrl">
+    <div class="endpoint" ng-click="isCollapsed = !isCollapsed">
+        <div class="method put">PUT</div>
+        <div class="path">/v1/cars/:car_id/diagnostic_faults/:id</div>
+    </div>
+    <div collapse="isCollapsed">
+        This will update the diagnostic fault matching :car_id and :id
+        <div hljs include="'partials/docs/api/diagnostic_faults/create_request.json'"></div>
+
+        And a reply with the diagnostic fault object
+        <div hljs include="'partials/docs/api/diagnostic_faults/show.json'"></div>
+    </div>
+</div>
+<div class="clear"></div>

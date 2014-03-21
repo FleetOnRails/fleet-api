@@ -5,15 +5,15 @@ describe GpsStatistic do
     should belong_to(:car)
   end
 
-  it 'should have one location' do
-    should have_one(:location)
-  end
-
   it 'should validate presence of kmh' do
     should validate_presence_of(:kmh)
   end
 
-  it 'should validate presence of location' do
-    should validate_presence_of(:location)
+  it 'should validate presence of latitude' do
+    should validate_presence_of(:latitude)
+  end
+
+  it 'should validate presence of longitude' do
+    should validate_presence_of(:longitude)
   end
 end

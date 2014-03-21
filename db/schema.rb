@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131221163218) do
+ActiveRecord::Schema.define(version: 20140321090604) do
 
   create_table "cars", force: true do |t|
     t.string   "make"
@@ -88,6 +88,8 @@ ActiveRecord::Schema.define(version: 20131221163218) do
     t.integer  "car_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.float    "latitude"
+    t.float    "longitude"
   end
 
   add_index "gps_statistics", ["car_id"], name: "gps_statistics_ix"

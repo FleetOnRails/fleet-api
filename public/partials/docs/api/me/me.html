@@ -1,0 +1,25 @@
+<div ng-controller="ToggleCtrl">
+    <div class="endpoint" ng-click="isCollapsed = !isCollapsed">
+        <div class="method get">GET</div>
+        <div class="path">/v1/me</div>
+    </div>
+    <div collapse="isCollapsed">
+        This will return the current users information
+        <div hljs include="'partials/docs/api/me/index.json'"></div>
+    </div>
+</div>
+<div class="clear"></div>
+
+<div ng-controller="ToggleCtrl">
+    <div class="endpoint" ng-click="isCollapsed = !isCollapsed">
+        <div class="method put">PUT</div>
+        <div class="path">/v1/me</div>
+    </div>
+    <div collapse="isCollapsed">
+        Here is an update request
+        <div hljs include="'partials/docs/api/me/update_request.json'"></div>
+
+        This will return the current users details after update
+        <div hljs include="'partials/docs/api/me/index.json'"></div>
+    </div>
+</div>

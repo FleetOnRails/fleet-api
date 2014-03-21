@@ -1,0 +1,12 @@
+{
+    "gps_statistics": [
+        {
+            "gps_statistic": {
+                "id": 4,
+                "kmh": 62.78,
+                "latitude": 52.676181,
+                "longitude": -6.289091
+            }
+        }
+    ]
+}

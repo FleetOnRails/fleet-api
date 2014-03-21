@@ -6,8 +6,6 @@ module Users
 
     def execute
       user = User.create!(@params)
-      user.avatar = get_default_avatar
-      user.save!
       user
     end
 

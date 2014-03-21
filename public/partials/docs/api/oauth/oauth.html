@@ -1,0 +1,28 @@
+<div ng-controller="ToggleCtrl">
+    <div class="endpoint" ng-click="isCollapsed = !isCollapsed">
+        <div class="method post">POST</div>
+        <div class="path">/oauth/token</div>
+    </div>
+    <div collapse="isCollapsed">
+        Here is an post request with credentials
+        <div hljs include="'partials/docs/api/oauth/credentials_request.json'"></div>
+
+        This will return the access and refresh token
+        <div hljs include="'partials/docs/api/oauth/index.json'"></div>
+    </div>
+</div>
+<div class="clear"></div>
+
+<div ng-controller="ToggleCtrl">
+    <div class="endpoint" ng-click="isCollapsed = !isCollapsed">
+        <div class="method post">POST</div>
+        <div class="path">/oauth/token</div>
+    </div>
+    <div collapse="isCollapsed">
+        Here is an post request with refresh token
+        <div hljs include="'partials/docs/api/oauth/refresh_request.json'"></div>
+
+        This will return the access and refresh token
+        <div hljs include="'partials/docs/api/oauth/index.json'"></div>
+    </div>
+</div>

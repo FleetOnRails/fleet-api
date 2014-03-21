@@ -1,0 +1,11 @@
+{
+    "user": {
+        "id": 1,
+        "first_name": "alan",
+        "last_name": "kehoe",
+        "email": "alankehoe111@gmail.com",
+        "username": "alan",
+        "phone_no": "0870608580",
+        "admin": true
+    }
+}

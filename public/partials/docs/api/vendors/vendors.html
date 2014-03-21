@@ -1,0 +1,67 @@
+<div ng-controller="ToggleCtrl">
+    <div class="endpoint" ng-click="isCollapsed = !isCollapsed">
+        <div class="method get">GET</div>
+        <div class="path">/v1/vendors</div>
+    </div>
+    <div collapse="isCollapsed">
+        This will return all the users vendors
+        <div hljs include="'partials/docs/api/vendors/index.json'"></div>
+    </div>
+</div>
+<div class="clear"></div>
+
+<div ng-controller="ToggleCtrl">
+    <div class="endpoint" ng-click="isCollapsed = !isCollapsed">
+        <div class="method get">GET</div>
+        <div class="path">/v1/vendors/:id</div>
+    </div>
+    <div collapse="isCollapsed">
+        This will get the users vendor matching with the :id given
+        <div hljs include="'partials/docs/api/vendors/show.json'"></div>
+    </div>
+</div>
+<div class="clear"></div>
+
+<div ng-controller="ToggleCtrl">
+    <div class="endpoint" ng-click="isCollapsed = !isCollapsed">
+        <div class="method post">POST</div>
+        <div class="path">/v1/vendors</div>
+    </div>
+    <div collapse="isCollapsed">
+        This create a new vendor for the current user
+        <div hljs include="'partials/docs/api/vendors/create_request.json'"></div>
+
+        And a reply with the new vendor object
+        <div hljs include="'partials/docs/api/vendors/show.json'"></div>
+    </div>
+</div>
+<div class="clear"></div>
+
+<div ng-controller="ToggleCtrl">
+    <div class="endpoint" ng-click="isCollapsed = !isCollapsed">
+        <div class="method put">PUT</div>
+        <div class="path">/v1/vendors/:id</div>
+    </div>
+    <div collapse="isCollapsed">
+        This update the vendor matching :id
+        <div hljs include="'partials/docs/api/vendors/create_request.json'"></div>
+
+        And a reply with the updated vendor object
+        <div hljs include="'partials/docs/api/vendors/show.json'"></div>
+    </div>
+</div>
+<div class="clear"></div>
+
+<div ng-controller="ToggleCtrl">
+    <div class="endpoint" ng-click="isCollapsed = !isCollapsed">
+        <div class="method delete">DELETE</div>
+        <div class="path">/v1/vendors/:id</div>
+    </div>
+    <div collapse="isCollapsed">
+
+        This will delete the vendor with matching :id
+        and reply with the deleted vendor object
+        <div hljs include="'partials/docs/api/vendors/show.json'"></div>
+    </div>
+</div>
+<div class="clear"></div>

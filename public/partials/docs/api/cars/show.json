@@ -1,0 +1,16 @@
+{
+    "car": {
+        "id": 2,
+        "make": "dest",
+        "model": "corolla",
+        "registration": "08wx1112",
+        "owner_id": 1,
+        "owner_type": "User",
+        "current_gps_statistic": {
+            "kmh": 62.78,
+            "latitude": 52.676181,
+            "longitude": -6.289091,
+            "created_at": 1395392397
+        }
+    }
+}

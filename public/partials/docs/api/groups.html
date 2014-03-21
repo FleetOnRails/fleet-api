@@ -1,0 +1,45 @@
+<navbar></navbar>
+
+<div class="container">
+    <div class="col-md-3">
+        <ul class="nav nav-pills nav-stacked">
+            <li><a href="#/docs/oauth">Oauth</a></li>
+            <li><a href="#/docs/me">Me</a></li>
+            <li><a href="#/docs/users">Users</a></li>
+            <li><a href="#/docs/cars">Cars</a></li>
+            <li><a href="#/docs/service_records">Service Records</a></li>
+            <li><a href="#/docs/vendors">Vendors</a></li>
+            <li><a href="#/docs/groups">Groups</a></li>
+        </ul>
+    </div>
+
+    <div class="col-md-9">
+        <div class="endpoints">
+            <h4>Groups</h4>
+
+            <div ng-include src="'partials/docs/api/groups/groups.html'"></div>
+            <hr/>
+
+            <h4>Groups < Users</h4>
+
+            <div ng-include src="'partials/docs/api/users/users_groups.html'"></div>
+            <hr/>
+
+            <h4>Groups < Cars</h4>
+
+            <div ng-include src="'partials/docs/api/groups/groups_cars.html'"></div>
+            <hr/>
+
+            <h4>Groups < Vendors</h4>
+
+            <div ng-include src="'partials/docs/api/vendors/groups_vendors.html'"></div>
+            <hr/>
+
+            <h4>Groups < Destinations</h4>
+
+            <div ng-include src="'partials/docs/api/destinations/group_destinations.html'"></div>
+            <hr/>
+        </div>
+    </div>
+</div>
+

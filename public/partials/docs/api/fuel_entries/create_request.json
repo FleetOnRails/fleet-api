@@ -1,0 +1,15 @@
+{
+    "fuel_entry": {
+        "odometer": 162000,
+        "liters": 62,
+        "price": 1.54,
+        "fuel_type": "diesel",
+        "filling_station": "esso",
+        "filled_tank": true,
+        "comment": "no comment on this matter",
+        "location_attributes": {
+            "latitude": 52.676181,
+            "longitude": -6.289091
+        }
+    }
+}

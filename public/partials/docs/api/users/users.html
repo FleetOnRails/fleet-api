@@ -1,0 +1,67 @@
+<div ng-controller="ToggleCtrl">
+    <div class="endpoint" ng-click="isCollapsed = !isCollapsed">
+        <div class="method get">GET</div>
+        <div class="path">/v1/users</div>
+    </div>
+    <div collapse="isCollapsed">
+        This will return all the users on the system
+        <div hljs include="'partials/docs/api/users/index.json'"></div>
+    </div>
+</div>
+<div class="clear"></div>
+
+<div ng-controller="ToggleCtrl">
+    <div class="endpoint" ng-click="isCollapsed = !isCollapsed">
+        <div class="method get">GET</div>
+        <div class="path">/v1/users/:id</div>
+    </div>
+    <div collapse="isCollapsed">
+        This will the user matching with the :id given
+        <div hljs include="'partials/docs/api/users/show.json'"></div>
+    </div>
+</div>
+<div class="clear"></div>
+
+<div ng-controller="ToggleCtrl">
+    <div class="endpoint" ng-click="isCollapsed = !isCollapsed">
+        <div class="method post">POST</div>
+        <div class="path">/v1/users</div>
+    </div>
+    <div collapse="isCollapsed">
+        This create a new user
+        <div hljs include="'partials/docs/api/users/create_request.json'"></div>
+
+        And a reply with the new user object
+        <div hljs include="'partials/docs/api/users/show.json'"></div>
+    </div>
+</div>
+<div class="clear"></div>
+
+<div ng-controller="ToggleCtrl">
+    <div class="endpoint" ng-click="isCollapsed = !isCollapsed">
+        <div class="method put">PUT</div>
+        <div class="path">/v1/users/:id</div>
+    </div>
+    <div collapse="isCollapsed">
+        This update the user matching :id
+        <div hljs include="'partials/docs/api/users/create_request.json'"></div>
+
+        And a reply with the updated user object
+        <div hljs include="'partials/docs/api/users/show.json'"></div>
+    </div>
+</div>
+<div class="clear"></div>
+
+<div ng-controller="ToggleCtrl">
+    <div class="endpoint" ng-click="isCollapsed = !isCollapsed">
+        <div class="method delete">DELETE</div>
+        <div class="path">/v1/users/:id</div>
+    </div>
+    <div collapse="isCollapsed">
+
+        This will delete the user with matching :id
+        and reply with the deleted user object
+        <div hljs include="'partials/docs/api/users/show.json'"></div>
+    </div>
+</div>
+<div class="clear"></div>

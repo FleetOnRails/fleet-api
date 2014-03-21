@@ -1,0 +1,11 @@
+{
+    "documents": [
+        {
+            "document": {
+                "id": 1,
+                "name": "test_file",
+                "media_url": "/uploads/document/media/1/6e2c201fd44a6b1f06da.jpg"
+            }
+        }
+    ]
+}

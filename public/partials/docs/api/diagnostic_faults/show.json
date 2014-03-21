@@ -1,0 +1,7 @@
+{
+    "diagnostic_fault": {
+        "id": 10,
+        "fault_code": "0x001",
+        "status": true
+    }
+}

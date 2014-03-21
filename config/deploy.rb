@@ -2,17 +2,6 @@ set :application, 'fleet-api'
 set :stages, %w(production development)
 set :default_stage, 'development'
 
-set :deploy_to, '/home/fleet/api/'
-set :tmp_dir, '/home/fleet/api/tmp'
-
-set :scm, :git
-set :branch, 'development'
-set :repo_url, 'git@git.raven.com:fleetonrails/fleet-api.git'
-
-set :linked_files, %w{config/database.yml}
-
-set :keep_releases, 5
-
 namespace :deploy do
 
   desc 'Restart application'

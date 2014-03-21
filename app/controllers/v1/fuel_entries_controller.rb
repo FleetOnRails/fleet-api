@@ -61,11 +61,43 @@ module V1
     end
 
     def update
-      # TODO - Should there be an update method ?
+      if params[:car_id]
+        @car = Car.find(params[:car_id])
+        if @car.owner_type == 'User'
+          raise NotPrivileged unless @car.owner_id == @current_user.id
+          @fuel_entry = FuelEntry.find(params[:id])
+          @fuel_entry.update(fuel_entry_params)
+
+          respond_with @fuel_entry
+        elsif @car.owner_type == 'Group'
+          @group = Group.find(@car.owner_id)
+          raise NotPrivileged unless @group.is_member?(@current_user)
+          @fuel_entry = FuelEntry.find(params[:id])
+          @fuel_entry.update(fuel_entry_params)
+
+          respond_with @fuel_entry
+        end
+      end
     end
 
     def destroy
-      # TODO - Should there be an destroy method ?
+      if params[:car_id]
+        @car = Car.find(params[:car_id])
+        if @car.owner_type == 'User'
+          raise NotPrivileged unless @car.owner_id == @current_user.id
+          @fuel_entry = FuelEntry.find(params[:id])
+          @fuel_entry.destroy!
+
+          respond_with @fuel_entry
+        elsif @car.owner_type == 'Group'
+          @group = Group.find(@car.owner_id)
+          raise NotPrivileged unless @group.is_manager?(@current_user)
+          @fuel_entry = FuelEntry.find(params[:id])
+          @fuel_entry.destroy!
+
+          respond_with @fuel_entry
+        end
+      end
     end
 
     private
@@ -75,7 +107,7 @@ module V1
           :odometer,
           :liters,
           :price,
-          :type,
+          :fuel_type,
           :filling_station,
           :filled_tank,
           :comment,

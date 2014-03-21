@@ -1,0 +1,38 @@
+<div ng-controller="ToggleCtrl">
+    <div class="endpoint" ng-click="isCollapsed = !isCollapsed">
+        <div class="method get">GET</div>
+        <div class="path">/v1/cars/:car_id/gps_statistics</div>
+    </div>
+    <div collapse="isCollapsed">
+        This will return gps_statistics if any associated with the car matching the id :car_id
+        <div hljs include="'partials/docs/api/gps_statistics/index.json'"></div>
+    </div>
+</div>
+<div class="clear"></div>
+
+<div ng-controller="ToggleCtrl">
+    <div class="endpoint" ng-click="isCollapsed = !isCollapsed">
+        <div class="method get">GET</div>
+        <div class="path">/v1/cars/:car_id/gps_statistics/:id</div>
+    </div>
+    <div collapse="isCollapsed">
+        This will the gps_statistic matching with the id given
+        <div hljs include="'partials/docs/api/gps_statistics/show.json'"></div>
+    </div>
+</div>
+<div class="clear"></div>
+
+<div ng-controller="ToggleCtrl">
+    <div class="endpoint" ng-click="isCollapsed = !isCollapsed">
+        <div class="method post">POST</div>
+        <div class="path">/v1/cars/:car_id/gps_statistics</div>
+    </div>
+    <div collapse="isCollapsed">
+        This create a new gps_statistic for the car matching :car_id
+        <div hljs include="'partials/docs/api/gps_statistics/create_request.json'"></div>
+
+        And a reply with the new gps_statistic object
+        <div hljs include="'partials/docs/api/gps_statistics/show.json'"></div>
+    </div>
+</div>
+<div class="clear"></div>

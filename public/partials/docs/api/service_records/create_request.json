@@ -1,0 +1,11 @@
+{
+    "service_record": {
+        "odometer_reading": 162000,
+        "technician": "alan",
+        "description": "full service",
+        "location_attributes": {
+            "latitude": 52.676181,
+            "longitude": -6.289091
+        }
+    }
+}

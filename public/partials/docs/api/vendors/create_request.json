@@ -1,0 +1,10 @@
+{
+    "vendor": {
+        "name": "cool vendor",
+        "supplies": "parts",
+        "location_attributes": {
+            "latitude": 52.676181,
+            "longitude": -6.289091
+        }
+    }
+}

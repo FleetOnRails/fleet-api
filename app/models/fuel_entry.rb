@@ -12,6 +12,7 @@ class FuelEntry < ActiveRecord::Base
   validates_presence_of :filling_station
   validates_presence_of :filled_tank
 
-  validates_associated :location
-  validates_presence_of :location
+  # TODO - Should we enforce the use of a location with a fuel entry. I dont think so
+  #validates_associated :location
+  #validates_presence_of :location
 end
