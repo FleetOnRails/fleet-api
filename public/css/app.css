@@ -64,6 +64,14 @@
     border-bottom-right-radius: 10px;
 }
 
+.doc_header {
+    width: 100%;
+    float: right;
+    padding: 10px;
+    background: #f1f1f1;
+    border-radius: 10px;
+}
+
 .endpoint .get {
     background: #27ae60 !important;
     color: #ffffff;
