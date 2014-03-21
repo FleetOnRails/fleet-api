@@ -28,8 +28,4 @@ describe FuelEntry do
   it 'should validate presence of filled tank' do
     should validate_presence_of(:filling_station)
   end
-
-  it 'should validate presence of location' do
-    should validate_presence_of(:location)
-  end
 end
