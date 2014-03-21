@@ -25,7 +25,7 @@ describe Group do
     should validate_presence_of(:name)
   end
 
-  it 'should validate presence of location' do
-    should validate_presence_of(:location)
+  it 'should uniqueness of name' do
+    should validate_uniqueness_of(:name)
   end
 end
