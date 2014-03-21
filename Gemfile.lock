@@ -169,6 +169,7 @@ DEPENDENCIES
   doorkeeper
   factory_girl_rails
   geocoder
+  jquery-rails
   mini_magick
   mysql2
   passenger

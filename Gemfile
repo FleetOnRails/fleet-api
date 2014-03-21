@@ -25,6 +25,7 @@ gem 'capistrano-rails'
 
 # OAuth
 gem 'doorkeeper'
+gem 'jquery-rails'
 
 # CORS
 gem 'rack-cors', :require => 'rack/cors'
