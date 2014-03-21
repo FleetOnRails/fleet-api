@@ -8,6 +8,8 @@
         "phone_no": "0870608580",
         "admin": true,
         "avatar": "/uploads/user/avatar/1/4ec9bac8ef10cc2e208c.jpg",
-        "avatar_thumb": "/uploads/user/avatar/1/thumb_4ec9bac8ef10cc2e208c.jpg"
+        "avatar_thumb": "/uploads/user/avatar/1/thumb_4ec9bac8ef10cc2e208c.jpg",
+        "created_at": 1394705990,
+        "updates_at": 1394706000
     }
 }

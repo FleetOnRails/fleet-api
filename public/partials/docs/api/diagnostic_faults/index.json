@@ -4,7 +4,9 @@
             "diagnostic_fault": {
                 "id": 10,
                 "fault_code": "0x001",
-                "status": true
+                "status": true,
+                "created_at": 1394705990,
+                "updates_at": 1394706000
             }
         }
     ]

@@ -8,11 +8,14 @@
                 "registration": "08wx1112",
                 "owner_id": 1,
                 "owner_type": "User",
+                "created_at": 1394705990,
+                "updates_at": 1394706000,
                 "current_gps_statistic": {
                     "kmh": 62.78,
                     "latitude": 52.676181,
                     "longitude": -6.289091,
-                    "created_at": 1395392397
+                    "created_at": 1394705990,
+                    "updates_at": 1394705990
                 }
             }
         }

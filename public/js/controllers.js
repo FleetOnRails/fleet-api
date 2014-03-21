@@ -5,5 +5,5 @@
 angular.module('fleetonrails-api.controllers', [])
 
     .controller('ToggleCtrl', ['$scope', function ($scope) {
-        $scope.isCollapsed = false;
+        $scope.isCollapsed = true;
     }]);
