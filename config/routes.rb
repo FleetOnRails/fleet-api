@@ -1,4 +1,5 @@
 FleetOnRails::Application.routes.draw do
+  devise_for :users
   use_doorkeeper
 
   namespace :v1 do
