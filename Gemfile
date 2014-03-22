@@ -25,6 +25,7 @@ gem 'capistrano-rails'
 
 # OAuth
 gem 'doorkeeper'
+gem 'devise'
 gem 'jquery-rails'
 
 # CORS

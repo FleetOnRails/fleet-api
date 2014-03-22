@@ -27,6 +27,7 @@ GEM
       tzinfo (~> 0.3.37)
     arel (4.0.1)
     atomic (1.1.14)
+    bcrypt (3.1.7)
     bcrypt-ruby (3.1.2)
     builder (3.1.4)
     capistrano (3.0.1)
@@ -51,6 +52,12 @@ GEM
       debugger-ruby_core_source (~> 1.2.4)
     debugger-linecache (1.2.0)
     debugger-ruby_core_source (1.2.4)
+    devise (3.2.4)
+      bcrypt (~> 3.0)
+      orm_adapter (~> 0.1)
+      railties (>= 3.2.6, < 5)
+      thread_safe (~> 0.1)
+      warden (~> 1.2.3)
     diff-lcs (1.2.5)
     docile (1.1.1)
     doorkeeper (0.7.4)
@@ -82,6 +89,7 @@ GEM
     net-scp (1.1.2)
       net-ssh (>= 2.6.5)
     net-ssh (2.7.0)
+    orm_adapter (0.5.0)
     passenger (4.0.29)
       daemon_controller (>= 1.1.0)
       rack
@@ -155,6 +163,8 @@ GEM
       polyglot
       polyglot (>= 0.3.1)
     tzinfo (0.3.38)
+    warden (1.2.3)
+      rack (>= 1.0)
 
 PLATFORMS
   ruby
@@ -166,6 +176,7 @@ DEPENDENCIES
   capistrano-rails
   carrierwave
   debugger
+  devise
   doorkeeper
   factory_girl_rails
   geocoder

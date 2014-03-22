@@ -26,7 +26,7 @@ module V1
     end
 
     def me_params
-      params.required(:me).permit(:first_name, :last_name, :username, :email, :phone_no)
+      params.required(:me).permit(:first_name, :last_name, :username, :email, :phone_no, :password, :password_confirmation)
     end
   end
 end
