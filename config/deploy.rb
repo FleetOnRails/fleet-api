@@ -16,7 +16,7 @@ namespace :deploy do
   task :seed do
     on roles(:db), in: :sequence, wait: 5 do
       with rails_env: fetch(:rails_env) do
-        execute "cd #{current_path}; bundle exec rake db:seed_fu RAILS_ENV=#{rails_env}"
+        execute "cd #{current_path}; bundle exec rake db:seed_fu"
       end
     end
   end
