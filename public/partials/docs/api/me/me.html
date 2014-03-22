@@ -16,10 +16,16 @@
         <div class="path">/v1/me</div>
     </div>
     <div collapse="isCollapsed">
-        Here is an update request
+        Here is an request to update the current user
         <div hljs include="'partials/docs/api/me/update_request.json'"></div>
 
-        This will return the current users details after update
+        A user can also update their password by sending the following values
+        <div class="alert alert-danger">
+            If current password is not valid the password update request will fail
+        </div>
+        <div hljs include="'partials/docs/api/me/update_password.json'"></div>
+
+        Both of the above requests will respond with the updated me object.
         <div hljs include="'partials/docs/api/me/index.json'"></div>
     </div>
 </div>
