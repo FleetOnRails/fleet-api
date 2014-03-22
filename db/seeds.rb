@@ -6,8 +6,22 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
-@users = User.create([{ username: 'alan', first_name: 'alan', last_name: 'kehoe', email: 'alankehoe111@gmail.com',
-              password: 'fleetonrails', admin: true },
-             { username: 'krystian', first_name: 'krystian', last_name: 'jankowski', email: 'krystian.jankowski2@mail.dcu.ie',
-              password: 'fleetonrails', admin: false }])
+username = 'admin'
+password = 'fleetonrails'
+
+User.create!({username: username, first_name: 'alan', last_name: 'kehoe', email: 'alan@fleetonrails.eu',
+                      password: password, admin: true})
+
+puts '####################################################'
+puts '############# Welcome to FleetOnRails ##############'
+puts '####################################################'
+puts ''
+
+puts "Admin user created successfully at #{Time.now}"
+puts "Username: #{username}"
+puts "Password: #{password}"
+
+puts ''
+puts '####################################################'
+puts '####################################################'
 
