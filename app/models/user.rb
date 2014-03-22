@@ -25,10 +25,15 @@ class User < ActiveRecord::Base
       end
 
       if user && user.valid_password?(login_password)
+        user.sign_in_count += 1
+        user.last_sign_in_at = user.current_sign_in_at || nil
+        user.current_sign_in_at = Time.now
+        user.save!
         user
       else
         false
       end
+      # TODO - Find a way to increment failed login count
     end
   end
 end

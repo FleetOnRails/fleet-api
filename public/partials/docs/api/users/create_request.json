@@ -2,9 +2,10 @@
     "user": {
         "first_name": "alan",
         "last_name": "kehoe",
-        "email": "kehoe@icloud.com",
-        "username": "kehoe",
+        "email": "alankehoe@icloud.com",
+        "username": "alan",
         "phone_no": "0870608580",
-        "password": "password"
+        "password": "password",
+        "password_confirmation": "password"
     }
 }

@@ -22,6 +22,7 @@ module V1
     def update
     end
 
+    # FIXME - this route is unprotected by doorkeeper
     def create
       if params[:group_id]
         @group = Group.find(params[:group_id])
@@ -29,13 +30,12 @@ module V1
         raise NotPrivileged unless @group.is_owner?(@current_user) || @group.is_manager?(@current_user)
         @group.add_user(@user, params[:user][:group_access])
         @group.save!
-
-        respond_with @user
       else
+        raise Exception if params[:user][:password] != params[:user][:password_confirmation]
         @user = User.create!(user_params)
-
-        respond_with @user
       end
+
+      respond_with @user
     end
 
     def destroy
@@ -56,7 +56,7 @@ module V1
     private
 
     def user_params
-      params.required(:user).permit(:first_name, :last_name, :username, :email, :password, :phone_no)
+      params.required(:user).permit(:first_name, :last_name, :username, :email, :password, :password_confirmation, :phone_no)
     end
   end
 end
