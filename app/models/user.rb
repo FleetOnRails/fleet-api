@@ -11,12 +11,10 @@ class User < ActiveRecord::Base
 
   mount_uploader :avatar, AvatarUploader
 
+  validates_presence_of :username, :first_name, :last_name
+  validates_uniqueness_of :username
+
   EMAIL_REGEX = /\A[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}\z/i
-
-  validates_presence_of :email, :username, :first_name, :last_name
-  validates_uniqueness_of :username, :email
-
-  validates_format_of :email, with: EMAIL_REGEX
 
   class << self
     def authenticate(username_or_email, login_password)
