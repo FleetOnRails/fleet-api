@@ -31,6 +31,7 @@ gem 'capistrano-rails'
 gem 'doorkeeper'
 gem 'devise'
 gem 'jquery-rails'
+gem 'uglifier'
 
 # CORS
 gem 'rack-cors', :require => 'rack/cors'
