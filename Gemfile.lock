@@ -1,3 +1,11 @@
+GIT
+  remote: git://github.com/mbleigh/seed-fu.git
+  revision: 6dbf3fac92666f2fcfc65ab882fb95ed3ef51712
+  specs:
+    seed-fu (2.3.0)
+      activerecord (>= 3.1, < 4.1)
+      activesupport (>= 3.1, < 4.1)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -69,6 +77,8 @@ GEM
     factory_girl_rails (4.3.0)
       factory_girl (~> 4.3.0)
       railties (>= 3.0.0)
+    faker (1.2.0)
+      i18n (~> 0.5)
     geocoder (1.1.9)
     hike (1.2.3)
     i18n (0.6.9)
@@ -179,6 +189,7 @@ DEPENDENCIES
   devise
   doorkeeper
   factory_girl_rails
+  faker
   geocoder
   jquery-rails
   mini_magick
@@ -188,6 +199,7 @@ DEPENDENCIES
   rack-cors
   rails (= 4.0.2)
   rspec-rails
+  seed-fu!
   shoulda-matchers
   simplecov
   sqlite3

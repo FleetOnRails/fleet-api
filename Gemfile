@@ -7,12 +7,16 @@ gem 'rails', '4.0.2'
 gem 'mysql2'
 gem 'sqlite3'
 
+# Seeds
+gem 'seed-fu', github: 'mbleigh/seed-fu'
+
 group :development, :test do
   gem 'debugger'
   gem 'rspec-rails'
   gem 'factory_girl_rails'
   gem 'simplecov'
   gem 'shoulda-matchers'
+  gem 'faker'
 end
 
 # Use phusion passenger as the app server
