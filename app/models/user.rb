@@ -17,7 +17,7 @@ class User < ActiveRecord::Base
   EMAIL_REGEX = /\A[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}\z/i
 
   class << self
-    def authenticate(username_or_email, login_password)
+    def login(username_or_email, login_password, ip_address)
       if EMAIL_REGEX.match(username_or_email)
         user = User.find_by_email(username_or_email)
       else
@@ -27,7 +27,9 @@ class User < ActiveRecord::Base
       if user && user.valid_password?(login_password)
         user.sign_in_count += 1
         user.last_sign_in_at = user.current_sign_in_at || nil
+        user.last_sign_in_ip = user.current_sign_in_ip || nil
         user.current_sign_in_at = Time.now
+        user.current_sign_in_ip = ip_address
         user.save!
         user
       else

@@ -5,8 +5,6 @@ module V1
     include AvatarHelper
 
     def index
-      @current_user
-
       respond_with @current_user
     end
 
@@ -27,6 +25,8 @@ module V1
 
       respond_with @current_user
     end
+
+    private
 
     def me_params
       params.required(:me).permit(:first_name, :last_name, :username, :email, :phone_no)

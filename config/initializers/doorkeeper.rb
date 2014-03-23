@@ -12,7 +12,8 @@ Doorkeeper.configure do
   #end
 
   resource_owner_from_credentials do
-    User.authenticate(params[:email], params[:password]) || User.authenticate(params[:username], params[:password])
+    User.login(params[:email], params[:password], request.remote_ip) ||
+        User.login(params[:username], params[:password], request.remote_ip)
   end
 
   # If you want to restrict access to the web interface for adding oauth authorized applications, you need to declare the block below.
