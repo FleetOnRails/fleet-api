@@ -3,29 +3,6 @@ set :stage, :production
 set :deploy_to, '/home/fleet_production/'
 set :tmp_dir, '/home/fleet_production/tmp'
 
-set :branch do
-  # Warn that branches cannot be deployed
-  puts 'Cannot deploy a branch to production' unless fetch(:branch).nil?
-
-  # Get the latest tags and set the default
-  default = `git fetch --tags && git tag`.split("n").last
-
-  # Allow the developer to choose a tag to deploy
-  tag = Capistrano::CLI.ui.ask "Choose a tag to deploy (make sure to push the tag first): [Default: #{ default }] "
-
-  # Fall back to the default if no tag was specified
-  tag = default if tag.empty?
-
-  # Be extra cautious and exit if a tag cannot be found
-  if tag.nil?
-    puts "Cannot deploy as no tag was found"
-    exit
-  end
-
-  # Return the tag to deploy
-  tag
-end
-
 server 'fleet_production@app.raven.com',
        user: 'fleet_production',
        roles: %w{web app db},
@@ -37,6 +14,24 @@ server 'fleet_production@app.raven.com',
        }
 
 namespace :deploy do
+
+  desc 'Prompt for branch or tag'
+  task git_branch_or_tag: :'git:wrapper' do
+    on roles(:all) do
+      run_locally do
+        tag_prompt = "Enter a branch or tag name to deploy, available tags include #{tags}"
+
+        ask(:branch_or_tag, tag_prompt)
+        tag_branch_target = fetch(:branch_or_tag)
+
+        execute "echo \"About to deploy branch or tag '#{tag_branch_target}'\""
+        set(:branch, tag_branch_target)
+      end
+
+    end
+  end
+
+  before 'deploy:starting', :git_branch_or_tag
 
   desc 'Restart application'
   task :restart do
@@ -55,9 +50,10 @@ namespace :deploy do
     end
   end
 
+  before 'deploy:starting', :git_branch_or_tag
+
   after :restart, :clear_cache do
     on roles(:web), in: :groups, limit: 3, wait: 10 do
-
     end
   end
 
