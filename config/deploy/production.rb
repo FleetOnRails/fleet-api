@@ -4,10 +4,22 @@ set :deploy_to, '/home/fleet_production/'
 set :tmp_dir, '/home/fleet_production/tmp'
 
 set :branch do
-  default_tag = `git tag`.split("\n").last
+  # Get the latest tags and set the default
+  default = `git fetch --tags && git tag`.split("n").last
 
-  tag = Capistrano::CLI.ui.ask "Tag to deploy (make sure to push the tag first): [#{default_tag}] "
-  tag = default_tag if tag.empty?
+  # Allow the developer to choose a tag to deploy
+  tag = Capistrano::CLI.ui.ask "Choose a tag to deploy (make sure to push the tag first): [Default: #{ default }] "
+
+  # Fall back to the default if no tag was specified
+  tag = default if tag.empty?
+
+  # Be extra cautious and exit if a tag cannot be found
+  if tag.nil?
+    puts 'Cannot deploy as no tag was found'
+    exit
+  end
+
+  # Return the tag to deploy
   tag
 end
 
