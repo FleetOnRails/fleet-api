@@ -8,16 +8,14 @@ module V1
         if @car.owner_type == 'User'
           raise NotPrivileged unless @car.owner_id == @current_user.id
           @diagnostic_statistics = @car.diagnostic_statistics
-
-          respond_with @diagnostic_statistics
         elsif @car.owner_type == 'Group'
           @group = Group.find(@car.owner_id)
           raise NotPrivileged unless @group.is_member?(@current_user)
           @diagnostic_statistics = @car.diagnostic_statistics
-
-          respond_with @diagnostic_statistics
         end
       end
+
+      respond_with @diagnostic_statistics
     end
 
     def show
@@ -26,16 +24,14 @@ module V1
         if @car.owner_type == 'User'
           raise NotPrivileged unless @car.owner_id == @current_user.id
           @diagnostic_statistic = @car.diagnostic_statistics.find(params[:id])
-
-          respond_with @diagnostic_statistic
         elsif @car.owner_type == 'Group'
           @group = Group.find(@car.owner_id)
           raise NotPrivileged unless @group.is_member?(@current_user)
           @diagnostic_statistic = @car.diagnostic_statistics.find(params[:id])
-
-          respond_with @diagnostic_statistic
         end
       end
+
+      respond_with @diagnostic_statistic
     end
 
     def create
@@ -44,20 +40,18 @@ module V1
         if @car.owner_type == 'User'
           raise NotPrivileged unless @car.owner_id == @current_user.id
           @diagnostic_statistic = DiagnosticStatistic.create!(diagnostic_statistic_params)
-          @car.diagnostic_statistics <<(@diagnostic_statistic)
+          @car.add_diagnostic_statistic(@diagnostic_statistic)
           @car.save!
-
-          respond_with @diagnostic_statistic
         elsif @car.owner_type == 'Group'
           @group = Group.find(@car.owner_id)
           raise NotPrivileged unless @group.is_member?(@current_user)
           @diagnostic_statistic = DiagnosticStatistic.create!(diagnostic_statistic_params)
-          @car.diagnostic_statistics <<(@diagnostic_statistic)
+          @car.add_diagnostic_statistic(@diagnostic_statistic)
           @car.save!
-
-          respond_with @diagnostic_statistic
         end
       end
+
+      respond_with @diagnostic_statistic
     end
 
     def update

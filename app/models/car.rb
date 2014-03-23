@@ -6,8 +6,8 @@ class Car < ActiveRecord::Base
   has_many :documents, as: :documentable, dependent: :destroy
   has_many :fuel_entries, dependent: :destroy
 
-  has_many :diagnostic_statistics, dependent: :destroy, before_add: :limit_diagnostic_statistics
-  has_many :gps_statistics, dependent: :destroy, before_add: :limit_gps_statistics
+  has_many :diagnostic_statistics, dependent: :destroy
+  has_many :gps_statistics, dependent: :destroy
 
   mount_uploader :avatar, AvatarUploader
 
@@ -17,21 +17,21 @@ class Car < ActiveRecord::Base
 
   validates_uniqueness_of :registration
 
-  private
-
   LIMIT = 30000
 
-  def limit_gps_statistics
-    if self.gps_statistics.size >= LIMIT
-      first_thousand = self.gps_statistics.limit(1000)
-      first_thousand.each { |record| record.destroy! }
+  def add_diagnostic_statistic(diagnostic_statistic)
+    if diagnostic_statistics.length >= LIMIT
+      diagnostic_statistics.limit(100).each { |record| record.destroy! }
     end
+
+    diagnostic_statistics << diagnostic_statistic
   end
 
-  def limit_diagnostic_statistics
-    if self.diagnostic_statistics.size >= LIMIT
-      first_thousand = self.diagnostic_statistics.limit(1000)
-      first_thousand.each { |record| record.destroy! }
+  def add_gps_statistic(gps_statistic)
+    if gps_statistics.size >= LIMIT
+      gps_statistics.limit(100).each { |record| record.destroy! }
     end
+
+    gps_statistics << gps_statistic
   end
 end
