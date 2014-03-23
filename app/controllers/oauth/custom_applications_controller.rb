@@ -1,46 +1,40 @@
 module Oauth
-  class CustomApplicationsController < Doorkeeper::ApplicationsController
+  class CustomApplicationsController < CustomOauthController
     http_basic_authenticate_with name: 'admin', password: 'fleetonrails'
-
-    respond_to :json
-
-    before_filter :check_format
-    before_filter :set_application, :only => [:show, :edit, :update, :destroy]
 
     def index
       @applications = Doorkeeper::Application.all
+
+      respond_with @applications
     end
 
     def show
+      @application = Doorkeeper::Application.find(params[:id])
+
       respond_with @application
     end
 
     def create
       @application = Doorkeeper::Application.new(application_params)
-      if @application.save!
-        respond_with @application
-      end
+      @application.save!
+
+      respond_with @application
     end
 
     def update
-      if @application.update_attributes(application_params)
-        respond_with @application
-      end
+      @application = Doorkeeper::Application.find(params[:id])
+      @application.update!(application_params)
+
+      respond_with @application
     end
 
     def destroy
+      @application = Doorkeeper::Application.find(params[:id])
+
       @application.destroy!
     end
 
     private
-
-    def check_format
-      render :nothing => true, :status => 406 unless params[:format] == 'json'
-    end
-
-    def set_application
-      @application = Doorkeeper::Application.find(params[:id])
-    end
 
     def application_params
       if params.respond_to?(:permit)
