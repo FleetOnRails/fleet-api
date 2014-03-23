@@ -12,15 +12,6 @@ namespace :deploy do
     end
   end
 
-  desc 'reload the database with seed data'
-  task :seed do
-    on roles(:db), in: :sequence, wait: 5 do
-      with rails_env: fetch(:rails_env) do
-        execute "cd #{current_path}; bundle exec rake db:seed_fu"
-      end
-    end
-  end
-
   after :restart, :clear_cache do
     on roles(:web), in: :groups, limit: 3, wait: 10 do
 

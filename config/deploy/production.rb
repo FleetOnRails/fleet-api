@@ -20,3 +20,14 @@ server 'fleet_production@app.raven.com',
            keys: %w(~/.ssh/id_rsa),
            auth_methods: %w(publickey)
        }
+
+namespace :deploy do
+  desc 'load the database with seed data'
+  task :seed do
+    on roles(:db), in: :sequence, wait: 5 do
+      with rails_env: fetch(:rails_env) do
+        execute "cd #{current_path}; bundle exec rake db:seed_fu RAILS_ENV=production"
+      end
+    end
+  end
+end
