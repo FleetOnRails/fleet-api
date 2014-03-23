@@ -25,7 +25,7 @@ namespace :deploy do
         tag_prompt = "Enter a tag to deploy, available tags are #{available_tags}, latest tag is #{latest_tag}"
 
         ask(:tag, tag_prompt)
-        tag_target = fetch(:tag) || latest_tag
+        tag_target = fetch(:tag)
 
         execute "echo \"About to deploy tag '#{tag_target}'\""
         set(:branch, tag_target)
