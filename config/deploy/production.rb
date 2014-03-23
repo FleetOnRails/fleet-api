@@ -15,25 +15,23 @@ server 'fleet_production@app.raven.com',
 
 namespace :deploy do
 
-  desc 'Prompt for branch or tag'
-  task git_branch_or_tag: :'git:wrapper' do
+  desc 'Prompt for or tag'
+  task tag_to_deploy: :'git:wrapper' do
     on roles(:all) do
-      available_tags = `git tag`.split("\n")
+      available_tags = `git fetch --tags && git tag`.split('n')
+      latest_tag = `git fetch --tags && git tag`.split('n').last
 
       run_locally do
-        tag_prompt = "Enter a branch or tag name to deploy, available tags are #{available_tags}"
+        tag_prompt = "Enter a tag name to deploy, available tags are #{available_tags}, latest tag is #{latest_tag}"
 
         ask(:tag, tag_prompt)
-        tag_target = fetch(:tag)
+        tag_target = fetch(:tag) || latest_tag
 
         execute "echo \"About to deploy tag '#{tag_target}'\""
         set(:branch, tag_target)
       end
-
     end
   end
-
-  before 'deploy:starting', :git_branch_or_tag
 
   desc 'Restart application'
   task :restart do
@@ -52,7 +50,7 @@ namespace :deploy do
     end
   end
 
-  before 'deploy:starting', :git_branch_or_tag
+  before 'deploy:starting', :tag_to_deploy
 
   after :restart, :clear_cache do
     on roles(:web), in: :groups, limit: 3, wait: 10 do
