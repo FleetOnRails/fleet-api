@@ -18,8 +18,10 @@ namespace :deploy do
   desc 'Prompt for branch or tag'
   task git_branch_or_tag: :'git:wrapper' do
     on roles(:all) do
+      latest_tag = `git tag`.split("\n").last
+
       run_locally do
-        tag_prompt = "Enter a branch or tag name to deploy, available tags include #{tags}"
+        tag_prompt = "Enter a branch or tag name to deploy, latest Tag is #{latest_tag}"
 
         ask(:branch_or_tag, tag_prompt)
         tag_branch_target = fetch(:branch_or_tag)
