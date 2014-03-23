@@ -1,7 +1,10 @@
 class User < ActiveRecord::Base
-  devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :trackable, :validatable,
-         :lockable, :timeoutable
+  devise :database_authenticatable,
+         :recoverable,
+         :trackable,
+         :validatable,
+         :lockable,
+         :timeoutable
 
   has_many :cars, as: :owner, dependent: :destroy
   has_many :vendors, as: :venderable, dependent: :destroy
