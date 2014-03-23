@@ -24,14 +24,14 @@ class Car < ActiveRecord::Base
   def limit_gps_statistics
     if self.gps_statistics.size >= LIMIT
       first_thousand = self.gps_statistics.limit(1000)
-      first_thousand.each { |record| record.destroy!}
+      first_thousand.each { |record| record.destroy! }
     end
   end
 
   def limit_diagnostic_statistics
     if self.diagnostic_statistics.size >= LIMIT
       first_thousand = self.diagnostic_statistics.limit(1000)
-      first_thousand.each { |record| record.destroy!}
+      first_thousand.each { |record| record.destroy! }
     end
   end
 end
