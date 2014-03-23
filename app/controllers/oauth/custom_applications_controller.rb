@@ -1,6 +1,6 @@
 module Oauth
   class CustomApplicationsController < CustomOauthController
-    http_basic_authenticate_with name: 'admin', password: 'fleetonrails'
+    #http_basic_authenticate_with name: 'admin', password: 'fleetonrails'
 
     def index
       @applications = Doorkeeper::Application.all
