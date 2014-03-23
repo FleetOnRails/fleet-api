@@ -18,11 +18,11 @@ namespace :deploy do
   desc 'Prompt for or tag'
   task tag_to_deploy: :'git:wrapper' do
     on roles(:all) do
-      available_tags = `git fetch --tags && git tag`.split('n')
-      latest_tag = `git fetch --tags && git tag`.split('n').last
+      available_tags = `git fetch --tags && git tag`.split("\n")
+      latest_tag = `git fetch --tags && git tag`.split("\n").last
 
       run_locally do
-        tag_prompt = "Enter a tag name to deploy, available tags are #{available_tags}, latest tag is #{latest_tag}"
+        tag_prompt = "Enter a tag to deploy, available tags are #{available_tags}, latest tag is #{latest_tag}"
 
         ask(:tag, tag_prompt)
         tag_target = fetch(:tag) || latest_tag
