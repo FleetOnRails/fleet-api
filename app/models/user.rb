@@ -1,4 +1,5 @@
 class User < ActiveRecord::Base
+  # FIXME - Why do Devise's validations not work.
   devise :database_authenticatable,
          :recoverable,
          :trackable,
