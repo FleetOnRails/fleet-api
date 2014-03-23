@@ -3,12 +3,14 @@ angular.module('fleetonrails-api', [
         'ui.bootstrap',
         'fleetonrails-api.controllers',
         'fleetonrails-api.directives',
+        'fleetonrails-api.services',
         'hljs'
     ])
 
     .config(['$routeProvider', function ($routeProvider) {
         $routeProvider.
             when('/', {templateUrl: 'partials/main.html'}).
+            when('/oauth', {templateUrl: 'partials/oauth.html'}).
             when('/docs', {templateUrl: 'partials/docs/api/docs.html'}).
             when('/docs/oauth', {templateUrl: 'partials/docs/api/oauth.html'}).
             when('/docs/me', {templateUrl: 'partials/docs/api/me.html'}).

@@ -1,0 +1,58 @@
+<navbar></navbar>
+
+<div class="container" ng-controller="OauthController">
+    <div class="row">
+        <div class="col-md-2"></div>
+        <div class="col-md-8">
+            <div class="endpoints">
+                <div class="row">
+                    <div class="col-md-8">
+                        <h4>OAuth Applications</h4>
+                    </div>
+                    <div class="col-md-4">
+                        <button type="button" class="btn btn-warning btn-xs pull-right"
+                                ng-click="isCollapsed=!isCollapsed">New Application
+                        </button>
+                    </div>
+                </div>
+                <div collapse="isCollapsed">
+                    <form ng-submit="createApplication()" name="form">
+                        <div class="panel panel-primary">
+                            <div class="panel-heading">Add a new OAuth application</div>
+                            <div class="panel-body">
+                                <div class="input-group input-group-sm">
+                                    <span class="input-group-addon">Application Name:</span>
+                                    <input type="text" class="form-control" placeholder="cool_application"
+                                           ng-model="application.name">
+                                </div>
+                                <br>
+                                <button type="submit" class="btn btn-primary">Create</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+
+                <p>Below is a list of Applications that are authorized to consume this API</p>
+                <hr>
+
+                <div class="list-group">
+                    <div ng-repeat="object in applications">
+                        <div class="list-group-item">
+                            <h4 class="list-group-item-heading">{{ object.application.name }}</h4>
+
+                            <p class="list-group-item-text">
+
+                            <h5>Application ID: </h5>{{ object.application.uid }}</p>
+
+                            <p class="list-group-item-text">
+
+                            <h5>Application Secret: </h5>{{ object.application.secret }}</p>
+                        </div>
+                        <hr>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-2"></div>
+    </div>
+</div>

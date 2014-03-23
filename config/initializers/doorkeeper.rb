@@ -11,6 +11,11 @@ Doorkeeper.configure do
     # User.find_by_id(session[:user_id]) || redirect_to(new_user_session_url)
   #end
 
+  #resource_owner_from_credentials do
+  #  u = User.find_for_database_authentication(:email => params[:username])
+  #  u if u && u.valid_password?(params[:password])
+  #end
+
   resource_owner_from_credentials do
     User.login(params[:email], params[:password], request.remote_ip) ||
         User.login(params[:username], params[:password], request.remote_ip)

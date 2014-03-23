@@ -1,6 +1,11 @@
 FleetOnRails::Application.routes.draw do
   devise_for :users
-  use_doorkeeper
+
+  use_doorkeeper do
+    controllers :applications => 'oauth/custom_applications'
+    controllers :tokens => 'oauth/custom_tokens'
+    skip_controllers :authorizations, :authorized_applications
+  end
 
   namespace :v1 do
     get '/me', to: 'me#index'

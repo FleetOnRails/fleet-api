@@ -1,6 +1,6 @@
 SeedFu.quiet = true
 
-puts 'Seeding OBD Statistics'
+puts 'Seeding Diagnostic Statistics'
 
 cars = Car.all
 
