@@ -18,9 +18,19 @@ class User < ActiveRecord::Base
   validates_presence_of :username, :first_name, :last_name
   validates_uniqueness_of :username
 
-  EMAIL_REGEX = /\A[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}\z/i
+  after_create :registration_mail
+
+  def registration_mail
+    Pony.mail({
+                  :to => email,
+                  :from => 'admin@fleetonrails.eu',
+                  :html_body => "Thanks for registering #{first_name} #{last_name}"
+              })
+  end
 
   class << self
+    EMAIL_REGEX = /\A[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}\z/i
+
     def login(username_or_email, login_password, ip_address)
       if EMAIL_REGEX.match(username_or_email)
         user = User.find_by_email(username_or_email)

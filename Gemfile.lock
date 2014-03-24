@@ -106,6 +106,8 @@ GEM
       rack
       rake (>= 0.8.1)
     polyglot (0.3.3)
+    pony (1.8)
+      mail (>= 2.0)
     rabl (0.9.3)
       activesupport (>= 2.3.14)
     rack (1.5.2)
@@ -200,6 +202,7 @@ DEPENDENCIES
   mini_magick
   mysql2
   passenger
+  pony
   rabl
   rack-cors
   rails (= 4.0.2)

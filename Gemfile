@@ -52,3 +52,6 @@ gem 'mini_magick'
 
 # Geocoder for location based services
 gem 'geocoder'
+
+# Mail
+gem 'pony'
