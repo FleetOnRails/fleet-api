@@ -31,6 +31,7 @@ module V1
         @group.add_user(@user, params[:user][:group_access])
         @group.save!
       else
+        # TODO - Set user admin to false here
         raise Exception if params[:user][:password] != params[:user][:password_confirmation]
         @user = User.create!(user_params)
       end
