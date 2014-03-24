@@ -16,15 +16,16 @@ class User < ActiveRecord::Base
   mount_uploader :avatar, AvatarUploader
 
   validates_presence_of :username, :first_name, :last_name
+
   validates_uniqueness_of :username
+  validates_uniqueness_of :email
 
   after_create :registration_mail
 
   def registration_mail
     Pony.mail({
                   :to => email,
-                  :from => 'admin@fleetonrails.eu',
-                  :html_body => "Thanks for registering #{first_name} #{last_name}"
+                  :body => "Thanks for registering #{first_name} #{last_name}"
               })
   end
 
