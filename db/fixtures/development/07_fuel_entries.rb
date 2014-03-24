@@ -1,3 +1,5 @@
+require 'faker'
+
 SeedFu.quiet = true
 
 puts 'Seeding Fuel Entries'
