@@ -28,4 +28,10 @@ angular.module('fleetonrails-api.controllers', [])
                 $scope.apply
             })
         }
+
+        $scope.deleteCar = function (id) {
+            OauthService.delete(id, function (data) {
+                console.log(data);
+            })
+        };
     }]);

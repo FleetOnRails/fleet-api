@@ -24,7 +24,7 @@ angular.module('fleetonrails-api.services', [])
                 })
             },
 
-            create: function(data, success) {
+            create: function (data, success) {
                 $http({
                     method: 'POST',
                     url: '/oauth/applications.json',
@@ -35,6 +35,23 @@ angular.module('fleetonrails-api.services', [])
                     }
                 }).success(function (data) {
                     success(data);
+                }).error(function (data) {
+                    console.log(data);
+                })
+            },
+
+            delete: function (id, success) {
+                $http({
+                    method: 'DELETE',
+                    url: '/oauth/applications/' + id + '.json',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Accept': 'application/json'
+                    }
+
+                }).success(function (data) {
+                    success(data);
+
                 }).error(function (data) {
                     console.log(data);
                 })
