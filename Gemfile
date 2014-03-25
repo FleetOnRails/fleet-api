@@ -9,7 +9,6 @@ gem 'sqlite3'
 
 # Seeds
 gem 'seed-fu', github: 'mbleigh/seed-fu'
-
 gem 'faker'
 
 group :development, :test do
