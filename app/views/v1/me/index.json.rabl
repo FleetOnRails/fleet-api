@@ -11,7 +11,7 @@ node :current_sign_in_at do |object|
   object.current_sign_in_at.to_time.to_i
 end
 
-node :current_last_in_at do |object|
+node :last_sign_in_at do |object|
   object.last_sign_in_at.to_time.to_i
 end
 

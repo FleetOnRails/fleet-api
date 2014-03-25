@@ -1,42 +1,29 @@
 require 'spec_helper'
 
 describe V1::UsersController do
+  render_views
 
-  describe 'GET #index' do
-    it 'responds with 200' do
-      get :index
-      response.status.should eq(200)
-    end
+  before :each do
+    bypass_authentication
   end
 
-  describe 'GET #index' do
-    it 'responds with 200' do
-      get :index
-      response.status.should eq(200)
+  describe 'GET index' do
+    before :each do
+      FactoryGirl.create_list(:user, 10)
+    end
+
+    it 'recieves a list of users' do
+      get :index, format: :json
+
+      expect(json).to have_key('users')
+    end
+
+    it 'response is successful' do
+      get :index, format: :json
+
+      expect(response).to be_success
     end
   end
-
-  describe 'GET #index' do
-    it 'responds with 200' do
-      get :index
-      response.status.should eq(200)
-    end
-  end
-
-  describe 'GET #index' do
-    it 'responds with 200' do
-      get :index
-      response.status.should eq(200)
-    end
-  end
-
-  describe 'GET #index' do
-    it 'responds with 200' do
-      get :index
-      response.status.should eq(200)
-    end
-  end
-
 end
 
 
