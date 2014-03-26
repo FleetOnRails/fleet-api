@@ -1,3 +1,11 @@
+GIT
+  remote: git://github.com/mbleigh/seed-fu.git
+  revision: 6dbf3fac92666f2fcfc65ab882fb95ed3ef51712
+  specs:
+    seed-fu (2.3.0)
+      activerecord (>= 3.1, < 4.1)
+      activesupport (>= 3.1, < 4.1)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -27,6 +35,7 @@ GEM
       tzinfo (~> 0.3.37)
     arel (4.0.1)
     atomic (1.1.14)
+    bcrypt (3.1.7)
     bcrypt-ruby (3.1.2)
     builder (3.1.4)
     capistrano (3.0.1)
@@ -51,17 +60,26 @@ GEM
       debugger-ruby_core_source (~> 1.2.4)
     debugger-linecache (1.2.0)
     debugger-ruby_core_source (1.2.4)
+    devise (3.2.4)
+      bcrypt (~> 3.0)
+      orm_adapter (~> 0.1)
+      railties (>= 3.2.6, < 5)
+      thread_safe (~> 0.1)
+      warden (~> 1.2.3)
     diff-lcs (1.2.5)
     docile (1.1.1)
     doorkeeper (0.7.4)
       jquery-rails (>= 2.0.2)
       railties (>= 3.1)
     erubis (2.7.0)
+    execjs (2.0.2)
     factory_girl (4.3.0)
       activesupport (>= 3.0.0)
     factory_girl_rails (4.3.0)
       factory_girl (~> 4.3.0)
       railties (>= 3.0.0)
+    faker (1.2.0)
+      i18n (~> 0.5)
     geocoder (1.1.9)
     hike (1.2.3)
     i18n (0.6.9)
@@ -82,11 +100,14 @@ GEM
     net-scp (1.1.2)
       net-ssh (>= 2.6.5)
     net-ssh (2.7.0)
+    orm_adapter (0.5.0)
     passenger (4.0.29)
       daemon_controller (>= 1.1.0)
       rack
       rake (>= 0.8.1)
     polyglot (0.3.3)
+    pony (1.8)
+      mail (>= 2.0)
     rabl (0.9.3)
       activesupport (>= 2.3.14)
     rack (1.5.2)
@@ -119,6 +140,7 @@ GEM
       rspec-core (~> 2.14.0)
       rspec-expectations (~> 2.14.0)
       rspec-mocks (~> 2.14.0)
+    sass (3.2.12)
     shoulda-matchers (2.4.0)
       activesupport (>= 3.0.0)
     simplecov (0.8.2)
@@ -155,6 +177,11 @@ GEM
       polyglot
       polyglot (>= 0.3.1)
     tzinfo (0.3.38)
+    uglifier (2.5.0)
+      execjs (>= 0.3.0)
+      json (>= 1.8.0)
+    warden (1.2.3)
+      rack (>= 1.0)
 
 PLATFORMS
   ruby
@@ -166,18 +193,24 @@ DEPENDENCIES
   capistrano-rails
   carrierwave
   debugger
+  devise
   doorkeeper
   factory_girl_rails
+  faker
   geocoder
   jquery-rails
   mini_magick
   mysql2
   passenger
+  pony
   rabl
   rack-cors
   rails (= 4.0.2)
   rspec-rails
+  sass
+  seed-fu!
   shoulda-matchers
   simplecov
   sqlite3
   therubyracer
+  uglifier

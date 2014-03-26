@@ -14,19 +14,78 @@
     </div>
 
     <div class="col-md-9">
-        <div class="endpoints">
-            <div class="endpoints">
-                <h4>FleetOnRails API</h4>
+        <h3>Below is some info about global API details</h3>
+        <hr>
 
-                All Api requests need to be accompanied by three headers
-                <br>
-                <br>
-                <ul>
-                    <li>"Content-Type": "application/json"</li>
-                    <li>"Accept": "application/json"</li>
-                    <li>"Authorization": "Bearer sdfhuigf7sdt87t3gr8723rfvj2h3f87qvj23h87v"</li>
-                </ul>
+        <div class="panel panel-primary">
+            <div class="panel-heading">
+                <h3 class="panel-title">JSON</h3>
+            </div>
+            <div class="panel-body">
+                <h5>This API uses JSON to serialise data, it is not Necessary to specify .json at the end of a
+                    url</h5>
+
+                <h5>Below is an example response in JSON format</h5>
+
+                <div hljs include="'partials/docs/api/me/index.json'"></div>
+            </div>
+        </div>
+
+        <div class="panel panel-success">
+            <div class="panel-heading">
+                <h3 class="panel-title">Authentication</h3>
+            </div>
+            <div class="panel-body">
+                <h5>This API uses OAuth2 for Authentication</h5>
+
+                <h5>All requests except for creating a new user are protected by OAuth2</h5>
+                <h5>A bad OAuth2 token request will give the following error</h5>
+
+                <div hljs include="'partials/docs/api/docs/invalid_oauth.json'"></div>
+            </div>
+        </div>
+
+        <div class="panel panel-primary">
+            <div class="panel-heading">
+                <h3 class="panel-title">Headers</h3>
+            </div>
+            <div class="panel-body">
+                <h5>All API request require the following Headers to be set</h5>
+
+                <div hljs include="'partials/docs/api/docs/headers.json'"></div>
+
+                <h5>Below is an example of how this might be implemented</h5>
+
+                <div hljs include="'partials/docs/api/docs/headers.js'"></div>
+            </div>
+        </div>
+
+        <div class="panel panel-danger">
+            <div class="panel-heading">
+                <h3 class="panel-title">Errors</h3>
+            </div>
+            <div class="panel-body">
+                <h5>Below is an example 404 response</h5>
+
+                <div hljs include="'partials/docs/api/docs/404.json'"></div>
+                <hr>
+
+                <h5>Below is an example 403 response</h5>
+
+                <div hljs include="'partials/docs/api/docs/403.json'"></div>
+                <hr>
+
+                <h5>Below is an example 400 response</h5>
+
+                <div hljs include="'partials/docs/api/docs/400.json'"></div>
+                <hr>
+
+                <h5>Below is an example 500 response</h5>
+
+                <div hljs include="'partials/docs/api/docs/500.json'"></div>
+                <hr>
             </div>
         </div>
     </div>
+</div>
 </div>

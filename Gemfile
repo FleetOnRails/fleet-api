@@ -7,6 +7,10 @@ gem 'rails', '4.0.2'
 gem 'mysql2'
 gem 'sqlite3'
 
+# Seeds
+gem 'seed-fu', github: 'mbleigh/seed-fu'
+gem 'faker'
+
 group :development, :test do
   gem 'debugger'
   gem 'rspec-rails'
@@ -25,7 +29,10 @@ gem 'capistrano-rails'
 
 # OAuth
 gem 'doorkeeper'
+gem 'devise'
 gem 'jquery-rails'
+gem 'uglifier'
+gem 'sass'
 
 # CORS
 gem 'rack-cors', :require => 'rack/cors'
@@ -45,3 +52,6 @@ gem 'mini_magick'
 
 # Geocoder for location based services
 gem 'geocoder'
+
+# Mail
+gem 'pony'

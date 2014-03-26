@@ -24,4 +24,8 @@ describe Vendor do
   it 'should validate presence of location' do
     should validate_presence_of(:location)
   end
+
+  it 'has a valid factory' do
+    expect(FactoryGirl.build(:vendor)).to be_valid
+  end
 end

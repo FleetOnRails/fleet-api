@@ -1,0 +1,59 @@
+<navbar></navbar>
+
+<div class="container" ng-controller="OauthController">
+    <div class="row">
+        <div class="col-md-2"></div>
+        <div class="col-md-8">
+            <div class="endpoints">
+                <div class="row">
+                    <div class="col-md-8">
+                        <h4>OAuth Applications</h4>
+                    </div>
+                    <div class="col-md-4">
+                        <button type="button" class="btn btn-primary btn-xs pull-right"
+                                ng-click="isCollapsed=!isCollapsed">New Application
+                        </button>
+                    </div>
+                </div>
+                <p>Below is a list of Applications that are authorized to consume this API</p>
+                <hr>
+
+                <div collapse="isCollapsed">
+                    <form ng-submit="createApplication()" name="form">
+                        <div class="panel panel-primary">
+                            <div class="panel-heading">Add a new OAuth application</div>
+                            <div class="panel-body">
+                                <div class="input-group input-group-sm">
+                                    <span class="input-group-addon">Application Name:</span>
+                                    <input type="text" class="form-control" placeholder="cool_application"
+                                           ng-model="application.name">
+                                </div>
+                                <br>
+                                <button type="submit" class="btn btn-primary">Create</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+
+                <div ng-repeat="object in applications track by $index">
+                    <div class="bs-callout bs-callout-info">
+                        <div class="row">
+                            <div class="col-md-8">
+                                <h4>{{ object.application.name }}</h4>
+                            </div>
+                            <div class="col-md-4">
+                                <button type="button" class="btn btn-danger btn-xs pull-right"
+                                        ng-click="deleteCar(object.application.id)">Destroy
+                                </button>
+                            </div>
+                        </div>
+                        <p>Application ID: {{ object.application.uid }}</p>
+
+                        <p>Application Secret: {{ object.application.secret }}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-2"></div>
+    </div>
+</div>

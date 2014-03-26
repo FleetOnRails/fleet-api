@@ -1,7 +1,7 @@
 # Read about factories at https://github.com/thoughtbot/factory_girl
 
 FactoryGirl.define do
-  factory :groups do
-    group_name "MyString"
+  factory :group do
+    name { Faker::Company.suffix }
   end
 end

@@ -1,6 +1,5 @@
 module V1
   class BaseController < ActionController::Base
-    # TODO - Refactor all controllers to use service classes for object creation, very big todo !!
     respond_to :json
 
     before_action :find_current_user
@@ -16,6 +15,11 @@ module V1
     ###
     class NotPrivileged < StandardError; end
     class DuplicateEntry < StandardError; end
+
+    rescue_from Exception do
+      @object = Object.new
+      render  :status => 500, template: 'v1/errors/server_error'
+    end
 
     rescue_from ActiveRecord::RecordInvalid do |exception|
       @object = exception.record

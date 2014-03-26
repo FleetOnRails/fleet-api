@@ -8,4 +8,8 @@ describe Document do
   it 'should validate presence of name' do
     should validate_presence_of(:name)
   end
+
+  it 'has a valid factory' do
+    expect(FactoryGirl.build(:document)).to be_valid
+  end
 end

@@ -29,7 +29,7 @@ describe FuelEntry do
     should validate_presence_of(:filling_station)
   end
 
-  it 'should validate presence of location' do
-    should validate_presence_of(:location)
+  it 'has a valid factory' do
+    expect(FactoryGirl.build(:fuel_entry)).to be_valid
   end
 end

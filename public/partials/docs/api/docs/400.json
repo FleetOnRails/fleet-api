@@ -1,0 +1,5 @@
+{
+    "error": {
+        "messages": ["Username has already been taken", "Email has already been taken"]
+    }
+}

@@ -3,5 +3,5 @@ class DiagnosticStatistic < ActiveRecord::Base
 
   validates_presence_of :kmh
   validates_presence_of :rpm
-  validates_presence_of 'l/100km'
+  validates_presence_of :l100km
 end

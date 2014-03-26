@@ -3,6 +3,8 @@
         "id": 1,
         "name": "product",
         "price": 12.33,
-        "part_no": "12312hgvjh"
+        "part_no": "12312hgvjh",
+        "created_at": 1394705990,
+        "updates_at": 1394706000
     }
 }

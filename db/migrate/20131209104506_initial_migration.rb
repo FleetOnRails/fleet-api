@@ -9,10 +9,30 @@ class InitialMigration < ActiveRecord::Migration
       t.string :username
       t.string :email
       t.string :phone_no
-      t.string :password
-      t.string :salt
       t.string :avatar
       t.boolean :admin
+
+      ## Database authenticatable
+      t.string :encrypted_password, null: false, default: ""
+
+      ## Recoverable
+      t.string   :reset_password_token
+      t.datetime :reset_password_sent_at
+
+      ## Rememberable
+      t.datetime :remember_created_at
+
+      ## Trackable
+      t.integer  :sign_in_count, default: 0, null: false
+      t.datetime :current_sign_in_at
+      t.datetime :last_sign_in_at
+      t.string   :current_sign_in_ip
+      t.string   :last_sign_in_ip
+
+      ## Lockable
+      t.integer  :failed_attempts, default: 0, null: false # Only if lock strategy is :failed_attempts
+      t.string   :unlock_token # Only if unlock strategy is :email or :both
+      t.datetime :locked_at
 
       t.timestamps
     end
@@ -141,6 +161,9 @@ class InitialMigration < ActiveRecord::Migration
     ###
     # Indexes
     ###
+    add_index :users, :email,                unique: true
+    add_index :users, :reset_password_token, unique: true
+    add_index :users, :unlock_token,         unique: true
     add_index :diagnostic_statistics, :car_id, name: :diagnostic_statistics_ix
     add_index :diagnostic_faults, :car_id, name: :diagnostic_fault_ix
     add_index :service_records, :car_id, name: :service_record_ix

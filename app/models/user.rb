@@ -1,6 +1,12 @@
-require 'bcrypt'
-
 class User < ActiveRecord::Base
+  # FIXME - Why do Devise's validations not work.
+  devise :database_authenticatable,
+         :recoverable,
+         :trackable,
+         :validatable,
+         :lockable,
+         :timeoutable
+
   has_many :cars, as: :owner, dependent: :destroy
   has_many :vendors, as: :venderable, dependent: :destroy
 
@@ -9,51 +15,40 @@ class User < ActiveRecord::Base
 
   mount_uploader :avatar, AvatarUploader
 
-  EMAIL_REGEX = /\A[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}\z/i
+  validates_presence_of :username, :first_name, :last_name
 
-  validates_presence_of :email, :username, :first_name, :last_name
-  validates_presence_of :password, on: :create
-  validates_uniqueness_of :username, :email
+  validates_uniqueness_of :username
+  validates_uniqueness_of :email
 
-  validates_format_of :email, with: EMAIL_REGEX
-
-  before_create :encrypt_password
-  after_create :clear_password
+  def send_registration_mail
+    Pony.mail({
+                  :to => email,
+                  :body => "Thanks for registering #{first_name} #{last_name}"
+              })
+  end
 
   class << self
-    def authenticate(username_or_email, login_password)
+    EMAIL_REGEX = /\A[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}\z/i
+
+    def login(username_or_email, login_password, ip_address)
       if EMAIL_REGEX.match(username_or_email)
         user = User.find_by_email(username_or_email)
       else
         user = User.find_by_username(username_or_email)
       end
 
-      if user && user.match_password(login_password)
+      if user && user.valid_password?(login_password)
+        user.sign_in_count += 1
+        user.last_sign_in_at = user.current_sign_in_at || nil
+        user.last_sign_in_ip = user.current_sign_in_ip || nil
+        user.current_sign_in_at = Time.now
+        user.current_sign_in_ip = ip_address
+        user.save!
         user
       else
         false
       end
+      # TODO - Find a way to increment failed login count
     end
-  end
-
-  def has_password?
-    password == encrypt_password
-  end
-
-  def match_password(login_password)
-    password == BCrypt::Engine.hash_secret(login_password, salt)
-  end
-
-  def encrypt_password
-    unless salt
-      if password.present?
-        self.salt = BCrypt::Engine.generate_salt
-        self.password= BCrypt::Engine.hash_secret(password, salt)
-      end
-    end
-  end
-
-  def clear_password
-    self.password = nil
   end
 end

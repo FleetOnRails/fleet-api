@@ -20,4 +20,8 @@ describe UserGroup do
   it 'should validate presence of group access' do
     should validate_presence_of(:group_access)
   end
+
+  it 'has a valid factory' do
+    expect(FactoryGirl.build(:user_group)).to be_valid
+  end
 end

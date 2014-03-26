@@ -10,10 +10,14 @@ describe DiagnosticStatistic do
   end
 
   it 'should validate presence of l/100km' do
-    should validate_presence_of('l/100km')
+    should validate_presence_of(:l100km)
   end
 
   it 'should validate presence of rpm' do
     should validate_presence_of(:rpm)
+  end
+
+  it 'has a valid factory' do
+    expect(FactoryGirl.build(:diagnostic_statistic)).to be_valid
   end
 end
