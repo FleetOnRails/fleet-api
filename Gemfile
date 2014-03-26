@@ -30,9 +30,6 @@ gem 'capistrano-rails'
 # OAuth
 gem 'doorkeeper'
 gem 'devise'
-gem 'jquery-rails'
-gem 'uglifier'
-gem 'sass'
 
 # CORS
 gem 'rack-cors', :require => 'rack/cors'

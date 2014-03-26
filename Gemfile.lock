@@ -72,7 +72,6 @@ GEM
       jquery-rails (>= 2.0.2)
       railties (>= 3.1)
     erubis (2.7.0)
-    execjs (2.0.2)
     factory_girl (4.3.0)
       activesupport (>= 3.0.0)
     factory_girl_rails (4.3.0)
@@ -140,7 +139,6 @@ GEM
       rspec-core (~> 2.14.0)
       rspec-expectations (~> 2.14.0)
       rspec-mocks (~> 2.14.0)
-    sass (3.2.12)
     shoulda-matchers (2.4.0)
       activesupport (>= 3.0.0)
     simplecov (0.8.2)
@@ -177,9 +175,6 @@ GEM
       polyglot
       polyglot (>= 0.3.1)
     tzinfo (0.3.38)
-    uglifier (2.5.0)
-      execjs (>= 0.3.0)
-      json (>= 1.8.0)
     warden (1.2.3)
       rack (>= 1.0)
 
@@ -198,7 +193,6 @@ DEPENDENCIES
   factory_girl_rails
   faker
   geocoder
-  jquery-rails
   mini_magick
   mysql2
   passenger
@@ -207,10 +201,8 @@ DEPENDENCIES
   rack-cors
   rails (= 4.0.2)
   rspec-rails
-  sass
   seed-fu!
   shoulda-matchers
   simplecov
   sqlite3
   therubyracer
-  uglifier
