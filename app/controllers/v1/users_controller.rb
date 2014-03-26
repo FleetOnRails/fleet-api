@@ -2,6 +2,9 @@ module V1
   class UsersController < BaseController
     doorkeeper_for [:index, :show, :update, :destroy]
 
+    # TODO - Shouldn't doorkeeper do this for me ?
+    before_filter :ensure_current_user, only: [:index, :show, :update]
+
     def index
       if params[:group_id]
         @group = Group.find(params[:group_id])
@@ -31,9 +34,11 @@ module V1
         @group.add_user(@user, params[:user][:group_access])
         @group.save!
       else
-        # TODO - Set user admin to false here
         raise Exception if params[:user][:password] != params[:user][:password_confirmation]
-        @user = User.create!(user_params)
+        @user = User.new(user_params)
+        @user.admin = false
+        @user.save!
+        @user.send_registration_mail
       end
 
       respond_with @user
@@ -58,6 +63,10 @@ module V1
 
     def user_params
       params.required(:user).permit(:first_name, :last_name, :username, :email, :password, :password_confirmation, :phone_no)
+    end
+
+    def ensure_current_user
+      raise NotPrivileged unless @current_user
     end
   end
 end

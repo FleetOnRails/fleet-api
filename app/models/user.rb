@@ -20,9 +20,7 @@ class User < ActiveRecord::Base
   validates_uniqueness_of :username
   validates_uniqueness_of :email
 
-  after_create :registration_mail
-
-  def registration_mail
+  def send_registration_mail
     Pony.mail({
                   :to => email,
                   :body => "Thanks for registering #{first_name} #{last_name}"
