@@ -4,6 +4,10 @@
 
 angular.module('fleetonrails-api.controllers', [])
 
+    .controller('MainCtrl', ['$scope', function ($scope) {
+        $scope.version = 'v0.0.4'
+    }])
+
     .controller('ToggleCtrl', ['$scope', function ($scope) {
         $scope.isCollapsed = true;
     }])
