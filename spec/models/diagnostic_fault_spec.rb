@@ -12,4 +12,8 @@ describe DiagnosticFault do
   it 'should validate presence of status' do
     should validate_presence_of(:status)
   end
+
+  it 'has a valid factory' do
+    expect(FactoryGirl.build(:diagnostic_fault)).to be_valid
+  end
 end

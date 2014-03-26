@@ -16,4 +16,8 @@ describe Product do
   it 'should validate presence of part no' do
     should validate_presence_of(:part_no)
   end
+
+  it 'has a valid factory' do
+    expect(FactoryGirl.build(:product)).to be_valid
+  end
 end

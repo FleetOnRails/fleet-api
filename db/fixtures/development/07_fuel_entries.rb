@@ -13,7 +13,7 @@ cars.each do |car|
       price: rand * (1.75 - 1.45) + 1.45,
       fuel_type: ['Petrol, Diesel'].sample,
       filling_station: Faker::Company.name,
-      filled_tank: [true, false].sample
+      filled_tank: true
   )
 
   if fuel_entry.valid?

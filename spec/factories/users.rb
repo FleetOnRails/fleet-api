@@ -6,7 +6,7 @@ FactoryGirl.define do
     last_name { Faker::Name.last_name }
     email { Faker::Internet.email }
     username { Faker::Internet.user_name }
-    password { Faker::Internet.password }
+    password { "atleast8#{Faker::Internet.password}" }
     phone_no { Faker::PhoneNumber.cell_phone }
     created_at Time.now
     updated_at Time.now

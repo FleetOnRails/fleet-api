@@ -40,4 +40,8 @@ describe Car do
   it 'should validate uniqueness of registration' do
     should validate_uniqueness_of(:registration)
   end
+
+  it 'has a valid factory' do
+    expect(FactoryGirl.build(:car)).to be_valid
+  end
 end

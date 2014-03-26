@@ -2,7 +2,8 @@
 
 FactoryGirl.define do
   factory :vendor do
-    name "MyString"
-    type ""
+    name { Faker::Company.name }
+    supplies { Faker::Commerce.department }
+    association :location, factory: :location
   end
 end

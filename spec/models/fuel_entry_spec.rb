@@ -28,4 +28,8 @@ describe FuelEntry do
   it 'should validate presence of filled tank' do
     should validate_presence_of(:filling_station)
   end
+
+  it 'has a valid factory' do
+    expect(FactoryGirl.build(:fuel_entry)).to be_valid
+  end
 end

@@ -1,12 +1,9 @@
 # Read about factories at https://github.com/thoughtbot/factory_girl
 
 FactoryGirl.define do
-  factory :location do
+  factory :gps_statistic do
+    kmh 1.5
     latitude { Faker::Address.latitude }
     longitude { Faker::Address.longitude }
-    address { Faker::Address.street_address }
-    city { Faker::Address.city }
-    county { Faker::Address.state }
-    country { Faker::Address.country }
   end
 end

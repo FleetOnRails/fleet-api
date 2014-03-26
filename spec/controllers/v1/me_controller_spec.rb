@@ -10,8 +10,10 @@ describe V1::MeController do
   describe 'GET index' do
     it 'returns a me object' do
       get :index, format: :json
-      puts json
+
       expect(json).to have_key('me')
+      expect(response.status).to eq(200)
+      expect(response).to render_template 'v1/me/index'
     end
 
     it 'response is successful' do

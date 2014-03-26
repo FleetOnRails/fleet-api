@@ -9,7 +9,7 @@ cars = Car.all
 cars.each do |car|
   diagnostic_fault = DiagnosticFault.new(
       fault_code: Faker::Code.isbn,
-      status: [true, false].sample
+      status: true
   )
 
   if diagnostic_fault.valid?

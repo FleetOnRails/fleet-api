@@ -10,7 +10,7 @@ cars.each do |car|
   diagnostic_statistic = DiagnosticStatistic.new(
       kmh: 100.0,
       rpm: 1800,
-      'l/100km' => 4.54
+      l100km: 4.54
   )
 
   if diagnostic_statistic.valid?

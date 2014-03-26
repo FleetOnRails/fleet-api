@@ -28,4 +28,8 @@ describe Group do
   it 'should uniqueness of name' do
     should validate_uniqueness_of(:name)
   end
+
+  it 'has a valid factory' do
+    expect(FactoryGirl.build(:group)).to be_valid
+  end
 end

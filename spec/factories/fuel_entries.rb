@@ -5,9 +5,9 @@ FactoryGirl.define do
     odometer 1.5
     liters 1.5
     price 1.5
-    type ""
-    filled_tank false
-    comment "MyText"
-    filling_station "MyString"
+    fuel_type %w(Diesel Petrol).sample
+    filled_tank true
+    comment { Faker::Lorem.paragraph }
+    filling_station { Faker::Company.name }
   end
 end

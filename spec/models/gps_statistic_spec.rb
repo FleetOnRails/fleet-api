@@ -16,4 +16,8 @@ describe GpsStatistic do
   it 'should validate presence of longitude' do
     should validate_presence_of(:longitude)
   end
+
+  it 'has a valid factory' do
+    expect(FactoryGirl.build(:gps_statistic)).to be_valid
+  end
 end

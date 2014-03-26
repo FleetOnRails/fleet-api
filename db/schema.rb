@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140321090604) do
+ActiveRecord::Schema.define(version: 20140326144950) do
 
   create_table "cars", force: true do |t|
     t.string   "make"
@@ -49,7 +49,7 @@ ActiveRecord::Schema.define(version: 20140321090604) do
   create_table "diagnostic_statistics", force: true do |t|
     t.float    "kmh"
     t.float    "rpm"
-    t.float    "l/100km"
+    t.float    "l100km"
     t.integer  "car_id"
     t.datetime "created_at"
     t.datetime "updated_at"
