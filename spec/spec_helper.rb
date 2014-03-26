@@ -1,9 +1,12 @@
 require 'simplecov'
 
+# Simple cov begin
 SimpleCov.start do
   add_group 'Models', 'app/models'
   add_group 'V1 Controllers', 'app/controllers/v1'
 end
+SimpleCov.minimum_coverage 90
+# Simple cov end
 
 # This file is copied to spec/ when you run 'rails generate rspec:install'
 ENV['RAILS_ENV'] ||= 'test'
