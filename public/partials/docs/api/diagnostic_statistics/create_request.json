@@ -2,6 +2,6 @@
     "diagnostic_statistic": {
         "kmh": 100,
         "rpm": 2000,
-        "l/100km": 5.0
+        "l100km": 5.0
     }
 }
