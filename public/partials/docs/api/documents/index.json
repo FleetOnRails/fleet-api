@@ -5,8 +5,8 @@
                 "id": 1,
                 "name": "test_file",
                 "media_url": "/uploads/document/media/1/6e2c201fd44a6b1f06da.jpg",
-                "created_at": 1394705990,
-                "updates_at": 1394706000
+                "created_at": "2014-03-12T00:00:25.000Z",
+                "updated_at": "2014-03-12T00:00:25.000Z"
             }
         }
     ]

@@ -4,8 +4,8 @@
             "destination": {
                 "id": 1,
                 "name": "tesco gorey",
-                "created_at": 1394705990,
-                "updates_at": 1394706000,
+                "created_at": "2014-03-12T00:00:25.000Z",
+                "updated_at": "2014-03-12T00:00:25.000Z",
                 "location": {
                     "id": 1,
                     "latitude": 52.6759496,
@@ -14,8 +14,8 @@
                     "city": "Gorey",
                     "county": "Wexford",
                     "country": "IE",
-                    "created_at": 1394705990,
-                    "updates_at": 1394706000
+                    "created_at": "2014-03-12T00:00:25.000Z",
+                    "updated_at": "2014-03-12T00:00:25.000Z"
                 }
             }
         }
