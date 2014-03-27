@@ -13,12 +13,8 @@ describe Car do
     should have_many(:diagnostic_faults)
   end
 
-  it 'should have many gps statistics' do
-    should have_many(:service_records)
-  end
-
-  it 'should have many service records' do
-    should have_many(:service_records)
+  it 'should have many expenses' do
+    should have_many(:expenses)
   end
 
   it 'should have many documents' do
