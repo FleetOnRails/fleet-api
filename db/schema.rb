@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140327212926) do
+ActiveRecord::Schema.define(version: 20140327222239) do
 
   create_table "cars", force: true do |t|
     t.string   "make"
@@ -178,17 +178,6 @@ ActiveRecord::Schema.define(version: 20140327212926) do
   end
 
   add_index "products", ["productable_id", "productable_type"], name: "products_ix"
-
-  create_table "service_records", force: true do |t|
-    t.string   "odometer_reading"
-    t.string   "technician"
-    t.text     "description"
-    t.integer  "car_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  add_index "service_records", ["car_id"], name: "service_record_ix"
 
   create_table "user_groups", force: true do |t|
     t.integer  "group_access"
