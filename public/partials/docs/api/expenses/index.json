@@ -1,0 +1,27 @@
+{
+    "expenses": [
+        {
+            "expense": {
+                "id": 2,
+                "date": "2014-03-12T00:00:25.000Z",
+                "odometer": 162000,
+                "type": "Service",
+                "price": 150,
+                "description": "Full service",
+                "created_at": "2014-03-12T00:00:25.000Z",
+                "updated_at": "2014-03-12T00:00:25.000Z",
+                "location": {
+                    "id": 22,
+                    "latitude": 52.676181,
+                    "longitude": -6.289091,
+                    "address": "7 Esmonde Street, Gorey, Co. Wexford, Ireland",
+                    "city": "Gorey",
+                    "county": "Wexford",
+                    "country": "IE",
+                    "created_at": "2014-03-12T00:00:25.000Z",
+                    "updated_at": "2014-03-12T00:00:25.000Z"
+                }
+            }
+        }
+    ]
+}

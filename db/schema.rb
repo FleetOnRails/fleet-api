@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140327151404) do
+ActiveRecord::Schema.define(version: 20140327212926) do
 
   create_table "cars", force: true do |t|
     t.string   "make"
@@ -67,6 +67,17 @@ ActiveRecord::Schema.define(version: 20140327151404) do
   end
 
   add_index "documents", ["documentable_id", "documentable_type"], name: "documents_ix"
+
+  create_table "expenses", force: true do |t|
+    t.datetime "date"
+    t.float    "odometer"
+    t.float    "price"
+    t.string   "type"
+    t.text     "description"
+    t.integer  "car_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "fuel_entries", force: true do |t|
     t.float    "odometer"

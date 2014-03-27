@@ -16,7 +16,7 @@ angular.module('fleetonrails-api', [
             when('/docs/me', {templateUrl: 'partials/docs/api/me.html'}).
             when('/docs/users', {templateUrl: 'partials/docs/api/users.html'}).
             when('/docs/cars', {templateUrl: 'partials/docs/api/cars.html'}).
-            when('/docs/service_records', {templateUrl: 'partials/docs/api/service_records.html'}).
+            when('/docs/expenses', {templateUrl: 'partials/docs/api/expenses.html'}).
             when('/docs/vendors', {templateUrl: 'partials/docs/api/vendors.html'}).
             when('/docs/groups', {templateUrl: 'partials/docs/api/groups.html'}).
             otherwise({redirectTo: '/'});
