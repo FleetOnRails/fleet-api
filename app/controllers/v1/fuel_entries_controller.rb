@@ -103,15 +103,9 @@ module V1
     private
 
     def fuel_entry_params
-      params.required(:fuel_entry).permit(
-          :odometer,
-          :liters,
-          :price,
-          :fuel_type,
-          :filling_station,
-          :filled_tank,
-          :comment,
-          :location_attributes => [:latitude, :longitude, :address])
+      params.required(:fuel_entry).permit(:odometer, :liters, :price, :fuel_type,
+                                          :filling_station, :date, :filled_tank, :comment,
+                                          :location_attributes => [:latitude, :longitude, :address])
     end
   end
 end

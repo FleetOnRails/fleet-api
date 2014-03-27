@@ -1,15 +1,8 @@
 object @fuel_entry => :fuel_entry
 
-attributes :id, :odometer, :liters, :price, :fuel_type, :filling_station, :filled_tank, :comment
+attributes :id, :odometer, :liters, :price, :fuel_type, :date, :filling_station,
+           :filled_tank, :comment, :created_at, :updated_at
 
-node :location do |fuel_entry|
-  partial('v1/fuel_entries/location', :object => fuel_entry.location)
-end
-
-node :created_at do |object|
-  object.created_at.to_time.to_i
-end
-
-node :updated_at do |object|
-  object.updated_at.to_time.to_i
+node :location do |object|
+  partial('v1/locations/location', :object => object.location)
 end
