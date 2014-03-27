@@ -1,15 +1,7 @@
 object @destination => :destination
 
-attributes :id, :name
+attributes :id, :name, :created_at, :updated_at
 
-node :location do |destination|
-  partial('v1/destinations/location', :object => destination.location)
-end
-
-node :created_at do |object|
-  object.created_at.to_time.to_i
-end
-
-node :updated_at do |object|
-  object.updated_at.to_time.to_i
+node :location do |object|
+  partial('v1/locations/location', :object => object.location)
 end

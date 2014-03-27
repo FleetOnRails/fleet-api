@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe ServiceRecord do
+describe Expense do
   it 'should belong to car' do
     should belong_to(:car)
   end
@@ -10,11 +10,19 @@ describe ServiceRecord do
   end
 
   it 'should validate presence of odometer reading' do
-    should validate_presence_of(:odometer_reading)
+    should validate_presence_of(:odometer)
   end
 
-  it 'should validate presence of technician' do
-    should validate_presence_of(:technician)
+  it 'should validate presence of date' do
+    should validate_presence_of(:date)
+  end
+
+  it 'should validate presence of price' do
+    should validate_presence_of(:price)
+  end
+
+  it 'should validate presence of type' do
+    should validate_presence_of(:type)
   end
 
   it 'should validate presence of description' do
@@ -26,6 +34,6 @@ describe ServiceRecord do
   end
 
   it 'has a valid factory' do
-    expect(FactoryGirl.build(:service_record)).to be_valid
+    expect(FactoryGirl.build(:expense)).to be_valid
   end
 end

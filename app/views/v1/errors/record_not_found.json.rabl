@@ -1,5 +1,5 @@
 object @object => :error
 
 node :messages do
-  [ 'Model not found' ]
+  ['Model not found']
 end

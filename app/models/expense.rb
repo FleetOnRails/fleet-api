@@ -1,4 +1,4 @@
-class ServiceRecord < ActiveRecord::Base
+class Expense < ActiveRecord::Base
   belongs_to :car
 
   has_many :documents, as: :documentable, dependent: :destroy
@@ -6,8 +6,10 @@ class ServiceRecord < ActiveRecord::Base
 
   accepts_nested_attributes_for :location
 
-  validates_presence_of :odometer_reading
-  validates_presence_of :technician
+  validates_presence_of :date
+  validates_presence_of :odometer
+  validates_presence_of :price
+  validates_presence_of :type
   validates_presence_of :description
 
   validates_associated :location

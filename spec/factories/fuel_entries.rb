@@ -7,6 +7,7 @@ FactoryGirl.define do
     price 1.5
     fuel_type %w(Diesel Petrol).sample
     filled_tank true
+    date Time.now
     comment { Faker::Lorem.paragraph }
     filling_station { Faker::Company.name }
   end

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140326144950) do
+ActiveRecord::Schema.define(version: 20140327222239) do
 
   create_table "cars", force: true do |t|
     t.string   "make"
@@ -68,6 +68,17 @@ ActiveRecord::Schema.define(version: 20140326144950) do
 
   add_index "documents", ["documentable_id", "documentable_type"], name: "documents_ix"
 
+  create_table "expenses", force: true do |t|
+    t.datetime "date"
+    t.float    "odometer"
+    t.float    "price"
+    t.string   "type"
+    t.text     "description"
+    t.integer  "car_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "fuel_entries", force: true do |t|
     t.float    "odometer"
     t.float    "liters"
@@ -79,6 +90,7 @@ ActiveRecord::Schema.define(version: 20140326144950) do
     t.integer  "car_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.datetime "date"
   end
 
   add_index "fuel_entries", ["car_id"], name: "fuel_entries_ix"
@@ -166,17 +178,6 @@ ActiveRecord::Schema.define(version: 20140326144950) do
   end
 
   add_index "products", ["productable_id", "productable_type"], name: "products_ix"
-
-  create_table "service_records", force: true do |t|
-    t.string   "odometer_reading"
-    t.string   "technician"
-    t.text     "description"
-    t.integer  "car_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  add_index "service_records", ["car_id"], name: "service_record_ix"
 
   create_table "user_groups", force: true do |t|
     t.integer  "group_access"

@@ -1,5 +1,5 @@
 module V1
-  class ServiceRecordsController < BaseController
+  class ExpensesController < BaseController
     doorkeeper_for [:all]
 
     def index
@@ -7,15 +7,15 @@ module V1
         @car = Car.find(params[:car_id])
         if @car.owner_type == 'User'
           raise NotPrivileged unless @car.owner_id == @current_user.id
-          @service_records = @car.service_records
+          @expenses = @car.expenses
 
-          respond_with @service_records
+          respond_with @expenses
         elsif @car.owner_type == 'Group'
           @group = Group.find(@car.owner_id)
           raise NotPrivileged unless @group.is_member?(@current_user)
-          @service_records = @car.service_records
+          @expenses = @car.expenses
 
-          respond_with @service_records
+          respond_with @expenses
         end
       end
     end
@@ -25,15 +25,15 @@ module V1
         @car = Car.find(params[:car_id])
         if @car.owner_type == 'User'
           raise NotPrivileged unless @car.owner_id == @current_user.id
-          @service_record = @car.service_records.find(params[:id])
+          @expense = @car.expenses.find(params[:id])
 
-          respond_with @service_record
+          respond_with @expense
         elsif @car.owner_type == 'Group'
           @group = Group.find(@car.owner_id)
           raise NotPrivileged unless @group.is_member?(@current_user)
-          @service_record = @car.service_records.find(params[:id])
+          @expense = @car.expenses.find(params[:id])
 
-          respond_with @service_record
+          respond_with @expense
         end
       end
     end
@@ -43,17 +43,17 @@ module V1
         @car = Car.find(params[:car_id])
         if @car.owner_type == 'User'
           raise NotPrivileged unless @car.owner_id == @current_user.id
-          @service_record = ServiceRecord.create!(service_record_params)
-          @car.service_records <<(@service_record)
+          @expense = Expense.create!(expense_params)
+          @car.expenses << @expense
 
-          respond_with @service_record
+          respond_with @expense
         elsif @car.owner_type == 'Group'
           @group = Group.find(@car.owner_id)
           raise NotPrivileged unless @group.is_member?(@current_user)
-          @service_record = ServiceRecord.create!(service_record_params)
-          @car.service_records <<(@service_record)
+          @expense = Expense.create!(expense_params)
+          @car.expenses << @expense
 
-          respond_with @service_record
+          respond_with @expense
         end
       end
     end
@@ -63,48 +63,48 @@ module V1
         @car = Car.find(params[:car_id])
         if @car.owner_type == 'User'
           raise NotPrivileged unless @car.owner_id == @current_user.id
-          @service_record = @car.service_records.find(params[:id])
-          @service_record.update!(service_record_params)
+          @expense = @car.expenses.find(params[:id])
+          @expense.update!(expense_params)
 
-          respond_with @service_record
+          respond_with @expense
         elsif @car.owner_type == 'Group'
           @group = Group.find(@car.owner_id)
           raise NotPrivileged unless @group.is_member?(@current_user)
-          @service_record = @car.service_records.find(params[:id])
-          @service_record.update!(service_record_params)
+          @expense = @car.expenses.find(params[:id])
+          @expense.update!(expense_params)
 
-          respond_with @service_record
+          respond_with @expense
         end
       end
     end
 
-    def destroy
+    def delete
       if params[:car_id]
         @car = Car.find(params[:car_id])
         if @car.owner_type == 'User'
           raise NotPrivileged unless @car.owner_id == @current_user.id
-          @service_record = @car.service_records.find(params[:id])
-          @service_record.destroy!
+          @expense = @car.expenses.find(params[:id])
+          @expense.destroy!
 
-          respond_with @service_record
+          respond_with @expense
         elsif @car.owner_type == 'Group'
           @group = Group.find(@car.owner_id)
           raise NotPrivileged unless @group.is_member?(@current_user)
-          @service_record = @car.service_records.find(params[:id])
-          @service_record.destroy!
+          @expense = @car.expenses.find(params[:id])
+          @expense.destroy!
 
-          respond_with @service_record
+          respond_with @expense
         end
       end
     end
 
     private
 
-    def service_record_params
-      params.required(:service_record).permit(:odometer_reading,
-                                              :technician,
-                                              :description,
+    def expense_params
+      params.required(:service_record).permit(:odometer, :type, :date,
+                                              :price, :description,
                                               :location_attributes => [:latitude, :longitude, :address])
+
     end
   end
 end

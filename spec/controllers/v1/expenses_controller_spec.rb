@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe V1::ServiceRecordsController do
+describe V1::ExpensesController do
 
   before { pending }
 

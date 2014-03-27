@@ -4,6 +4,10 @@
 
 angular.module('fleetonrails-api.controllers', [])
 
+    .controller('MainCtrl', ['$scope', function ($scope) {
+        $scope.version = 'v0.0.4'
+    }])
+
     .controller('ToggleCtrl', ['$scope', function ($scope) {
         $scope.isCollapsed = true;
     }])
@@ -27,7 +31,7 @@ angular.module('fleetonrails-api.controllers', [])
                 $scope.applications.push(data)
                 $scope.apply
             })
-        }
+        };
 
         $scope.deleteCar = function (id) {
             OauthService.delete(id, function (data) {

@@ -13,12 +13,14 @@ module V1
     ###
     # Custom Errors
     ###
-    class NotPrivileged < StandardError; end
-    class DuplicateEntry < StandardError; end
+    class NotPrivileged < StandardError;
+    end
+    class DuplicateEntry < StandardError;
+    end
 
     rescue_from Exception do
       @object = Object.new
-      render  :status => 500, template: 'v1/errors/server_error'
+      render :status => 500, template: 'v1/errors/server_error'
     end
 
     rescue_from ActiveRecord::RecordInvalid do |exception|
