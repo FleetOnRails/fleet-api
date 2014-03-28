@@ -3,5 +3,6 @@
 FactoryGirl.define do
   factory :document do
     name { Faker::Lorem.word }
+    media { Faker::Lorem.paragraph }
   end
 end

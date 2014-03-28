@@ -2,8 +2,6 @@ module V1
   class GroupsController < BaseController
     doorkeeper_for [:all]
 
-    include AvatarHelper
-
     def index
       @groups = @current_user.groups
     end

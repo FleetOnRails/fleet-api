@@ -2,8 +2,6 @@ module V1
   class CarsController < BaseController
     doorkeeper_for [:all]
 
-    include AvatarHelper
-
     def index
       if params[:group_id]
         @group = Group.find(params[:group_id])

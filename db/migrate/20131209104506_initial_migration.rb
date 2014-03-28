@@ -9,7 +9,7 @@ class InitialMigration < ActiveRecord::Migration
       t.string :username
       t.string :email
       t.string :phone_no
-      t.string :avatar
+      t.text :avatar, limit: 100.kilobytes
       t.boolean :admin
 
       ## Database authenticatable
@@ -39,7 +39,7 @@ class InitialMigration < ActiveRecord::Migration
 
     create_table :groups do |t|
       t.string :name
-      t.string :avatar
+      t.text :avatar, limit: 100.kilobytes
 
       t.timestamps
     end
@@ -109,7 +109,7 @@ class InitialMigration < ActiveRecord::Migration
       t.string :make
       t.string :model
       t.string :registration
-      t.string :avatar
+      t.text :avatar, limit: 100.kilobytes
       t.references :owner, polymorphic: true
 
       t.timestamps
@@ -124,7 +124,7 @@ class InitialMigration < ActiveRecord::Migration
 
     create_table :documents do |t|
       t.string :name
-      t.string :media
+      t.text :media, limit: 16.megabytes
       t.references :documentable, polymorphic: true
 
       t.timestamps

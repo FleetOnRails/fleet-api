@@ -13,8 +13,6 @@ class User < ActiveRecord::Base
   has_many :user_groups
   has_many :groups, through: :user_groups
 
-  mount_uploader :avatar, AvatarUploader
-
   validates_presence_of :username, :first_name, :last_name
 
   validates_uniqueness_of :username

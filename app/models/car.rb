@@ -10,8 +10,6 @@ class Car < ActiveRecord::Base
   has_many :diagnostic_statistics, dependent: :destroy
   has_many :gps_statistics, dependent: :destroy
 
-  mount_uploader :avatar, AvatarUploader
-
   validates_presence_of :make
   validates_presence_of :model
   validates_presence_of :registration
