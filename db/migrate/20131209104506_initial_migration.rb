@@ -61,9 +61,21 @@ class InitialMigration < ActiveRecord::Migration
       t.timestamps
     end
 
-    create_table :service_records do |t|
-      t.string :odometer_reading
-      t.string :technician
+    create_table :expenses do |t|
+      t.timestamp :date
+      t.float :odometer
+      t.float :price
+      t.string :expense_type
+      t.text :description
+      t.belongs_to :car
+
+      t.timestamps
+    end
+
+    create_table :reminders do |t|
+      t.timestamp :date
+      t.float :odometer
+      t.string :reminder_type
       t.text :description
       t.belongs_to :car
 
