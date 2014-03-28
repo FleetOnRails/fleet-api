@@ -9,7 +9,7 @@ class Expense < ActiveRecord::Base
   validates_presence_of :date
   validates_presence_of :odometer
   validates_presence_of :price
-  validates_presence_of :type
+  validates_presence_of :expense_type
   validates_presence_of :description
 
   validates_associated :location

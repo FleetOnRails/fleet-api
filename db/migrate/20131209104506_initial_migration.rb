@@ -61,9 +61,21 @@ class InitialMigration < ActiveRecord::Migration
       t.timestamps
     end
 
-    create_table :service_records do |t|
-      t.string :odometer_reading
-      t.string :technician
+    create_table :expenses do |t|
+      t.timestamp :date
+      t.float :odometer
+      t.float :price
+      t.string :expense_type
+      t.text :description
+      t.belongs_to :car
+
+      t.timestamps
+    end
+
+    create_table :reminders do |t|
+      t.timestamp :date
+      t.float :odometer
+      t.string :reminder_type
       t.text :description
       t.belongs_to :car
 
@@ -161,22 +173,23 @@ class InitialMigration < ActiveRecord::Migration
     ###
     # Indexes
     ###
-    add_index :users, :email, unique: true
-    add_index :users, :reset_password_token, unique: true
-    add_index :users, :unlock_token, unique: true
-    add_index :diagnostic_statistics, :car_id, name: :diagnostic_statistics_ix
-    add_index :diagnostic_faults, :car_id, name: :diagnostic_fault_ix
-    add_index :service_records, :car_id, name: :service_record_ix
-    add_index :gps_statistics, :car_id, name: :gps_statistics_ix
-    add_index :fuel_entries, :car_id, name: :fuel_entries_ix
+    add_index :users, :email, unique: true, using: :btree
+    add_index :users, :reset_password_token, unique: true, using: :btree
+    add_index :users, :unlock_token, unique: true, using: :btree
+    add_index :diagnostic_statistics, :car_id, name: :diagnostic_statistics_ix, using: :btree
+    add_index :diagnostic_faults, :car_id, name: :diagnostics_fault_ix, using: :btree
+    add_index :expenses, :car_id, name: :expenses_ix, using: :btree
+    add_index :reminders, :car_id, name: :reminders_ix, using: :btree
+    add_index :gps_statistics, :car_id, name: :gps_statistics_ix, using: :btree
+    add_index :fuel_entries, :car_id, name: :fuel_entries_ix, using: :btree
 
-    add_index :cars, [:owner_id, :owner_type], name: :cars_ix
-    add_index :destinations, [:destinationable_id, :destinationable_type], name: :destinations_ix
-    add_index :documents, [:documentable_id, :documentable_type], name: :documents_ix
-    add_index :locations, [:locationable_id, :locationable_type], name: :locations_ix
-    add_index :vendors, [:venderable_id, :venderable_type], name: :vendors_ix
-    add_index :products, [:productable_id, :productable_type], name: :products_ix
+    add_index :cars, [:owner_id, :owner_type], name: :cars_ix, using: :btree
+    add_index :destinations, [:destinationable_id, :destinationable_type], name: :destinations_ix, using: :btree
+    add_index :documents, [:documentable_id, :documentable_type], name: :documents_ix, using: :btree
+    add_index :locations, [:locationable_id, :locationable_type], name: :locations_ix, using: :btree
+    add_index :vendors, [:venderable_id, :venderable_type], name: :vendors_ix, using: :btree
+    add_index :products, [:productable_id, :productable_type], name: :products_ix, using: :btree
 
-    add_index :user_groups, [:group_id, :user_id], name: :user_groups_ix
+    add_index :user_groups, [:group_id, :user_id], name: :user_groups_ix, using: :btree
   end
 end

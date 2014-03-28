@@ -22,7 +22,7 @@ describe Expense do
   end
 
   it 'should validate presence of type' do
-    should validate_presence_of(:type)
+    should validate_presence_of(:expense_type)
   end
 
   it 'should validate presence of description' do

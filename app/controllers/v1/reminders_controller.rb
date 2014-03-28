@@ -1,5 +1,5 @@
 module V1
-  class ExpensesController < BaseController
+  class RemindersController < BaseController
     doorkeeper_for [:all]
 
     def index
@@ -7,13 +7,13 @@ module V1
         @car = Car.find(params[:car_id])
         if @car.owner_type == 'User'
           raise NotPrivileged unless @car.owner_id == @current_user.id
-          @expenses = @car.expenses
+          @reminders = @car.reminders
 
           respond_with @expenses
         elsif @car.owner_type == 'Group'
           @group = Group.find(@car.owner_id)
           raise NotPrivileged unless @group.is_member?(@current_user)
-          @expenses = @car.expenses
+          @reminders = @car.reminders
 
           respond_with @expenses
         end
@@ -25,15 +25,15 @@ module V1
         @car = Car.find(params[:car_id])
         if @car.owner_type == 'User'
           raise NotPrivileged unless @car.owner_id == @current_user.id
-          @expense = @car.expenses.find(params[:id])
+          @reminder = @car.reminders.find(params[:id])
 
-          respond_with @expense
+          respond_with @reminder
         elsif @car.owner_type == 'Group'
           @group = Group.find(@car.owner_id)
           raise NotPrivileged unless @group.is_member?(@current_user)
-          @expense = @car.expenses.find(params[:id])
+          @reminder = @car.reminders.find(params[:id])
 
-          respond_with @expense
+          respond_with @reminder
         end
       end
     end
@@ -43,17 +43,17 @@ module V1
         @car = Car.find(params[:car_id])
         if @car.owner_type == 'User'
           raise NotPrivileged unless @car.owner_id == @current_user.id
-          @expense = Expense.create!(expense_params)
-          @car.expenses << @expense
+          @reminder = Reminder.create!(reminder_params)
+          @car.reminders << @reminder
 
-          respond_with @expense
+          respond_with @reminder
         elsif @car.owner_type == 'Group'
           @group = Group.find(@car.owner_id)
           raise NotPrivileged unless @group.is_member?(@current_user)
-          @expense = Expense.create!(expense_params)
-          @car.expenses << @expense
+          @reminder = Reminder.create!(reminder_params)
+          @car.reminders << @reminder
 
-          respond_with @expense
+          respond_with @reminder
         end
       end
     end
@@ -63,48 +63,45 @@ module V1
         @car = Car.find(params[:car_id])
         if @car.owner_type == 'User'
           raise NotPrivileged unless @car.owner_id == @current_user.id
-          @expense = @car.expenses.find(params[:id])
-          @expense.update!(expense_params)
+          @reminder = @car.reminders.find(params[:id])
+          @reminder.update!(reminder_params)
 
-          respond_with @expense
+          respond_with @reminder
         elsif @car.owner_type == 'Group'
           @group = Group.find(@car.owner_id)
           raise NotPrivileged unless @group.is_member?(@current_user)
-          @expense = @car.expenses.find(params[:id])
-          @expense.update!(expense_params)
+          @reminder = @car.reminders.find(params[:id])
+          @reminder.update!(reminder_params)
 
-          respond_with @expense
+          respond_with @reminder
         end
       end
     end
 
-    def delete
+    def destroy
       if params[:car_id]
         @car = Car.find(params[:car_id])
         if @car.owner_type == 'User'
           raise NotPrivileged unless @car.owner_id == @current_user.id
-          @expense = @car.expenses.find(params[:id])
-          @expense.destroy!
+          @reminder = @car.reminders.find(params[:id])
+          @reminder.destroy!
 
-          respond_with @expense
+          respond_with @reminder
         elsif @car.owner_type == 'Group'
           @group = Group.find(@car.owner_id)
           raise NotPrivileged unless @group.is_member?(@current_user)
-          @expense = @car.expenses.find(params[:id])
-          @expense.destroy!
+          @reminder = @car.reminders.find(params[:id])
+          @reminder.destroy!
 
-          respond_with @expense
+          respond_with @reminder
         end
       end
     end
 
     private
 
-    def expense_params
-      params.required(:expense).permit(:odometer, :expense_type, :date,
-                                              :price, :description,
-                                              :location_attributes => [:latitude, :longitude, :address])
-
+    def reminder_params
+      params.required(:reminder).permit(:date, :odometer, :reminder_type, :description)
     end
   end
 end

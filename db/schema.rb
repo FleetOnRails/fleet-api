@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140327222239) do
+ActiveRecord::Schema.define(version: 20140327151404) do
 
   create_table "cars", force: true do |t|
     t.string   "make"
@@ -44,7 +44,7 @@ ActiveRecord::Schema.define(version: 20140327222239) do
     t.datetime "updated_at"
   end
 
-  add_index "diagnostic_faults", ["car_id"], name: "diagnostic_fault_ix"
+  add_index "diagnostic_faults", ["car_id"], name: "diagnostics_fault_ix"
 
   create_table "diagnostic_statistics", force: true do |t|
     t.float    "kmh"
@@ -72,12 +72,14 @@ ActiveRecord::Schema.define(version: 20140327222239) do
     t.datetime "date"
     t.float    "odometer"
     t.float    "price"
-    t.string   "type"
+    t.string   "expense_type"
     t.text     "description"
     t.integer  "car_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  add_index "expenses", ["car_id"], name: "expenses_ix"
 
   create_table "fuel_entries", force: true do |t|
     t.float    "odometer"
@@ -178,6 +180,18 @@ ActiveRecord::Schema.define(version: 20140327222239) do
   end
 
   add_index "products", ["productable_id", "productable_type"], name: "products_ix"
+
+  create_table "reminders", force: true do |t|
+    t.datetime "date"
+    t.float    "odometer"
+    t.string   "reminder_type"
+    t.text     "description"
+    t.integer  "car_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "reminders", ["car_id"], name: "reminders_ix"
 
   create_table "user_groups", force: true do |t|
     t.integer  "group_access"

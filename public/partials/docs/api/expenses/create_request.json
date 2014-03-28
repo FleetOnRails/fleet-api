@@ -2,9 +2,9 @@
     "expense": {
         "date": "2014-03-12T00:00:25.000Z",
         "odometer": 162000,
-        "type": "Service",
-        "price": 150,
-        "description": "Full service",
+        "expense_type": "Service",
+        "description": "full service",
+        "price": 100.0,
         "location_attributes": {
             "latitude": 52.676181,
             "longitude": -6.289091

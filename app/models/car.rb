@@ -3,6 +3,7 @@ class Car < ActiveRecord::Base
 
   has_many :diagnostic_faults, dependent: :destroy
   has_many :expenses, dependent: :destroy
+  has_many :reminders, dependent: :destroy
   has_many :documents, as: :documentable, dependent: :destroy
   has_many :fuel_entries, dependent: :destroy
 
@@ -20,7 +21,7 @@ class Car < ActiveRecord::Base
   LIMIT = 30000
 
   def add_diagnostic_statistic(diagnostic_statistic)
-    if diagnostic_statistics.length >= LIMIT
+    if diagnostic_statistics.length > LIMIT
       diagnostic_statistics.limit(100).each { |record| record.destroy! }
     end
 
@@ -28,7 +29,7 @@ class Car < ActiveRecord::Base
   end
 
   def add_gps_statistic(gps_statistic)
-    if gps_statistics.size >= LIMIT
+    if gps_statistics.size > LIMIT
       gps_statistics.limit(100).each { |record| record.destroy! }
     end
 

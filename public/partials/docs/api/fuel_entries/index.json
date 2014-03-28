@@ -10,8 +10,8 @@
                 "filling_station": "esso",
                 "filled_tank": true,
                 "comment": "no comment on this matter",
-                "created_at": 1394705990,
-                "updates_at": 1394706000,
+                "created_at": "2014-03-12T00:00:25.000Z",
+                "updated_at": "2014-03-12T00:00:25.000Z",
                 "location": {
                     "id": 17,
                     "latitude": 53.34991410000001,
@@ -20,8 +20,8 @@
                     "city": "Dublin",
                     "county": "Dublin City",
                     "country": "IE",
-                    "created_at": 1394705990,
-                    "updates_at": 1394706000
+                    "created_at": "2014-03-12T00:00:25.000Z",
+                    "updated_at": "2014-03-12T00:00:25.000Z"
                 }
             }
         }

@@ -1,12 +1,10 @@
 # Read about factories at https://github.com/thoughtbot/factory_girl
 
 FactoryGirl.define do
-  factory :expense do
+  factory :reminder do
     date Time.now
-    odometer 100100
-    price 160
-    expense_type 'service'
+    odometer 1.5
+    reminder_type { Faker::Company.name }
     description { Faker::Lorem.paragraph }
-    association :location, factory: :location
   end
 end
