@@ -2,24 +2,24 @@
     "expenses": [
         {
             "expense": {
-                "id": 2,
+                "id": 1,
                 "date": "2014-03-12T00:00:25.000Z",
-                "odometer": 162000,
-                "type": "Service",
-                "price": 150,
-                "description": "Full service",
-                "created_at": "2014-03-12T00:00:25.000Z",
-                "updated_at": "2014-03-12T00:00:25.000Z",
+                "odometer": 162000.0,
+                "price": 100.0,
+                "expense_type": "Service",
+                "description": "full service",
+                "created_at": "2014-03-28T10:47:45.673Z",
+                "updated_at": "2014-03-28T10:47:46.217Z",
                 "location": {
-                    "id": 22,
+                    "id": 11,
                     "latitude": 52.676181,
                     "longitude": -6.289091,
                     "address": "7 Esmonde Street, Gorey, Co. Wexford, Ireland",
                     "city": "Gorey",
                     "county": "Wexford",
                     "country": "IE",
-                    "created_at": "2014-03-12T00:00:25.000Z",
-                    "updated_at": "2014-03-12T00:00:25.000Z"
+                    "created_at": "2014-03-28T10:47:45.677Z",
+                    "updated_at": "2014-03-28T10:47:45.677Z"
                 }
             }
         }

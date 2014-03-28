@@ -1,0 +1,67 @@
+<div ng-controller="ToggleCtrl">
+    <div class="endpoint" ng-click="isCollapsed = !isCollapsed">
+        <div class="method get">GET</div>
+        <div class="path">/v1/cars/:car_id/reminders</div>
+    </div>
+    <div collapse="isCollapsed">
+        This will return reminders if any associated with the car matching :car_id
+        <div hljs include="'partials/docs/api/reminders/index.json'"></div>
+    </div>
+</div>
+<div class="clear"></div>
+
+<div ng-controller="ToggleCtrl">
+    <div class="endpoint" ng-click="isCollapsed = !isCollapsed">
+        <div class="method get">GET</div>
+        <div class="path">/v1/cars/:car_id/reminders/:id</div>
+    </div>
+    <div collapse="isCollapsed">
+        This will the reminders matching with the id given
+        <div hljs include="'partials/docs/api/reminders/show.json'"></div>
+    </div>
+</div>
+<div class="clear"></div>
+
+<div ng-controller="ToggleCtrl">
+    <div class="endpoint" ng-click="isCollapsed = !isCollapsed">
+        <div class="method post">POST</div>
+        <div class="path">/v1/cars/:car_id/reminders</div>
+    </div>
+    <div collapse="isCollapsed">
+        This create a new reminder for the car matching :car_id
+        <div hljs include="'partials/docs/api/reminders/create_request.json'"></div>
+
+        And a reply with the new reminder object
+        <div hljs include="'partials/docs/api/reminders/show.json'"></div>
+    </div>
+</div>
+<div class="clear"></div>
+
+<div ng-controller="ToggleCtrl">
+    <div class="endpoint" ng-click="isCollapsed = !isCollapsed">
+        <div class="method put">PUT</div>
+        <div class="path">/v1/cars/:car_id/reminders/:id</div>
+    </div>
+    <div collapse="isCollapsed">
+        This update the reminder for the car matching :car_id and :id
+        <div hljs include="'partials/docs/api/reminders/create_request.json'"></div>
+
+        And a reply with the updated reminder object
+        <div hljs include="'partials/docs/api/reminders/show.json'"></div>
+    </div>
+</div>
+<div class="clear"></div>
+
+<div ng-controller="ToggleCtrl">
+    <div class="endpoint" ng-click="isCollapsed = !isCollapsed">
+        <div class="method delete">DELETE</div>
+        <div class="path">/v1/cars/:car_id/reminders/:id</div>
+    </div>
+    <div collapse="isCollapsed">
+
+        This will delete the reminder with matching :car_id and :id
+        and reply with the deleted expense object
+        <div hljs include="'partials/docs/api/reminders/show.json'"></div>
+    </div>
+</div>
+<div class="clear"></div>

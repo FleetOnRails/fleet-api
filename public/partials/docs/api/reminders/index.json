@@ -1,0 +1,15 @@
+{
+    "reminders": [
+        {
+            "reminder": {
+                "id": 2,
+                "date": "2014-03-12T00:00:25.000Z",
+                "odometer": 162000.0,
+                "reminder_type": "Service",
+                "description": "full service",
+                "created_at": "2014-03-28T11:04:20.776Z",
+                "updated_at": "2014-03-28T11:04:20.860Z"
+            }
+        }
+    ]
+}

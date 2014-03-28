@@ -3,6 +3,7 @@ class Car < ActiveRecord::Base
 
   has_many :diagnostic_faults, dependent: :destroy
   has_many :expenses, dependent: :destroy
+  has_many :reminders, dependent: :destroy
   has_many :documents, as: :documentable, dependent: :destroy
   has_many :fuel_entries, dependent: :destroy
 

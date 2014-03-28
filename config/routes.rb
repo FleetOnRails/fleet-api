@@ -20,6 +20,7 @@ FleetOnRails::Application.routes.draw do
       resources :gps_statistics, only: [:index, :show, :create]
       resources :fuel_entries, only: [:index, :show, :create, :update, :destroy]
       resources :expenses, only: [:index, :show, :create, :update, :destroy]
+      resources :reminders, only: [:index, :show, :create, :update, :destroy]
     end
 
     resources :expenses, only: [] do

@@ -1,10 +1,9 @@
-class CreateExpenses < ActiveRecord::Migration
+class CreateReminders < ActiveRecord::Migration
   def change
-    create_table :expenses do |t|
+    create_table :reminders do |t|
       t.timestamp :date
       t.float :odometer
-      t.float :price
-      t.string :expense_type
+      t.string :reminder_type
       t.text :description
       t.belongs_to :car
 
