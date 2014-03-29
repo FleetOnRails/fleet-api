@@ -23,7 +23,7 @@ module V1
     private
 
     def me_params
-      params.required(:me).permit(:first_name, :last_name, :username, :email, :phone_no, :avatar)
+      params.required(:me).permit(:first_name, :last_name, :username, :email, :phone_no, :avatar_file, :avatar)
     end
 
     def password_change_params

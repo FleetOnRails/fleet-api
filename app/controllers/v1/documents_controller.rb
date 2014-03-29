@@ -2,6 +2,8 @@ module V1
   class DocumentsController < BaseController
     doorkeeper_for [:all]
 
+    # TODO - This badly needs refactoring
+
     def index
       if params[:car_id]
         @car = Car.find(params[:car_id])
@@ -182,7 +184,7 @@ module V1
     private
 
     def document_params
-      params.required(:document).permit(:name, :media)
+      params.required(:document).permit(:name, :file, :data)
     end
   end
 end

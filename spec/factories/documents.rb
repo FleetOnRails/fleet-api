@@ -2,7 +2,8 @@
 
 FactoryGirl.define do
   factory :document do
-    name { Faker::Lorem.word }
-    media { Faker::Lorem.paragraph }
+    title { Faker::Lorem.word }
+    file 'file.pdf'
+    data { Faker::Lorem.paragraph }
   end
 end
