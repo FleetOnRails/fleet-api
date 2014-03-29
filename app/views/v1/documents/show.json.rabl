@@ -1,3 +1,3 @@
 object @document => :document
 
-attributes :id, :name, :media, :created_at, :updated_at
+attributes :id, :title, :file, :data, :created_at, :updated_at
