@@ -2,6 +2,8 @@
     "car": {
         "make": "toyota",
         "model": "corolla",
-        "registration": "08wx1113"
+        "registration": "08wx1113",
+        "avatar": "iVBORw0KGgoAAAANSUhEUgAAArwA...",
+        "avatar_file": "avatar.jpg"
     }
 }

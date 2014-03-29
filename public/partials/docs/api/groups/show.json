@@ -2,7 +2,8 @@
     "group": {
         "id": 2,
         "name": "newgroup",
-        "avatar_url": null,
+        "avatar": "data:image/jpeg;base64,iVBORw0KGgoAAAANSUhEUgAAArwA...",
+        "avatar_file": "avatar.jpg",
         "created_at": "2014-03-12T00:00:25.000Z",
         "updated_at": "2014-03-12T00:00:25.000Z",
         "location": {

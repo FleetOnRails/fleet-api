@@ -1,6 +1,8 @@
 {
     "group": {
         "name": "newgroup",
+        "avatar": "iVBORw0KGgoAAAANSUhEUgAAArwA...",
+        "avatar_file": "avatar.jpg",
         "location_attributes": {
             "latitude": 52.676181,
             "longitude": -6.289091
