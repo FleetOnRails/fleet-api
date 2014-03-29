@@ -18,10 +18,10 @@ module V1
     class DuplicateEntry < StandardError;
     end
 
-    #rescue_from Exception do
-    #  @object = Object.new
-    #  render :status => 500, template: 'v1/errors/server_error'
-    #end
+    rescue_from Exception do
+      @object = Object.new
+      render :status => 500, template: 'v1/errors/server_error'
+    end
 
     rescue_from ActiveRecord::RecordInvalid do |exception|
       @object = exception.record
@@ -31,6 +31,10 @@ module V1
     rescue_from ActiveRecord::RecordNotFound do
       @object = Object.new
       render status: 404, template: 'v1/errors/record_not_found'
+    end
+
+    rescue_from ActiveRecord::RecordNotSaved do
+      render status: 422, template: 'v1/errors/record_not_saved'
     end
 
     rescue_from NotPrivileged do
