@@ -13,11 +13,13 @@ class Document < ActiveRecord::Base
 
   def process_file
     accepted_formats = %w(.txt .pdf .doc .docx)
-    if accepted_formats.include? File.extname(file)
-      prepend_mime unless data.match(REGEX)
-    else
-      errors[:base] << 'File type is not allowed'
-      false
+    if file.present? && data.present?
+      if accepted_formats.include? File.extname(file)
+        prepend_mime unless data.match(REGEX)
+      else
+        errors[:base] << 'File type is not allowed'
+        false
+      end
     end
   end
 
