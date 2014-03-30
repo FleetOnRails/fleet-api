@@ -1,8 +1,9 @@
 module FleetOnRails
   module Access
-    DRIVER = 10
-    REPORTER = 20
+    MANAGER = 40
     OWNER = 30
+    DRIVER = 20
+    REPORTER = 10
 
     class << self
 
