@@ -12,7 +12,7 @@ class Document < ActiveRecord::Base
   REGEX = /\Adata:[a-zA-Z\-]*\/[a-zA-Z\-]*;base64,(.*)\z/
 
   def process_file
-    accepted_formats = %w(.txt .pdf .doc .docx)
+    accepted_formats = %w(.txt .pdf .doc .docx .jpg .jpeg .gif .png)
     if file.present? && data.present?
       if accepted_formats.include? File.extname(file)
         prepend_mime unless data.match(REGEX)

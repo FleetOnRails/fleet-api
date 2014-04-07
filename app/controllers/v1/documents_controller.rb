@@ -19,18 +19,18 @@ module V1
 
           respond_with @documents
         end
-      elsif params[:service_record_id]
-        @service_record = ServiceRecord.find(params[:service_record_id])
-        @car = Car.find(@service_record.car_id)
+      elsif params[:expense_id]
+        @expense = Expense.find(params[:expense_id])
+        @car = Car.find(@expense.car_id)
         if @car.owner_type == 'User'
           raise NotPrivileged unless @car.owner_id == @current_user.id
-          @documents = @service_record.documents
+          @documents = @expense.documents
 
           respond_with @documents
         elsif @car.owner_type == 'Group'
           @group = Group.find(@car.owner_id)
           raise NotPrivileged unless @group.is_member?(@current_user)
-          @documents = @service_record.documents
+          @documents = @expense.documents
 
           respond_with @documents
         end
@@ -52,18 +52,18 @@ module V1
 
           respond_with @document
         end
-      elsif params[:service_record_id]
-        @service_record = ServiceRecord.find(params[:service_record_id])
-        @car = Car.find(@service_record.car_id)
+      elsif params[:expense_id]
+        @expense = Expense.find(params[:expense_id])
+        @car = Car.find(@expense.car_id)
         if @car.owner_type == 'User'
           raise NotPrivileged unless @car.owner_id == @current_user.id
-          @document = @service_record.documents.find(params[:id])
+          @document = @expense.documents.find(params[:id])
 
           respond_with @document
         elsif @car.owner_type == 'Group'
           @group = Group.find(@car.owner_id)
           raise NotPrivileged unless @group.is_member?(@current_user)
-          @document = @service_record.documents.find(params[:id])
+          @document = @expense.documents.find(params[:id])
 
           respond_with @document
         end
@@ -87,20 +87,20 @@ module V1
 
           respond_with @document
         end
-      elsif params[:service_record_id]
-        @service_record = ServiceRecord.find(params[:service_record_id])
-        @car = Car.find(@service_record.car_id)
+      elsif params[:expense_id]
+        @expense = Expense.find(params[:expense_id])
+        @car = Car.find(@expense.car_id)
         if @car.owner_type == 'User'
           raise NotPrivileged unless @car.owner_id == @current_user.id
           @document = Document.create!(document_params)
-          @service_record.documents << @document
+          @expense.documents << @document
 
           respond_with @document
         elsif @car.owner_type == 'Group'
           @group = Group.find(@car.owner_id)
           raise NotPrivileged unless @group.is_member?(@current_user)
           @document = Document.create!(document_params)
-          @service_record.documents << @document
+          @expense.documents << @document
 
           respond_with @document
         end
@@ -124,19 +124,19 @@ module V1
 
           respond_with @document
         end
-      elsif params[:service_record_id]
-        @service_record = ServiceRecord.find(params[:service_record_id])
-        @car = Car.find(@service_record.car_id)
+      elsif params[:expense_id]
+        @expense = Expense.find(params[:expense_id])
+        @car = Car.find(@expense.car_id)
         if @car.owner_type == 'User'
           raise NotPrivileged unless @car.owner_id == @current_user.id
-          @document = @service_record.documents.find(params[:id])
+          @document = @expense.documents.find(params[:id])
           @document.update!(document_params)
 
           respond_with @document
         elsif @car.owner_type == 'Group'
           @group = Group.find(@car.owner_id)
           raise NotPrivileged unless @group.is_member?(@current_user)
-          @document = @service_record.documents.find(params[:id])
+          @document = @expense.documents.find(params[:id])
           @document.update!(document_params)
 
           respond_with @document
@@ -161,19 +161,19 @@ module V1
 
           respond_with @document
         end
-      elsif params[:service_record_id]
-        @service_record = ServiceRecord.find(params[:service_record_id])
-        @car = Car.find(@service_record.car_id)
+      elsif params[:expense_id]
+        @expense = Expense.find(params[:expense_id])
+        @car = Car.find(@expense.car_id)
         if @car.owner_type == 'User'
           raise NotPrivileged unless @car.owner_id == @current_user.id
-          @document = @service_record.documents.find(params[:id])
+          @document = @expense.documents.find(params[:id])
           @document.destroy!
 
           respond_with @document
         elsif @car.owner_type == 'Group'
           @group = Group.find(@car.owner_id)
           raise NotPrivileged unless @group.is_member?(@current_user)
-          @document = @service_record.documents.find(params[:id])
+          @document = @expense.documents.find(params[:id])
           @document.destroy!
 
           respond_with @document
@@ -184,7 +184,7 @@ module V1
     private
 
     def document_params
-      params.required(:document).permit(:name, :file, :data)
+      params.required(:document).permit(:title, :file, :data)
     end
   end
 end

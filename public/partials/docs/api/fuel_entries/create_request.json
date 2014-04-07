@@ -7,6 +7,7 @@
         "filling_station": "esso",
         "filled_tank": true,
         "comment": "no comment on this matter",
+        "date": "2014-03-12T00:00:25.000Z",
         "location_attributes": {
             "latitude": 52.676181,
             "longitude": -6.289091
