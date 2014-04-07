@@ -9,6 +9,10 @@ describe FuelEntry do
     should have_one(:location)
   end
 
+  it 'should validate presence of location' do
+    should validate_presence_of(:location)
+  end
+
   it 'should validate presence of odometer' do
     should validate_presence_of(:odometer)
   end
