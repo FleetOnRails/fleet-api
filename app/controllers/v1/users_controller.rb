@@ -2,8 +2,7 @@ module V1
   class UsersController < BaseController
     doorkeeper_for [:index, :show, :update, :destroy]
 
-    # TODO - Shouldn't doorkeeper do this for me ?
-    before_filter :ensure_current_user, only: [:index, :show, :update]
+    before_action :find_current_user, except: [:create]
 
     def index
       if params[:group_id]
@@ -63,10 +62,6 @@ module V1
 
     def user_params
       params.required(:user).permit(:first_name, :last_name, :username, :email, :password, :password_confirmation, :phone_no)
-    end
-
-    def ensure_current_user
-      raise NotPrivileged unless @current_user
     end
   end
 end

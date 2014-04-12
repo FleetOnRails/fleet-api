@@ -10,6 +10,7 @@ FactoryGirl.define do
     date Time.now
     comment { Faker::Lorem.paragraph }
     filling_station { Faker::Company.name }
+    location_attributes { attributes_for(:location) }
     association :location, factory: :location
   end
 end
