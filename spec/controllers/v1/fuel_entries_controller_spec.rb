@@ -73,32 +73,49 @@ describe V1::FuelEntriesController do
   end
 
   describe 'POST create' do
-    before :each do
-      bypass_authentication
-    end
+    describe 'When a user is logged in' do
+      before :each do
+        bypass_authentication
+      end
 
-    describe 'When valid params are presented' do
-      it 'assigns a new fuel entry' do
-        @current_user.cars << car
-        post :create, :car_id => car.id,
-             :fuel_entry => FactoryGirl.attributes_for(:fuel_entry)
+      describe 'When valid params are presented' do
+        it 'assigns a new fuel entry' do
+          @current_user.cars << car
+          post :create, :car_id => car.id,
+               :fuel_entry => FactoryGirl.attributes_for(:fuel_entry)
 
-        expect(json).to have_key('fuel_entry')
-        expect(response.status).to eq(200)
-        expect(response).to render_template 'v1/fuel_entries/create'
+          expect(json).to have_key('fuel_entry')
+          expect(response.status).to eq(200)
+          expect(response).to render_template 'v1/fuel_entries/create'
+        end
+      end
+
+      describe 'When invalid params are presented' do
+        it 'does not assign a new fuel entry' do
+          @current_user.cars << car
+          post :create, :car_id => car.id,
+               :fuel_entry => {:odometer => 100000}
+
+          expect(response.status).to eq(400)
+          expect(response).to render_template 'v1/errors/record_invalid'
+        end
       end
     end
 
-    describe 'When invalid params are presented' do
-      it 'does not assign a new fuel entry' do
-        @current_user.cars << car
-        post :create, :car_id => car.id,
-             :fuel_entry => { :odometer => 100000}
+    describe 'When a user is not logged in' do
+      before :each do
+        remove_authentication
+      end
 
-        expect(response.status).to eq(400)
-        expect(response).to render_template 'v1/errors/record_invalid'
+      describe 'When valid params are presented' do
+        it 'responds with not privileged' do
+          post :create, :car_id => car.id,
+               :fuel_entry => FactoryGirl.attributes_for(:fuel_entry)
+
+          expect(response.status).to eq(403)
+          expect(response).to render_template 'v1/errors/not_privileged'
+        end
       end
     end
   end
-
 end
