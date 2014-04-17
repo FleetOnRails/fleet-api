@@ -3,7 +3,6 @@
 FactoryGirl.define do
   factory :document do
     title { Faker::Lorem.word }
-    file 'file.pdf'
-    data { Faker::Lorem.paragraph }
+    document Rack::Test::UploadedFile.new(File.open(File.join(Rails.root, '/spec/support/functional-spec.docx')))
   end
 end

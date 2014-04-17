@@ -59,8 +59,7 @@ ActiveRecord::Schema.define(version: 20131221163218) do
 
   create_table "documents", force: true do |t|
     t.string   "title"
-    t.string   "file"
-    t.text     "data",              limit: 16777216
+    t.string   "document"
     t.integer  "documentable_id"
     t.string   "documentable_type"
     t.datetime "created_at"

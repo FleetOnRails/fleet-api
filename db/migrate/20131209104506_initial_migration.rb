@@ -127,8 +127,7 @@ class InitialMigration < ActiveRecord::Migration
 
     create_table :documents do |t|
       t.string :title
-      t.string :file
-      t.text :data, limit: 16.megabytes
+      t.string :document
       t.references :documentable, polymorphic: true
 
       t.timestamps

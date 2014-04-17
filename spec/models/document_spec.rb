@@ -9,12 +9,8 @@ describe Document do
     should validate_presence_of(:title)
   end
 
-  it 'should validate presence of data' do
-    should validate_presence_of(:data)
-  end
-
-  it 'should validate presence of file' do
-    should validate_presence_of(:file)
+  it 'should validate presence of document' do
+    should validate_presence_of(:document)
   end
 
   it 'has a valid factory' do

@@ -1,4 +1,6 @@
 class Car < ActiveRecord::Base
+  mount_uploader :avatar, AvatarUploader
+
   belongs_to :owner, polymorphic: true
 
   has_many :diagnostic_faults, dependent: :destroy
