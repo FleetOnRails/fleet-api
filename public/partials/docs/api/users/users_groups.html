@@ -24,8 +24,8 @@
 
 <div ng-controller="ToggleCtrl">
     <div class="endpoint" ng-click="isCollapsed = !isCollapsed">
-        <div class="method post">POST</div>
-        <div class="path">/v1/groups/:group_id/users</div>
+        <div class="method put">PUT</div>
+        <div class="path">/v1/groups/:group_id/users/:id</div>
     </div>
     <div collapse="isCollapsed">
         This adds a new user to the group

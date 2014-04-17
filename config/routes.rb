@@ -32,7 +32,7 @@ FleetOnRails::Application.routes.draw do
     end
 
     resources :groups, only: [:index, :show, :create, :update, :destroy] do
-      resources :users, only: [:index, :create, :destroy]
+      resources :users, only: [:index, :create, :destroy, :update]
       resources :cars, only: [:index, :show, :update, :create, :destroy]
       resources :vendors, only: [:index, :show, :update, :create, :destroy]
       resources :destinations, only: [:index, :show, :update, :create, :destroy]
