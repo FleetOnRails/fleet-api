@@ -14,6 +14,9 @@ module V1
         @current_user.save!
       else
         @current_user.update_without_password(me_params)
+        if params[:file].present?
+          @current_user.avatar = params[:file]
+        end
         @current_user.save!
       end
 
@@ -23,7 +26,7 @@ module V1
     private
 
     def me_params
-      params.required(:me).permit(:first_name, :last_name, :username, :email, :phone_no, :avatar_file, :avatar)
+      params.required(:me).permit(:first_name, :last_name, :username, :email, :phone_no)
     end
 
     def password_change_params

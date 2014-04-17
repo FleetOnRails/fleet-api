@@ -21,6 +21,12 @@ module V1
       respond_with @user
     end
 
+    def download
+      path = "#{Rails.root}#{request.path}"
+
+      send_file path, :x_sendfile => true
+    end
+
     def update
     end
 

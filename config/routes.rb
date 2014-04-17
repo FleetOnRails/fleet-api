@@ -38,4 +38,6 @@ FleetOnRails::Application.routes.draw do
       resources :destinations, only: [:index, :show, :update, :create, :destroy]
     end
   end
+
+  match '/uploads/user/avatar/:id/:basename.:extension', to: 'v1/users#download', via: [:get]
 end

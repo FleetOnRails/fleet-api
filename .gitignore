@@ -19,4 +19,4 @@
 /.idea
 
 # Ignore Carrierwave uploads
-/public/uploads
+/uploads

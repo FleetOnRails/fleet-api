@@ -48,3 +48,7 @@ gem 'geocoder'
 
 # Mail
 gem 'pony'
+
+# Files
+gem 'carrierwave'
+gem 'mini_magick'
