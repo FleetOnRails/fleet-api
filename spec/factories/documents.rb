@@ -2,6 +2,7 @@
 
 FactoryGirl.define do
   factory :document do
-    name { Faker::Lorem.word }
+    title { Faker::Lorem.word }
+    document Rack::Test::UploadedFile.new(File.open(File.join(Rails.root, '/spec/support/functional-spec.docx')))
   end
 end

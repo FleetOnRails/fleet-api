@@ -5,7 +5,7 @@
 angular.module('fleetonrails-api.controllers', [])
 
     .controller('MainCtrl', ['$scope', function ($scope) {
-        $scope.version = 'v0.0.4'
+        $scope.version = 'v0.0.5';
     }])
 
     .controller('ToggleCtrl', ['$scope', function ($scope) {

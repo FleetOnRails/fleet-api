@@ -2,7 +2,7 @@ module V1
   class DocumentsController < BaseController
     doorkeeper_for [:all]
 
-    include DocumentsHelper
+    # TODO - This badly needs refactoring
 
     def index
       if params[:car_id]
@@ -19,18 +19,18 @@ module V1
 
           respond_with @documents
         end
-      elsif params[:service_record_id]
-        @service_record = ServiceRecord.find(params[:service_record_id])
-        @car = Car.find(@service_record.car_id)
+      elsif params[:expense_id]
+        @expense = Expense.find(params[:expense_id])
+        @car = Car.find(@expense.car_id)
         if @car.owner_type == 'User'
           raise NotPrivileged unless @car.owner_id == @current_user.id
-          @documents = @service_record.documents
+          @documents = @expense.documents
 
           respond_with @documents
         elsif @car.owner_type == 'Group'
           @group = Group.find(@car.owner_id)
           raise NotPrivileged unless @group.is_member?(@current_user)
-          @documents = @service_record.documents
+          @documents = @expense.documents
 
           respond_with @documents
         end
@@ -52,18 +52,18 @@ module V1
 
           respond_with @document
         end
-      elsif params[:service_record_id]
-        @service_record = ServiceRecord.find(params[:service_record_id])
-        @car = Car.find(@service_record.car_id)
+      elsif params[:expense_id]
+        @expense = Expense.find(params[:expense_id])
+        @car = Car.find(@expense.car_id)
         if @car.owner_type == 'User'
           raise NotPrivileged unless @car.owner_id == @current_user.id
-          @document = @service_record.documents.find(params[:id])
+          @document = @expense.documents.find(params[:id])
 
           respond_with @document
         elsif @car.owner_type == 'Group'
           @group = Group.find(@car.owner_id)
           raise NotPrivileged unless @group.is_member?(@current_user)
-          @document = @service_record.documents.find(params[:id])
+          @document = @expense.documents.find(params[:id])
 
           respond_with @document
         end
@@ -71,138 +71,107 @@ module V1
     end
 
     def create
-      if params[:document][:document_data] && params[:document][:document_extension]
-        if params[:car_id]
-          @car = Car.find(params[:car_id])
-          if @car.owner_type == 'User'
-            raise NotPrivileged unless @car.owner_id == @current_user.id
-            @document = Document.new(document_params)
-            @document.media = build_media(params[:document][:document_data], params[:document][:document_extension])
-            @document.save!
-            @car.documents <<(@document)
-            @car.save!
-
-            respond_with @document
-          elsif @car.owner_type == 'Group'
-            @group = Group.find(@car.owner_id)
-            raise NotPrivileged unless @group.is_member?(@current_user)
-            @document = Document.new(document_params)
-            @document.media = build_media(params[:document][:document_data], params[:document][:document_extension])
-            @document.save!
-            @car.documents <<(@document)
-            @car.save!
-
-            respond_with @document
+      if params[:car_id]
+        @car = Car.find(params[:car_id])
+        if @car.owner_type == 'User'
+          raise NotPrivileged unless @car.owner_id == @current_user.id
+          @document = Document.new(document_params)
+          if params[:file].present?
+            @document.document == params[:file]
           end
-        elsif params[:service_record_id]
-          @service_record = ServiceRecord.find(params[:service_record_id])
-          @car = Car.find(@service_record.car_id)
-          if @car.owner_type == 'User'
-            raise NotPrivileged unless @car.owner_id == @current_user.id
-            @document = Document.new(document_params)
-            @document.media = build_media(params[:document][:document_data], params[:document][:document_extension])
-            @document.save!
-            @service_record.documents <<(@document)
-            @service_record.save!
+          @document.save!
+          @car.documents << @document
 
-            respond_with @document
-          elsif @car.owner_type == 'Group'
-            @group = Group.find(@car.owner_id)
-            raise NotPrivileged unless @group.is_member?(@current_user)
-            @document = Document.new(document_params)
-            @document.media = build_media(params[:document][:document_data], params[:document][:document_extension])
-            @document.save!
-            @service_record.documents <<(@document)
-            @service_record.save!
-
-            respond_with @document
+          respond_with @document
+        elsif @car.owner_type == 'Group'
+          @group = Group.find(@car.owner_id)
+          raise NotPrivileged unless @group.is_member?(@current_user)
+          @document = Document.new(document_params)
+          if params[:file].present?
+            @document.document == params[:file]
           end
+          @document.save!
+          @car.documents << @document
+
+          respond_with @document
+        end
+      elsif params[:expense_id]
+        @expense = Expense.find(params[:expense_id])
+        @car = Car.find(@expense.car_id)
+        if @car.owner_type == 'User'
+          raise NotPrivileged unless @car.owner_id == @current_user.id
+          @document = Document.new(document_params)
+          if params[:file].present?
+            @document.document == params[:file]
+          end
+          @document.save!
+          @expense.documents << @document
+
+          respond_with @document
+        elsif @car.owner_type == 'Group'
+          @group = Group.find(@car.owner_id)
+          raise NotPrivileged unless @group.is_member?(@current_user)
+          @document = Document.new(document_params)
+          if params[:file].present?
+            @document.document == params[:file]
+          end
+          @document.save!
+          @expense.documents << @document
+
+          respond_with @document
         end
       end
     end
 
     def update
-      if params[:document][:document_data] && params[:document][:document_extension]
-        if params[:car_id]
-          @car = Car.find(params[:car_id])
-          if @car.owner_type == 'User'
-            raise NotPrivileged unless @car.owner_id == @current_user.id
-            @document = @car.documents.find(params[:id])
-            @document.update!(document_params)
-            @document.media = build_media(params[:document][:document_data], params[:document][:document_extension])
+      if params[:car_id]
+        @car = Car.find(params[:car_id])
+        if @car.owner_type == 'User'
+          raise NotPrivileged unless @car.owner_id == @current_user.id
+          @document = @car.documents.find(params[:id])
+          @document.update!(document_params)
+          if params[:file].present?
+            @document.document == params[:file]
             @document.save!
-
-            respond_with @document
-          elsif @car.owner_type == 'Group'
-            @group = Group.find(@car.owner_id)
-            raise NotPrivileged unless @group.is_member?(@current_user)
-            @document = @car.documents.find(params[:id])
-            @document.update!(document_params)
-            @document.media = build_media(params[:document][:document_data], params[:document][:document_extension])
-            @document.save!
-
-            respond_with @document
           end
-        elsif params[:service_record_id]
-          @service_record = ServiceRecord.find(params[:service_record_id])
-          @car = Car.find(@service_record.car_id)
-          if @car.owner_type == 'User'
-            raise NotPrivileged unless @car.owner_id == @current_user.id
-            @document = @car.documents.find(params[:id])
-            @document.update!(document_params)
-            @document.media = build_media(params[:document][:document_data], params[:document][:document_extension])
-            @document.save!
 
-            respond_with @document
-          elsif @car.owner_type == 'Group'
-            @group = Group.find(@car.owner_id)
-            raise NotPrivileged unless @group.is_member?(@current_user)
-            @document = @car.documents.find(params[:id])
-            @document.update!(document_params)
-            @document.media = build_media(params[:document][:document_data], params[:document][:document_extension])
+          respond_with @document
+        elsif @car.owner_type == 'Group'
+          @group = Group.find(@car.owner_id)
+          raise NotPrivileged unless @group.is_member?(@current_user)
+          @document = @car.documents.find(params[:id])
+          @document.update!(document_params)
+          if params[:file].present?
+            @document.document == params[:file]
             @document.save!
-
-            respond_with @document
           end
+
+          respond_with @document
         end
-      else
-        if params[:car_id]
-          @car = Car.find(params[:car_id])
-          if @car.owner_type == 'User'
-            raise NotPrivileged unless @car.owner_id == @current_user.id
-            @document = @car.documents.find(params[:id])
-            @document.update!(document_params)
+      elsif params[:expense_id]
+        @expense = Expense.find(params[:expense_id])
+        @car = Car.find(@expense.car_id)
+        if @car.owner_type == 'User'
+          raise NotPrivileged unless @car.owner_id == @current_user.id
+          @document = @expense.documents.find(params[:id])
+          @document.update!(document_params)
+          if params[:file].present?
+            @document.document == params[:file]
             @document.save!
-
-            respond_with @document
-          elsif @car.owner_type == 'Group'
-            @group = Group.find(@car.owner_id)
-            raise NotPrivileged unless @group.is_member?(@current_user)
-            @document = @car.documents.find(params[:id])
-            @document.update!(document_params)
-            @document.save!
-
-            respond_with @document
           end
-        elsif params[:service_record_id]
-          @service_record = ServiceRecord.find(params[:service_record_id])
-          @car = Car.find(@service_record.car_id)
-          if @car.owner_type == 'User'
-            raise NotPrivileged unless @car.owner_id == @current_user.id
-            @document = @service_record.documents.find(params[:id])
-            @document.update!(document_params)
-            @document.save!
 
-            respond_with @document
-          elsif @car.owner_type == 'Group'
-            @group = Group.find(@car.owner_id)
-            raise NotPrivileged unless @group.is_member?(@current_user)
-            @document = @service_record.documents.find(params[:id])
-            @document.update!(document_params)
+          respond_with @document
+        elsif @car.owner_type == 'Group'
+          @group = Group.find(@car.owner_id)
+          raise NotPrivileged unless @group.is_member?(@current_user)
+          @document = @expense.documents.find(params[:id])
+          @document.update!(document_params)
+          if params[:file].present?
+            @document.document == params[:file]
             @document.save!
-
-            respond_with @document
           end
+
+          respond_with @document
         end
       end
     end
@@ -224,19 +193,19 @@ module V1
 
           respond_with @document
         end
-      elsif params[:service_record_id]
-        @service_record = ServiceRecord.find(params[:service_record_id])
-        @car = Car.find(@service_record.car_id)
+      elsif params[:expense_id]
+        @expense = Expense.find(params[:expense_id])
+        @car = Car.find(@expense.car_id)
         if @car.owner_type == 'User'
           raise NotPrivileged unless @car.owner_id == @current_user.id
-          @document = @service_record.documents.find(params[:id])
+          @document = @expense.documents.find(params[:id])
           @document.destroy!
 
           respond_with @document
         elsif @car.owner_type == 'Group'
           @group = Group.find(@car.owner_id)
           raise NotPrivileged unless @group.is_member?(@current_user)
-          @document = @service_record.documents.find(params[:id])
+          @document = @expense.documents.find(params[:id])
           @document.destroy!
 
           respond_with @document
@@ -247,7 +216,7 @@ module V1
     private
 
     def document_params
-      params.required(:document).permit(:name)
+      params.required(:document).permit(:title)
     end
   end
 end

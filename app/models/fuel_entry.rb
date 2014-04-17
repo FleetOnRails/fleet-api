@@ -12,4 +12,5 @@ class FuelEntry < ActiveRecord::Base
   validates_presence_of :filling_station
   validates_presence_of :filled_tank
   validates_presence_of :date
+  validates_presence_of :location
 end

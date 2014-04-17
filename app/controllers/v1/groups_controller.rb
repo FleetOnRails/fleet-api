@@ -2,8 +2,6 @@ module V1
   class GroupsController < BaseController
     doorkeeper_for [:all]
 
-    include AvatarHelper
-
     def index
       @groups = @current_user.groups
     end
@@ -11,6 +9,12 @@ module V1
     def show
       @group = Group.find(params[:id])
       raise NotPrivileged unless @group.is_member?(@current_user)
+    end
+
+    def download
+      path = "#{Rails.root}#{request.path}"
+
+      send_file path, :x_sendfile => true
     end
 
     def create
@@ -22,6 +26,11 @@ module V1
       @group = Group.find(params[:id])
       raise NotPrivileged unless @group.is_owner?(@current_user)
       @group.update!(group_params)
+      if params[:file].present?
+        @group.avatar = params[:file]
+        @group.save!
+      end
+
     end
 
     def destroy

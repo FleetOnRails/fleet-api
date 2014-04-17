@@ -2,8 +2,6 @@ module V1
   class CarsController < BaseController
     doorkeeper_for [:all]
 
-    include AvatarHelper
-
     def index
       if params[:group_id]
         @group = Group.find(params[:group_id])
@@ -22,6 +20,12 @@ module V1
       else
         @car = @current_user.cars.find(params[:id])
       end
+    end
+
+    def download
+      path = "#{Rails.root}#{request.path}"
+
+      send_file path, :x_sendfile => true
     end
 
     def create
@@ -44,9 +48,17 @@ module V1
         raise NotPrivileged unless @group.is_member?(@current_user)
         @car = @group.cars.find(params[:id])
         @car.update!(car_params)
+        if params[:file].present?
+          @car.avatar = params[:file]
+          @car.save!
+        end
       else
         @car = @current_user.cars.find(params[:id])
         @car.update!(car_params)
+        if params[:file].present?
+          @car.avatar = params[:file]
+          @car.save!
+        end
       end
     end
 
@@ -68,7 +80,7 @@ module V1
     private
 
     def car_params
-      params.required(:car).permit(:make, :model, :registration)
+      params.required(:car).permit(:make, :model, :registration, :avatar_file, :avatar)
     end
   end
 end

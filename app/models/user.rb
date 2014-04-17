@@ -1,4 +1,6 @@
 class User < ActiveRecord::Base
+  mount_uploader :avatar, AvatarUploader
+
   # FIXME - Why do Devise's validations not work.
   devise :database_authenticatable,
          :recoverable,
@@ -12,8 +14,6 @@ class User < ActiveRecord::Base
 
   has_many :user_groups
   has_many :groups, through: :user_groups
-
-  mount_uploader :avatar, AvatarUploader
 
   validates_presence_of :username, :first_name, :last_name
 

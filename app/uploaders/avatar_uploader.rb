@@ -1,6 +1,7 @@
 # encoding: utf-8
 
 class AvatarUploader < CarrierWave::Uploader::Base
+
   # Include RMagick or MiniMagick support:
   # include CarrierWave::RMagick
   include CarrierWave::MiniMagick
@@ -38,7 +39,7 @@ class AvatarUploader < CarrierWave::Uploader::Base
   # Add a white list of extensions which are allowed to be uploaded.
   # For images you might use something like this:
   def extension_white_list
-    %w(jpg jpeg gif png)
+    %w(jpg jpeg gif png tif)
   end
 
   # Override the filename of the uploaded files:
@@ -52,7 +53,7 @@ class AvatarUploader < CarrierWave::Uploader::Base
   def secure_token
     ivar = "@#{mounted_as}_secure_token"
     token = model.instance_variable_get(ivar)
-    token ||= model.instance_variable_set(ivar, SecureRandom.hex(10))
+    token ||= model.instance_variable_set(ivar, SecureRandom.hex(40))
     token
   end
 end

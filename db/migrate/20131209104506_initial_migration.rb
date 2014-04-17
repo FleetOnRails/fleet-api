@@ -9,8 +9,8 @@ class InitialMigration < ActiveRecord::Migration
       t.string :username
       t.string :email
       t.string :phone_no
-      t.string :avatar
       t.boolean :admin
+      t.string :avatar
 
       ## Database authenticatable
       t.string :encrypted_password, null: false, default: ""
@@ -47,7 +47,7 @@ class InitialMigration < ActiveRecord::Migration
     create_table :diagnostic_statistics do |t|
       t.float :kmh
       t.float :rpm
-      t.float 'l/100km'
+      t.float :l100km
       t.belongs_to :car
 
       t.timestamps
@@ -85,6 +85,8 @@ class InitialMigration < ActiveRecord::Migration
     create_table :gps_statistics do |t|
       t.float :kmh
       t.belongs_to :car
+      t.float :latitude
+      t.float :longitude
 
       t.timestamps
     end
@@ -95,6 +97,7 @@ class InitialMigration < ActiveRecord::Migration
       t.float :price
       t.string :fuel_type
       t.string :filling_station
+      t.datetime :date
       t.boolean :filled_tank
       t.text :comment
       t.belongs_to :car
@@ -123,8 +126,8 @@ class InitialMigration < ActiveRecord::Migration
     end
 
     create_table :documents do |t|
-      t.string :name
-      t.string :media
+      t.string :title
+      t.string :document
       t.references :documentable, polymorphic: true
 
       t.timestamps

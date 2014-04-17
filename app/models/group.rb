@@ -1,4 +1,6 @@
 class Group < ActiveRecord::Base
+  mount_uploader :avatar, AvatarUploader
+
   has_many :cars, as: :owner, dependent: :destroy
   has_many :destinations, as: :destinationable, dependent: :destroy
   has_many :vendors, as: :venderable, dependent: :destroy
@@ -7,14 +9,10 @@ class Group < ActiveRecord::Base
   has_many :user_groups
   has_many :users, through: :user_groups
 
-  mount_uploader :avatar, AvatarUploader
-
   accepts_nested_attributes_for :location
 
   validates_presence_of :name
-
   validates_uniqueness_of :name
-
   validates_associated :location
 
   def add_user(user, group_access)

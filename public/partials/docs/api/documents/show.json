@@ -1,8 +1,9 @@
 {
     "document": {
         "id": 1,
-        "name": "test_file",
-        "media_url": "/uploads/document/media/1/6e2c201fd44a6b1f06da.jpg",
+        "title": "Insurance",
+        "file": "insurance.doc",
+        "data": "data:application/msword;base64,UEsDBBQABgAIAAAAIQBZ...",
         "created_at": "2014-03-12T00:00:25.000Z",
         "updated_at": "2014-03-12T00:00:25.000Z"
     }

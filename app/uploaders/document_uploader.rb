@@ -39,22 +39,13 @@ class DocumentUploader < CarrierWave::Uploader::Base
   # Add a white list of extensions which are allowed to be uploaded.
   # For images you might use something like this:
   def extension_white_list
-    # TODO - Filter out what documents should be allowed here !
-    %w(pdf doc docx png gif jpg)
+    %w(txt pdf doc docx xls xlsx csv pages keynote numbers jpeg jpg png)
   end
 
   # Override the filename of the uploaded files:
   # Avoid using model.id or version_name here, see uploader/store.rb for details.
-  def filename
-    @name ||= "#{secure_token}.#{file.extension}" if original_filename
-  end
+  # def filename
+  #   "something.jpg" if original_filename
+  # end
 
-  private
-
-  def secure_token
-    ivar = "@#{mounted_as}_secure_token"
-    token = model.instance_variable_get(ivar)
-    token ||= model.instance_variable_set(ivar, SecureRandom.hex(10))
-    token
-  end
 end
