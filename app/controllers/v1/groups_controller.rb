@@ -11,6 +11,12 @@ module V1
       raise NotPrivileged unless @group.is_member?(@current_user)
     end
 
+    def download
+      path = "#{Rails.root}#{request.path}"
+
+      send_file path, :x_sendfile => true
+    end
+
     def create
       @group = Group.create!(group_params)
       @group.add_owner(@current_user)
@@ -20,6 +26,11 @@ module V1
       @group = Group.find(params[:id])
       raise NotPrivileged unless @group.is_owner?(@current_user)
       @group.update!(group_params)
+      if params[:file].present?
+        @group.avatar = params[:file]
+        @group.save!
+      end
+
     end
 
     def destroy
@@ -31,7 +42,7 @@ module V1
     private
 
     def group_params
-      params.required(:group).permit(:name, :avatar_file, :avatar, :location_attributes => [:latitude, :longitude, :address])
+      params.required(:group).permit(:name, :location_attributes => [:latitude, :longitude, :address])
     end
   end
 end

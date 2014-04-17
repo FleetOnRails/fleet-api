@@ -11,14 +11,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140417113901) do
+ActiveRecord::Schema.define(version: 20131221163218) do
 
   create_table "cars", force: true do |t|
     t.string   "make"
     t.string   "model"
     t.string   "registration"
-    t.string   "avatar_file"
-    t.text     "avatar",       limit: 102400
+    t.string   "avatar"
     t.integer  "owner_id"
     t.string   "owner_type"
     t.datetime "created_at"
@@ -89,12 +88,12 @@ ActiveRecord::Schema.define(version: 20140417113901) do
     t.float    "price"
     t.string   "fuel_type"
     t.string   "filling_station"
+    t.datetime "date"
     t.boolean  "filled_tank"
     t.text     "comment"
     t.integer  "car_id"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.datetime "date"
   end
 
   add_index "fuel_entries", ["car_id"], name: "fuel_entries_ix"
@@ -102,18 +101,17 @@ ActiveRecord::Schema.define(version: 20140417113901) do
   create_table "gps_statistics", force: true do |t|
     t.float    "kmh"
     t.integer  "car_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
     t.float    "latitude"
     t.float    "longitude"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   add_index "gps_statistics", ["car_id"], name: "gps_statistics_ix"
 
   create_table "groups", force: true do |t|
     t.string   "name"
-    t.string   "avatar_file"
-    t.text     "avatar",      limit: 102400
+    t.string   "avatar"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -213,6 +211,7 @@ ActiveRecord::Schema.define(version: 20140417113901) do
     t.string   "email"
     t.string   "phone_no"
     t.boolean  "admin"
+    t.string   "avatar"
     t.string   "encrypted_password",     default: "", null: false
     t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
@@ -227,7 +226,6 @@ ActiveRecord::Schema.define(version: 20140417113901) do
     t.datetime "locked_at"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "avatar"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true

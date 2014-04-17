@@ -10,8 +10,7 @@ class InitialMigration < ActiveRecord::Migration
       t.string :email
       t.string :phone_no
       t.boolean :admin
-      t.string :avatar_file
-      t.text :avatar, limit: 100.kilobytes
+      t.string :avatar
 
       ## Database authenticatable
       t.string :encrypted_password, null: false, default: ""
@@ -40,8 +39,7 @@ class InitialMigration < ActiveRecord::Migration
 
     create_table :groups do |t|
       t.string :name
-      t.string :avatar_file
-      t.text :avatar, limit: 100.kilobytes
+      t.string :avatar
 
       t.timestamps
     end
@@ -49,7 +47,7 @@ class InitialMigration < ActiveRecord::Migration
     create_table :diagnostic_statistics do |t|
       t.float :kmh
       t.float :rpm
-      t.float 'l/100km'
+      t.float :l100km
       t.belongs_to :car
 
       t.timestamps
@@ -87,6 +85,8 @@ class InitialMigration < ActiveRecord::Migration
     create_table :gps_statistics do |t|
       t.float :kmh
       t.belongs_to :car
+      t.float :latitude
+      t.float :longitude
 
       t.timestamps
     end
@@ -97,6 +97,7 @@ class InitialMigration < ActiveRecord::Migration
       t.float :price
       t.string :fuel_type
       t.string :filling_station
+      t.datetime :date
       t.boolean :filled_tank
       t.text :comment
       t.belongs_to :car
@@ -111,8 +112,7 @@ class InitialMigration < ActiveRecord::Migration
       t.string :make
       t.string :model
       t.string :registration
-      t.string :avatar_file
-      t.text :avatar, limit: 100.kilobytes
+      t.string :avatar
       t.references :owner, polymorphic: true
 
       t.timestamps

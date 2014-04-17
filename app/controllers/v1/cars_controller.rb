@@ -22,6 +22,12 @@ module V1
       end
     end
 
+    def download
+      path = "#{Rails.root}#{request.path}"
+
+      send_file path, :x_sendfile => true
+    end
+
     def create
       if params[:group_id]
         @group = Group.find(params[:group_id])
@@ -42,9 +48,17 @@ module V1
         raise NotPrivileged unless @group.is_member?(@current_user)
         @car = @group.cars.find(params[:id])
         @car.update!(car_params)
+        if params[:file].present?
+          @car.avatar = params[:file]
+          @car.save!
+        end
       else
         @car = @current_user.cars.find(params[:id])
         @car.update!(car_params)
+        if params[:file].present?
+          @car.avatar = params[:file]
+          @car.save!
+        end
       end
     end
 
