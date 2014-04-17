@@ -129,21 +129,21 @@ describe V1::UsersController do
       it 'add user to group if current user is an owner' do
         group.add_owner(@current_user)
 
-        get :create, {group_id: group.id, :user => {user_id: group_user.id, group_access: REPORTER}}
+        get :update, {group_id: group.id, id: group_user.id, :user => {group_access: REPORTER}}
 
         expect(json).to have_key('user')
         expect(response.status).to eq(200)
-        expect(response).to render_template 'v1/users/create'
+        expect(response).to render_template 'v1/users/update'
       end
 
       it 'add user to group if current user is an manager' do
         group.add_user(@current_user, MANAGER)
 
-        get :create, {group_id: group.id, :user => {user_id: group_user.id, group_access: REPORTER}}
+        put :update, {group_id: group.id, id: group_user.id, :user => {group_access: REPORTER}}
 
         expect(json).to have_key('user')
         expect(response.status).to eq(200)
-        expect(response).to render_template 'v1/users/create'
+        expect(response).to render_template 'v1/users/update'
       end
 
       it 'should raise not privileged if the current user is a driver or reporter' do
@@ -152,7 +152,7 @@ describe V1::UsersController do
           group.users.delete(@current_user)
           group.add_user(@current_user, access)
 
-          get :create, {group_id: group.id, :user => {user_id: group_user.id, group_access: REPORTER}}
+          get :update, {group_id: group.id, id: group_user.id, :user => {group_access: REPORTER}}
 
           expect(response.status).to eq(403)
           expect(response).to render_template 'v1/errors/not_privileged'

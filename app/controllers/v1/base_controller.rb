@@ -2,7 +2,7 @@ module V1
   class BaseController < ActionController::Base
     respond_to :json
 
-    # include FleetOnRails::Rescue
+    include FleetOnRails::Rescue
 
     before_action :find_current_user
 
