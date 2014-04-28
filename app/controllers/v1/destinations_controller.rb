@@ -27,7 +27,7 @@ module V1
         @group = Group.find(params[:group_id])
         raise NotPrivileged unless @group.is_member?(@current_user)
         @destination = Destination.create!(destination_params)
-        @group.destinations <<(@destination)
+        @group.destinations << @destination
         @group.save!
 
         respond_with @destination

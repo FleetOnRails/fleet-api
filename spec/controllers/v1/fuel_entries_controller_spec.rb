@@ -64,4 +64,28 @@ describe V1::FuelEntriesController do
       end
     end
   end
+
+  # TODO - will complete this tomoro
+  # describe 'PUT update' do
+  #   describe 'When valid params are presented' do
+  #     it 'assigns a new fuel entry' do
+  #       user.cars << car
+  #       post :create, :car_id => car.id, :fuel_entry => FactoryGirl.attributes_for(:fuel_entry)
+  #
+  #       expect(json).to have_key('fuel_entry')
+  #       expect(response.status).to eq(200)
+  #       expect(response).to render_template 'v1/fuel_entries/create'
+  #     end
+  #   end
+  #
+  #   describe 'When invalid params are presented' do
+  #     it 'does not assign a new fuel entry' do
+  #       user.cars << car
+  #       post :create, :car_id => car.id, :fuel_entry => {:odometer => 100000}
+  #
+  #       expect(response.status).to eq(400)
+  #       expect(response).to render_template 'v1/errors/record_invalid'
+  #     end
+  #   end
+  # end
 end
