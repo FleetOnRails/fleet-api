@@ -53,7 +53,6 @@ module V1
         raise NotPrivileged unless @group.is_member?(@current_user)
         @destination = @group.destinations.find(params[:id])
         @destination.destroy!
-        @destination.save!
         @group.save!
 
         respond_with @destination

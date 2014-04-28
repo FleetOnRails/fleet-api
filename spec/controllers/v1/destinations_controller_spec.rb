@@ -68,4 +68,19 @@ describe V1::DestinationsController do
       end
     end
   end
+
+  describe 'DELETE destroy' do
+    before :each do
+      group.add_owner user
+      group.destinations << destination
+    end
+
+    it 'deletes the destination' do
+      delete :destroy, :group_id => group.id, :id => destination.id
+
+      expect(json).to have_key('destination')
+      expect(response.status).to eq(200)
+      expect(response).to render_template 'v1/destinations/destroy'
+    end
+  end
 end
