@@ -1,6 +1,6 @@
 module V1
   class DocumentsController < BaseController
-    doorkeeper_for [:all]
+    doorkeeper_for :all
 
     # TODO - This badly needs refactoring
 

@@ -1,6 +1,6 @@
 module V1
   class DiagnosticStatisticsController < BaseController
-    doorkeeper_for [:all]
+    doorkeeper_for :all
 
     def index
       if params[:car_id]

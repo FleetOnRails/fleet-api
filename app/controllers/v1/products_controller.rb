@@ -1,6 +1,6 @@
 module V1
   class ProductsController < BaseController
-    doorkeeper_for [:all]
+    doorkeeper_for :all
 
     # FIXME - test this controller
     def index

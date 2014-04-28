@@ -1,6 +1,6 @@
 module V1
   class GroupsController < BaseController
-    doorkeeper_for [:all]
+    doorkeeper_for :all
 
     def index
       @groups = @current_user.groups

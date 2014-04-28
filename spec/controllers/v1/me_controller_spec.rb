@@ -3,8 +3,12 @@ require 'spec_helper'
 describe V1::MeController do
   render_views
 
+  let(:user) { FactoryGirl.create :user }
+  let(:token) { double :accessible? => true, :resource_owner_id => user.id }
+
   before :each do
-    bypass_authentication
+    controller.stub(:doorkeeper_token) { token }
+    request.accept = 'application/json'
   end
 
   describe 'GET index' do

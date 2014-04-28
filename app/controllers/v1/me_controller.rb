@@ -1,6 +1,6 @@
 module V1
   class MeController < BaseController
-    doorkeeper_for [:all]
+    doorkeeper_for :all
 
     def index
       respond_with @current_user

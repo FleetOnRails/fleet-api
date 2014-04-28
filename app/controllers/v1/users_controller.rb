@@ -1,8 +1,6 @@
 module V1
   class UsersController < BaseController
-    doorkeeper_for [:index, :show, :update, :destroy]
-
-    before_action :find_current_user, except: [:create]
+    doorkeeper_for :all, except: :create
 
     def index
       if params[:group_id]
