@@ -91,7 +91,7 @@ module V1
           respond_with @fuel_entry
         elsif @car.owner_type == 'Group'
           @group = Group.find(@car.owner_id)
-          raise NotPrivileged unless @group.is_manager?(@current_user)
+          raise NotPrivileged unless @group.is_manager?(@current_user) || @group.is_owner?(@current_user)
           @fuel_entry = FuelEntry.find(params[:id])
           @fuel_entry.destroy!
 
