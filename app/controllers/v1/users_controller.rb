@@ -1,8 +1,6 @@
 module V1
   class UsersController < BaseController
-    doorkeeper_for [:index, :show, :update, :destroy]
-
-    before_action :find_current_user, except: [:create]
+    doorkeeper_for :all, except: :create
 
     def index
       if params[:group_id]
@@ -28,23 +26,22 @@ module V1
     end
 
     def update
+      if params[:group_id]
+        @group = Group.find(params[:group_id])
+        @user = User.find(params[:id])
+        raise NotPrivileged unless @group.is_owner?(@current_user) || @group.is_manager?(@current_user)
+        @group.add_user(@user, params[:user][:group_access])
+        @group.save!
+      end
     end
 
     # FIXME - this route is unprotected by doorkeeper
     def create
-      if params[:group_id]
-        @group = Group.find(params[:group_id])
-        @user = User.find(params[:user][:user_id])
-        raise NotPrivileged unless @group.is_owner?(@current_user) || @group.is_manager?(@current_user)
-        @group.add_user(@user, params[:user][:group_access])
-        @group.save!
-      else
-        raise Exception if params[:user][:password] != params[:user][:password_confirmation]
-        @user = User.new(user_params)
-        @user.admin = false
-        @user.save!
-        @user.send_registration_mail
-      end
+      raise Exception if params[:user][:password] != params[:user][:password_confirmation]
+      @user = User.new(user_params)
+      @user.admin = false
+      @user.save!
+      @user.send_registration_mail
 
       respond_with @user
     end

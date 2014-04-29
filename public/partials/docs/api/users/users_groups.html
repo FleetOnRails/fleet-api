@@ -24,21 +24,6 @@
 
 <div ng-controller="ToggleCtrl">
     <div class="endpoint" ng-click="isCollapsed = !isCollapsed">
-        <div class="method post">POST</div>
-        <div class="path">/v1/groups/:group_id/users</div>
-    </div>
-    <div collapse="isCollapsed">
-        This adds a new user to the group
-        <div hljs include="'partials/docs/api/users/add_user.json'"></div>
-
-        And a reply with the user object hat you just added to the group
-        <div hljs include="'partials/docs/api/users/show.json'"></div>
-    </div>
-</div>
-<div class="clear"></div>
-
-<div ng-controller="ToggleCtrl">
-    <div class="endpoint" ng-click="isCollapsed = !isCollapsed">
         <div class="method put">PUT</div>
         <div class="path">/v1/groups/:group_id/users/:id</div>
     </div>
@@ -55,7 +40,7 @@
 <div ng-controller="ToggleCtrl">
     <div class="endpoint" ng-click="isCollapsed = !isCollapsed">
         <div class="method delete">DELETE</div>
-        <div class="path">/v1/groups/:group_id/:id</div>
+        <div class="path">/v1/groups/:group_id/users/:id</div>
     </div>
     <div collapse="isCollapsed">
 

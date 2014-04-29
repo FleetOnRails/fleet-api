@@ -1,6 +1,6 @@
 module V1
   class DestinationsController < BaseController
-    doorkeeper_for [:all]
+    doorkeeper_for :all
 
     def index
       if params[:group_id]
@@ -27,7 +27,7 @@ module V1
         @group = Group.find(params[:group_id])
         raise NotPrivileged unless @group.is_member?(@current_user)
         @destination = Destination.create!(destination_params)
-        @group.destinations <<(@destination)
+        @group.destinations << @destination
         @group.save!
 
         respond_with @destination
@@ -53,7 +53,6 @@ module V1
         raise NotPrivileged unless @group.is_member?(@current_user)
         @destination = @group.destinations.find(params[:id])
         @destination.destroy!
-        @destination.save!
         @group.save!
 
         respond_with @destination
