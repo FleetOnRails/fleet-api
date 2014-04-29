@@ -13,7 +13,7 @@ describe V1::MeController do
 
   describe 'GET index' do
     it 'returns a me object' do
-      get :index, format: :json
+      get :index
 
       expect(json).to have_key('me')
       expect(response.status).to eq(200)
@@ -21,7 +21,7 @@ describe V1::MeController do
     end
 
     it 'response is successful' do
-      get :index, format: :json
+      get :index
     end
   end
 end
