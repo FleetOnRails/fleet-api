@@ -9,6 +9,7 @@
                 "fuel_type": "diesel",
                 "filling_station": "esso",
                 "filled_tank": true,
+                "date": "2014-03-12T00:00:25.000Z",
                 "comment": "no comment on this matter",
                 "created_at": "2014-03-12T00:00:25.000Z",
                 "updated_at": "2014-03-12T00:00:25.000Z",
