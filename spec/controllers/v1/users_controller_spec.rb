@@ -66,7 +66,6 @@ describe V1::UsersController do
       it 'assigns a new User' do
         post :create, valid_params
 
-        puts json
         expect(json).to have_key('user')
         expect(response.status).to eq(200)
         expect(response).to render_template 'v1/users/create'
