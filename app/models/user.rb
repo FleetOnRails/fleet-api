@@ -20,11 +20,17 @@ class User < ActiveRecord::Base
   validates_uniqueness_of :username
   validates_uniqueness_of :email
 
+  after_save :hash_gravatar
+
   def send_registration_mail
     Pony.mail({
                   :to => email,
                   :body => "Thanks for registering #{first_name} #{last_name}"
               })
+  end
+
+  def hash_gravatar
+    self.gravatar_hash = Digest::MD5.hexdigest(email)
   end
 
   class << self
