@@ -78,7 +78,7 @@ module V1
       end
     end
 
-    def delete
+    def destroy
       if params[:car_id]
         @car = Car.find(params[:car_id])
         if @car.owner_type == 'User'
