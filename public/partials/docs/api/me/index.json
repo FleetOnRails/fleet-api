@@ -1,20 +1,28 @@
 {
     "me": {
         "id": 1,
-        "first_name": "alan",
-        "last_name": "kehoe",
-        "email": "admin@fleetonrails.eu",
+        "first_name": "Alan",
+        "last_name": "Kehoe",
+        "email": "alankehoe111@gmail.com",
         "username": "alan",
         "phone_no": "0870608580",
         "admin": true,
-        "sign_in_count": 2,
-        "failed_attempts": 0,
-        "last_sign_in_ip": "136.206.214.103",
-        "current_sign_in_ip": "91.121.146.203",
         "gravatar_hash": "cdf41ba70362ec8d20ef50d0a45a4217",
-        "current_sign_in_at": "2014-03-12T00:00:25.000Z",
-        "last_sign_in_at": "2014-03-12T00:00:25.000Z",
-        "created_at": "2014-03-12T00:00:25.000Z",
-        "updated_at": "2014-03-12T00:00:25.000Z"
+        "sign_in_count": 32,
+        "failed_attempts": 0,
+        "last_sign_in_ip": "10.8.0.101",
+        "current_sign_in_ip": "10.8.0.101",
+        "created_at": "2014-04-17T13:57:38.000Z",
+        "updated_at": "2014-05-01T15:25:38.000Z",
+        "current_sign_in_at": "2014-05-01T15:25:38.000Z",
+        "last_sign_in_at": "2014-05-01T12:29:50.000Z",
+        "avatar": {
+            "avatar": {
+                "url": null,
+                "thumb": {
+                    "url": null
+                }
+            }
+        }
     }
 }
