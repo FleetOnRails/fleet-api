@@ -36,7 +36,7 @@ describe V1::FuelEntriesController do
     it 'assigns a fuel_entry to @fuel_entry' do
       get :show, :car_id => car.id, :id => fuel_entry.id
 
-      # expect(json).to have_key('fuel_entry')
+      expect(json).to have_key('fuel_entry')
       expect(response.status).to eq(200)
       expect(response).to render_template 'v1/fuel_entries/show'
     end
