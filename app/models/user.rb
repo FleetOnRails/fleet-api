@@ -20,7 +20,7 @@ class User < ActiveRecord::Base
   validates_uniqueness_of :username
   validates_uniqueness_of :email
 
-  after_save :hash_gravatar
+  before_save :hash_gravatar
 
   def send_registration_mail
     Pony.mail({
@@ -30,7 +30,7 @@ class User < ActiveRecord::Base
   end
 
   def hash_gravatar
-    self.gravatar_hash = Digest::MD5.hexdigest(email)
+    self.gravatar_hash = Digest::MD5.hexdigest email
   end
 
   class << self
