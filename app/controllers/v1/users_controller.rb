@@ -35,7 +35,6 @@ module V1
       end
     end
 
-    # FIXME - this route is unprotected by doorkeeper
     def create
       raise Exception if params[:user][:password] != params[:user][:password_confirmation]
       @user = User.new(user_params)
