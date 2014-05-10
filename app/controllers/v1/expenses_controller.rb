@@ -7,13 +7,13 @@ module V1
         @car = Car.find(params[:car_id])
         if @car.owner_type == 'User'
           raise NotPrivileged unless @car.owner_id == @current_user.id
-          @expenses = @car.expenses
+          @expenses = @car.expenses.order date: :desc
 
           respond_with @expenses
         elsif @car.owner_type == 'Group'
           @group = Group.find(@car.owner_id)
           raise NotPrivileged unless @group.is_member?(@current_user)
-          @expenses = @car.expenses
+          @expenses = @car.expenses.order date: :desc
 
           respond_with @expenses
         end
