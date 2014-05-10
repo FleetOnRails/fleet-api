@@ -3,6 +3,6 @@ class Document < ActiveRecord::Base
 
   belongs_to :documentable, polymorphic: true
 
-  # validates_presence_of :title
-  # validates_presence_of :document
+  validates_presence_of :title
+  validates_presence_of :document
 end
