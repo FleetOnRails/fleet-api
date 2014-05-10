@@ -1,6 +1,6 @@
 module V1
   class BaseController < ActionController::Base
-    include FleetOnRails::Rescue
+    # include FleetOnRails::Rescue
 
     doorkeeper_for :all
     respond_to :json
