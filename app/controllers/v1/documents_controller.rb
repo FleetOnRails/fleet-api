@@ -216,7 +216,7 @@ module V1
     private
 
     def document_params
-      params.permit(:title)
+      params.required(:document).permit(:title)
     end
   end
 end
