@@ -3,6 +3,12 @@
         "make": "toyota",
         "model": "corolla",
         "registration": "08wx1113",
+        "color": "blue",
+        "description": "Very nice car",
+        "year": 2008,
+        "vehicle_type": "van",
+        "engine_size": 2.0,
+        "transmission": "Manual",
         "avatar": "iVBORw0KGgoAAAANSUhEUgAAArwA...",
         "avatar_file": "avatar.jpg"
     }
