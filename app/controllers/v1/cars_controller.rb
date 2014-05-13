@@ -81,7 +81,7 @@ module V1
 
     def car_params
       params.required(:car).permit :make, :model, :registration, :avatar_file, :avatar, :color, :description,
-                                   :year, :type, :engine_size, :transmission
+                                   :year, :vehicle_type, :engine_size, :transmission
     end
   end
 end

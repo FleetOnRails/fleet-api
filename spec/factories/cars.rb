@@ -5,6 +5,12 @@ FactoryGirl.define do
     make { Faker::Name.first_name }
     model { Faker::Name.first_name }
     registration { Faker::Code.isbn }
+    color { Faker::Name.first_name }
+    description { Faker::Lorem.paragraph }
+    year { rand(1...1000) }
+    vehicle_type { Faker::Company.name }
+    engine_size { rand(1...100) }
+    transmission { Faker::Company.name }
 
     factory :car_with_diagnostic_statistics do
       # posts_count is declared as an ignored attribute and available in
