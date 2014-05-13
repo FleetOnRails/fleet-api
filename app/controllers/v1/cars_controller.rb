@@ -80,7 +80,8 @@ module V1
     private
 
     def car_params
-      params.required(:car).permit(:make, :model, :registration, :avatar_file, :avatar)
+      params.required(:car).permit :make, :model, :registration, :avatar_file, :avatar, :color, :description,
+                                   :year, :type, :engine_size, :transmission
     end
   end
 end
