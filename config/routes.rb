@@ -39,7 +39,7 @@ FleetOnRails::Application.routes.draw do
     end
   end
 
-  match '/uploads/user/avatar/:id/:basename.:extension', to: 'v1/users#download', via: [:get]
-  match '/uploads/group/avatar/:id/:basename.:extension', to: 'v1/groups#download', via: [:get]
-  match '/uploads/car/avatar/:id/:basename.:extension', to: 'v1/cars#download', via: [:get]
+  # match '/uploads/user/avatar/:id/:basename.:extension', to: 'v1/users#download', via: [:get]
+  # match '/uploads/group/avatar/:id/:basename.:extension', to: 'v1/groups#download', via: [:get]
+  # match '/uploads/car/avatar/:id/:basename.:extension', to: 'v1/cars#download', via: [:get]
 end
