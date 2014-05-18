@@ -76,7 +76,7 @@ module V1
         if @car.owner_type == 'User'
           raise NotPrivileged unless @car.owner_id == @current_user.id
           @document = Document.new
-          if params[:file].present?
+          if params[:file]
             @document.document = params[:file]
             @document.title = params[:document][:title]
             @document.save!
@@ -88,7 +88,7 @@ module V1
           @group = Group.find(@car.owner_id)
           raise NotPrivileged unless @group.is_member?(@current_user)
           @document = Document.new
-          if params[:file].present?
+          if params[:file]
             @document.document = params[:file]
             @document.title = params[:document][:title]
             @document.save!
@@ -103,7 +103,7 @@ module V1
         if @car.owner_type == 'User'
           raise NotPrivileged unless @car.owner_id == @current_user.id
           @document = Document.new
-          if params[:file].present?
+          if params[:file]
             @document.document = params[:file]
             @document.title = params[:document][:title]
             @document.save!
@@ -115,7 +115,7 @@ module V1
           @group = Group.find(@car.owner_id)
           raise NotPrivileged unless @group.is_member?(@current_user)
           @document = Document.new
-          if params[:file].present?
+          if params[:file]
             @document.document = params[:file]
             @document.title = params[:document][:title]
             @document.save!
@@ -133,7 +133,7 @@ module V1
         if @car.owner_type == 'User'
           raise NotPrivileged unless @car.owner_id == @current_user.id
           @document = @car.documents.find(params[:id])
-          if params[:file].present?
+          if params[:file]
             @document.document = params[:file]
             @document.title = params[:document][:title]
             @document.save!
@@ -144,7 +144,7 @@ module V1
           @group = Group.find(@car.owner_id)
           raise NotPrivileged unless @group.is_member?(@current_user)
           @document = @car.documents.find(params[:id])
-          if params[:file].present?
+          if params[:file]
             @document.document = params[:file]
             @document.title = params[:document][:title]
             @document.save!
@@ -158,7 +158,7 @@ module V1
         if @car.owner_type == 'User'
           raise NotPrivileged unless @car.owner_id == @current_user.id
           @document = @expense.documents.find(params[:id])
-          if params[:file].present?
+          if params[:file]
             @document.document = params[:file]
             @document.title = params[:document][:title]
             @document.save!
@@ -169,7 +169,7 @@ module V1
           @group = Group.find(@car.owner_id)
           raise NotPrivileged unless @group.is_member?(@current_user)
           @document = @expense.documents.find(params[:id])
-          if params[:file].present?
+          if params[:file]
             @document.document = params[:file]
             @document.title = params[:document][:title]
             @document.save!
