@@ -78,7 +78,7 @@ module V1
           @document = Document.new
           if params[:file]
             @document.document = params[:file]
-            @document.title = params[:document][:title]
+            @document.title = params[:title]
             @document.save!
           end
           @car.documents << @document
@@ -90,7 +90,7 @@ module V1
           @document = Document.new
           if params[:file]
             @document.document = params[:file]
-            @document.title = params[:document][:title]
+            @document.title = params[:title]
             @document.save!
           end
           @car.documents << @document
@@ -105,7 +105,7 @@ module V1
           @document = Document.new
           if params[:file]
             @document.document = params[:file]
-            @document.title = params[:document][:title]
+            @document.title = params[:title]
             @document.save!
           end
           @expense.documents << @document
@@ -117,7 +117,7 @@ module V1
           @document = Document.new
           if params[:file]
             @document.document = params[:file]
-            @document.title = params[:document][:title]
+            @document.title = params[:title]
             @document.save!
           end
           @expense.documents << @document
@@ -135,7 +135,7 @@ module V1
           @document = @car.documents.find(params[:id])
           if params[:file]
             @document.document = params[:file]
-            @document.title = params[:document][:title]
+            @document.title = params[:title]
             @document.save!
           end
 
@@ -146,7 +146,7 @@ module V1
           @document = @car.documents.find(params[:id])
           if params[:file]
             @document.document = params[:file]
-            @document.title = params[:document][:title]
+            @document.title = params[:title]
             @document.save!
           end
 
@@ -160,7 +160,7 @@ module V1
           @document = @expense.documents.find(params[:id])
           if params[:file]
             @document.document = params[:file]
-            @document.title = params[:document][:title]
+            @document.title = params[:title]
             @document.save!
           end
 
@@ -171,7 +171,7 @@ module V1
           @document = @expense.documents.find(params[:id])
           if params[:file]
             @document.document = params[:file]
-            @document.title = params[:document][:title]
+            @document.title = params[:title]
             @document.save!
           end
 
