@@ -35,7 +35,7 @@ describe User do
 
   it 'validates uniqueness of username' do
     pending 'Why does this through an error ?'
-    # should validate_uniqueness_of(:username)
+    should validate_uniqueness_of(:username)
   end
 
   it 'has a valid factory' do
