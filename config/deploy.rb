@@ -5,4 +5,5 @@ set :default_stage, 'development'
 set :scm, :git
 set :repo_url, 'git@git.raven.com:fleetonrails/fleet-api.git'
 set :linked_files, %w{config/database.yml}
+set :linked_dirs, %w{public/uploads}
 set :keep_releases, 5
