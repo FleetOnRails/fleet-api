@@ -34,11 +34,17 @@ namespace :deploy do
     end
   end
 
+  desc 'link shared directories'
+  task :link_shared_directories do
+    run "ln -s #{shared_path}/uploads #{release_path}/public/uploads"
+  end
+
   after :restart, :clear_cache do
     on roles(:web), in: :groups, limit: 3, wait: 10 do
 
     end
   end
 
+  after 'deploy:update_code', :link_shared_directories
   after :finishing, 'deploy:cleanup'
 end
