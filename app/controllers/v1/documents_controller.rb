@@ -79,6 +79,7 @@ module V1
           if params[:file]
             @document.document = params[:file]
             @document.title = params[:title]
+            @document.file_size = params[:file_size]
             @document.save!
           end
           @car.documents << @document
@@ -91,6 +92,7 @@ module V1
           if params[:file]
             @document.document = params[:file]
             @document.title = params[:title]
+            @document.file_size = params[:file_size]
             @document.save!
           end
           @car.documents << @document
@@ -106,6 +108,7 @@ module V1
           if params[:file]
             @document.document = params[:file]
             @document.title = params[:title]
+            @document.file_size = params[:file_size]
             @document.save!
           end
           @expense.documents << @document
@@ -118,62 +121,10 @@ module V1
           if params[:file]
             @document.document = params[:file]
             @document.title = params[:title]
+            @document.file_size = params[:file_size]
             @document.save!
           end
           @expense.documents << @document
-
-          respond_with @document
-        end
-      end
-    end
-
-    def update
-      if params[:car_id]
-        @car = Car.find(params[:car_id])
-        if @car.owner_type == 'User'
-          raise NotPrivileged unless @car.owner_id == @current_user.id
-          @document = @car.documents.find(params[:id])
-          if params[:file]
-            @document.document = params[:file]
-            @document.title = params[:title]
-            @document.save!
-          end
-
-          respond_with @document
-        elsif @car.owner_type == 'Group'
-          @group = Group.find(@car.owner_id)
-          raise NotPrivileged unless @group.is_member?(@current_user)
-          @document = @car.documents.find(params[:id])
-          if params[:file]
-            @document.document = params[:file]
-            @document.title = params[:title]
-            @document.save!
-          end
-
-          respond_with @document
-        end
-      elsif params[:expense_id]
-        @expense = Expense.find(params[:expense_id])
-        @car = Car.find(@expense.car_id)
-        if @car.owner_type == 'User'
-          raise NotPrivileged unless @car.owner_id == @current_user.id
-          @document = @expense.documents.find(params[:id])
-          if params[:file]
-            @document.document = params[:file]
-            @document.title = params[:title]
-            @document.save!
-          end
-
-          respond_with @document
-        elsif @car.owner_type == 'Group'
-          @group = Group.find(@car.owner_id)
-          raise NotPrivileged unless @group.is_member?(@current_user)
-          @document = @expense.documents.find(params[:id])
-          if params[:file]
-            @document.document = params[:file]
-            @document.title = params[:title]
-            @document.save!
-          end
 
           respond_with @document
         end
@@ -215,12 +166,6 @@ module V1
           respond_with @document
         end
       end
-    end
-
-    private
-
-    def document_params
-      params.required(:document).permit(:title)
     end
   end
 end

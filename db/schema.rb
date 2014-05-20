@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140513160026) do
+ActiveRecord::Schema.define(version: 20140520191603) do
 
   create_table "cars", force: true do |t|
     t.string   "make"
@@ -70,6 +70,7 @@ ActiveRecord::Schema.define(version: 20140513160026) do
     t.string   "documentable_type"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.float    "file_size"
   end
 
   add_index "documents", ["documentable_id", "documentable_type"], name: "documents_ix"
