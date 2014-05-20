@@ -45,6 +45,5 @@ namespace :deploy do
     end
   end
 
-  after 'deploy:update_code', :link_shared_directories
-  after :finishing, 'deploy:cleanup'
+  after :finishing, 'deploy:cleanup', :link_shared_directories
 end
