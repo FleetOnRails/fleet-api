@@ -1,8 +1,4 @@
-{
-    "document": {
-        "title": "Insurance",
-        "file": "insurance.doc",
-        "data": "iVBORw0KGgoAAAANSUhEUgAAArwA..."
-    }
-}
+title: 'File name'
+file: Multipart file data
+file_size: 10000
 
