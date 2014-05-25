@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140520193952) do
+ActiveRecord::Schema.define(version: 20140525103625) do
 
   create_table "cars", force: true do |t|
     t.string   "make"
@@ -30,7 +30,7 @@ ActiveRecord::Schema.define(version: 20140520193952) do
     t.string   "transmission"
   end
 
-  add_index "cars", ["owner_id", "owner_type"], name: "cars_ix", using: :btree
+  add_index "cars", ["owner_id", "owner_type"], name: "cars_ix"
 
   create_table "destinations", force: true do |t|
     t.string   "name"
@@ -40,7 +40,7 @@ ActiveRecord::Schema.define(version: 20140520193952) do
     t.datetime "updated_at"
   end
 
-  add_index "destinations", ["destinationable_id", "destinationable_type"], name: "destinations_ix", using: :btree
+  add_index "destinations", ["destinationable_id", "destinationable_type"], name: "destinations_ix"
 
   create_table "diagnostic_faults", force: true do |t|
     t.string   "fault_code"
@@ -50,7 +50,7 @@ ActiveRecord::Schema.define(version: 20140520193952) do
     t.datetime "updated_at"
   end
 
-  add_index "diagnostic_faults", ["car_id"], name: "diagnostics_fault_ix", using: :btree
+  add_index "diagnostic_faults", ["car_id"], name: "diagnostics_fault_ix"
 
   create_table "diagnostic_statistics", force: true do |t|
     t.float    "kmh"
@@ -61,7 +61,7 @@ ActiveRecord::Schema.define(version: 20140520193952) do
     t.datetime "updated_at"
   end
 
-  add_index "diagnostic_statistics", ["car_id"], name: "diagnostic_statistics_ix", using: :btree
+  add_index "diagnostic_statistics", ["car_id"], name: "diagnostic_statistics_ix"
 
   create_table "documents", force: true do |t|
     t.string   "title"
@@ -73,7 +73,7 @@ ActiveRecord::Schema.define(version: 20140520193952) do
     t.float    "file_size"
   end
 
-  add_index "documents", ["documentable_id", "documentable_type"], name: "documents_ix", using: :btree
+  add_index "documents", ["documentable_id", "documentable_type"], name: "documents_ix"
 
   create_table "expenses", force: true do |t|
     t.datetime "date"
@@ -86,7 +86,7 @@ ActiveRecord::Schema.define(version: 20140520193952) do
     t.datetime "updated_at"
   end
 
-  add_index "expenses", ["car_id"], name: "expenses_ix", using: :btree
+  add_index "expenses", ["car_id"], name: "expenses_ix"
 
   create_table "fuel_entries", force: true do |t|
     t.float    "odometer"
@@ -102,7 +102,7 @@ ActiveRecord::Schema.define(version: 20140520193952) do
     t.datetime "updated_at"
   end
 
-  add_index "fuel_entries", ["car_id"], name: "fuel_entries_ix", using: :btree
+  add_index "fuel_entries", ["car_id"], name: "fuel_entries_ix"
 
   create_table "gps_statistics", force: true do |t|
     t.float    "kmh"
@@ -113,13 +113,14 @@ ActiveRecord::Schema.define(version: 20140520193952) do
     t.datetime "updated_at"
   end
 
-  add_index "gps_statistics", ["car_id"], name: "gps_statistics_ix", using: :btree
+  add_index "gps_statistics", ["car_id"], name: "gps_statistics_ix"
 
   create_table "groups", force: true do |t|
     t.string   "name"
     t.string   "avatar"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.text     "description"
   end
 
   create_table "locations", force: true do |t|
@@ -135,7 +136,7 @@ ActiveRecord::Schema.define(version: 20140520193952) do
     t.datetime "updated_at"
   end
 
-  add_index "locations", ["locationable_id", "locationable_type"], name: "locations_ix", using: :btree
+  add_index "locations", ["locationable_id", "locationable_type"], name: "locations_ix"
 
   create_table "oauth_access_grants", force: true do |t|
     t.integer  "resource_owner_id",              null: false
@@ -148,7 +149,7 @@ ActiveRecord::Schema.define(version: 20140520193952) do
     t.string   "scopes"
   end
 
-  add_index "oauth_access_grants", ["token"], name: "index_oauth_access_grants_on_token", unique: true, using: :btree
+  add_index "oauth_access_grants", ["token"], name: "index_oauth_access_grants_on_token", unique: true
 
   create_table "oauth_access_tokens", force: true do |t|
     t.integer  "resource_owner_id"
@@ -161,9 +162,9 @@ ActiveRecord::Schema.define(version: 20140520193952) do
     t.string   "scopes"
   end
 
-  add_index "oauth_access_tokens", ["refresh_token"], name: "index_oauth_access_tokens_on_refresh_token", unique: true, using: :btree
-  add_index "oauth_access_tokens", ["resource_owner_id"], name: "index_oauth_access_tokens_on_resource_owner_id", using: :btree
-  add_index "oauth_access_tokens", ["token"], name: "index_oauth_access_tokens_on_token", unique: true, using: :btree
+  add_index "oauth_access_tokens", ["refresh_token"], name: "index_oauth_access_tokens_on_refresh_token", unique: true
+  add_index "oauth_access_tokens", ["resource_owner_id"], name: "index_oauth_access_tokens_on_resource_owner_id"
+  add_index "oauth_access_tokens", ["token"], name: "index_oauth_access_tokens_on_token", unique: true
 
   create_table "oauth_applications", force: true do |t|
     t.string   "name",                      null: false
@@ -174,7 +175,7 @@ ActiveRecord::Schema.define(version: 20140520193952) do
     t.datetime "updated_at"
   end
 
-  add_index "oauth_applications", ["uid"], name: "index_oauth_applications_on_uid", unique: true, using: :btree
+  add_index "oauth_applications", ["uid"], name: "index_oauth_applications_on_uid", unique: true
 
   create_table "products", force: true do |t|
     t.string   "name"
@@ -186,7 +187,7 @@ ActiveRecord::Schema.define(version: 20140520193952) do
     t.datetime "updated_at"
   end
 
-  add_index "products", ["productable_id", "productable_type"], name: "products_ix", using: :btree
+  add_index "products", ["productable_id", "productable_type"], name: "products_ix"
 
   create_table "reminders", force: true do |t|
     t.datetime "date"
@@ -198,7 +199,7 @@ ActiveRecord::Schema.define(version: 20140520193952) do
     t.datetime "updated_at"
   end
 
-  add_index "reminders", ["car_id"], name: "reminders_ix", using: :btree
+  add_index "reminders", ["car_id"], name: "reminders_ix"
 
   create_table "user_groups", force: true do |t|
     t.integer  "group_access"
@@ -208,7 +209,7 @@ ActiveRecord::Schema.define(version: 20140520193952) do
     t.datetime "updated_at"
   end
 
-  add_index "user_groups", ["group_id", "user_id"], name: "user_groups_ix", using: :btree
+  add_index "user_groups", ["group_id", "user_id"], name: "user_groups_ix"
 
   create_table "users", force: true do |t|
     t.string   "first_name"
@@ -235,9 +236,9 @@ ActiveRecord::Schema.define(version: 20140520193952) do
     t.string   "gravatar_hash"
   end
 
-  add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
-  add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
-  add_index "users", ["unlock_token"], name: "index_users_on_unlock_token", unique: true, using: :btree
+  add_index "users", ["email"], name: "index_users_on_email", unique: true
+  add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+  add_index "users", ["unlock_token"], name: "index_users_on_unlock_token", unique: true
 
   create_table "vendors", force: true do |t|
     t.string   "name"
@@ -248,6 +249,6 @@ ActiveRecord::Schema.define(version: 20140520193952) do
     t.datetime "updated_at"
   end
 
-  add_index "vendors", ["venderable_id", "venderable_type"], name: "vendors_ix", using: :btree
+  add_index "vendors", ["venderable_id", "venderable_type"], name: "vendors_ix"
 
 end

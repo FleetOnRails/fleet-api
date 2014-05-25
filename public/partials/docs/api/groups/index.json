@@ -4,8 +4,7 @@
             "group": {
                 "id": 2,
                 "name": "newgroup",
-                "avatar": "data:image/jpeg;base64,iVBORw0KGgoAAAANSUhEUgAAArwA...",
-                "avatar_file": "avatar.jpg",
+                "description": "hello this is a large description for a group",
                 "created_at": "2014-03-12T00:00:25.000Z",
                 "updated_at": "2014-03-12T00:00:25.000Z",
                 "location": {
