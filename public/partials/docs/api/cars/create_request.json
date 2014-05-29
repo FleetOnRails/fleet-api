@@ -8,8 +8,6 @@
         "year": 2008,
         "vehicle_type": "van",
         "engine_size": 2.0,
-        "transmission": "Manual",
-        "avatar": "iVBORw0KGgoAAAANSUhEUgAAArwA...",
-        "avatar_file": "avatar.jpg"
+        "transmission": "Manual"
     }
 }
