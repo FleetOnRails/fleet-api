@@ -9,7 +9,7 @@ angular.module('fleetonrails-api.controllers', [])
     }])
 
     .controller('ToggleCtrl', ['$scope', function ($scope) {
-        $scope.isCollapsed = true;
+        $scope.isCollapsed = false;
     }])
 
     .controller('OauthController', ['$scope', 'OauthService', function ($scope, OauthService) {

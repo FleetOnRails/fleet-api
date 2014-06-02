@@ -14,7 +14,7 @@ if admin.valid?
   puts %q[
 Administrator account created:
 
-login.........admin@fleetonrails.eu
+login.........alankehoe111@gmail.com
 password......fleetonrails
 ]
 end

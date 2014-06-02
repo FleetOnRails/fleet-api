@@ -19,12 +19,6 @@ module V1
       respond_with @user
     end
 
-    def download
-      path = "#{Rails.root}#{request.path}"
-
-      send_file path, :x_sendfile => true
-    end
-
     def update
       if params[:group_id]
         @group = Group.find(params[:group_id])
@@ -35,7 +29,6 @@ module V1
       end
     end
 
-    # FIXME - this route is unprotected by doorkeeper
     def create
       raise Exception if params[:user][:password] != params[:user][:password_confirmation]
       @user = User.new(user_params)

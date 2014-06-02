@@ -22,12 +22,6 @@ module V1
       end
     end
 
-    def download
-      path = "#{Rails.root}#{request.path}"
-
-      send_file path, :x_sendfile => true
-    end
-
     def create
       if params[:group_id]
         @group = Group.find(params[:group_id])
@@ -80,7 +74,8 @@ module V1
     private
 
     def car_params
-      params.required(:car).permit(:make, :model, :registration, :avatar_file, :avatar)
+      params.required(:car).permit :make, :model, :registration, :avatar_file, :avatar, :color, :description,
+                                   :year, :vehicle_type, :engine_size, :transmission
     end
   end
 end

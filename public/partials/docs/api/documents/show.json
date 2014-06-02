@@ -1,10 +1,14 @@
 {
     "document": {
         "id": 1,
-        "title": "Insurance",
-        "file": "insurance.doc",
-        "data": "data:application/msword;base64,UEsDBBQABgAIAAAAIQBZ...",
-        "created_at": "2014-03-12T00:00:25.000Z",
-        "updated_at": "2014-03-12T00:00:25.000Z"
+        "title": "title of file",
+        "document": {
+            "document": {
+                "url": "/uploads/document/document/1/file.pdf"
+            }
+        },
+        "file_size": 10000,
+        "created_at": "2014-05-18T15:23:49.000Z",
+        "updated_at": "2014-05-18T15:23:50.000Z"
     }
 }

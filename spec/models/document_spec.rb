@@ -9,6 +9,10 @@ describe Document do
     should validate_presence_of(:title)
   end
 
+  it 'should validate presence of file size' do
+    should validate_presence_of(:file_size)
+  end
+
   it 'should validate presence of document' do
     should validate_presence_of(:document)
   end

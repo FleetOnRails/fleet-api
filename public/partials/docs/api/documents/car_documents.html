@@ -39,23 +39,6 @@
 </div>
 <div class="clear"></div>
 
-
-<div ng-controller="ToggleCtrl">
-    <div class="endpoint" ng-click="isCollapsed = !isCollapsed">
-        <div class="method put">PUT</div>
-        <div class="path">/v1/cars/:car_id/documents/:id</div>
-    </div>
-    <div collapse="isCollapsed">
-        This update the document for the car matching :car_id and :id
-        <div hljs include="'partials/docs/api/documents/create_request.json'"></div>
-
-        And a reply with the updated document object
-        <div hljs include="'partials/docs/api/documents/show.json'"></div>
-    </div>
-</div>
-<div class="clear"></div>
-
-
 <div ng-controller="ToggleCtrl">
     <div class="endpoint" ng-click="isCollapsed = !isCollapsed">
         <div class="method delete">DELETE</div>

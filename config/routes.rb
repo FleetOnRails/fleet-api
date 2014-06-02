@@ -14,7 +14,8 @@ FleetOnRails::Application.routes.draw do
     resources :users, only: [:index, :show, :create, :update, :destroy]
 
     resources :cars, only: [:index, :show, :create, :update, :destroy] do
-      resources :documents, only: [:index, :show, :create, :update, :destroy]
+      resources :documents, only: [:index, :show, :create,
+                                   :destroy]
       resources :diagnostic_faults, only: [:index, :show, :create, :update]
       resources :diagnostic_statistics, only: [:index, :show, :create]
       resources :gps_statistics, only: [:index, :show, :create]
@@ -24,7 +25,7 @@ FleetOnRails::Application.routes.draw do
     end
 
     resources :expenses, only: [] do
-      resources :documents, only: [:index, :show, :create, :update, :destroy]
+      resources :documents, only: [:index, :show, :create, :destroy]
     end
 
     resources :vendors, only: [:index, :show, :update, :create, :destroy] do
@@ -39,7 +40,7 @@ FleetOnRails::Application.routes.draw do
     end
   end
 
-  match '/uploads/user/avatar/:id/:basename.:extension', to: 'v1/users#download', via: [:get]
-  match '/uploads/group/avatar/:id/:basename.:extension', to: 'v1/groups#download', via: [:get]
-  match '/uploads/car/avatar/:id/:basename.:extension', to: 'v1/cars#download', via: [:get]
+  # match '/uploads/user/avatar/:id/:basename.:extension', to: 'v1/users#download', via: [:get]
+  # match '/uploads/group/avatar/:id/:basename.:extension', to: 'v1/groups#download', via: [:get]
+  # match '/uploads/car/avatar/:id/:basename.:extension', to: 'v1/cars#download', via: [:get]
 end

@@ -11,12 +11,6 @@ module V1
       raise NotPrivileged unless @group.is_member?(@current_user)
     end
 
-    def download
-      path = "#{Rails.root}#{request.path}"
-
-      send_file path, :x_sendfile => true
-    end
-
     def create
       @group = Group.create!(group_params)
       @group.add_owner(@current_user)
@@ -42,7 +36,7 @@ module V1
     private
 
     def group_params
-      params.required(:group).permit(:name, :location_attributes => [:latitude, :longitude, :address])
+      params.required(:group).permit(:name, :description, :location_attributes => [:latitude, :longitude, :address])
     end
   end
 end
