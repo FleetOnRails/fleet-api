@@ -22,12 +22,6 @@ module V1
       end
     end
 
-    def download
-      path = "#{Rails.root}#{request.path}"
-
-      send_file path, :x_sendfile => true
-    end
-
     def create
       if params[:group_id]
         @group = Group.find(params[:group_id])

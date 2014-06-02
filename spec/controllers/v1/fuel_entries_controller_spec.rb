@@ -16,6 +16,11 @@ describe V1::FuelEntriesController do
   end
 
   describe 'GET index' do
+    before :each do
+      user.cars << car
+      car.fuel_entries << fuel_entry
+    end
+
     describe 'When current user is authenticated' do
       it 'assigns all fuel_entries to @fuel_entries' do
         get :index, :car_id => car.id
@@ -62,6 +67,36 @@ describe V1::FuelEntriesController do
         expect(response.status).to eq(400)
         expect(response).to render_template 'v1/errors/record_invalid'
       end
+    end
+  end
+
+  describe 'PUT create' do
+    before :each do
+      user.cars << car
+      car.fuel_entries << fuel_entry
+    end
+
+    it 'Should update a fuel entry' do
+      put :update, car_id: car.id, id: fuel_entry.id, :fuel_entry => FactoryGirl.nested_attributes_for(:fuel_entry)
+
+      expect(json).to have_key('fuel_entry')
+      expect(response.status).to eq(200)
+      expect(response).to render_template 'v1/fuel_entries/update'
+    end
+  end
+
+  describe 'DELETE destroy' do
+    before :each do
+      user.cars << car
+      car.fuel_entries << fuel_entry
+    end
+
+    it 'Should delete an fuel entry' do
+      delete :destroy, car_id: car.id, id: fuel_entry.id
+
+      expect(json).to have_key('fuel_entry')
+      expect(response.status).to eq(200)
+      expect(response).to render_template 'v1/fuel_entries/destroy'
     end
   end
 end
