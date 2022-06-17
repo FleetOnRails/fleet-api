@@ -1,10 +1,10 @@
 GIT
-  remote: git://github.com/mbleigh/seed-fu.git
-  revision: 6dbf3fac92666f2fcfc65ab882fb95ed3ef51712
+  remote: https://github.com/mbleigh/seed-fu.git
+  revision: 34c054c914858c3d7685f83d16dea5c0e2114561
   specs:
-    seed-fu (2.3.0)
-      activerecord (>= 3.1, < 4.1)
-      activesupport (>= 3.1, < 4.1)
+    seed-fu (2.3.9)
+      activerecord (>= 3.1)
+      activesupport (>= 3.1)
 
 GEM
   remote: https://rubygems.org/
@@ -53,6 +53,7 @@ GEM
       activesupport (>= 3.2.0)
       json (>= 1.7)
     columnize (0.3.6)
+    concurrent-ruby (1.1.10)
     daemon_controller (1.1.8)
     debugger (1.6.3)
       columnize (>= 0.3.1)
@@ -81,7 +82,8 @@ GEM
       i18n (~> 0.5)
     geocoder (1.1.9)
     hike (1.2.3)
-    i18n (0.6.9)
+    i18n (0.9.5)
+      concurrent-ruby (~> 1.0)
     jquery-rails (3.0.4)
       railties (>= 3.0, < 5.0)
       thor (>= 0.14, < 2.0)
