@@ -1,10 +1,10 @@
 GIT
-  remote: git://github.com/mbleigh/seed-fu.git
-  revision: 6dbf3fac92666f2fcfc65ab882fb95ed3ef51712
+  remote: https://github.com/mbleigh/seed-fu.git
+  revision: 34c054c914858c3d7685f83d16dea5c0e2114561
   specs:
-    seed-fu (2.3.0)
-      activerecord (>= 3.1, < 4.1)
-      activesupport (>= 3.1, < 4.1)
+    seed-fu (2.3.9)
+      activerecord (>= 3.1)
+      activesupport (>= 3.1)
 
 GEM
   remote: https://rubygems.org/
@@ -174,7 +174,7 @@ GEM
     treetop (1.4.15)
       polyglot
       polyglot (>= 0.3.1)
-    tzinfo (0.3.38)
+    tzinfo (0.3.61)
     warden (1.2.3)
       rack (>= 1.0)
 
